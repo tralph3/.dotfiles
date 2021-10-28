@@ -42,6 +42,13 @@ Plug 'vim-utils/vim-man'
 
 call plug#end()
 
+if need_to_install_plugins == 1
+    echo "Installing plugins..."
+    silent! PlugInstall
+    echo "Done!"
+    q
+endif
+
 " CoC config
 let g:coc_global_extensions = [
   \ 'coc-clangd',

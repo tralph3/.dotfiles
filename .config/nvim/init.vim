@@ -47,7 +47,6 @@ if need_to_install_plugins == 1
     echo "Installing plugins..."
     silent! PlugInstall
     echo "Done!"
-    q
 endif
 
 " CoC config

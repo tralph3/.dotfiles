@@ -42,6 +42,7 @@ Plug 'vim-utils/vim-man'
 
 call plug#end()
 
+" Install Plug plugins
 if need_to_install_plugins == 1
     echo "Installing plugins..."
     silent! PlugInstall
@@ -62,6 +63,11 @@ let g:coc_global_extensions = [
   \ 'coc-rust-analyzer',
   \ 'coc-tsserver',
   \ ]
+
+if need_to_install_plugins == 1
+    echo "CoC plugins installed!"
+    q
+endif
 
 " Colors
 set termguicolors

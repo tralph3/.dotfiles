@@ -47,24 +47,7 @@ if need_to_install_plugins == 1
     echo "Installing plugins..."
     silent! PlugInstall
     echo "Done!"
-endif
-
-" CoC config
-let g:coc_global_extensions = [
-  \ 'coc-clangd',
-  \ 'coc-eslint',
-  \ 'coc-godot',
-  \ 'coc-godot',
-  \ 'coc-html',
-  \ 'coc-markdownlint',
-  \ 'coc-pairs',
-  \ 'coc-pyright',
-  \ 'coc-rust-analyzer',
-  \ 'coc-tsserver',
-  \ ]
-
-if need_to_install_plugins == 1
-    echo "CoC plugins installed!"
+    q
     q
 endif
 

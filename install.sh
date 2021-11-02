@@ -14,6 +14,6 @@ mkdir -pv ~/.config/nvim
 ln -sf ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 
 # konsole
-mkdir -pv ~/.local/share/konsole
+mkdir -pv ~/.local/share
 ln -sf ~/.dotfiles/.local/share/konsole ~/.local/share
 ln -sf ~/.dotfiles/.config/konsolerc ~/.config

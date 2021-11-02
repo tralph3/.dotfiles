@@ -1,0 +1,26 @@
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAPYAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAHABzAGUAcwBzAGkAbwBuAFQAbwBvAGwAYgBhAHIBAAABxf////8AAAAAAAAAAA==
+StatusBar=Disabled
+
+[Desktop Entry]
+DefaultProfile=tralph3.profile
+
+[KFileDialog Settings]
+Recent Files[$e]=2021-08-16_19-28.png,file:$HOME/Pictures/2021-08-16_19-28.png
+Recent URLs[$e]=file:$HOME/Pictures/
+detailViewIconSize=16
+
+[KonsoleWindow]
+SaveGeometryOnExit=false
+ShowMenuBarByDefault=false
+
+[MainWindow]
+HDMI-1 XPosition 1920x1080=16
+HDMI-1 YPosition 1920x1080=16
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABg8AAAL/AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAHABzAGUAcwBzAGkAbwBuAFQAbwBvAGwAYgBhAHIAAAAAAP////8AAAAAAAAAAA==
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+
+[TabBar]
+TabBarPosition=Top

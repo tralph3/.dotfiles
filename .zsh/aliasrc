@@ -150,6 +150,8 @@ alias record='pactl load-module module-null-sink sink_name="bh2_openmic" sink_pr
 
 alias watch-sync="watch \"grep -E 'Dirty:|Writeback:' /proc/meminfo\""
 
-alias tetris="ssh netris.rocketnine.space"
-
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"
+
+# Docker
+alias fedora='sudo docker run -it fedora /bin/bash'
+alias ubuntu='sudo docker run -it ubuntu /bin/bash'

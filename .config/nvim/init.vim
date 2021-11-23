@@ -21,6 +21,8 @@ set nobackup
 set undodir=~/.config/nvim/undodir
 set undofile
 set incsearch
+set list
+set listchars=tab:▸\ ,trail:·
 
 set number relativenumber
 set colorcolumn=79

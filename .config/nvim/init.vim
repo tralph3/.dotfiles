@@ -35,6 +35,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'phanviet/vim-monokai-pro'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'sheerun/vim-polyglot'
 Plug 'timonv/vim-cargo'
 Plug 'tpope/vim-commentary' " gcc comment line | gc comment motion
 Plug 'tpope/vim-surround'   " ys (add surround) | ds (delete surround) | cs (change surround)

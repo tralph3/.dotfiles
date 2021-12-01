@@ -29,14 +29,14 @@ _comp_options+=(globdots)               # Include hidden files.
 
 # Custom ZSH Binds
 bindkey '^ ' autosuggest-accept
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.zsh/aliasrc" ] && source "$HOME/.zsh/aliasrc"
-
-# Load ; should be last.
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -56,3 +56,8 @@ bindkey "\e[F"  end-of-line
 bindkey "\e\d"  undo
 # Reverse search
 bindkey '^R' history-incremental-search-backward
+
+# Load ; should be last.
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source ~/.config/powerlevel10k/powerlevel10k.zsh-theme

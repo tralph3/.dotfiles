@@ -1,135 +1,103 @@
+DISTRO=$(lsb_release -i | cut -f 2)
+
 # extracting utility
 ex ()
 {
-  for i in "${@}"; do
-      if [ -f $i ] ; then
-        case $i in
-          *.tar.bz2)   tar xjf $i   ;;
-          *.tar.gz)    tar xzf $i   ;;
-          *.tar.xz)    tar xJf $i   ;;
-          *.bz2)       bunzip2 $i   ;;
-          *.rar)       unrar x $i     ;;
-          *.gz)        gunzip $i    ;;
-          *.tar)       tar xf $i    ;;
-          *.tbz2)      tar xjf $i   ;;
-          *.tgz)       tar xzf $i   ;;
-          *.zip)       unzip $i     ;;
-          *.Z)         uncompress $i;;
-          *.7z)        7z x $i      ;;
-          *)           echo "'$i' cannot be extracted via ex()" ;;
-        esac
-      else
-        echo "'$i' is not a valid file"
-      fi
-  done
+    for i in "${@}"; do
+        if [ -f $i ] ; then
+            case $i in
+                *.tar.bz2)   tar xjf $i   ;;
+                *.tar.gz)    tar xzf $i   ;;
+                *.tar.xz)    tar xJf $i   ;;
+                *.bz2)       bunzip2 $i   ;;
+                *.rar)       unrar x $i     ;;
+                *.gz)        gunzip $i    ;;
+                *.tar)       tar xf $i    ;;
+                *.tbz2)      tar xjf $i   ;;
+                *.tgz)       tar xzf $i   ;;
+                *.zip)       unzip $i     ;;
+                *.Z)         uncompress $i;;
+                *.7z)        7z x $i      ;;
+                *)           echo "'$i' cannot be extracted via ex()" ;;
+            esac
+        else
+            echo "'$i' is not a valid file"
+        fi
+    done
 }
 
 # rmv - to remove packages and its dependencies
 rmv ()
 {
-  if [ $1 ] ; then
-    paru --sudoloop -Rnssu $@ && paru --sudoloop -c
-  else
-    echo "No package provided"
-  fi
+    if [ $1 ] ; then
+        case $DISTRO in
+            Arch)
+                paru --sudoloop -Rnssu $@ && paru --sudoloop -c
+                ;;
+            Ubuntu)
+                sudo apt purge $@ && sudo apt autoremove
+                ;;
+            Fedora)
+                dnf remove $@
+                ;;
+        esac
+    else
+        echo "No package provided"
+    fi
 }
 
 # ins - shorter way to install packages
 ins ()
 {
-  if [ $1 ] ; then
-    paru --sudoloop --skipreview -S $@
-  else
-    echo "No package provided"
-  fi
+    if [ $1 ] ; then
+        case $DISTRO in
+            Arch)
+                paru --sudoloop --skipreview -S $@
+                ;;
+            Ubuntu)
+                sudo apt instal $@
+                ;;
+            Fedora)
+                dnf install $@
+                ;;
+        esac
+    else
+        echo "No package provided"
+    fi
 }
 
 # src - shorter way to search for packages
 src ()
 {
-  if [ $1 ] ; then
-    paru -Ssy --bottomup $@
-  else
-    echo "No package provided"
-  fi
+    if [ $1 ] ; then
+        case $DISTRO in
+            Arch)
+                paru -Ssy --bottomup $@
+                ;;
+            Ubuntu)
+                apt search $@
+                ;;
+            Fedora)
+                dnf search $@
+                ;;
+        esac
+    else
+        echo "No package provided"
+    fi
 }
 
-# terminate - searches for the process id of the given process name, and kills all of them
-terminate () {
-  if [ $2 ] ; then
-    echo "Only one pattern allowed"
-  elif [ $1 ] ; then
-    processes=$(pgrep -iw $1)
-    processes=$(echo $processes | tr "\n" " ")
-    echo "Killing $processes"
-    sudo kill -9 $processes
-  else
-    echo "No process specified"
-  fi
-}
-
-# downgrade - for downgrading packages
-downgrade () {
-  if [ $1 ] ; then
-    paru --sudoloop -U $1
-  else
-    echo "No package provided"
-  fi
-}
-
-# install-font - installs ttf fonts on /usr/share/fonts
-install-font () {
-  if [ $1 ] ; then
-    sudo mv $@ /usr/share/fonts
-  else
-    echo "No font provided"
-  fi
-}
-
-export EDITOR=nvim
 
 alias ls='exa -l --icons --header --group-directories-first'
 alias la='exa -la --icons --header --group-directories-first'
 alias lr='exa -lT -L 2 --icons --header --group-directories-first'
 alias lR='exa -lT --icons --header --group-directories-first'
 
+# file editing
+export EDITOR=nvim
+
 alias zshrc="${=EDITOR} ~/.zshrc" # Quick access to the ~/.zshrc file
 alias aliasrc="${=EDITOR} ~/.zsh/aliasrc" # Quick access to this file
 alias nvimrc="${=EDITOR} ~/.config/nvim/init.vim" # Quick access to init.vim
-
-alias grep='grep --color'
-alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
-
-alias t='tail -f'
-
-# Command line head / tail shortcuts
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g L="| less"
-alias -g M="| most"
-alias -g LL="2>&1 | less"
-alias -g CA="2>&1 | cat -A"
-alias -g NE="2> /dev/null"
-alias -g NUL="> /dev/null 2>&1"
-alias -g P="2>&1| pygmentize -l pytb"
-
-alias dud='du -d 1 -h'
-alias duf='du -sh *'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
-
-alias h='history'
-alias hgrep="fc -El 0 | grep"
-alias help='man'
-alias p='ps -f'
-alias sortnr='sort -n -r'
-alias unexport='unset'
-
-alias vi='vim'
-alias btm='btm --color gruvbox'
-alias gds-start='sudo systemctl start openvpn-client@gds'
-alias gds-stop='sudo systemctl stop openvpn-client@gds'
 
 gitpush() {
     git add -A
@@ -139,16 +107,12 @@ gitpush() {
 
 alias gp=gitpush
 
-alias storage="cd /mnt/Storage"
-
 alias uall="paru --sudoloop --skipreview -Syu"
 
 alias localip='ip -brief -color address'
 
 # Recording device
 alias record='pactl load-module module-null-sink sink_name="bh2_openmic" sink_properties=device.description="BeatHazard2_OpenMic"'
-
-alias watch-sync="watch \"grep -E 'Dirty:|Writeback:' /proc/meminfo\""
 
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"
 

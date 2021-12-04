@@ -1,4 +1,4 @@
-eval $(cat /etc/os-release)
+source /etc/os-release
 DISTRO=$ID
 
 # extracting utility

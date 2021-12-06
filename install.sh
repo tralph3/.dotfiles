@@ -17,3 +17,7 @@ ln -sf ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 mkdir -pv ~/.local/share
 ln -sf ~/.dotfiles/.local/share/konsole ~/.local/share
 ln -sf ~/.dotfiles/.config/konsolerc ~/.config
+
+# htop
+mkdir -pv ~/.config/htop
+ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop

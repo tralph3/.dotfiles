@@ -114,6 +114,7 @@ alias localip='ip -brief -color address'
 
 # Recording device
 alias record='pactl load-module module-null-sink sink_name="bh2_openmic" sink_properties=device.description="BeatHazard2_OpenMic"'
+alias syncmusic='rsync -av /mnt/Storage/Music/ T430:/mnt/Storage/Music'
 
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"
 

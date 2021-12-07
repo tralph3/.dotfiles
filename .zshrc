@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt.
+#m Enable Powerlevel10k instant prompt.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -40,7 +40,6 @@ bindkey '^x^e' edit-command-line
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
 
 # ctrl-left and ctrl-right
 bindkey "\e[1;5D" backward-word
@@ -60,4 +59,4 @@ bindkey '^R' history-incremental-search-backward
 # Load ; should be last.
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

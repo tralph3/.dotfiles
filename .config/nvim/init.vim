@@ -1,6 +1,6 @@
 " Install Plug if needed
 let need_to_install_plugins = 0
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+if empty(glob('~/.local/share/nvim/plugged'))
     let need_to_install_plugins = 1
 endif
 

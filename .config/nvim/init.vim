@@ -1,8 +1,6 @@
 " Install Plug if needed
 let need_to_install_plugins = 0
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     let need_to_install_plugins = 1
 endif
 
@@ -52,10 +50,6 @@ Plug 'vim-utils/vim-man'
 
 call plug#end()
 
-luafile ~/.config/nvim/lua/lsp-signature.lua
-luafile ~/.config/nvim/lua/rust-lsp.lua
-luafile ~/.config/nvim/lua/cmp-config.lua
-
 " Install Plug plugins
 if need_to_install_plugins == 1
     echo "Installing plugins..."
@@ -64,6 +58,11 @@ if need_to_install_plugins == 1
     q
     q
 endif
+
+" Configure lsp
+luafile ~/.config/nvim/lua/lsp-signature.lua
+luafile ~/.config/nvim/lua/rust-lsp.lua
+luafile ~/.config/nvim/lua/cmp-config.lua
 
 " Colors
 set termguicolors

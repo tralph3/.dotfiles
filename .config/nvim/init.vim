@@ -31,8 +31,15 @@ set winblend=10
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'sheerun/vim-polyglot'
@@ -44,6 +51,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-utils/vim-man'
 
 call plug#end()
+
+luafile ~/.config/nvim/lua/lsp-signature.lua
+luafile ~/.config/nvim/lua/rust-lsp.lua
+luafile ~/.config/nvim/lua/cmp-config.lua
 
 " Install Plug plugins
 if need_to_install_plugins == 1

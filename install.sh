@@ -12,6 +12,7 @@ ln -sf ~/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 # neovim
 mkdir -pv ~/.config/nvim
 ln -sf ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/.dotfiles/.config/nvim/lua ~/.config/nvim
 
 # konsole
 mkdir -pv ~/.local/share

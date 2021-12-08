@@ -19,11 +19,11 @@ require'lualine'.setup{
     },
 
     tabline = {
-        lualine_a = {'buffers'},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
+        lualine_a = {'tabs'},
+        lualine_b = {},
+        lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {'tabs'}
+        lualine_z = {'buffers'}
     }
 }

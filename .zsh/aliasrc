@@ -4,6 +4,7 @@ if [ $ID_LIKE ]; then
     DISTRO=$ID_LIKE
 else
     DISTRO=$ID
+fi
 
 
 # extracting utility

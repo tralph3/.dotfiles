@@ -20,10 +20,10 @@ require'lualine'.setup{
 
     tabline = {
         lualine_a = {'tabs'},
-        lualine_b = {},
+        lualine_b = {'filename'},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {'buffers'}
+        lualine_z = {}
     }
 }

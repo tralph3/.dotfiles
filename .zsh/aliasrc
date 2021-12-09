@@ -1,5 +1,10 @@
 source /etc/os-release
-DISTRO=$ID
+
+if [ $ID_LIKE ]; then
+    DISTRO=$ID_LIKE
+else
+    DISTRO=$ID
+
 
 # extracting utility
 ex ()

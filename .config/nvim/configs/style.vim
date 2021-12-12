@@ -1,4 +1,5 @@
 " Colors
+syntax on
 set termguicolors
 colorscheme monokai_pro
 

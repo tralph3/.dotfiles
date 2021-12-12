@@ -17,3 +17,5 @@ set number relativenumber
 set colorcolumn=79
 set winblend=10
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e

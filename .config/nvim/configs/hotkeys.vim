@@ -26,3 +26,6 @@ vmap <S-Tab> <gv
 " Resize windows
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
+
+" Open buffers in new tabs
+nnoremap gf <C-w>gf

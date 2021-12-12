@@ -1,5 +1,3 @@
-syntax on
-
 " General settings
 source ~/.config/nvim/configs/settings.vim
 " Plugins
@@ -11,5 +9,3 @@ source ~/.config/nvim/configs/style.vim
 " Hotekeys
 source ~/.config/nvim/configs/hotkeys.vim
 
-" Remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e

@@ -5,6 +5,6 @@ require('tabline').setup{
         show_tabs_always = true,
         show_devicons = true,
         show_bufnr = false,
-        show_filename_only = false,
+        show_filename_only = true,
     }
 }

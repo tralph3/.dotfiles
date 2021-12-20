@@ -3,6 +3,9 @@ syntax on
 set termguicolors
 colorscheme monokai_pro
 
+" Font
+set guifont=UbuntuMono\ Nerd\ Font\ Mono:h12
+
 " Background transparency
 hi Normal guibg=none ctermbg=none
 hi LineNr guibg=none ctermbg=none

@@ -29,3 +29,7 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 " Open buffers in new tabs
 nnoremap gf <C-w>gf
+
+
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>

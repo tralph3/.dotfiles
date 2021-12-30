@@ -33,3 +33,6 @@ nnoremap gf <C-w>gf
 
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+
+noremap <expr> <C-u> repeat("\<C-y> :sleep 10m<CR>", winheight('%')/2)
+noremap <expr> <C-d> repeat("\<C-e> :sleep 10m<CR>", winheight('%')/2)

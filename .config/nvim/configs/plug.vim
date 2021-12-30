@@ -7,6 +7,7 @@ endif
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'cskeeters/vim-smooth-scroll'
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }

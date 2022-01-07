@@ -5,4 +5,4 @@ luafile ~/.config/nvim/lua/python-lsp.lua
 luafile ~/.config/nvim/lua/cmp-config.lua
 luafile ~/.config/nvim/lua/lua-line.lua
 
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})

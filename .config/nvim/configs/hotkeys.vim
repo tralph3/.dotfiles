@@ -10,6 +10,9 @@ nnoremap k gk
 nnoremap $ g$
 nnoremap <leader>w :set wrap<CR>:set linebreak<CR>
 
+" Format JSON file
+nnoremap <leader>J :%!python -m json.tool<CR>
+
 " Open new tab
 nnoremap <C-t> :tabedit<Space>
 

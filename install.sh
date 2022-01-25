@@ -15,10 +15,9 @@ ln -sf ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/.dotfiles/.config/nvim/lua ~/.config/nvim
 ln -sf ~/.dotfiles/.config/nvim/configs ~/.config/nvim
 
-# konsole
-mkdir -pv ~/.local/share
-ln -sf ~/.dotfiles/.local/share/konsole ~/.local/share
-ln -sf ~/.dotfiles/.config/konsolerc ~/.config
+# alacritty
+mkdir -pv ~/.config/alacritty
+ln -sf ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # htop
 mkdir -pv ~/.config/htop

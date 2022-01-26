@@ -24,4 +24,5 @@ mkdir -pv ~/.config/htop
 ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop
 
 # firefox
+rm -rf ~/.mozilla/firefox/*.default-release/chrome
 ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release/

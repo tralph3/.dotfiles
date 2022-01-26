@@ -22,3 +22,6 @@ ln -sf ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty
 # htop
 mkdir -pv ~/.config/htop
 ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop
+
+# firefox
+ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release/

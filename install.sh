@@ -26,3 +26,4 @@ ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop
 # firefox
 rm -rf ~/.mozilla/firefox/*.default-release/chrome
 ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release/
+ln -sf ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release/

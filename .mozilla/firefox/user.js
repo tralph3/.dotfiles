@@ -31,3 +31,6 @@ user_pref("browser.toolbars.bookmarks.visibility", "always");
 
 // Don't teach me how to use PIP
 user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used", true);
+
+// Use system's file browser
+user_pref("widget.use-xdg-desktop-portal", true);

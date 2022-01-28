@@ -25,7 +25,7 @@ ex ()
                 *.zip)       unzip $i     ;;
                 *.Z)         uncompress $i;;
                 *.7z)        7z x $i      ;;
-                *)           echo "'$i' cannot be extracted via ex()" ;;
+                *)           echo "'$i' has an unrecognized file type." ;;
             esac
         else
             echo "'$i' is not a valid file"
@@ -39,7 +39,7 @@ rmv ()
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --sudoloop -Rnssu $@ && paru --sudoloop -c
+                paru --sudoloop -Rnsu $@ && paru --sudoloop -c
                 ;;
             ubuntu)
                 sudo apt purge $@ && sudo apt autoremove
@@ -62,7 +62,7 @@ ins ()
                 paru --sudoloop --skipreview -S $@
                 ;;
             ubuntu)
-                sudo apt instal $@
+                sudo apt install $@
                 ;;
             fedora)
                 dnf install $@
@@ -79,13 +79,13 @@ src ()
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru -Ssy --bottomup $@
+                paru -Ss --bottomup "$*"
                 ;;
             ubuntu)
-                apt search $@
+                apt search "$*"
                 ;;
             fedora)
-                dnf search $@
+                dnf search "$*"
                 ;;
         esac
     else
@@ -119,7 +119,7 @@ alias uall="paru --sudoloop --skipreview -Syu"
 alias localip='ip -brief -color address'
 
 # Recording device
-alias record='pactl load-module module-null-sink sink_name="bh2_openmic" sink_properties=device.description="BeatHazard2_OpenMic"'
+alias record='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
 alias syncmusic='rsync -av /mnt/Storage/Music/ T430:/mnt/Storage/Music'
 
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"

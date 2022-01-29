@@ -79,7 +79,7 @@ src ()
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru -Ss --bottomup "$*"
+                paru --bottomup "$*"
                 ;;
             ubuntu)
                 apt search "$*"
@@ -94,9 +94,13 @@ src ()
 }
 
 
+# regular list
 alias ls='exa -l --icons --header --group-directories-first'
+# list all
 alias la='exa -la --icons --header --group-directories-first'
+# list recursively with depth of 1
 alias lr='exa -lT -L 2 --icons --header --group-directories-first'
+# list recursively indefinitely
 alias lR='exa -lT --icons --header --group-directories-first'
 
 # file editing
@@ -106,13 +110,11 @@ alias zshrc="${=EDITOR} ~/.zshrc" # Quick access to the ~/.zshrc file
 alias aliasrc="${=EDITOR} ~/.zsh/aliasrc" # Quick access to this file
 alias nvimrc="${=EDITOR} ~/.config/nvim/init.vim" # Quick access to init.vim
 
-gitpush() {
+gp() {
     git add -A
     git commit -m "$*"
     git push
 }
-
-alias gp=gitpush
 
 alias uall="paru --sudoloop --skipreview -Syu"
 
@@ -122,6 +124,7 @@ alias localip='ip -brief -color address'
 alias record='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
 alias syncmusic='rsync -av /mnt/Storage/Music/ T430:/mnt/Storage/Music'
 
+# get thumbnail from a video
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"
 
 # Docker

@@ -8,8 +8,7 @@ fi
 
 
 # extracting utility
-ex ()
-{
+ex () {
     for i in "${@}"; do
         if [ -f $i ] ; then
             case $i in
@@ -34,8 +33,7 @@ ex ()
 }
 
 # rmv - to remove packages and its dependencies
-rmv ()
-{
+rmv () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
@@ -54,9 +52,8 @@ rmv ()
 }
 
 # ins - shorter way to install packages
-ins ()
-{
-    if [ $1 ] ; then
+ins () {
+    if [ $2 ] ; then
         case $DISTRO in
             arch)
                 paru --sudoloop --skipreview -S $@
@@ -74,8 +71,7 @@ ins ()
 }
 
 # src - shorter way to search for packages
-src ()
-{
+src () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
@@ -93,6 +89,23 @@ src ()
     fi
 }
 
+
+uall (){
+    case $DISTRO in
+        arch)
+            paru --sudoloop --skipreview -Syu;
+                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+            ;;
+        ubuntu)
+            sudo apt update && sudo apt upgrade;
+                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+            ;;
+        fedora)
+            sudo dnf upgrade;
+                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+            ;;
+    esac
+}
 
 # regular list
 alias ls='exa -l --icons --header --group-directories-first'
@@ -115,8 +128,6 @@ gp() {
     git commit -m "$*"
     git push
 }
-
-alias uall="paru --sudoloop --skipreview -Syu"
 
 alias localip='ip -brief -color address'
 

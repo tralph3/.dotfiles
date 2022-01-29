@@ -34,3 +34,10 @@ user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used", true);
 
 // Use system's file browser
 user_pref("widget.use-xdg-desktop-portal", true);
+
+// Just stop (no autplay videos)
+user_pref("media.autoplay.default", 5);
+user_pref("media.autoplay.blocking_policy", 2);
+user_pref("media.autoplay.allow-extension-background-pages", false);
+user_pref("media.autoplay.block-event.enabled", true);
+

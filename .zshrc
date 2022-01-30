@@ -1,17 +1,11 @@
-#m Enable Powerlevel10k instant prompt.
+# Enable Powerlevel10k instant prompt.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Enable colors and change prompt:
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# Custom Variables
 EDITOR=nvim
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=232"
 
-# History in cache directory:
+# Ignore commands that start with a space
 setopt HIST_IGNORE_SPACE
 HISTSIZE=10000
 SAVEHIST=10000
@@ -22,12 +16,13 @@ setopt appendhistory
 autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-#setopt MENU_COMPLETE
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)               # Include hidden files.
 
-# Custom ZSH Binds
+# Include hidden files.
+_comp_options+=(globdots)
+
+# Custom keybinds
 bindkey '^ ' autosuggest-accept
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -36,7 +31,7 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/.zsh/aliasrc" ] && source "$HOME/.zsh/aliasrc"
+[ -f "$HOME/.zsh/aliasrc.zsh" ] && source "$HOME/.zsh/aliasrc.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -53,10 +48,18 @@ bindkey "\e[H"  beginning-of-line
 bindkey "\e[F"  end-of-line
 # alt-bs
 bindkey "\e\d"  undo
+
 # Reverse search
 bindkey '^R' history-incremental-search-backward
 
-# Load ; should be last.
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# Load plugins
+case $DISTRO in
+    arch)
+        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+        source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+        ;;
+    ubuntu)
+        # I forgot where ubuntu drops these files lol
+        ;;
+esac

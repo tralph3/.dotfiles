@@ -1,3 +1,4 @@
+#!/bin/zsh
 source /etc/os-release
 
 if [ $ID_LIKE ]; then
@@ -120,7 +121,7 @@ alias lR='exa -lT --icons --header --group-directories-first'
 export EDITOR=nvim
 
 alias zshrc="${=EDITOR} ~/.zshrc" # Quick access to the ~/.zshrc file
-alias aliasrc="${=EDITOR} -c ':setfiletype zsh' ~/.zsh/aliasrc" # Quick access to this file
+alias aliasrc="${=EDITOR} ~/.zsh/aliasrc.zsh" # Quick access to this file
 alias nvimrc="${=EDITOR} ~/.config/nvim/init.vim" # Quick access to init.vim
 alias alarc="${=EDITOR} ~/.config/alacritty/alacritty.yml" # Quick access to alacritty config
 

@@ -54,7 +54,7 @@ rmv () {
 
 # ins - shorter way to install packages
 ins () {
-    if [ $2 ] ; then
+    if [ $1 ] ; then
         case $DISTRO in
             arch)
                 paru --sudoloop --skipreview -S $@

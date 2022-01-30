@@ -12,6 +12,7 @@ set undofile
 set incsearch
 set list
 set listchars=tab:▸\ ,trail:·
+set ignorecase
 
 set number relativenumber
 set colorcolumn=79

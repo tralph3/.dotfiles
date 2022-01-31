@@ -25,5 +25,15 @@ ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop
 
 # firefox
 rm -rf ~/.mozilla/firefox/*.default-release/chrome
-ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release/
-ln -sf ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release/
+ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release
+ln -sf ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release
+
+# qtile
+mkdir -pv ~/.config/qtile
+ln -sf ~/.dotfiles/.config/qtile/config.py ~/.config/qtile
+ln -sf ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
+
+# picom
+mkdir -pv ~/.config/picom
+ln -sf ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
+

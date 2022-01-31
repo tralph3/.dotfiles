@@ -25,7 +25,7 @@ Plug 'preservim/nerdtree'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'timonv/vim-cargo'
-Plug 'tpope/vim-commentary' " gcc comment line | gc comment motion
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'   " ys (add surround) | ds (delete surround) | cs (change surround)
 Plug 'vim-utils/vim-man'
 

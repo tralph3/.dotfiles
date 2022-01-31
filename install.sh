@@ -37,3 +37,6 @@ ln -sf ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
 mkdir -pv ~/.config/picom
 ln -sf ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
 
+# dunst
+mkdir -pv ~/.config/dunst
+ln -sf ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst

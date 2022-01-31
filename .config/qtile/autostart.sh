@@ -11,3 +11,6 @@
 
 # Turn numlock on
 /usr/bin/numlockx on
+
+# Notifications
+dunst &

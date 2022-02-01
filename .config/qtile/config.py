@@ -105,9 +105,9 @@ keys = [
 ]
 
 groups = [
-    Group(""), # Terminal/Coding
+    Group(""), # Terminal
     Group(""), # Web browser
-    Group(""), # Whatsapp
+    Group(""), # Coding
     Group(""), # File browser
     Group(""), # Gaming stuff
     Group(""), # Discord/Communication

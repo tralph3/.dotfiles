@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# keyboard layout
+setxkbmap -layout latam
+
 # Start picom
 /usr/bin/picom --experimental-backends -b
 

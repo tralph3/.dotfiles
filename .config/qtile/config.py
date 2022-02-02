@@ -106,11 +106,11 @@ keys = [
 
 groups = [
     Group(""), # Terminal
-    Group(""), # Web browser
+    Group("", matches=[Match("firefox")]), # Web browser
     Group(""), # Coding
     Group(""), # File browser
-    Group(""), # Gaming stuff
-    Group(""), # Discord/Communication
+    Group("", layout="Floating"), # Gaming stuff
+    Group("", matches=[Match("discord")]), # Discord/Communication
     Group(""), # Music
     Group(""), # Image editing
     Group(""), # Anything else
@@ -126,29 +126,24 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
+layout_conf = {
+    "border_focus": FOCUS_COLOR,
+    "border_normal": NORMAL_COLOR,
+    "border_width": BORDER_WIDTH,
+    "margin": MARGIN
+}
 
 layouts = [
-    layout.Columns(
-        border_focus=FOCUS_COLOR,
-        border_normal=NORMAL_COLOR,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-    ),
-    layout.Max(
-        border_focus=FOCUS_COLOR,
-        border_normal=NORMAL_COLOR,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-    ),
+    layout.Columns(**layout_conf),
+    layout.Max(**layout_conf),
+    layout.Floating(**layout_conf),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]

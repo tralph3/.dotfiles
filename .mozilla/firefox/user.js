@@ -41,3 +41,44 @@ user_pref("media.autoplay.blocking_policy", 2);
 user_pref("media.autoplay.allow-extension-background-pages", false);
 user_pref("media.autoplay.block-event.enabled", true);
 
+// Don't allow sites to mess with ma' context menu
+user_pref("dom.event.contextmenu.enabled", false);
+
+// Tracking protection
+user_pref("privacy.trackingprotection.enabled", true);
+
+// No telemetry
+user_pref("toolkit.telemetry.cachedClientID", "blank");
+
+// Don't send pings to other sites
+user_pref("browser.send_pings.require_same_host", true);
+
+// Why do you need to know my battery?
+user_pref("dom.battery.enabled", false);
+
+// Block third party cookies
+user_pref("network.cookie.cookieBehavior", 1);
+
+// No link prefetching
+user_pref("network.predictor.enabled", false);
+user_pref("network.dns.disablePrefetch", true);
+user_pref("network.prefetch-next", false);
+    // Also on hover
+user_pref("network.http.speculative-parallel-limit", 0);
+
+// Disable pocket
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.pocket.enabled", "blank");
+user_pref("extensions.pocket.oAuthConsumerKey", "blank");
+user_pref("extensions.pocket.api", "blank");
+
+// Faster animations
+user_pref("layout.frame_rate.precise", true);
+
+// Hardware acceleration
+user_pref("webgl.force-enabled", true)
+user_pref("layers.acceleration.force-enabled", true)
+user_pref("layers.offmainthreadcomposition.enabled", true)
+user_pref("layers.offmainthreadcomposition.async-animations", true)
+user_pref("layers.async-video.enabled", true)
+user_pref("html5.offmainthread", true)

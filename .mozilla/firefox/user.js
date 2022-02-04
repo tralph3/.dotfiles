@@ -76,12 +76,12 @@ user_pref("extensions.pocket.api", "blank");
 user_pref("layout.frame_rate.precise", true);
 
 // Hardware acceleration
-user_pref("webgl.force-enabled", true)
-user_pref("layers.acceleration.force-enabled", true)
-user_pref("layers.offmainthreadcomposition.enabled", true)
-user_pref("layers.offmainthreadcomposition.async-animations", true)
-user_pref("layers.async-video.enabled", true)
-user_pref("html5.offmainthread", true)
+user_pref("webgl.force-enabled", true);
+user_pref("layers.acceleration.force-enabled", true);
+user_pref("layers.offmainthreadcomposition.enabled", true);
+user_pref("layers.offmainthreadcomposition.async-animations", true);
+user_pref("layers.async-video.enabled", true);
+user_pref("html5.offmainthread", true);
 
 // Send "do not track" signal, as if anyone respected it
-user_pref("privacy.donottrackheader.enabled", true)
+user_pref("privacy.donottrackheader.enabled", true);

@@ -78,17 +78,6 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
 
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-
     # Terminal
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
@@ -98,6 +87,12 @@ keys = [
     # Firefox
     Key([mod], "i", lazy.spawn("firefox"), desc="Open Firefox"),
     Key([mod, "shift"], "i", lazy.spawn("firefox --private-window"), desc="Open Firefox in Incognito mode"),
+
+    # Flameshot
+    Key([], "Print", lazy.spawn("flameshot gui"), desc="Take screenshot"),
+
+    # PcManFM
+    Key([mod], "f", lazy.spawn("pcmanfm"), desc="File browser"),
 
     # Qtile
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),

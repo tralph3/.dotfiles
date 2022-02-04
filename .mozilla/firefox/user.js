@@ -82,3 +82,6 @@ user_pref("layers.offmainthreadcomposition.enabled", true)
 user_pref("layers.offmainthreadcomposition.async-animations", true)
 user_pref("layers.async-video.enabled", true)
 user_pref("html5.offmainthread", true)
+
+// Send "do not track" signal, as if anyone respected it
+user_pref("privacy.donottrackheader.enabled", true)

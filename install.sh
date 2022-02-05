@@ -48,5 +48,4 @@ ln -sfv ~/.dotfiles/.config/xfce4 ~/.config
 ln -sfv ~/.dotfiles/.config/gtk-3.0 ~/.config
 
 # rofi
-mkdir -pv ~/.config/rofi
 ln -sfv ~/.dotfiles/.config/rofi ~/.config

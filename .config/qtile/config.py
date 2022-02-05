@@ -82,7 +82,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Rofi
-    Key([mod], "r", lazy.spawn("rofi -show run"), desc="Spawn a rofi Window"),
+    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a rofi Window"),
 
     # Firefox
     Key([mod], "i", lazy.spawn("firefox"), desc="Open Firefox"),
@@ -91,8 +91,8 @@ keys = [
     # Flameshot
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Take screenshot"),
 
-    # PcManFM
-    Key([mod], "f", lazy.spawn("pcmanfm"), desc="File browser"),
+    # Thunar
+    Key([mod], "f", lazy.spawn("thunar"), desc="File browser"),
 
     # Qtile
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),

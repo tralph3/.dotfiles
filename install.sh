@@ -1,52 +1,52 @@
 #!/bin/bash
 
 # zsh
-ln -sf ~/.dotfiles/.zshrc ~
-ln -sf ~/.dotfiles/.zsh ~
-ln -sf ~/.dotfiles/.p10k.zsh ~
+ln -sfv ~/.dotfiles/.zshrc ~
+ln -sfv ~/.dotfiles/.zsh ~
+ln -sfv ~/.dotfiles/.p10k.zsh ~
 
 # neofetch
 mkdir -pv ~/.config/neofetch
-ln -sf ~/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/config.conf
+ln -sfv ~/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/config.conf
 
 # neovim
 mkdir -pv ~/.config/nvim
-ln -sf ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
-ln -sf ~/.dotfiles/.config/nvim/lua ~/.config/nvim
-ln -sf ~/.dotfiles/.config/nvim/configs ~/.config/nvim
+ln -sfv ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -sfv ~/.dotfiles/.config/nvim/lua ~/.config/nvim
+ln -sfv ~/.dotfiles/.config/nvim/configs ~/.config/nvim
 
 # alacritty
 mkdir -pv ~/.config/alacritty
-ln -sf ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sfv ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # htop
 mkdir -pv ~/.config/htop
-ln -sf ~/.dotfiles/.config/htop/htoprc ~/.config/htop
+ln -sfv ~/.dotfiles/.config/htop/htoprc ~/.config/htop
 
 # firefox
 rm -rf ~/.mozilla/firefox/*.default-release/chrome
-ln -sf ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release
-ln -sf ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release
+ln -sfv ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release
+ln -sfv ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release
 
 # qtile
 mkdir -pv ~/.config/qtile
-ln -sf ~/.dotfiles/.config/qtile/config.py ~/.config/qtile
-ln -sf ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
+ln -sfv ~/.dotfiles/.config/qtile/config.py ~/.config/qtile
+ln -sfv ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
 
 # picom
 mkdir -pv ~/.config/picom
-ln -sf ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
+ln -sfv ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
 
 # dunst
 mkdir -pv ~/.config/dunst
-ln -sf ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
+ln -sfv ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
 
 # thunar
-ln -sf ~/.dotfiles/.config/xfce4 ~/.config
+ln -sfv ~/.dotfiles/.config/xfce4 ~/.config
 
 # gtk
-ln -sf ~/.dotfiles/.config/gtk-3.0 ~/.config
+ln -sfv ~/.dotfiles/.config/gtk-3.0 ~/.config
 
 # rofi
 mkdir -pv ~/.config/rofi
-ln -sf ~/.dotfiles/.config/rofi ~/.config
+ln -sfv ~/.dotfiles/.config/rofi ~/.config

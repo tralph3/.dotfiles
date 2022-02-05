@@ -40,3 +40,6 @@ ln -sf ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
 # dunst
 mkdir -pv ~/.config/dunst
 ln -sf ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
+
+# thunar
+ln -sf ~/.dotfiles/xfce4 ~/.config

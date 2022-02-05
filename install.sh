@@ -46,3 +46,7 @@ ln -sf ~/.dotfiles/.config/xfce4 ~/.config
 
 # gtk
 ln -sf ~/.dotfiles/.config/gtk-3.0 ~/.config
+
+# rofi
+mkdir -pv ~/.config/rofi
+ln -sf ~/.dotfiles/.config/rofi ~/.config

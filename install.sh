@@ -42,4 +42,7 @@ mkdir -pv ~/.config/dunst
 ln -sf ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
 
 # thunar
-ln -sf ~/.dotfiles/xfce4 ~/.config
+ln -sf ~/.dotfiles/.config/xfce4 ~/.config
+
+# gtk
+ln -sf ~/.dotfiles/.config/gtk-3.0 ~/.config

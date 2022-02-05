@@ -76,7 +76,7 @@ src () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --bottomup "$*"
+                paru --bottomup --skipreview --sudoloop "$*"
                 ;;
             ubuntu)
                 apt search "$*"

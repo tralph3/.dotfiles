@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import os
 import subprocess
 
@@ -34,7 +8,21 @@ from libqtile.utils import guess_terminal
 from libqtile.dgroups import simple_key_binder
 from typing import List
 
-# vars
+# special dictionary that allows overriding values
+class SettingsDict(dict):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def override(self, **kwargs):
+        new_dict = self.copy()
+        for key in kwargs:
+            new_dict[key] = kwargs[key]
+        return new_dict
+
+
+#############
+# VARIABLES #
+#############
 MARGIN = 5
 BORDER_WIDTH = 2
 FOCUS_COLOR = "#51A3A3"
@@ -47,6 +35,10 @@ mod = "mod4"
 
 terminal = guess_terminal()
 
+
+############
+# KEYBINDS #
+############
 keys = [
     # Switch windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -99,21 +91,6 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 ]
 
-groups = [
-    Group(""), # Terminal
-    Group("", matches=[Match("firefox")]), # Web browser
-    Group(""), # Coding
-    Group(""), # File browser
-    Group("", layout="Floating"), # Gaming stuff
-    Group("", matches=[Match("discord")]), # Discord/Communication
-    Group(""), # Music
-    Group(""), # Image editing
-    Group(""), # Anything else
-]
-
-# Binds "mod + X" to switch between grops
-dgroups_key_binder = simple_key_binder(mod)
-
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
@@ -121,66 +98,108 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
-layout_conf = {
-    "border_focus": FOCUS_COLOR,
-    "border_normal": NORMAL_COLOR,
-    "border_width": BORDER_WIDTH,
-    "margin": MARGIN
-}
+
+##########
+# GROUPS #
+##########
+groups = [
+    Group(""), # Terminal
+    Group("", matches=[Match(wm_class="firefox")]), # Web browser
+    Group(""), # Coding
+    Group("", matches=[Match(wm_class="thunar")]), # File browser
+
+    Group("", matches=[        # Gaming stuff
+        Match(wm_class="Steam"),
+        Match(wm_class="Lutris")
+    ]),
+
+    Group("", matches=[Match(wm_class="discord")]), # Discord/Communication
+
+    Group("", matches=[        # Music
+        Match(wm_class="spotify"),
+        Match(wm_class="Quodlibet"),
+    ]),
+
+    Group(""), # Image editing
+    Group(""), # Anything else
+]
+
+# Binds "mod + X" to switch between grops
+dgroups_key_binder = simple_key_binder(mod)
+
+
+###########
+# LAYOUTS #
+###########
+layout_conf = SettingsDict(
+    border_focus=FOCUS_COLOR,
+    border_focus_stack=FOCUS_COLOR,
+    border_normal=NORMAL_COLOR,
+    border_normal_stack=NORMAL_COLOR,
+    border_width=BORDER_WIDTH,
+    margin=MARGIN,
+    margin_on_single=MARGIN,
+    border_on_single=True,
+    fair=True   # Open new window in the side with the least ammount
+)
 
 layouts = [
     layout.Columns(**layout_conf),
     layout.Max(**layout_conf),
     layout.Floating(**layout_conf),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
-widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+# Floating window config (different from the layout)
+floating_layout = layout.Floating(
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),  # gitk
+        Match(wm_class="makebranch"),  # gitk
+        Match(wm_class="maketag"),  # gitk
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(wm_class="flameshot"),  # Flameshot upload window
+        Match(title="branchdialog"),  # gitk
+        Match(title="pinentry"),  # GPG key password entry
+    ],
+    **layout_conf,
+)
+
+
+###########
+# WIDGETS #
+###########
+widget_conf = SettingsDict(
+    font=FONT,
+    fontsize=FONT_SIZE,
     padding=3,
+    margin=MARGIN,
 )
 
 extension_defaults = widget_defaults.copy()
 
+# Status bar
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    font=FONT,
-                    fontsize=ICON_SIZE,
                     border_width=1,
                     disable_drag=True,
-                    margin=3,
                     highlight_method="line",
+                    **widget_conf.override(
+                        fontsize=ICON_SIZE
+                    )
                 ),
-
-                widget.WindowName(
-                    font=FONT,
-                    fontsize=FONT_SIZE,
-                ),
-
-                widget.Systray(
-                    font=FONT,
-                    fontsize=FONT_SIZE,
-                ),
-
+                widget.WindowName(**widget_conf),
+                widget.Systray(**widget_conf),
                 widget.Clock(
-                    format="%d/%m/%Y\n%a %I:%M %p",
-                    font=FONT,
-                    fontsize=FONT_SIZE / 1.5,
+                    **widget_conf.override(
+                        padding=10
+                    ),
                 ),
             ],
-            26,  # size
+
+            size=26,
             border_width=[0, 0, 2, 0],
             background=NORMAL_COLOR,
             border_color=[
@@ -194,22 +213,15 @@ screens = [
 ]
 
 
-dgroups_app_rules = []  # type: List
+# focus window on mouse hover
 follow_mouse_focus = True
-bring_front_click = False
+
+dgroups_app_rules = []
+
+bring_front_click = True
+
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

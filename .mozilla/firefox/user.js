@@ -85,3 +85,6 @@ user_pref("html5.offmainthread", true);
 
 // Send "do not track" signal, as if anyone respected it
 user_pref("privacy.donottrackheader.enabled", true);
+
+// Enable the titlebar... which will then get removed by Qtile
+user_pref("browser.tabs.inTitlebar", 0);

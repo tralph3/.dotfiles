@@ -116,8 +116,8 @@ groups = [
     Group("", matches=[Match(wm_class="discord")]), # Discord/Communication
 
     Group("", matches=[        # Music
-        Match(wm_class="spotify"),
-        Match(wm_class="Quodlibet"),
+        Match(wm_class="Spotify"),
+        Match(wm_class="Quodlibet")
     ]),
 
     Group(""), # Image editing
@@ -171,11 +171,10 @@ floating_layout = layout.Floating(
 widget_conf = SettingsDict(
     font=FONT,
     fontsize=FONT_SIZE,
-    padding=3,
     margin=MARGIN,
 )
 
-extension_defaults = widget_defaults.copy()
+extension_defaults = widget_conf.copy()
 
 # Status bar
 screens = [
@@ -193,22 +192,25 @@ screens = [
                 widget.WindowName(**widget_conf),
                 widget.Systray(**widget_conf),
                 widget.Clock(
-                    **widget_conf.override(
-                        padding=10
-                    ),
+                    **widget_conf,
+                    padding=10
                 ),
             ],
 
+            margin=MARGIN,
             size=26,
-            border_width=[0, 0, 2, 0],
+            border_width=2,
             background=NORMAL_COLOR,
             border_color=[
-                BORDER_COLOR,
-                BORDER_COLOR,
-                BORDER_COLOR,
-                BORDER_COLOR
+                FOCUS_COLOR,
+                FOCUS_COLOR,
+                FOCUS_COLOR,
+                FOCUS_COLOR
             ]
         ),
+        left=bar.Gap(MARGIN),
+        right=bar.Gap(MARGIN),
+        bottom=bar.Gap(MARGIN)
     ),
 ]
 

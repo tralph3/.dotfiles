@@ -172,6 +172,13 @@ widget_conf = SettingsDict(
     font=FONT,
     fontsize=FONT_SIZE,
     margin=MARGIN,
+    highlight_method="block",
+    this_current_screen_border=FOCUS_COLOR,
+    this_screen_border=FOCUS_COLOR,
+    other_current_screen_border=FOCUS_COLOR,
+    other_screen_border=FOCUS_COLOR,
+    urgent_alert_method="border",
+    rounded=False,
 )
 
 extension_defaults = widget_conf.copy()
@@ -181,16 +188,28 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+            # Group Box
                 widget.GroupBox(
-                    border_width=1,
                     disable_drag=True,
-                    highlight_method="line",
                     **widget_conf.override(
-                        fontsize=ICON_SIZE
+                        fontsize=ICON_SIZE,
+                        margin=3
                     )
                 ),
-                widget.WindowName(**widget_conf),
+            # Task List
+                widget.TaskList(
+                    **widget_conf.override(margin=0),
+                    borderwidth=0,
+                    max_title_width=200,
+                    txt_floating="🗗",
+                    txt_maximized="🗖",
+                    txt_minimized="🗕",
+                    icon_size=FONT_SIZE,
+                    padding=5,
+                ),
+            # Systray
                 widget.Systray(**widget_conf),
+            # Clock
                 widget.Clock(
                     **widget_conf,
                     padding=10

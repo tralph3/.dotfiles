@@ -224,6 +224,16 @@ screens = [
                     ),
                     inactive=BACKGROUND2,
                 ),
+            # Separator
+                widget.TextBox(
+                    **separator_conf.override(
+                        foreground="#FFFFFF",
+                        background=BACKGROUND1
+                    ),
+                    text=""
+                ),
+            # Layout Indicator
+                widget.CurrentLayout(**widget_conf),
             # Separator Left
                 widget.TextBox(
                     **separator_conf,
@@ -239,9 +249,9 @@ screens = [
                     ),
                     borderwidth=0,
                     max_title_width=200,
-                    txt_floating="🗗",
-                    txt_maximized="🗖",
-                    txt_minimized="🗕",
+                    txt_floating="[F] ",
+                    txt_maximized="[M] ",
+                    txt_minimized="[m] ",
                     icon_size=FONT_SIZE,
                     padding=5,
                 ),
@@ -262,21 +272,11 @@ screens = [
                     ),
                     text=""
                 ),
-            # Layout Indicator
-                widget.CurrentLayout(**widget_conf),
-            # Separator
-                widget.TextBox(
-                    **separator_conf.override(
-                        foreground="#FFFFFF",
-                        background=BACKGROUND1
-                    ),
-                    text=""
-                ),
             # Clock
                 widget.Clock(
                     **widget_conf,
                     padding=10,
-                    format="%H:%M  %a %d %b"
+                    format="%a %d %b: %H:%M"
                 ),
             ],
 

@@ -30,6 +30,7 @@ ln -sfv ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-releas
 
 # qtile
 mkdir -pv ~/.config/qtile
+ln -sfv ~/.dotfiles/.config/qtile/archlinux-icon.svg ~/.config/qtile
 ln -sfv ~/.dotfiles/.config/qtile/config.py ~/.config/qtile
 ln -sfv ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
 

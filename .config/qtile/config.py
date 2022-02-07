@@ -234,7 +234,6 @@ screens = [
                         margin=0,
                         background=BACKGROUND2
                     ),
-                    foreground=BACKGROUND2,
                     borderwidth=0,
                     max_title_width=200,
                     txt_floating="🗗",

@@ -108,7 +108,10 @@ groups = [
     Group(""), # Terminal
     Group("", matches=[Match(wm_class="firefox")]), # Web browser
     Group(""), # Coding
-    Group("", matches=[Match(wm_class="thunar")]), # File browser
+    Group("", matches=[        # File browser
+        Match(wm_class="thunar"),
+        Match(wm_class="Thunar")
+    ]),
 
     Group("", matches=[        # Gaming stuff
         Match(wm_class="Steam"),

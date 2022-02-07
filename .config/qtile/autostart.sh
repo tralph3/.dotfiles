@@ -4,7 +4,7 @@
 setxkbmap -layout latam
 
 # Start picom
-DISPLAY=":0" /usr/bin/picom --experimental-backends -b
+DISPLAY=":0" /usr/bin/picom --experimental-backends --unredir-if-possible -b
 
 # Set background
 /usr/bin/feh --bg-fill /usr/share/backgrounds/linuxmint-una/ddaily_san_francisco.jpg

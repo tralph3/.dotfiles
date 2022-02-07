@@ -1,9 +1,1 @@
-configuration {
-    modi: "window,drun,ssh,windowcd";
-    font: "UbuntuMono\ Nerd\ Font\ Mono\ 14";
-    show-icons: true;
-    terminal: "alacritty";
-    ssh-client: "ssh";
-    icon-theme: "Papirus";
-}
-@theme "solarized"
+@theme "tralph3"

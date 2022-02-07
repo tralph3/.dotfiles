@@ -25,8 +25,10 @@ class SettingsDict(dict):
 #############
 MARGIN = 5
 BORDER_WIDTH = 2
-FOCUS_COLOR = "#51A3A3"
-NORMAL_COLOR = "#2B2D43"
+FOCUS_COLOR = "#005D81"
+BACKGROUND1 = "#002B3C"
+BACKGROUND2= "#001219"
+UNFOCUS_COLOR = "#005F73"
 BORDER_COLOR = "#202132"
 FONT="UbuntuMono Nerd Font Mono"
 ICON_SIZE = 25
@@ -134,8 +136,8 @@ dgroups_key_binder = simple_key_binder(mod)
 layout_conf = SettingsDict(
     border_focus=FOCUS_COLOR,
     border_focus_stack=FOCUS_COLOR,
-    border_normal=NORMAL_COLOR,
-    border_normal_stack=NORMAL_COLOR,
+    border_normal=UNFOCUS_COLOR,
+    border_normal_stack=UNFOCUS_COLOR,
     border_width=BORDER_WIDTH,
     margin=MARGIN,
     margin_on_single=MARGIN,
@@ -172,15 +174,24 @@ widget_conf = SettingsDict(
     font=FONT,
     fontsize=FONT_SIZE,
     margin=MARGIN,
+    background=BACKGROUND1,
     highlight_method="block",
     this_current_screen_border=FOCUS_COLOR,
     this_screen_border=FOCUS_COLOR,
+    border=FOCUS_COLOR,
     other_current_screen_border=FOCUS_COLOR,
     other_screen_border=FOCUS_COLOR,
     urgent_alert_method="border",
     rounded=False,
 )
 
+separator_conf = SettingsDict(
+    fontsize=30,
+    foreground=BACKGROUND1,
+    background=BACKGROUND2,
+    margin=0,
+    padding=0,
+)
 extension_defaults = widget_conf.copy()
 
 # Status bar
@@ -188,17 +199,42 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+            # Arch logo
+                widget.Image(
+                    **widget_conf,
+                    filename="~/.config/qtile/archlinux-icon.svg"
+                ),
+            # Separator
+                widget.TextBox(
+                    **separator_conf.override(
+                        foreground="#FFFFFF",
+                        background=BACKGROUND1
+                    ),
+                    text=""
+                ),
             # Group Box
                 widget.GroupBox(
                     disable_drag=True,
                     **widget_conf.override(
                         fontsize=ICON_SIZE,
                         margin=3
-                    )
+                    ),
+                    inactive=BACKGROUND2,
                 ),
+            # Separator Left
+                widget.TextBox(
+                    **separator_conf,
+                    text=""
+                ),
+            # Left Margin
+                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
             # Task List
                 widget.TaskList(
-                    **widget_conf.override(margin=0),
+                    **widget_conf.override(
+                        margin=0,
+                        background=BACKGROUND2
+                    ),
+                    foreground=BACKGROUND2,
                     borderwidth=0,
                     max_title_width=200,
                     txt_floating="🗗",
@@ -207,25 +243,46 @@ screens = [
                     icon_size=FONT_SIZE,
                     padding=5,
                 ),
+            # Right Margin
+                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+            # Separator Right
+                widget.TextBox(
+                    **separator_conf,
+                    text=""
+                ),
             # Systray
                 widget.Systray(**widget_conf),
+            # Separator
+                widget.TextBox(
+                    **separator_conf.override(
+                        foreground="#FFFFFF",
+                        background=BACKGROUND1
+                    ),
+                    text=""
+                ),
+            # Layout Indicator
+                widget.CurrentLayout(**widget_conf),
+            # Separator
+                widget.TextBox(
+                    **separator_conf.override(
+                        foreground="#FFFFFF",
+                        background=BACKGROUND1
+                    ),
+                    text=""
+                ),
             # Clock
                 widget.Clock(
                     **widget_conf,
-                    padding=10
+                    padding=10,
+                    format="%H:%M  %a %d %b"
                 ),
             ],
 
             margin=MARGIN,
             size=26,
             border_width=2,
-            background=NORMAL_COLOR,
-            border_color=[
-                FOCUS_COLOR,
-                FOCUS_COLOR,
-                FOCUS_COLOR,
-                FOCUS_COLOR
-            ]
+            background=BACKGROUND1,
+            border_color=FOCUS_COLOR,
         ),
         left=bar.Gap(MARGIN),
         right=bar.Gap(MARGIN),

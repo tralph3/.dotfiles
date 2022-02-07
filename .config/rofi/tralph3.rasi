@@ -1,0 +1,43 @@
+configuration {
+    display-drun: "Open";
+    modi: "window,drun,ssh,windowcd";
+    font: "UbuntuMono\ Nerd\ Font\ Mono\ 14";
+    show-icons: true;
+    terminal: "alacritty";
+    ssh-client: "ssh";
+    icon-theme: "Papirus-Dark";
+}
+
+* {
+    background-color: #001219;
+    text-color: #FFFFFF;
+    width: 60%;
+    spacing: 0;
+    vertical-align: 0.5;
+}
+
+inputbar {
+    children: [prompt,entry];
+}
+
+prompt {
+    padding: 10px;
+    background-color: #005D81;
+}
+
+entry {
+    padding: 10px;
+}
+
+element {
+    padding: 6px;
+}
+
+element-icon {
+    padding: 4px;
+    size: 18;
+}
+
+element selected, element-icon selected, element-text selected {
+    background-color: #002B3C;
+}

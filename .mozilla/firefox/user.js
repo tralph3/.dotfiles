@@ -88,3 +88,6 @@ user_pref("privacy.donottrackheader.enabled", true);
 
 // Enable the titlebar... which will then get removed by Qtile
 user_pref("browser.tabs.inTitlebar", 0);
+
+// Disable controlling videos with media keys
+user_pref("media.hardwaremediakeys.enabled", false);

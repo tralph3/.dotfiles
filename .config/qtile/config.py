@@ -34,9 +34,20 @@ FONT="UbuntuMono Nerd Font Mono"
 ICON_SIZE = 25
 FONT_SIZE = 15
 mod = "mod4"
+volume_step = 5
 
-terminal = guess_terminal()
-
+# commands
+commands = dict(
+    terminal            = "alacritty",
+    raise_volume        = f"amixer set Master {volume_step}%+",
+    lower_volume        = f"amixer set Master {volume_step}%-",
+    rofi                = "rofi -show drun",
+    firefox             = "firefox",
+    firefox_private     = "firefox --private-window",
+    flameshot           = "flameshot gui",
+    thunar              = "thunar",
+    poweroff            = "poweroff",
+)
 
 ############
 # KEYBINDS #
@@ -69,28 +80,29 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
     # Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"])),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(commands["lower_volume"])),
 
     # Terminal
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn(commands["terminal"]), desc="Launch terminal"),
 
     # Rofi
-    Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a rofi Window"),
+    Key([mod], "r", lazy.spawn(commands["rofi"]), desc="Spawn a rofi Window"),
 
     # Firefox
-    Key([mod], "i", lazy.spawn("firefox"), desc="Open Firefox"),
-    Key([mod, "shift"], "i", lazy.spawn("firefox --private-window"), desc="Open Firefox in Incognito mode"),
+    Key([mod], "i", lazy.spawn(commands["firefox"]), desc="Open Firefox"),
+    Key([mod, "shift"], "i", lazy.spawn(commands["firefox_private"]), desc="Open Firefox in Incognito mode"),
 
     # Flameshot
-    Key([], "Print", lazy.spawn("flameshot gui"), desc="Take screenshot"),
+    Key([], "Print", lazy.spawn(commands["flameshot"]), desc="Take screenshot"),
 
     # Thunar
-    Key([mod], "f", lazy.spawn("thunar"), desc="File browser"),
+    Key([mod], "f", lazy.spawn(commands["thunar"]), desc="File browser"),
 
     # Qtile
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control", "shift"], "q", lazy.spawn(commands["poweroff"]), desc="Shutdown computer"),
 ]
 
 # Drag floating layouts.
@@ -105,28 +117,40 @@ mouse = [
 # GROUPS #
 ##########
 groups = [
-    Group(""), # Terminal
-    Group("", matches=[Match(wm_class="firefox")]), # Web browser
-    Group(""), # Coding
-    Group("", matches=[        # File browser
-        Match(wm_class="thunar"),
-        Match(wm_class="Thunar")
+    # Terminal
+    Group(""),
+
+    # Web browser
+    Group("", matches=[Match(wm_class=["firefox"])]),
+
+    # Coding
+    Group(""),
+
+    # File browser
+    Group("", matches=[
+        Match(wm_class=["Thunar", "thunar"])
     ]),
 
-    Group("", matches=[        # Gaming stuff
-        Match(wm_class="Steam"),
-        Match(wm_class="Lutris")
+    # Gaming stuff
+    Group("", layout="floating", matches=[
+        Match(wm_class=["Steam"]),
+        Match(wm_class=["Lutris"])
     ]),
 
-    Group("", matches=[Match(wm_class="discord")]), # Discord/Communication
+    # Discord/Communication
+    Group("", matches=[Match(wm_class=["discord"])]),
 
-    Group("", matches=[        # Music
-        Match(wm_class="Spotify"),
-        Match(wm_class="Quodlibet")
+    # Music
+    Group("", matches=[
+        Match(wm_class=["spotify"]),
+        Match(wm_class=["Quodlibet"])
     ]),
 
-    Group(""), # Image editing
-    Group(""), # Anything else
+    # Image editing
+    Group(""),
+
+    # Anything else
+    Group(""),
 ]
 
 # Binds "mod + X" to switch between grops
@@ -163,6 +187,7 @@ floating_layout = layout.Floating(
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(wm_class="flameshot"),  # Flameshot upload window
+        Match(wm_class="pavucontrol"),  # Pulse Audio Volume Control
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
@@ -188,6 +213,8 @@ widget_conf = SettingsDict(
     rounded=False,
 )
 
+extension_defaults = widget_conf.copy()
+
 separator_conf = SettingsDict(
     fontsize=30,
     foreground=BACKGROUND1,
@@ -195,93 +222,127 @@ separator_conf = SettingsDict(
     margin=0,
     padding=0,
 )
-extension_defaults = widget_conf.copy()
+
+def generate_top_widgets() -> list:
+    # this thing introduces the white slashes in between widgets except for
+    # the last two in the left side and the first two in the right side
+    def intersperse(lst, side) -> list:
+        result = []
+        if side == "left":
+            for i in range(len(lst[:-2]) * 2 - 1):
+                result.append(
+                    widget.TextBox(
+                        **separator_conf.override(
+                            foreground="#FFFFFF",
+                            background=BACKGROUND1
+                        ),
+                    text=""
+                    ),
+                )
+            result[0::2] = lst[:-2]
+            return result + lst[-2:]
+        if side == "right":
+            for i in range(len(lst[2:]) * 2 - 1):
+                result.append(
+                    widget.TextBox(
+                        **separator_conf.override(
+                            foreground="#FFFFFF",
+                            background=BACKGROUND1
+                        ),
+                    text=""
+                    ),
+                )
+            result[0::2] = lst[2:]
+            return lst[:2] + result
+
+
+    widgets_left_side = [
+        # Arch logo
+        widget.Image(
+            **widget_conf,
+            mouse_callbacks={"Button1": lazy.spawn(commands["rofi"])},
+            filename="~/.config/qtile/archlinux-icon.svg"
+        ),
+        # Group Box
+        widget.GroupBox(
+            disable_drag=True,
+            **widget_conf.override(
+                fontsize=ICON_SIZE,
+                margin=3
+            ),
+            inactive=BACKGROUND2,
+        ),
+        # Separator
+        # Layout Indicator
+        widget.CurrentLayout(**widget_conf),
+
+        # Separators
+        widget.TextBox(
+            **separator_conf,
+            text=""
+        ),
+        widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+    ]
+
+
+    task_list = [
+        widget.TaskList(
+            **widget_conf.override(
+                margin=0,
+                background=BACKGROUND2,
+            ),
+            borderwidth=0,
+            max_title_width=200,
+            txt_floating="[F] ",
+            txt_maximized="[M] ",
+            txt_minimized="[m] ",
+            icon_size=FONT_SIZE,
+            padding_x=10,
+            padding_y=5,
+            mouse_callbacks={"Button2": lazy.window.kill()}
+        )
+    ]
+
+    widgets_right_side = [
+        # Separators
+        widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+        widget.TextBox(
+            **separator_conf,
+            text=""
+        ),
+
+        # Systray
+        widget.Systray(**widget_conf),
+        # Volume Control
+        widget.PulseVolume(
+            **widget_conf,
+            volume_app="pavucontrol",
+            step=volume_step,
+            fmt="{} 🕪"
+        ),
+        # Clock
+        widget.Clock(
+            **widget_conf,
+            format="%a %d %b: %H:%M"
+        ),
+    ]
+
+    widgets_left_side = intersperse(widgets_left_side, "left")
+    widgets_right_side = intersperse(widgets_right_side, "right")
+
+    final_widgets = widgets_left_side + task_list + widgets_right_side
+
+    return final_widgets
+
+top_bar_widgets = generate_top_widgets()
 
 # Status bar
 screens = [
     Screen(
         top=bar.Bar(
-            [
-            # Arch logo
-                widget.Image(
-                    **widget_conf,
-                    filename="~/.config/qtile/archlinux-icon.svg"
-                ),
-            # Separator
-                widget.TextBox(
-                    **separator_conf.override(
-                        foreground="#FFFFFF",
-                        background=BACKGROUND1
-                    ),
-                    text=""
-                ),
-            # Group Box
-                widget.GroupBox(
-                    disable_drag=True,
-                    **widget_conf.override(
-                        fontsize=ICON_SIZE,
-                        margin=3
-                    ),
-                    inactive=BACKGROUND2,
-                ),
-            # Separator
-                widget.TextBox(
-                    **separator_conf.override(
-                        foreground="#FFFFFF",
-                        background=BACKGROUND1
-                    ),
-                    text=""
-                ),
-            # Layout Indicator
-                widget.CurrentLayout(**widget_conf),
-            # Separator Left
-                widget.TextBox(
-                    **separator_conf,
-                    text=""
-                ),
-            # Left Margin
-                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
-            # Task List
-                widget.TaskList(
-                    **widget_conf.override(
-                        margin=0,
-                        background=BACKGROUND2
-                    ),
-                    borderwidth=0,
-                    max_title_width=200,
-                    txt_floating="[F] ",
-                    txt_maximized="[M] ",
-                    txt_minimized="[m] ",
-                    icon_size=FONT_SIZE,
-                    padding=5,
-                ),
-            # Right Margin
-                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
-            # Separator Right
-                widget.TextBox(
-                    **separator_conf,
-                    text=""
-                ),
-            # Systray
-                widget.Systray(**widget_conf),
-            # Separator
-                widget.TextBox(
-                    **separator_conf.override(
-                        foreground="#FFFFFF",
-                        background=BACKGROUND1
-                    ),
-                    text=""
-                ),
-            # Clock
-                widget.Clock(
-                    **widget_conf,
-                    padding=10,
-                    format="%a %d %b: %H:%M"
-                ),
-            ],
-
-            margin=MARGIN,
+            top_bar_widgets,
             size=26,
+            margin=MARGIN,
             border_width=2,
             background=BACKGROUND1,
             border_color=FOCUS_COLOR,

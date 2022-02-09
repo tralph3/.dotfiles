@@ -188,6 +188,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(wm_class="flameshot"),  # Flameshot upload window
         Match(wm_class="pavucontrol"),  # Pulse Audio Volume Control
+        Match(wm_class="helvum"),  # Volume control GUI for Pipewire
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ],
@@ -314,9 +315,9 @@ def generate_top_widgets() -> list:
         # Systray
         widget.Systray(**widget_conf),
         # Volume Control
-        widget.PulseVolume(
+        widget.Volume(
             **widget_conf,
-            volume_app="pavucontrol",
+            volume_app="helvum",
             step=volume_step,
             fmt="{} 🕪"
         ),

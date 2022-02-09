@@ -44,6 +44,7 @@ ln -sfv ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
 
 # thunar
 ln -sfv ~/.dotfiles/.config/xfce4 ~/.config
+ln -sfv ~/.dotfiles/.config/Thunar ~/.config
 
 # gtk
 ln -sfv ~/.dotfiles/.config/gtk-3.0 ~/.config

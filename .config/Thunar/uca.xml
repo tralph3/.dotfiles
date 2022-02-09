@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1644051081939407-1</unique-id>
+	<command>/usr/bin/alacritty --working-directory %d</command>
+	<description>Open terminal in the current working directory</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+</actions>

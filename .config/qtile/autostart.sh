@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# keyboard layout
+# Keyboard layout
 setxkbmap -layout latam
 
 # Start picom
@@ -17,3 +17,6 @@ DISPLAY=":0" /usr/bin/picom --experimental-backends --unredir-if-possible -b
 
 # Notifications
 dunst &
+
+# Start desktop files in /etc/xdg/autostart and ~/.config/autostart
+dex -a

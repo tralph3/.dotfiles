@@ -1,4 +1,10 @@
-" Plugins
+" Install plugins if needed
+let need_to_install_plugins = 0
+if empty(glob('~/.local/share/nvim/plugged'))
+    let need_to_install_plugins = 1
+endif
+
+"Plugins
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'cskeeters/vim-smooth-scroll'
@@ -24,3 +30,12 @@ Plug 'tpope/vim-surround'   " ys (add surround) | ds (delete surround) | cs (cha
 Plug 'vim-utils/vim-man'
 
 call plug#end()
+
+" Install Plug plugins
+if need_to_install_plugins == 1
+    echo "Installing plugins..."
+    silent! PlugInstall
+    echo "Done!"
+    q
+    q
+endif

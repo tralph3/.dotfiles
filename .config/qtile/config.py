@@ -41,6 +41,7 @@ commands = dict(
     terminal            = "alacritty",
     raise_volume        = f"/usr/bin/pactl set-sink-volume 0 +{volume_step}%",
     lower_volume        = f"/usr/bin/pactl set-sink-volume 0 -{volume_step}%",
+    toggle_mute         = "pactl set-sink-mute 0 toggle",
     rofi                = "rofi -show drun",
     firefox             = "firefox",
     firefox_private     = "firefox --private-window",
@@ -84,6 +85,7 @@ keys = [
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"])),
     Key([], "XF86AudioLowerVolume", lazy.spawn(commands["lower_volume"])),
+    Key([], "XF86AudioMute", lazy.spawn(commands["toggle_mute"])),
 
     # Terminal
     Key([mod], "Return", lazy.spawn(commands["terminal"]), desc="Launch terminal"),

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DOTFILES_DIR=$(dirname $(realpath $0))
+DOTFILES_DIR=$(dirname "$(realpath "$0")")
 
 NO_CONFIRM=0
 
-if [ -n $1 ]; then
+if [ -n "$1" ]; then
     case $1 in
         --noconfirm)
             NO_CONFIRM=1
@@ -20,7 +20,7 @@ install_config() {
 
     # if there's nothing, install
     if ! [ -a "$DEST" ]; then
-        mkdir -pv $(dirname "$DEST")
+        mkdir -pv "$(dirname "$DEST")"
         ln -sfv "$ORIGIN" -T "$DEST"
         # empty line
         echo
@@ -40,7 +40,7 @@ install_config() {
 
 overwrite() {
     if [[ "$REPLY" =~ ^[Yy]$ ]] || [ $NO_CONFIRM -eq 1 ]; then
-        mkdir -pv $(dirname "$DEST")
+        mkdir -pv "$(dirname "$DEST")"
         rm -rfv "$DEST"
         ln -sfv "$ORIGIN" -T "$DEST"
         # empty line
@@ -67,8 +67,8 @@ install_config .config/htop/htoprc ~/.config/htop/htoprc
 
 # firefox
 MOZ_DIR=$(echo ~/.mozilla/firefox/*.default-release)
-install_config .mozilla/firefox/chrome $MOZ_DIR/chrome
-install_config .mozilla/firefox/user.js $MOZ_DIR/user.js
+install_config .mozilla/firefox/chrome "$MOZ_DIR"/chrome
+install_config .mozilla/firefox/user.js "$MOZ_DIR"/user.js
 
 # qtile
 install_config .config/qtile/archlinux-icon.svg ~/.config/qtile/archlinux-icon.svg
@@ -90,3 +90,4 @@ install_config .config/gtk-3.0 ~/.config/gtk-3.0
 
 # rofi
 install_config .config/rofi ~/.config/rofi
+

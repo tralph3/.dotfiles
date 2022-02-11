@@ -1,53 +1,92 @@
 #!/bin/bash
 
+DOTFILES_DIR=$(dirname $(realpath $0))
+
+NO_CONFIRM=0
+
+if [ -n $1 ]; then
+    case $1 in
+        --noconfirm)
+            NO_CONFIRM=1
+            ;;
+    esac
+fi
+
+install_config() {
+    unset REPLY
+    # first argument is relative to dotfiles dir
+    ORIGIN=$DOTFILES_DIR/$1
+    DEST=$2
+
+    # if there's nothing, install
+    if ! [ -a "$DEST" ]; then
+        mkdir -pv $(dirname "$DEST")
+        ln -sfv "$ORIGIN" -T "$DEST"
+        # empty line
+        echo
+    # if they're not the same file, ask
+    elif ! [ "$ORIGIN" -ef "$DEST" ]; then
+        if [ $NO_CONFIRM -eq 0 ]; then
+            echo "$DEST already exists"
+            read -p "Overwrite? [y/N]: " -n 1 -r
+            # emtpy line
+            echo
+            overwrite
+        else
+            overwrite
+        fi
+    fi
+}
+
+overwrite() {
+    if [[ "$REPLY" =~ ^[Yy]$ ]] || [ $NO_CONFIRM -eq 1 ]; then
+        mkdir -pv $(dirname "$DEST")
+        rm -rfv "$DEST"
+        ln -sfv "$ORIGIN" -T "$DEST"
+        # empty line
+        echo
+    fi
+}
+
 # zsh
-ln -sfv ~/.dotfiles/.zshrc ~
-ln -sfv ~/.dotfiles/.zsh ~
-ln -sfv ~/.dotfiles/.p10k.zsh ~
+install_config .zshrc ~/.zshrc
+install_config .zsh ~/.zsh
+install_config .p10k.zsh ~/.p10k.zsh
 
 # neofetch
-mkdir -pv ~/.config/neofetch
-ln -sfv ~/.dotfiles/.config/neofetch/config.conf ~/.config/neofetch/config.conf
+install_config .config/neofetch/config.conf ~/.config/neofetch/config.conf
 
 # neovim
-mkdir -pv ~/.config/nvim
-ln -sfv ~/.dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
-ln -sfv ~/.dotfiles/.config/nvim/lua ~/.config/nvim
-ln -sfv ~/.dotfiles/.config/nvim/configs ~/.config/nvim
+install_config .config/nvim ~/.config/nvim
 
 # alacritty
-mkdir -pv ~/.config/alacritty
-ln -sfv ~/.dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+install_config .config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # htop
-mkdir -pv ~/.config/htop
-ln -sfv ~/.dotfiles/.config/htop/htoprc ~/.config/htop
+install_config .config/htop/htoprc ~/.config/htop/htoprc
 
 # firefox
-rm -rf ~/.mozilla/firefox/*.default-release/chrome
-ln -sfv ~/.dotfiles/.mozilla/firefox/chrome ~/.mozilla/firefox/*.default-release
-ln -sfv ~/.dotfiles/.mozilla/firefox/user.js ~/.mozilla/firefox/*.default-release
+MOZ_DIR=$(echo ~/.mozilla/firefox/*.default-release)
+install_config .mozilla/firefox/chrome $MOZ_DIR/chrome
+install_config .mozilla/firefox/user.js $MOZ_DIR/user.js
 
 # qtile
-mkdir -pv ~/.config/qtile
-ln -sfv ~/.dotfiles/.config/qtile/archlinux-icon.svg ~/.config/qtile
-ln -sfv ~/.dotfiles/.config/qtile/config.py ~/.config/qtile
-ln -sfv ~/.dotfiles/.config/qtile/autostart.sh ~/.config/qtile
+install_config .config/qtile/archlinux-icon.svg ~/.config/qtile/archlinux-icon.svg
+install_config .config/qtile/config.py ~/.config/qtile/config.py
+install_config .config/qtile/autostart.sh ~/.config/qtile/autostart.sh
 
 # picom
-mkdir -pv ~/.config/picom
-ln -sfv ~/.dotfiles/.config/picom/picom.conf ~/.config/picom
+install_config .config/picom/picom.conf ~/.config/picom/picom.conf
 
 # dunst
-mkdir -pv ~/.config/dunst
-ln -sfv ~/.dotfiles/.config/dunst/dunstrc ~/.config/dunst
+install_config .config/dunst/dunstrc ~/.config/dunst/dunstrc
 
 # thunar
-ln -sfv ~/.dotfiles/.config/xfce4 ~/.config
-ln -sfv ~/.dotfiles/.config/Thunar ~/.config
+install_config .config/xfce4 ~/.config/xfce4
+install_config .config/Thunar ~/.config/Thunar
 
 # gtk
-ln -sfv ~/.dotfiles/.config/gtk-3.0 ~/.config
+install_config .config/gtk-3.0 ~/.config/gtk-3.0
 
 # rofi
-ln -sfv ~/.dotfiles/.config/rofi ~/.config
+install_config .config/rofi ~/.config/rofi

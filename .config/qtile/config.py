@@ -113,6 +113,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control", "shift"], "q", lazy.spawn(commands["poweroff"]), desc="Shutdown computer"),
+    Key([mod, "control"], "Return", lazy.window.toggle_fullscreen(), desc="Fullscreen current window"),
 ]
 
 # Drag floating layouts.
@@ -144,7 +145,8 @@ groups = [
     # Gaming stuff
     Group("", layout="floating", matches=[
         Match(wm_class=["Steam"]),
-        Match(wm_class=["Lutris"])
+        Match(wm_class=["Lutris"]),
+        Match(wm_class=["gamescope"])
     ]),
 
     # Discord/Communication

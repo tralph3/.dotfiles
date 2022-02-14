@@ -27,8 +27,6 @@ def init():
         Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
         Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
-        # Close window
-        Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
         # Switch layouts
         Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -63,6 +61,8 @@ def init():
         Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
         Key([mod, "control", "shift"], "q", lazy.spawn(commands["poweroff"]), desc="Shutdown computer"),
+        Key([mod, "control"], "Return", lazy.window.toggle_fullscreen(), desc="Fullscreen current window"),
+        Key([mod], "w", lazy.window.kill(), desc="Close focused window"),
     ]
 
     # Drag floating layouts.

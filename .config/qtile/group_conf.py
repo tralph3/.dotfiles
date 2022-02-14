@@ -22,7 +22,8 @@ def init():
         # Gaming stuff
         Group("", layout="floating", matches=[
             Match(wm_class=["Steam"]),
-            Match(wm_class=["Lutris"])
+            Match(wm_class=["Lutris"]),
+            Match(wm_class=["gamescope"]),
         ]),
 
         # Discord/Communication

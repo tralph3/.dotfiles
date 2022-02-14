@@ -71,9 +71,7 @@ install_config .mozilla/firefox/chrome "$MOZ_DIR"/chrome
 install_config .mozilla/firefox/user.js "$MOZ_DIR"/user.js
 
 # qtile
-install_config .config/qtile/archlinux-icon.svg ~/.config/qtile/archlinux-icon.svg
-install_config .config/qtile/config.py ~/.config/qtile/config.py
-install_config .config/qtile/autostart.sh ~/.config/qtile/autostart.sh
+install_config .config/qtile ~/.config/qtile
 
 # picom
 install_config .config/picom/picom.conf ~/.config/picom/picom.conf

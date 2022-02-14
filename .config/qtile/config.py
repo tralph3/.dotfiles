@@ -5,8 +5,8 @@ from libqtile import hook
 from libqtile.dgroups import simple_key_binder
 
 from settings import mod
-import group_conf
 import key_conf
+import group_conf
 import layout_conf
 import widget_conf
 

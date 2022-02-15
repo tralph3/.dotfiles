@@ -2,8 +2,6 @@ import os
 import subprocess
 
 from libqtile import hook
-from libqtile.dgroups import simple_key_binder
-
 from settings import mod
 import key_conf
 import group_conf
@@ -22,8 +20,6 @@ screens = widget_conf.init()
 # focus window on mouse hover
 follow_mouse_focus = True
 
-# Binds "mod + X" to switch between grops
-dgroups_key_binder = simple_key_binder(mod)
 dgroups_app_rules = []
 
 bring_front_click = True

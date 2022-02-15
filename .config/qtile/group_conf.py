@@ -6,40 +6,40 @@ from libqtile.config import Group, Click, Match
 def init():
     groups = [
         # Terminal
-        Group(""),
+        Group("1", label=""),
 
         # Web browser
-        Group("", matches=[Match(wm_class=["firefox"])]),
+        Group("2", label="", matches=[Match(wm_class=["firefox"])]),
 
         # Coding
-        Group(""),
+        Group("3", label=""),
 
         # File browser
-        Group("", matches=[
+        Group("4", label="", matches=[
             Match(wm_class=["Thunar", "thunar"])
         ]),
 
         # Gaming stuff
-        Group("", layout="floating", matches=[
+        Group("5", label="", layout="floating", matches=[
             Match(wm_class=["Steam"]),
             Match(wm_class=["Lutris"]),
             Match(wm_class=["gamescope"]),
         ]),
 
         # Discord/Communication
-        Group("", matches=[Match(wm_class=["discord"])]),
+        Group("6", label="", matches=[Match(wm_class=["discord"])]),
 
         # Music
-        Group("", matches=[
+        Group("7", label="", matches=[
             Match(wm_class=["spotify"]),
             Match(wm_class=["Quodlibet"])
         ]),
 
         # Image editing
-        Group(""),
+        Group("8", label=""),
 
         # Anything else
-        Group(""),
+        Group("9", label=""),
     ]
 
     return groups

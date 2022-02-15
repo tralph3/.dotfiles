@@ -72,5 +72,26 @@ def init():
         Click([mod], "Button2", lazy.window.bring_to_front()),
     ]
 
+    # swich groups
+    for i in range(1, 10):
+        i = str(i)
+        keys.extend(
+            [
+                Key(
+                    [mod],
+                    i,
+                    lazy.group[i].toscreen(),
+                    desc="Switch to group {}".format(i),
+                ),
+
+                Key(
+                    [mod, "shift"],
+                    i,
+                    lazy.window.togroup(i),
+                    desc="Switch to & move focused window to group {}".format(i),
+                ),
+            ]
+        )
+
     return (keys, mouse)
 

@@ -7,7 +7,8 @@ setxkbmap -layout latam
 DISPLAY=":0" /usr/bin/picom --experimental-backends --unredir-if-possible -b
 
 # Set background
-/usr/bin/feh --bg-fill /usr/share/backgrounds/linuxmint-una/ddaily_san_francisco.jpg
+SCRIPT_DIR=$(dirname "$(realpath "$0")")
+$SCRIPT_DIR/background.sh &
 
 # Start flameshot
 /usr/bin/flameshot &

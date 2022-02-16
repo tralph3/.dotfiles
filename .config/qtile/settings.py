@@ -3,18 +3,18 @@ from utils import SettingsDict
 #############
 # VARIABLES #
 #############
-MARGIN = 5
-BORDER_WIDTH = 2
-FOCUS_COLOR = "#005D81"
-BACKGROUND1 = "#002B3C"
-BACKGROUND2= "#001219"
-UNFOCUS_COLOR = "#FFFFFF"
-BORDER_COLOR = "#202132"
-FONT="UbuntuMono Nerd Font Mono"
-ICON_SIZE = 25
-FONT_SIZE = 15
-mod = "mod4"
-volume_step = 5
+MARGIN          = 5
+BORDER_WIDTH    = 2
+FOCUS_COLOR     = "#005D81"
+BACKGROUND1     = "#002B3C"
+BACKGROUND2     = "#001219"
+UNFOCUS_COLOR   = "#FFFFFF"
+BORDER_COLOR    = "#202132"
+FONT            = "UbuntuMono Nerd Font Mono"
+ICON_SIZE       = 25
+FONT_SIZE       = 15
+mod             = "mod4"
+volume_step     = 5
 brightness_step = 5
 
 # commands
@@ -35,28 +35,28 @@ commands = dict(
 )
 
 layout_default = SettingsDict(
-    border_focus=FOCUS_COLOR,
-    border_focus_stack=FOCUS_COLOR,
-    border_normal=UNFOCUS_COLOR,
-    border_normal_stack=UNFOCUS_COLOR,
-    border_width=BORDER_WIDTH,
-    margin=MARGIN,
-    margin_on_single=MARGIN,
-    border_on_single=True,
-    fair=True   # Open new window in the side with the least ammount
+    border_focus        = FOCUS_COLOR,
+    border_focus_stack  = FOCUS_COLOR,
+    border_normal       = UNFOCUS_COLOR,
+    border_normal_stack = UNFOCUS_COLOR,
+    border_width        = BORDER_WIDTH,
+    margin              = MARGIN,
+    margin_on_single    = MARGIN,
+    border_on_single    = True,
+    fair                = True,
 )
 
 widget_default = SettingsDict(
-    font=FONT,
-    fontsize=FONT_SIZE,
-    margin=MARGIN,
-    background=BACKGROUND1,
-    highlight_method="block",
-    this_current_screen_border=FOCUS_COLOR,
-    this_screen_border=FOCUS_COLOR,
-    border=FOCUS_COLOR,
-    other_current_screen_border=FOCUS_COLOR,
-    other_screen_border=FOCUS_COLOR,
-    urgent_alert_method="border",
-    rounded=False,
+    font                        = FONT,
+    fontsize                    = FONT_SIZE,
+    margin                      = MARGIN,
+    background                  = BACKGROUND1,
+    highlight_method            = "block",
+    this_current_screen_border  = FOCUS_COLOR,
+    this_screen_border          = FOCUS_COLOR,
+    border                      = FOCUS_COLOR,
+    other_current_screen_border = FOCUS_COLOR,
+    other_screen_border         = FOCUS_COLOR,
+    urgent_alert_method         = "border",
+    rounded                     = False,
 )

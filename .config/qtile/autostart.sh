@@ -11,13 +11,13 @@ SCRIPT_DIR=$(dirname "$(realpath "$0")")
 $SCRIPT_DIR/background.sh &
 
 # Start flameshot
-/usr/bin/flameshot &
+/usr/bin/flameshot & disown
 
 # Turn numlock on
 /usr/bin/numlockx on
 
 # Notifications
-dunst &
+dunst & disown
 
 # Start desktop files in /etc/xdg/autostart and ~/.config/autostart
 dex -a

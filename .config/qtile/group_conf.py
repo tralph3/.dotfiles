@@ -31,7 +31,7 @@ def init():
 
         # Music
         Group("7", label="", matches=[
-            Match(wm_class=["spotify"]),
+            Match(wm_instance_class=["spotify"]),
             Match(wm_class=["Quodlibet"])
         ]),
 

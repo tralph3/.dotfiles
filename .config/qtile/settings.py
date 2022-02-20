@@ -30,6 +30,7 @@ commands = dict(
     flameshot           = "flameshot gui",
     thunar              = "thunar",
     poweroff            = "poweroff",
+    reboot              = "reboot",
     brightness_up       = f"light -A {brightness_step}",
     brightness_down     = f"light -U {brightness_step}",
 )

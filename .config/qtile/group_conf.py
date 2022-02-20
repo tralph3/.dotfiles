@@ -14,13 +14,13 @@ def init():
         # Coding
         Group("3", label=""),
 
-        # File browser
+        # File manager
         Group("4", label="", matches=[
             Match(wm_class=["Thunar", "thunar"])
         ]),
 
         # Gaming stuff
-        Group("5", label="", layout="floating", matches=[
+        Group("5", label="", matches=[
             Match(wm_class=["Steam"]),
             Match(wm_class=["Lutris"]),
             Match(wm_class=["gamescope"]),
@@ -31,7 +31,7 @@ def init():
 
         # Music
         Group("7", label="", matches=[
-            Match(wm_instance_class=["spotify"]),
+            Match(wm_instance_class=["Spotify", "spotify"]),
             Match(wm_class=["Quodlibet"])
         ]),
 

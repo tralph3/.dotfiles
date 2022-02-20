@@ -9,7 +9,6 @@ from settings import layout_default
 def init():
     layouts = [
         layout.Columns(**layout_default),
-        layout.Max(**layout_default),
         layout.Floating(**layout_default),
     ]
 

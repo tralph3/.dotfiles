@@ -61,7 +61,9 @@ def init():
         Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
         Key([mod, "control", "shift"], "q", lazy.spawn(commands["poweroff"]), desc="Shutdown computer"),
+        Key([mod, "control", "shift"], "r", lazy.spawn(commands["reboot"]), desc="Reboot computer"),
         Key([mod, "control"], "Return", lazy.window.toggle_fullscreen(), desc="Fullscreen current window"),
+        Key([mod, "control"], "m", lazy.window.toggle_minimize(), desc="Minimize/Maximize current window"),
         Key([mod], "w", lazy.window.kill(), desc="Close focused window"),
     ]
 

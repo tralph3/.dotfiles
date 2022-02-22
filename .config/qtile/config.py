@@ -1,20 +1,17 @@
 import os
 import subprocess
 
+import libqtile
 from libqtile import hook
-from settings import mod
-import key_conf
-import group_conf
-import layout_conf
-import widget_conf
 
 # init groups
-groups = group_conf.init()
+from group_conf import groups
 # init keybindings
-keys, mouse = key_conf.init()
+from key_conf import keys, mouse
 # init layouts
-layouts, floating_layout = layout_conf.init()
+from layout_conf import layouts, floating_layout
 # init widgets
+import widget_conf
 screens = widget_conf.init()
 
 # focus window on mouse hover
@@ -37,6 +34,6 @@ wmname = "LG3D"
 # Autostart
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.run([home])
+    script_path = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.run([script_path])
 

@@ -90,6 +90,12 @@ install_config .config/gtk-3.0 ~/.config/gtk-3.0
 install_config .config/rofi ~/.config/rofi
 
 # config thunar ignore filter
-THUNAR_IGNORE='sed -e "/last-details-view-zoom-level\|last-details-view-column-widths\|last-icon-view-zoom-level/d"'
+THUNAR_IGNORE="sed \"/\
+last-details-view-zoom-level\|\
+last-details-view-column-widths\|\
+last-icon-view-zoom-level\|\
+last-sort-column\|\
+last-sort-order/d\" %f"
+
 git -C $DOTFILES_DIR config --local filter.ignore_thunar.clean  "$THUNAR_IGNORE"
 git -C $DOTFILES_DIR config --local filter.ignore_thunar.smudge "$THUNAR_IGNORE"

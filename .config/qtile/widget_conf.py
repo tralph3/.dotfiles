@@ -1,39 +1,28 @@
-from utils import SettingsDict
-from libqtile.lazy import lazy
-from libqtile.config import Screen
 from libqtile import bar, widget
-from settings import widget_default, BACKGROUND1, BACKGROUND2, ICON_SIZE, commands, MARGIN, FONT_SIZE, FOCUS_COLOR
+from libqtile.config import Screen
+from libqtile.lazy import lazy
+from settings import widget_default, separator_default, BACKGROUND1, BACKGROUND2, ICON_SIZE, commands, MARGIN, FONT_SIZE, FOCUS_COLOR
 
 ###########
 # WIDGETS #
 ###########
-def init():
-    extension_defaults = widget_default.extend()
+def create_separator(side):
+    if side == "left":
+        symbol = ""
+    elif side == "right":
+        symbol = ""
 
-    separator_default = SettingsDict(
-        fontsize=30,
-        foreground=BACKGROUND1,
-        background=BACKGROUND2,
-        margin=0,
-        padding=0,
-    )
-
-    def create_separator(side):
-        if side == "left":
-            symbol = ""
-        elif side == "right":
-            symbol = ""
-
-        separator = widget.TextBox(
-            **separator_default.extend(
-                foreground="#FFFFFF",
-                background=BACKGROUND1,
-                text=symbol
-            ),
+    separator = widget.TextBox(
+        **separator_default.extend(
+            foreground="#FFFFFF",
+            background=BACKGROUND1,
+            text=symbol
         ),
-        return separator[0]
+    ),
+    return separator[0]
 
-    # Status bar
+# Status bar
+def init():
     screens = [
         Screen(
             top=bar.Bar([
@@ -93,7 +82,7 @@ def init():
                     # Clock
                     widget.Clock(
                         **widget_default.extend(
-                            format="%a %d %b: %H:%M",
+                            format="%H:%M",
                         ),
                     ),
                 ],

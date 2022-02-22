@@ -61,3 +61,11 @@ widget_default = SettingsDict(
     urgent_alert_method         = "border",
     rounded                     = False,
 )
+
+separator_default = SettingsDict(
+    fontsize=30,
+    foreground=BACKGROUND1,
+    background=BACKGROUND2,
+    margin=0,
+    padding=0,
+)

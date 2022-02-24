@@ -10,11 +10,13 @@ nnoremap k gk
 nnoremap $ g$
 nnoremap <leader>w :set wrap<CR>:set linebreak<CR>
 
+" Change buffers
+nnoremap J :bp<CR>
+nnoremap K :bn<CR>
+nnoremap <C-w> :bd<CR>
+
 " Format JSON file
 nnoremap <leader>J :%!python -m json.tool<CR>
-
-" Open new tab
-nnoremap <C-t> :tabedit<Space>
 
 " Switch between windows
 nnoremap <leader>h :wincmd h<CR>
@@ -29,10 +31,6 @@ vmap <S-Tab> <gv
 " Resize windows
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
-
-" Open buffers in new tabs
-nnoremap gf <C-w>gf
-
 
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>

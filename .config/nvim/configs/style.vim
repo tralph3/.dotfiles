@@ -1,7 +1,8 @@
 " Colors
 syntax on
 set termguicolors
-colorscheme monokai_pro
+let g:codedark_italics = 1
+colorscheme codedark
 
 " Font
 set guifont=UbuntuMono\ Nerd\ Font\ Mono:h12

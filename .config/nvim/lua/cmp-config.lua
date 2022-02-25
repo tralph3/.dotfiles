@@ -66,12 +66,13 @@ cmp.setup {
     formatting = {
         fields = { "kind", "abbr", "menu"},
         format = function(entry, item)
+            kind_name = item.kind
             item.kind = lsp_symbols[item.kind] or ""
             item.menu = ({
                 buffer = "[B]",
                 nvim_lsp = "[L]",
                 path = "[P]"
-            })[entry.source.name]
+            })[entry.source.name].." "..kind_name
             return item
         end,
     },

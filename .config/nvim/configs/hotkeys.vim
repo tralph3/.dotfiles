@@ -35,5 +35,11 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
-noremap <expr> <C-u> repeat("\<C-y> :sleep 10m<CR>", winheight('%')/2)
-noremap <expr> <C-d> repeat("\<C-e> :sleep 10m<CR>", winheight('%')/2)
+" Go to definition
+nnoremap gd :lua vim.lsp.buf.definition()<CR>
+" Go to declaration
+nnoremap gD :lua vim.lsp.buf.declaration()<CR>
+" List all references
+nnoremap gr :lua vim.lsp.buf.references()<CR>
+" Rename symbol
+nnoremap <F2> :lua vim.lsp.buf.rename()<CR>

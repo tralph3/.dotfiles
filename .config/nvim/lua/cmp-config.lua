@@ -1,6 +1,7 @@
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,noinsert,preview,longest,menuone,noselect"
 
-local cmp = require'cmp'
+local cmp = require('cmp')
+local cmp_buffer = require('cmp_buffer')
 
 local lsp_symbols = {
     Text = '  ',
@@ -32,16 +33,18 @@ local lsp_symbols = {
 
 cmp.setup {
     snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-      end,
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
     },
 
     enabled = true,
-    autocomplete = true,
     debug = false,
     min_length = 0,
-    preselect = 'enable',
+    completion = {
+        keyword_length = 0,
+        autocomplete = false,
+    },
     throttle_time = 80,
     source_timeout = 200,
     incomplete_delay = 400,
@@ -53,14 +56,28 @@ cmp.setup {
     mapping = {
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), --Automatic autocomplete
         ['<CR>'] = cmp.mapping.confirm({ select = false }), --Explicit autocomplete
     },
 
     sources = {
-        { name = 'nvim_lsp' },  --LSP autocompletions
-        { name = 'buffer' },    --Words in the current buffer
-        { name = 'path' }       --File system
+        { name = 'nvim_lsp' },
+        { name = 'buffer',
+            options = {
+                get_bufnrs = function()
+                    return vim.api.nvim_list_bufs()
+                end
+            },
+        },
+        { name = 'path' },
+    },
+
+    sorting = {
+        comparators = {
+            function(...) return cmp_buffer:compare_locality(...) end,
+        },
     },
 
     formatting = {

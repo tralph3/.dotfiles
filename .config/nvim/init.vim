@@ -8,4 +8,3 @@ source ~/.config/nvim/configs/luafiles.vim
 source ~/.config/nvim/configs/style.vim
 " Hotekeys
 source ~/.config/nvim/configs/hotkeys.vim
-

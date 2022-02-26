@@ -2,9 +2,15 @@
 source ~/.config/nvim/configs/settings.vim
 " Plugins
 source ~/.config/nvim/configs/plug.vim
-" Lua files
-source ~/.config/nvim/configs/luafiles.vim
 " Styling
 source ~/.config/nvim/configs/style.vim
 " Hotkeys
 source ~/.config/nvim/configs/hotkeys.vim
+" Various lsp configurations
+luafile ~/.config/nvim/lua/lsp-configurations.lua
+" Lua Line
+luafile ~/.config/nvim/lua/lua-line.lua
+" nvim-cmp
+luafile ~/.config/nvim/lua/cmp-config.lua
+" Show diagnostic on cursor hover
+autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})

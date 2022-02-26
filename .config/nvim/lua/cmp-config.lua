@@ -40,11 +40,6 @@ cmp.setup {
 
     enabled = true,
     debug = false,
-    min_length = 0,
-    completion = {
-        keyword_length = 0,
-        autocomplete = false,
-    },
     throttle_time = 80,
     source_timeout = 200,
     incomplete_delay = 400,
@@ -52,10 +47,15 @@ cmp.setup {
     max_kind_width = 100,
     max_menu_width = 100,
     documentation = true,
+    min_length = 0,
+
+    completion = {
+        keyword_length = 0,
+    },
 
     mapping = {
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), --Automatic autocomplete
@@ -68,7 +68,7 @@ cmp.setup {
             options = {
                 get_bufnrs = function()
                     return vim.api.nvim_list_bufs()
-                end
+                end,
             },
         },
         { name = 'path' },
@@ -93,4 +93,9 @@ cmp.setup {
             return item
         end,
     },
+
+    experimental = {
+        ghost_text = true,
+    },
 }
+

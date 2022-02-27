@@ -47,10 +47,9 @@ cmp.setup {
     max_kind_width = 100,
     max_menu_width = 100,
     documentation = true,
-    min_length = 0,
 
     completion = {
-        keyword_length = 0,
+        keyword_length = 1,
     },
 
     mapping = {

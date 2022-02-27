@@ -7,27 +7,30 @@ endif
 "Plugins
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'cskeeters/vim-smooth-scroll'
+" Enhancements
+Plug 'chaoren/vim-wordmotion'       " Add extra word separators
+Plug 'cskeeters/vim-smooth-scroll'  " Smooth scrolling with <C-d> and <C-u>
+Plug 'jiangmiao/auto-pairs'         " Add closing parenthesis automatically
+Plug 'tpope/vim-commentary'         " Comment lines with gc
+Plug 'tpope/vim-surround'           " Surround selection with characters
+
+" LSP
 Plug 'hrsh7th/cmp-buffer', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-path', { 'branch': 'main' }
 Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main' }
 Plug 'hrsh7th/nvim-cmp', { 'branch': 'main' }
 Plug 'hrsh7th/vim-vsnip'
-Plug 'jiangmiao/auto-pairs'
-Plug 'jremmen/vim-ripgrep'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'phanviet/vim-monokai-pro'
-Plug 'preservim/nerdtree'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'sheerun/vim-polyglot'
-Plug 'timonv/vim-cargo'
-Plug 'tomasiser/vim-code-dark'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'   " ys (add surround) | ds (delete surround) | cs (change surround)
-Plug 'vim-utils/vim-man'
+
+" Information
+Plug 'nvim-lualine/lualine.nvim'    " Status bar
+Plug 'preservim/nerdtree'           " Integrated file browser
+
+" Styling
+Plug 'kyazdani42/nvim-web-devicons' " Icons for various filetypes
+Plug 'sheerun/vim-polyglot'         " Syntax highlighting for many file types
+Plug 'tomasiser/vim-code-dark'      " CodeDark+ inspired colorscheme
 
 call plug#end()
 

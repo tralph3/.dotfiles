@@ -4,6 +4,14 @@ let mapleader=" "
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 
+" Move entire visual selection
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Go to start and end of line
+nnoremap H ^
+nnoremap L $
+
 " Remaps for line wrapping
 nnoremap j gj
 nnoremap k gk

@@ -12,5 +12,6 @@ luafile ~/.config/nvim/lua/lsp-configurations.lua
 luafile ~/.config/nvim/lua/lua-line.lua
 " nvim-cmp
 luafile ~/.config/nvim/lua/cmp-config.lua
+
 " Show diagnostic on cursor hover
 autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})

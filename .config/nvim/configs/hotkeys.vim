@@ -40,8 +40,8 @@ vmap <S-Tab> <gv
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-" Mirror the NERDTree before showing it. This makes it the same on all tabs.
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+" Open nvim-tree
+nnoremap <silent> <C-n> :NvimTreeToggle<CR>
 
 " Go to definition
 nnoremap gd :lua vim.lsp.buf.definition()<CR>

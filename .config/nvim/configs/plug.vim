@@ -25,10 +25,10 @@ Plug 'neovim/nvim-lspconfig'
 
 " Information
 Plug 'nvim-lualine/lualine.nvim'    " Status bar
-Plug 'preservim/nerdtree'           " Integrated file browser
+Plug 'kyazdani42/nvim-tree.lua'     " Integrated file manager
 
 " Styling
-Plug 'kyazdani42/nvim-web-devicons' " Icons for various filetypes
+Plug 'kyazdani42/nvim-web-devicons' " Icons for nvim-tree
 Plug 'sheerun/vim-polyglot'         " Syntax highlighting for many file types
 Plug 'tomasiser/vim-code-dark'      " CodeDark+ inspired colorscheme
 

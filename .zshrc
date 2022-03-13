@@ -4,6 +4,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 EDITOR=nvim
+# vi mode
+bindkey -v
 
 # Ignore commands that start with a space
 setopt HIST_IGNORE_SPACE

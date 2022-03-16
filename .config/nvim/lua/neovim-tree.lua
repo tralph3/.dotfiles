@@ -1,5 +1,5 @@
 -- Keybinds
-local list = {
+local keybinds = {
     -- Enter/Exit folders
     { key = "<C-l>",       action = "cd"                   },
     { key = "<C-h>",       action = "dir_up"               },
@@ -7,7 +7,7 @@ local list = {
     { key = "<C-k>",       action = "prev_sibling"         },
     { key = "<C-j>",       action = "next_sibling"         },
     -- Open files
-    { key = "l",           action = "edit"                 },
+    { key = "l",           action = "preview"              },
     { key = "h",           action = "parent_node"          },
     -- View
     { key = "H",           action = "toggle_dotfiles"      },
@@ -26,10 +26,29 @@ local list = {
 }
 
 require'nvim-tree'.setup{
+    -- Keeps cursor in the first letter of the filename
+    hijack_cursor = true,
+
+    -- Show LSP diagnostics
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+    },
+
     view = {
+        -- Show numberline
+        number = true,
+        relativenumber = true,
+        -- Set custom keybinds
         mappings = {
-            list = list
+            custom_only = true,
+            list = keybinds,
         }
+    },
+
+    filters = {
+        -- Do not show dotfiles
+        dotfiles = true,
     }
 }
 

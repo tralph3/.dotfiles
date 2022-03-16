@@ -36,9 +36,6 @@ require'nvim-tree'.setup{
     },
 
     view = {
-        -- Show numberline
-        number = true,
-        relativenumber = true,
         -- Set custom keybinds
         mappings = {
             custom_only = true,

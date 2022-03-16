@@ -55,8 +55,8 @@ cmp.setup {
     mapping = {
         ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
         ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ['<Tab>'] = cmp.mapping.confirm({ select = true }), --Automatic autocomplete
         ['<CR>'] = cmp.mapping.confirm({ select = false }), --Explicit autocomplete
     },
@@ -94,6 +94,8 @@ cmp.setup {
     },
 
     experimental = {
-        ghost_text = true,
+        ghost_text = {
+            hl_group = "Whitespace"
+        }
     },
 }

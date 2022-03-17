@@ -8,7 +8,6 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Enhancements
-Plug 'chaoren/vim-wordmotion'       " Add extra word separators
 Plug 'cskeeters/vim-smooth-scroll'  " Smooth scrolling with <C-d> and <C-u>
 Plug 'jiangmiao/auto-pairs'         " Add closing parenthesis automatically
 Plug 'tpope/vim-commentary'         " Comment lines with gc

@@ -89,6 +89,9 @@ install_config .config/gtk-3.0 ~/.config/gtk-3.0
 # rofi
 install_config .config/rofi ~/.config/rofi
 
+# tridactyl
+install_config .config/tridactyl ~/.config/tridactyl
+
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\
 last-details-view-zoom-level\|\

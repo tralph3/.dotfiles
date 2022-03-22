@@ -18,6 +18,6 @@ set number relativenumber
 set colorcolumn=79
 set winblend=10
 
-let NERDTreeShowLineNumbers=1
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e

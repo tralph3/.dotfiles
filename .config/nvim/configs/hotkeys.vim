@@ -12,6 +12,10 @@ vnoremap <silent><A-k> :m '<-2<CR>gv=gv
 nnoremap H ^
 nnoremap L $
 
+" Paste from the yank buffer
+nnoremap yp "0p
+nnoremap yP "0P
+
 " Remaps for line wrapping
 nnoremap j gj
 nnoremap k gk

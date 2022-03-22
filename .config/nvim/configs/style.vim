@@ -14,3 +14,7 @@ set guifont=UbuntuMono\ Nerd\ Font\ Mono:h12\ 12
 exe "hi NvimTreeNormal guibg=" . nvim_tree_bg_color
 exe "hi Directory guibg=" . nvim_tree_bg_color
 exe "hi NvimTreeEndOfBuffer guibg=" . nvim_tree_bg_color . " guifg=" . nvim_tree_bg_color
+
+" Quickscope
+hi QuickScopePrimary gui=underline
+hi QuickScopeSecondary gui=underline guibg=red

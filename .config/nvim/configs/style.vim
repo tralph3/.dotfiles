@@ -16,5 +16,5 @@ exe "hi Directory guibg=" . nvim_tree_bg_color
 exe "hi NvimTreeEndOfBuffer guibg=" . nvim_tree_bg_color . " guifg=" . nvim_tree_bg_color
 
 " Quickscope
-hi QuickScopePrimary gui=underline
+hi QuickScopePrimary gui=underline guibg=yellow
 hi QuickScopeSecondary gui=underline guibg=red

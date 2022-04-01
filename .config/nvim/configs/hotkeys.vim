@@ -28,7 +28,7 @@ nnoremap <silent>K :bn<CR>
 nnoremap <silent><C-w> :bd<CR>
 
 " Format JSON file
-nnoremap <silent><leader>J :%!python -m json.tool<CR>
+nnoremap <silent><leader>J :%!python3 -m json.tool<CR>
 
 " Switch between windows
 nnoremap <silent><leader>h :wincmd h<CR>

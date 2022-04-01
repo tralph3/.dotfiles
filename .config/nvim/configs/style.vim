@@ -15,6 +15,30 @@ exe "hi NvimTreeNormal guibg=" . nvim_tree_bg_color
 exe "hi Directory guibg=" . nvim_tree_bg_color
 exe "hi NvimTreeEndOfBuffer guibg=" . nvim_tree_bg_color . " guifg=" . nvim_tree_bg_color
 
+let g:nvim_tree_icons = {
+\ 'default': " " ,
+\ 'symlink': " ",
+\ 'git': {
+\   'unstaged': " ",
+\   'staged': " ",
+\   'unmerged': " ",
+\   'renamed': " ",
+\   'untracked': " ",
+\   'deleted': " ",
+\   'ignored': " "
+\   },
+\ 'folder': {
+\   'arrow_open': "",
+\   'arrow_closed': "",
+\   'default': " ",
+\   'open': " ",
+\   'empty': " ",
+\   'empty_open': " ",
+\   'symlink': " ",
+\   'symlink_open': " ",
+\   }
+\ }
+
 " Quickscope
 hi QuickScopePrimary gui=underline guibg=yellow
 hi QuickScopeSecondary gui=underline guibg=red

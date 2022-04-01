@@ -21,3 +21,5 @@ set winblend=10
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+let g:smoothie_update_interval=1

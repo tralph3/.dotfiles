@@ -8,8 +8,8 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
 
 " Enhancements
-Plug 'cskeeters/vim-smooth-scroll'  " Smooth scrolling with <C-d> and <C-u>
 Plug 'jiangmiao/auto-pairs'         " Add closing parenthesis automatically
+Plug 'psliwka/vim-smoothie'         " Smooth scrolling with <C-d> and <C-u>
 Plug 'tpope/vim-commentary'         " Comment lines with gc
 Plug 'tpope/vim-surround'           " Surround selection with characters
 Plug 'unblevable/quick-scope'       " Show hints for unique characters

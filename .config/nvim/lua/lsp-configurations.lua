@@ -3,7 +3,9 @@ local servers = {
     { 'rust_analyzer' },
 
     -- Python
+    { 'pylsp' },
     { 'jedi_language_server' },
+    { 'pyright' },
 
     -- Lua
     { 'sumneko_lua',
@@ -17,6 +19,7 @@ local servers = {
     },
 }
 
+-- Only enable the server if it's installed on the system
 for _, server in pairs(servers) do
     local lsp = require('lspconfig')
     local config = lsp[server[1]]

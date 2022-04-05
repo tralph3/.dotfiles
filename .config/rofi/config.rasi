@@ -1,1 +1,9 @@
+configuration {
+    kb-remove-to-eol: "";
+    kb-row-tab: "";
+    kb-accept-entry: "Return,Tab";
+    kb-row-up: "Control+k";
+    kb-row-down: "Control+j";
+}
+
 @theme "tralph3"

@@ -57,11 +57,11 @@ ins () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --sudoloop --skipreview -S $@ &&
+                paru --sudoloop --skipreview -S $@;
                     paru --sudoloop -c --removemake --noconfirm
                 ;;
             ubuntu)
-                sudo apt install $@
+                sudo apt install $@; sudo apt autoremove
                 ;;
             fedora)
                 dnf install $@
@@ -96,11 +96,13 @@ uall (){
     case $DISTRO in
         arch)
             paru --sudoloop --skipreview -Syu;
-                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
+                paru --sudoloop -c --removemake --noconfirm
             ;;
         ubuntu)
             sudo apt update && sudo apt upgrade;
-                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
+                sudo apt autoremove
             ;;
         fedora)
             sudo dnf upgrade;

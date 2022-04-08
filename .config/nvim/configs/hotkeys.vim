@@ -45,7 +45,7 @@ nnoremap <silent><leader>+ :vertical resize +5<CR>
 nnoremap <silent><leader>- :vertical resize -5<CR>
 
 " Open nvim-tree
-nnoremap <silent> <C-n> :NvimTreeToggle<CR>
+nnoremap <silent> <C-n> :NeoTreeFocusToggle<CR>
 
 " Go to definition
 nnoremap <silent>gd :lua vim.lsp.buf.definition()<CR>

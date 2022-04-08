@@ -38,7 +38,7 @@ rmv () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --sudoloop -Rnsu $@ && paru --sudoloop -c
+                paru --sudoloop -R $@ && paru --sudoloop -c --noconfirm
                 ;;
             ubuntu)
                 sudo apt purge $@ && sudo apt autoremove
@@ -57,7 +57,8 @@ ins () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --sudoloop --skipreview -S $@
+                paru --sudoloop --skipreview -S $@ &&
+                    paru --sudoloop -c --removemake --noconfirm
                 ;;
             ubuntu)
                 sudo apt install $@
@@ -95,15 +96,15 @@ uall (){
     case $DISTRO in
         arch)
             paru --sudoloop --skipreview -Syu;
-                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
             ;;
         ubuntu)
             sudo apt update && sudo apt upgrade;
-                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
             ;;
         fedora)
             sudo dnf upgrade;
-                nvim -c ":PlugUpdate" -c ":q" -c ":q"
+                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
             ;;
     esac
 }

@@ -1,7 +1,7 @@
+" Plugins
+luafile ~/.config/nvim/lua/plugin-manager.lua
 " General settings
 source ~/.config/nvim/configs/settings.vim
-" Plugins
-source ~/.config/nvim/configs/plug.vim
 " Styling
 source ~/.config/nvim/configs/style.vim
 " Hotkeys
@@ -13,7 +13,9 @@ luafile ~/.config/nvim/lua/lua-line.lua
 " nvim-cmp
 luafile ~/.config/nvim/lua/cmp-config.lua
 " nvim-tree
-luafile ~/.config/nvim/lua/neovim-tree.lua
+" luafile ~/.config/nvim/lua/neovim-tree.lua
+" neo-tree
+luafile ~/.config/nvim/lua/neo-tree-config.lua
 
 " Show diagnostic on cursor hover
 autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})

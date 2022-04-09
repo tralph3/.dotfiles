@@ -10,7 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd('packadd packer.nvim')
 end
 
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
     return
 end
@@ -18,7 +18,7 @@ end
 local util = require("packer.util")
 
 COMPILE_PATH = util.join_paths(
-    fn.stdpath('data'), 'plugin', 'packer_compiled.lua'
+    fn.stdpath('data'), 'site', 'plugin', 'packer_compiled.lua'
 )
 
 local function get_config(name)
@@ -72,6 +72,9 @@ return packer.startup({
 
 
         -- Styling
+        use { 'norcalli/nvim-colorizer.lua',
+            config = get_config('colorizer'),
+        }
         use 'sheerun/vim-polyglot'
         use 'tomasiser/vim-code-dark'
 
@@ -79,7 +82,6 @@ return packer.startup({
             packer.sync()
         end
     end,
-
     config = {
         compile_path = COMPILE_PATH,
         display = {

@@ -11,6 +11,9 @@ local servers = {
     { 'sumneko_lua',
         settings = {
             Lua = {
+                diagnostics = {
+                    globals = { 'vim' },
+                },
                 telemetry = {
                     enable = false,
                 },

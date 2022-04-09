@@ -1,0 +1,1 @@
+require('neo-tree').setup({})

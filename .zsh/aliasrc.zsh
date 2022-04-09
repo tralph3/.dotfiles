@@ -125,7 +125,7 @@ export EDITOR=nvim
 
 alias zshrc="${=EDITOR} ~/.zshrc" # Quick access to the ~/.zshrc file
 alias aliasrc="${=EDITOR} ~/.zsh/aliasrc.zsh" # Quick access to this file
-alias nvimrc="${=EDITOR} ~/.config/nvim/init.vim" # Quick access to init.vim
+alias nvimrc="${=EDITOR} ~/.config/nvim/init.lua" # Quick access to init.vim
 alias alarc="${=EDITOR} ~/.config/alacritty/alacritty.yml" # Quick access to alacritty config
 
 gp() {

@@ -1,7 +1,12 @@
 -- Colors
 vim.cmd('syntax on')
 vim.opt.termguicolors = true
-vim.cmd('colorscheme codedark')
+
+local status_ok, _ = pcall(vim.cmd, 'colorscheme codedark')
+if not status_ok then
+    vim.cmd('colorscheme slate')
+end
+
 vim.g.codedark_italics = 1
 
 -- Get background color from colorscheme

@@ -3,16 +3,20 @@ local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
 -- Bootstrap Packer
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_JUST_INSTALLED = fn.system(
-        {
-            'git', 'clone', '--depth', '1',
-            'https://github.com/wbthomason/packer.nvim', install_path
-        }
-    )
+    PACKER_JUST_INSTALLED = fn.system({
+        'git', 'clone', '--depth', '1',
+        'https://github.com/wbthomason/packer.nvim', install_path
+    })
+    vim.cmd('packadd packer.nvim')
 end
 
-local packer = require('packer')
-local util = require('packer.util')
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+    return
+end
+
+local util = require("packer.util")
+
 COMPILE_PATH = util.join_paths(
     fn.stdpath('data'), 'plugin', 'packer_compiled.lua'
 )

@@ -39,3 +39,7 @@ vim.cmd('hi NeoTreeEndOfBuffer guibg='..fm_color..'guifg='..fm_color)
 vim.cmd('hi QuickScopePrimary gui=underline guibg=green guifg=white')
 vim.cmd('hi QuickScopeSecondary gui=underline guibg=red guifg=white')
 
+-- Gitsigns
+vim.cmd('hi GitSignsAdd guibg=none guifg=green')
+vim.cmd('hi GitSignsDelete guibg=none guifg=red')
+vim.cmd('hi GitSignsChange guibg=none guifg=blue')

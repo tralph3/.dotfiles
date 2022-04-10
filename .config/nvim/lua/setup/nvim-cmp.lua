@@ -1,7 +1,6 @@
 vim.o.completeopt = "menu,noinsert,preview,longest,menuone,noselect"
 
 local cmp = require('cmp')
-local cmp_buffer = require('cmp_buffer')
 
 local lsp_symbols = {
     Text = '  ',
@@ -53,12 +52,14 @@ cmp.setup {
     },
 
     mapping = {
-        ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-        ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        ["<C-j>"] = cmp.mapping.select_next_item(
+            { behavior = cmp.SelectBehavior.Select }),
+        ["<C-k>"] = cmp.mapping.select_prev_item(
+            { behavior = cmp.SelectBehavior.Select }),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }), --Automatic autocomplete
-        ['<CR>'] = cmp.mapping.confirm({ select = false }), --Explicit autocomplete
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
 
     sources = {
@@ -73,16 +74,10 @@ cmp.setup {
         { name = 'path' },
     },
 
-    sorting = {
-        comparators = {
-            function(...) return cmp_buffer:compare_locality(...) end,
-        },
-    },
-
     formatting = {
         fields = { "kind", "abbr", "menu"},
         format = function(entry, item)
-            kind_name = item.kind
+            local kind_name = item.kind
             item.kind = lsp_symbols[item.kind] or ""
             item.menu = ({
                 buffer = "[B]",

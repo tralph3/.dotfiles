@@ -1,0 +1,22 @@
+snippet for "Python for loop" b
+for ${1:variable} in ${2:iterator}:
+	$0
+endsnippet
+
+snippet cl "Python class" b
+class ${1:ClassName}():
+	def __init__(self$2):
+		$0
+endsnippet
+
+snippet dcl "Python dataclass" b
+@dataclass
+class ${1:ClassName}:
+	${2:variable}: ${3:type}
+	$0
+endsnippet
+
+snippet fn "Python function" b
+def ${1:function_name}($2):
+	$0
+endsnippet

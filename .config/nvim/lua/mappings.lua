@@ -65,3 +65,8 @@ map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
 map('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
 -- Rename symbol
 map('n', '<F2>', ':lua vim.lsp.buf.rename()<CR>')
+
+-- UltiSnips (proper mappings are set in the nvim-cmp config file)
+vim.g.UltiSnipsExpandTrigger = '<C-x>'
+vim.g.UltiSnipsJumpForwardTrigger = '<C-x>'
+vim.g.UltiSnipsJumpBackwardTrigger = '<C-x>'

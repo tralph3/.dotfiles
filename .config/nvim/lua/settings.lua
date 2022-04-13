@@ -24,5 +24,17 @@ vim.cmd(
     'autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})'
 )
 
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = '●',
+    },
+})
+
+-- Vim Smoothie
 vim.g.smoothie_update_interval=1
+
+-- Quickscope
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
+
+-- UltiSnips
+vim.g.UltiSnipsSnippetDirectories = { 'snips' }

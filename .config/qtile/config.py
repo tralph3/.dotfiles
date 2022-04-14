@@ -1,7 +1,6 @@
 import os
 import subprocess
 
-import libqtile
 from libqtile import hook
 
 # init groups
@@ -14,6 +13,7 @@ from layout_conf import layouts, floating_layout
 from widget_conf import screens
 # general settings
 from options import *
+
 
 # Autostart
 @hook.subscribe.startup_once

@@ -1,4 +1,4 @@
-from libqtile.config import Group, Click, Match
+from libqtile.config import Group, Match
 
 ##########
 # GROUPS #

@@ -1,6 +1,5 @@
 from libqtile.config import Match
 from libqtile import layout
-from utils import SettingsDict
 from settings import layout_default
 
 ###########

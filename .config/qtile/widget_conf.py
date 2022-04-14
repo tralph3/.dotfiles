@@ -1,7 +1,18 @@
 from libqtile import bar, widget
 from libqtile.config import Screen
 from libqtile.lazy import lazy
-from settings import widget_default, separator_default, BACKGROUND1, BACKGROUND2, ICON_SIZE, commands, MARGIN, FONT_SIZE, FOCUS_COLOR
+from settings import (
+    BACKGROUND1,
+    BACKGROUND2,
+    FOCUS_COLOR,
+    FONT_SIZE,
+    ICON_SIZE,
+    MARGIN,
+    commands,
+    separator_default,
+    widget_default,
+)
+
 
 ###########
 # WIDGETS #
@@ -21,6 +32,7 @@ def create_separator(side):
     ),
     return separator[0]
 
+
 # Status bar
 screens = [
     Screen(
@@ -28,7 +40,9 @@ screens = [
                 # Arch logo
                 widget.Image(
                     **widget_default.extend(
-                        mouse_callbacks={"Button1": lazy.spawn(commands["rofi"])},
+                        mouse_callbacks={
+                            "Button1": lazy.spawn(commands["rofi"])
+                        },
                         filename="~/.config/qtile/archlinux-icon.svg",
                     ),
                 ),

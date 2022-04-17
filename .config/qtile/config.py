@@ -20,4 +20,3 @@ from options import *
 def autostart():
     script_path = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.run([script_path])
-

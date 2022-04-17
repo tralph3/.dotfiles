@@ -24,6 +24,11 @@ vim.cmd(
     'autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})'
 )
 
+vim.cmd(
+    -- TODO: Figure out how to split this so it's under the character limit
+    'autocmd TextYankPost * lua vim.highlight.on_yank({igroup="IncSearch", timeout=150, on_visual=true})'
+)
+
 vim.diagnostic.config({
     virtual_text = {
         prefix = '●',

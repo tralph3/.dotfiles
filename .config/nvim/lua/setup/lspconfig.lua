@@ -20,24 +20,27 @@ local servers = {
             },
         },
     },
+
+    -- C/C++
+    { 'clangd' },
+
+    -- Godot
+    { 'gdscript' },
 }
 
 -- Only enable the server if it's installed on the system
+local lsp = require('lspconfig')
 for _, server in pairs(servers) do
-    local lsp = require('lspconfig')
     local config = lsp[server[1]]
 
     if(lsp.util.has_bins(config.document_config.default_config.cmd[1])) then
-        local setup_config = {
-            on_attach = on_attach,
-        }
-
+        local opts = {}
         for k, v in pairs(server) do
             if type(k) ~= 'number' then
-                setup_config[k] = v
+                opts[k] = v
             end
         end
 
-        config.setup(setup_config)
+        config.setup(opts)
     end
 end

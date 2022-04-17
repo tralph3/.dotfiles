@@ -110,22 +110,21 @@ mouse = [
 ]
 
 # swich groups
-for i in range(1, 10):
+for i in [str(x) for x in range(1, 10)]:
     keys.extend(
         [
             Key(
                 [mod],
-                str(i),
+                i,
                 lazy.group[i].toscreen(),
                 desc=f"Switch to group {i}",
             ),
 
             Key(
                 [mod, "shift"],
-                str(i),
+                i,
                 lazy.window.togroup(i),
                 desc=f"Switch to & move focused window to group {i}",
             ),
         ]
     )
-

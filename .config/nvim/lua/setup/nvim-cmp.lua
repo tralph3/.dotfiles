@@ -47,7 +47,7 @@ cmp.setup({
     max_menu_width = 100,
 
     window = {
-        documentation = "native",
+        documentation = true,
     },
 
     completion = {

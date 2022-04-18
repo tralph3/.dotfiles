@@ -3,6 +3,7 @@ vim.opt.colorcolumn = { 79 }
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
+vim.opt.laststatus = 3
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸ ', trail = '·' }
 vim.opt.number = true
@@ -17,22 +18,31 @@ vim.opt.undofile = true
 vim.opt.winblend = 10
 vim.opt.wrap = false
 
--- Remove trailing whitespace on save
-vim.cmd('autocmd BufWritePre * :%s/\\s\\+$//e')
--- Show diagnostics on dialog on cursor hover
-vim.cmd(
-    'autocmd CursorHold * lua vim.diagnostic.open_float({focusable = false})'
-)
-
-vim.cmd(
-    -- TODO: Figure out how to split this so it's under the character limit
-    'autocmd TextYankPost * lua vim.highlight.on_yank({igroup="IncSearch", timeout=150, on_visual=true})'
-)
-
 vim.diagnostic.config({
     virtual_text = {
         prefix = '●',
     },
+})
+
+-- Remove trailing whitespace on save
+vim.api.nvim_create_autocmd('BufWritePre', {
+    command = '%s/\\s\\+$//e',
+})
+
+-- Show diagnostics on dialog on cursor hover
+vim.api.nvim_create_autocmd('CursorHold', {
+    callback = function()
+        vim.diagnostic.open_float({ focusable = false })
+    end,
+})
+
+-- Highlight yanked text
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank(
+            { igroup="IncSearch", timeout=150, on_visual=true }
+        )
+    end,
 })
 
 -- Vim Smoothie

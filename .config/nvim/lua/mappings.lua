@@ -3,7 +3,7 @@ local function map(mode, lhs, rhs, opts)
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
 vim.g.mapleader = " "
@@ -58,13 +58,13 @@ map('n', '<C-n>', ':Neotree focus toggle=true<CR>')
 map('n', '<C-g>', ':Neotree float toggle=true git_status<CR>')
 
 -- Go to definition
-map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+map('n', 'gd', vim.lsp.buf.definition)
 -- Go to declaration
-map('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
+map('n', 'gD', vim.lsp.buf.declaration)
 -- List all references
-map('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
+map('n', 'gr', vim.lsp.buf.references)
 -- Rename symbol
-map('n', '<F2>', ':lua vim.lsp.buf.rename()<CR>')
+map('n', '<F2>', vim.lsp.buf.rename)
 
 -- UltiSnips (proper mappings are set in the nvim-cmp config file)
 vim.g.UltiSnipsExpandTrigger = '<C-x>'

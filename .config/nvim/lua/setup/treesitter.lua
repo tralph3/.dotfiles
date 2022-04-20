@@ -1,10 +1,43 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = 'all',
+    ensure_installed = {
+        'bash',
+        'c',
+        'cmake',
+        'comment',
+        'cpp',
+        'css',
+        'dockerfile',
+        'gdscript',
+        'html',
+        'javascript',
+        'json',
+        'latex',
+        'lua',
+        'make',
+        'markdown',
+        'python',
+        'regex',
+        'rust',
+        'vim',
+        'yaml',
+    },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = true
     },
     indent = {
-        enable = true
+        enable = false
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            },
+        },
     },
 })

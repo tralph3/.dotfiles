@@ -77,6 +77,7 @@ return packer.startup({
         use { 'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
             config = get_setup('treesitter'),
+            requires = { 'nvim-treesitter/nvim-treesitter-textobjects' }
         }
         use 'tomasiser/vim-code-dark'
 

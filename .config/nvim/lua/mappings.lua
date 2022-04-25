@@ -8,7 +8,6 @@ end
 
 local function toggle_word_wrapping()
     vim.opt.wrap = not(vim.opt.wrap:get())
-    vim.opt.linebreak = not(vim.opt.linebreak:get())
 end
 
 vim.g.mapleader = " "

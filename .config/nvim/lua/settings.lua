@@ -4,6 +4,7 @@ vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.laststatus = 3
+vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸ ', trail = '·' }
 vim.opt.number = true

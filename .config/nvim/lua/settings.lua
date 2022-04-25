@@ -15,6 +15,7 @@ vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
 vim.opt.undodir = vim.fn.expand('~/.cache/nvim/undodir')
 vim.opt.undofile = true
+vim.opt.updatetime = 300
 vim.opt.winblend = 10
 vim.opt.wrap = false
 

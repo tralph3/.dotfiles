@@ -26,6 +26,8 @@ return packer.startup({
         -- Packer
         use 'wbthomason/packer.nvim'
 
+        -- Improves startup time
+        use 'lewis6991/impatient.nvim'
 
         -- Enhancements
         use { 'windwp/nvim-autopairs',
@@ -62,6 +64,7 @@ return packer.startup({
                 'nvim-lua/plenary.nvim',
                 'MunifTanjim/nui.nvim',
             },
+            branch = 'v2.x',
             config = get_setup('neo-tree'),
         }
         use { 'lewis6991/gitsigns.nvim',
@@ -79,11 +82,13 @@ return packer.startup({
             config = get_setup('treesitter'),
             requires = { 'nvim-treesitter/nvim-treesitter-textobjects' }
         }
-        use 'tomasiser/vim-code-dark'
+        use 'catppuccin/nvim'
 
         if PACKER_JUST_INSTALLED then
             packer.sync()
         end
+
+        require('impatient')
     end,
     config = {
         compile_path = compile_path,

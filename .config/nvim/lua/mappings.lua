@@ -6,10 +6,6 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, options)
 end
 
-local function toggle_word_wrapping()
-    vim.opt.wrap = not(vim.opt.wrap:get())
-end
-
 vim.g.mapleader = " "
 
 -- Move lines (Alt + j/k)
@@ -33,7 +29,7 @@ map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 map('n', '$', 'g$')
 map('n', '^', 'g^')
-map('n', '<leader>w', toggle_word_wrapping)
+map('n', '<leader>w', function() vim.opt.wrap = not(vim.opt.wrap:get()) end)
 
 -- Change buffers
 map('n', 'J', ':bp<CR>')

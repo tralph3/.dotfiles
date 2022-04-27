@@ -77,6 +77,9 @@ return packer.startup({
             config = get_setup('colorizer'),
         }
         use 'kyazdani42/nvim-web-devicons'
+        use { 'sunjon/Shade.nvim',
+            config = get_setup('shade'),
+        }
         use { 'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate',
             config = get_setup('treesitter'),

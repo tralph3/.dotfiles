@@ -33,7 +33,7 @@ local lsp_symbols = {
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn['UltiSnips#Anon'](args.body)
+            require('luasnip').lsp_expand(args.body)
         end,
     },
 
@@ -65,39 +65,39 @@ cmp.setup({
             i = function(fallback)
                 -- If an option was explicitely selected, accept it.
                 local entry = cmp.get_selected_entry()
+                local luasnip = require('luasnip')
+
                 if entry ~= nil then
                     cmp.confirm({ select = false })
                     return
                 end
-                -- Try to expand or jump to the next tabstop
-                vim.fn['UltiSnips#ExpandSnippetOrJump']()
 
-                -- Depending on the result of the previous action, confirm
-                -- the suggested autocompletion (without selecting it)
-                -- or perform the default tab action.
-                if vim.g.ulti_expand_or_jump_res == 0 then
-                    if not cmp.visible() then
-                        fallback()
-                    end
+                if luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                elseif cmp.visible() then
                     cmp.confirm({ select = true })
+                else
+                    fallback()
                 end
             end,
             s = function(fallback)
-                vim.fn['UltiSnips#ExpandSnippetOrJump']()
-                if vim.g.ulti_expand_or_jump_res == 0 then
+                local luasnip = require('luasnip')
+                if luasnip.expand_or_jumpable() then
+                    luasnip.expand_or_jump()
+                else
                     fallback()
                 end
             end
         }),
         ['<S-Tab>'] = function()
-            vim.fn['UltiSnips#JumpBackwards']()
+            require('luasnip').jump(-1)
         end,
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
 
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'ultisnips' },
+        { name = 'luasnip' },
         { name = 'buffer',
             options = {
                 get_bufnrs = function()
@@ -115,7 +115,7 @@ cmp.setup({
             item.kind = lsp_symbols[item.kind] or ''
             item.menu = ({
                 nvim_lsp = '[L]',
-                ultisnips = '[S]',
+                luasnip = '[S]',
                 buffer = '[B]',
                 path = '[P]',
             })[entry.source.name]..' '..kind_name

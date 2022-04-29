@@ -17,8 +17,8 @@ if not status_ok then
     return
 end
 
-local function get_setup(name)
-    return string.format('require("setup/%s")', name)
+local function get_setup(file_name)
+    return string.format('require("setup/%s")', file_name)
 end
 
 return packer.startup({
@@ -45,7 +45,13 @@ return packer.startup({
                 'hrsh7th/cmp-buffer',
                 'hrsh7th/cmp-nvim-lsp',
                 'hrsh7th/cmp-path',
-                'L3MON4D3/LuaSnip',
+                { 'L3MON4D3/LuaSnip',
+                    requires = {
+                        'saadparwaiz1/cmp_luasnip',
+                        'rafamadriz/friendly-snippets',
+                    },
+                    config = get_setup('luasnip'),
+                },
             },
             config = get_setup('nvim-cmp'),
         }

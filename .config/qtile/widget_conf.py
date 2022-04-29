@@ -5,7 +5,9 @@ from settings import (
     BACKGROUND1,
     BACKGROUND2,
     FOCUS_COLOR,
+    FOCUS_FOREGROUND,
     FONT_SIZE,
+    FOREGROUND,
     ICON_SIZE,
     MARGIN,
     commands,
@@ -25,8 +27,8 @@ def create_separator(side):
 
     separator = widget.TextBox(
         **separator_default.extend(
-            foreground="#FFFFFF",
-            background=BACKGROUND1,
+            foreground=FOREGROUND,
+            background=BACKGROUND2,
             text=symbol
         ),
     ),
@@ -53,7 +55,7 @@ screens = [
                     **widget_default.extend(
                         fontsize=ICON_SIZE,
                         margin=3,
-                        inactive=BACKGROUND2,
+                        inactive=BACKGROUND1,
                     ),
                 ),
                 create_separator("left"),
@@ -65,12 +67,12 @@ screens = [
                     **separator_default,
                     text=""
                 ),
-                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+                widget.TextBox(margin=MARGIN, background=BACKGROUND1),
 
                 widget.TaskList(
                     **widget_default.extend(
                         margin=0,
-                        background=BACKGROUND2,
+                        background=BACKGROUND1,
                         borderwidth=0,
                         max_title_width=200,
                         txt_floating="[F] ",
@@ -83,7 +85,7 @@ screens = [
                     ),
                 ),
                 # Separators
-                widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+                widget.TextBox(margin=MARGIN, background=BACKGROUND1),
                 widget.TextBox(
                     **separator_default,
                     text=""
@@ -103,7 +105,7 @@ screens = [
             size=26,
             margin=MARGIN,
             border_width=2,
-            background=BACKGROUND1,
+            background=BACKGROUND2,
             border_color=FOCUS_COLOR,
         ),
         left=bar.Gap(MARGIN),

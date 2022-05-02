@@ -92,6 +92,9 @@ install_config .config/rofi ~/.config/rofi
 # tridactyl
 install_config .config/tridactyl ~/.config/tridactyl
 
+# zathura
+install_config .config/zathura ~/.config/zathura
+
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\
 last-details-view-zoom-level\|\

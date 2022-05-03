@@ -86,7 +86,7 @@ return packer.startup({
             config = get_setup('shade'),
         }
         use { 'nvim-treesitter/nvim-treesitter',
-            run = ':TSUpdate',
+            run = ':TSUpdateSync',
             config = get_setup('treesitter'),
             requires = { 'nvim-treesitter/nvim-treesitter-textobjects' }
         }

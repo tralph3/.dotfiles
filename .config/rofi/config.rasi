@@ -2,15 +2,15 @@ configuration{
     modi: "run,drun,window";
     font: "UbuntuMono\ Nerd\ Font\ Mono\ 14";
     show-icons: true;
-    icon-theme: "Oranchelo";
+    icon-theme: "Papirus-Dark";
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   Apps ";
-    display-run: "   Run ";
-    display-window: " 﩯  Window";
+    display-drun: "  Apps ";
+    display-run: "  Run ";
+    display-window: " 﩯 Window";
     sidebar-mode: true;
 
     kb-remove-to-eol: "";

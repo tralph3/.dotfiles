@@ -93,10 +93,13 @@ return packer.startup({
         use 'catppuccin/nvim'
 
         if PACKER_JUST_INSTALLED then
+            vim.api.nvim_create_autocmd('User PackerComplete', {
+                command = 'qa!',
+            })
             packer.sync()
         end
 
-        require('impatient')
+        pcall(require, 'impatient')
     end,
     config = {
         compile_path = compile_path,

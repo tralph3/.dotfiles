@@ -65,7 +65,7 @@ screens = [
                 # Separators
                 widget.TextBox(
                     **separator_default,
-                    text=""
+                    text=""
                 ),
                 widget.TextBox(margin=MARGIN, background=BACKGROUND1),
 
@@ -88,7 +88,7 @@ screens = [
                 widget.TextBox(margin=MARGIN, background=BACKGROUND1),
                 widget.TextBox(
                     **separator_default,
-                    text=""
+                    text=""
                 ),
 
                 # Systray

@@ -89,8 +89,14 @@ cmp.setup({
                 end
             end
         }),
-        ['<S-Tab>'] = function()
-            require('luasnip').jump(-1)
+        ['<S-Tab>'] = function(fallback)
+            local luasnip = require('luasnip')
+
+            if luasnip.expand_or_jumpable() then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
         end,
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },

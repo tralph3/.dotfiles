@@ -29,6 +29,9 @@ local servers = {
 
     -- Latex
     { 'texlab' },
+
+    -- Spell Checking
+    { 'ltex' },
 }
 
 -- Only enable the server if it's installed on the system

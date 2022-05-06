@@ -2,16 +2,17 @@ from libqtile import bar, widget
 from libqtile.config import Screen
 from libqtile.lazy import lazy
 from settings import (
-    BACKGROUND1,
-    BACKGROUND2,
-    FOCUS_COLOR,
-    FOCUS_FOREGROUND,
+    BAR_BORDER,
+    BG_DARK,
+    BG_LIGHT,
+    FG,
     FONT_SIZE,
-    FOREGROUND,
+    GROUP_ACTIVE,
+    GROUP_INACTIVE,
     ICON_SIZE,
     MARGIN,
+    TASK_SELECTED,
     commands,
-    separator_default,
     widget_default,
 )
 
@@ -19,18 +20,14 @@ from settings import (
 ###########
 # WIDGETS #
 ###########
-def create_separator(side):
-    if side == "left":
-        symbol = ""
-    elif side == "right":
-        symbol = ""
-
+def create_separator():
     separator = widget.TextBox(
-        **separator_default.extend(
-            foreground=FOREGROUND,
-            background=BACKGROUND2,
-            text=symbol
-        ),
+        fontsize=30,
+        foreground=FG,
+        background=BG_DARK,
+        margin=0,
+        padding=0,
+        text=""
     ),
     return separator[0]
 
@@ -48,52 +45,62 @@ screens = [
                         filename="~/.config/qtile/archlinux-icon.svg",
                     ),
                 ),
-                create_separator("left"),
+                create_separator(),
                 # Group Box
                 widget.GroupBox(
-                    disable_drag=True,
                     **widget_default.extend(
+                        disable_drag=True,
                         fontsize=ICON_SIZE,
                         margin=3,
-                        inactive=BACKGROUND1,
+                        active=GROUP_ACTIVE,
+                        inactive=GROUP_INACTIVE,
                     ),
                 ),
-                create_separator("left"),
+                create_separator(),
                 # Layout Indicator
                 widget.CurrentLayout(**widget_default),
 
                 # Separators
                 widget.TextBox(
-                    **separator_default,
-                    text=""
+                    background=BG_LIGHT,
+                    fontsize=30,
+                    foreground=BG_DARK,
+                    margin=0,
+                    padding=0,
+                    text="",
                 ),
-                widget.TextBox(margin=MARGIN, background=BACKGROUND1),
+                widget.TextBox(margin=MARGIN, background=BG_LIGHT),
 
                 widget.TaskList(
                     **widget_default.extend(
-                        margin=0,
-                        background=BACKGROUND1,
+                        background=BG_LIGHT,
+                        border=TASK_SELECTED,
                         borderwidth=0,
+                        icon_size=FONT_SIZE,
+                        margin=0,
                         max_title_width=200,
+                        mouse_callbacks={"Button2": lazy.window.kill()},
+                        padding_x=10,
+                        padding_y=5,
                         txt_floating="[F] ",
                         txt_maximized="[M] ",
                         txt_minimized="[m] ",
-                        icon_size=FONT_SIZE,
-                        padding_x=10,
-                        padding_y=5,
-                        mouse_callbacks={"Button2": lazy.window.kill()}
                     ),
                 ),
                 # Separators
-                widget.TextBox(margin=MARGIN, background=BACKGROUND1),
+                widget.TextBox(margin=MARGIN, background=BG_LIGHT),
                 widget.TextBox(
-                    **separator_default,
-                    text=""
+                    background=BG_DARK,
+                    fontsize=30,
+                    foreground=BG_LIGHT,
+                    margin=0,
+                    padding=0,
+                    text="",
                 ),
 
                 # Systray
                 widget.Systray(**widget_default),
-                create_separator("right"),
+                create_separator(),
                 # Clock
                 widget.Clock(
                     **widget_default.extend(
@@ -105,8 +112,8 @@ screens = [
             size=26,
             margin=MARGIN,
             border_width=2,
-            background=BACKGROUND2,
-            border_color=FOCUS_COLOR,
+            background=BG_DARK,
+            border_color=BAR_BORDER,
         ),
         left=bar.Gap(MARGIN),
         right=bar.Gap(MARGIN),

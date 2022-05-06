@@ -3,15 +3,27 @@ from utils import SettingsDict
 #############
 # VARIABLES #
 #############
+FG_LIGHT = "#D9E0EE"
+FG_DARK = ""
+
+BG_DARK = "#161320"
+BG_LIGHT = "#1E1E2E"
+
+WINDOW_FOCUS = "#89DCEB"
+WINDOW_UNFOCUS = "#302D41"
+
+BAR_BORDER = "#302D41"
+
+GROUP_ACTIVE = WINDOW_FOCUS
+GROUP_INACTIVE = BG_LIGHT
+GROUP_SELECTED = BAR_BORDER
+
+TASK_SELECTED = BAR_BORDER
+
+
 MARGIN = 5
 BORDER_WIDTH = 2
-FOCUS_COLOR = "#575268"
-FOCUS_FOREGROUND = "#F5C2E7"
-BACKGROUND1 = "#1E1D2F"
-FOREGROUND = "#D9E0EE"
-BACKGROUND2 = "#161320"
-UNFOCUS_COLOR = "#575268"
-BORDER_COLOR = "#FAE3B0"
+
 FONT = "UbuntuMono Nerd Font Mono"
 ICON_SIZE = 25
 FONT_SIZE = 15
@@ -38,10 +50,10 @@ commands = dict(
 )
 
 layout_default = SettingsDict(
-    border_focus=BORDER_COLOR,
-    border_focus_stack=BORDER_COLOR,
-    border_normal=UNFOCUS_COLOR,
-    border_normal_stack=UNFOCUS_COLOR,
+    border_focus=WINDOW_FOCUS,
+    border_focus_stack=WINDOW_FOCUS,
+    border_normal=WINDOW_UNFOCUS,
+    border_normal_stack=WINDOW_UNFOCUS,
     border_width=BORDER_WIDTH,
     margin=MARGIN,
     margin_on_single=MARGIN,
@@ -50,24 +62,17 @@ layout_default = SettingsDict(
 )
 
 widget_default = SettingsDict(
+    background=BG_DARK,
+    border=BAR_BORDER,
     font=FONT,
     fontsize=FONT_SIZE,
-    margin=MARGIN,
-    background=BACKGROUND2,
+    foreground=FG_LIGHT,
     highlight_method="block",
-    this_current_screen_border=FOCUS_COLOR,
-    this_screen_border=FOCUS_COLOR,
-    border=FOCUS_COLOR,
-    other_current_screen_border=FOCUS_COLOR,
-    other_screen_border=FOCUS_COLOR,
-    urgent_alert_method="border",
+    margin=MARGIN,
+    other_current_screen_border=GROUP_ACTIVE,
+    other_screen_border=GROUP_ACTIVE,
     rounded=False,
-)
-
-separator_default = SettingsDict(
-    fontsize=30,
-    foreground=BACKGROUND2,
-    background=BACKGROUND1,
-    margin=0,
-    padding=0,
+    this_current_screen_border=GROUP_SELECTED,
+    this_screen_border=GROUP_SELECTED,
+    urgent_alert_method="border",
 )

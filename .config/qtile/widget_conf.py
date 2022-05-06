@@ -5,7 +5,7 @@ from settings import (
     BAR_BORDER,
     BG_DARK,
     BG_LIGHT,
-    FG,
+    FG_LIGHT,
     FONT_SIZE,
     GROUP_ACTIVE,
     GROUP_INACTIVE,
@@ -23,7 +23,7 @@ from settings import (
 def create_separator():
     separator = widget.TextBox(
         fontsize=30,
-        foreground=FG,
+        foreground=FG_LIGHT,
         background=BG_DARK,
         margin=0,
         padding=0,

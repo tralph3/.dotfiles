@@ -132,6 +132,6 @@ cmp.setup({
     experimental = {
         ghost_text = {
             hl_group = 'Whitespace'
-        }
+        },
     },
 })

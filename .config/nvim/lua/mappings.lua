@@ -1,61 +1,67 @@
-local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
-end
-
-vim.g.mapleader = " "
+require('utils')
 
 -- Move lines (Alt + j/k)
-map('n', '<A-j>', ':m .+1<CR>==')
-map('n', '<A-k>', ':m .-2<CR>==')
+-- map('n', '<A-j>', ':m .+1<CR>==')
+-- map('n', '<A-k>', ':m .-2<CR>==')
 
 -- Move entire visual selection
-map('v', '<A-j>', ':m \'>+1<CR>gv=gv')
-map('v', '<A-k>', ':m \'<-2<CR>gv=gv')
+-- map('v', '<A-j>', ':m \'>+1<CR>gv=gv')
+-- map('v', '<A-k>', ':m \'<-2<CR>gv=gv')
+
+--BUFFERS-------------------------------------------
+
+-- Change buffers
+map('n', 'J', ':bp<CR>')
+map('n', 'K', ':bn<CR>')
+
+-- Delete buffers
+map('n', '<C-w>', ':bd<CR>')
+map('n', '<C-A-w>', ':bd!<CR>')
+
+--WINDOWS-------------------------------------------
+
+-- Change windows
+map('n', '<A-h>', ':wincmd h<CR>')
+map('n', '<A-j>', ':wincmd j<CR>')
+map('n', '<A-k>', ':wincmd k<CR>')
+map('n', '<A-l>', ':wincmd l<CR>')
+
+-- Delete windows
+map('n', '<A-w>', ':wincmd q<CR>')
+
+-- Move windows
+map('n', '<A-H>', ':wincmd H<CR>')
+map('n', '<A-J>', ':wincmd J<CR>')
+map('n', '<A-K>', ':wincmd K<CR>')
+map('n', '<A-L>', ':wincmd L<CR>')
+
+-- Resize windows
+map('n', '<C-A-h>', ':vertical resize +5<CR>')
+map('n', '<C-A-l>', ':vertical resize -5<CR>')
+
+--SHORTCUTS-----------------------------------------
 
 -- Go to start and end of line
-map('n', 'H', 'g^')
-map('n', 'L', 'g$')
+map('n', 'H', '^')
+map('n', 'L', '$')
 
 -- Paste from the yank buffer
 map('n', 'yp', '"0p')
 map('n', 'yP', '"0P')
 
--- Remaps for line wrapping
-map('n', 'j', 'gj')
-map('n', 'k', 'gk')
-map('n', '$', 'g$')
-map('n', '^', 'g^')
-map('n', '<leader>w', function() vim.opt.wrap = not(vim.opt.wrap:get()) end)
-
--- Change buffers
-map('n', 'J', ':bp<CR>')
-map('n', 'K', ':bn<CR>')
-map('n', '<C-w>', ':bd<CR>')
-
--- Format JSON file
-map('n', '<leader>J', ':%!python3 -m json.tool<CR>')
-
--- Switch between windows
-map('n', '<leader>h', ':wincmd h<CR>')
-map('n', '<leader>j', ':wincmd j<CR>')
-map('n', '<leader>k', ':wincmd k<CR>')
-map('n', '<leader>l', ':wincmd l<CR>')
-
 -- Indent in visual mode
 map('v', '<Tab>', '>gv')
 map('v', '<S-Tab>', '<gv')
 
--- Resize windows
-map('n', '<leader>+', ':vertical resize +5<CR>')
-map('n', '<leader>-', ':vertical resize -5<CR>')
+--UTILITIES-----------------------------------------
 
--- NeoTree
-map('n', '<C-n>', ':Neotree focus toggle=true<CR>')
-map('n', '<C-g>', ':Neotree float toggle=true git_status<CR>')
+-- Line wrapping
+map('n', '<leader>w', toggle_line_wrap)
+
+-- Format JSON file
+map('n', '<leader>J', ':%!python3 -m json.tool<CR>')
+
+--LSP-----------------------------------------------
 
 -- Go to definition
 map('n', 'gd', vim.lsp.buf.definition)
@@ -65,8 +71,3 @@ map('n', 'gD', vim.lsp.buf.declaration)
 map('n', 'gr', vim.lsp.buf.references)
 -- Rename symbol
 map('n', '<F2>', vim.lsp.buf.rename)
-
--- UltiSnips (proper mappings are set in the nvim-cmp config file)
-vim.g.UltiSnipsExpandTrigger = '<C-x>'
-vim.g.UltiSnipsJumpForwardTrigger = '<C-x>'
-vim.g.UltiSnipsJumpBackwardTrigger = '<C-x>'

@@ -1,7 +1,11 @@
+require('utils')
+
 vim.g.neo_tree_remove_legacy_commands = 1
 
+map('n', '<C-n>', ':Neotree focus toggle=true<CR>')
+
 require('neo-tree').setup({
-    close_if_last_window = true,
+    close_if_last_window = false,
     close_floats_on_escape_key = true,
     default_source = "filesystem",
     enable_diagnostics = true,

@@ -7,8 +7,6 @@ if not status_ok then
     vim.cmd('colorscheme slate')
 end
 
-vim.g.codedark_italics = 1
-
 -- Diagnostic icons
 vim.fn.sign_define("DiagnosticSignError",
     {text = " ", texthl = "DiagnosticSignError"}

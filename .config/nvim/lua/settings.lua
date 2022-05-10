@@ -1,3 +1,4 @@
+vim.g.mapleader = ' '
 vim.opt.backup = false
 vim.opt.colorcolumn = { 79 }
 vim.opt.expandtab = true
@@ -7,12 +8,16 @@ vim.opt.laststatus = 3
 vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸ ', trail = '·' }
+vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 5
 vim.opt.shiftwidth = 4
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = 4
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.tabstop = 4
 vim.opt.undodir = vim.fn.expand('~/.cache/nvim/undodir')
 vim.opt.undofile = true
@@ -52,6 +57,3 @@ vim.g.smoothie_update_interval=1
 
 -- Quickscope
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
-
--- UltiSnips
-vim.g.UltiSnipsSnippetDirectories = { 'snips' }

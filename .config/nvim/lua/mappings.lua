@@ -1,13 +1,5 @@
 require('utils')
 
--- Move lines (Alt + j/k)
--- map('n', '<A-j>', ':m .+1<CR>==')
--- map('n', '<A-k>', ':m .-2<CR>==')
-
--- Move entire visual selection
--- map('v', '<A-j>', ':m \'>+1<CR>gv=gv')
--- map('v', '<A-k>', ':m \'<-2<CR>gv=gv')
-
 --BUFFERS-------------------------------------------
 
 -- Change buffers
@@ -36,8 +28,10 @@ map('n', '<A-K>', ':wincmd K<CR>')
 map('n', '<A-L>', ':wincmd L<CR>')
 
 -- Resize windows
-map('n', '<C-A-h>', ':vertical resize +5<CR>')
-map('n', '<C-A-l>', ':vertical resize -5<CR>')
+map('n', '<C-A-h>', require('smart-splits').resize_left)
+map('n', '<C-A-j>', require('smart-splits').resize_down)
+map('n', '<C-A-k>', require('smart-splits').resize_up)
+map('n', '<C-A-l>', require('smart-splits').resize_right)
 
 --SHORTCUTS-----------------------------------------
 

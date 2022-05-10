@@ -26,10 +26,9 @@ return packer.startup({
         -- Packer
         use 'wbthomason/packer.nvim'
 
-        -- Improves startup time
-        use 'lewis6991/impatient.nvim'
 
         -- Enhancements
+        use 'lewis6991/impatient.nvim'
         use { 'windwp/nvim-autopairs',
             config = get_setup('autopairs'),
         }
@@ -37,6 +36,9 @@ return packer.startup({
         use 'tpope/vim-commentary'
         use 'tpope/vim-surround'
         use 'unblevable/quick-scope'
+        use { 'mrjones2014/smart-splits.nvim',
+            config = get_setup('smart-splits'),
+        }
 
 
         -- LSP

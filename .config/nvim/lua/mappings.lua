@@ -28,10 +28,13 @@ map('n', '<A-K>', ':wincmd K<CR>')
 map('n', '<A-L>', ':wincmd L<CR>')
 
 -- Resize windows
-map('n', '<C-A-h>', require('smart-splits').resize_left)
-map('n', '<C-A-j>', require('smart-splits').resize_down)
-map('n', '<C-A-k>', require('smart-splits').resize_up)
-map('n', '<C-A-l>', require('smart-splits').resize_right)
+local status_ok, ss = pcall(require, 'smart-splits')
+if status_ok then
+    map('n', '<C-A-h>', ss.resize_left)
+    map('n', '<C-A-j>', ss.resize_down)
+    map('n', '<C-A-k>', ss.resize_up)
+    map('n', '<C-A-l>', ss.resize_right)
+end
 
 --SHORTCUTS-----------------------------------------
 

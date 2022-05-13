@@ -28,6 +28,9 @@ return packer.startup({
 
 
         -- Enhancements
+        use { 'nvim-telescope/telescope.nvim',
+            config = get_setup('telescope'),
+        }
         use 'lewis6991/impatient.nvim'
         use { 'windwp/nvim-autopairs',
             config = get_setup('autopairs'),

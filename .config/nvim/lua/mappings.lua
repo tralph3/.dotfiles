@@ -58,13 +58,21 @@ map('n', '<leader>w', toggle_line_wrap)
 -- Format JSON file
 map('n', '<leader>J', ':%!python3 -m json.tool<CR>')
 
+-- Turn off highlighting for hlsearch
+map('n', '<Esc>', ':nohlsearch<CR>')
+
 --LSP-----------------------------------------------
 
 -- Go to definition
-map('n', 'gd', vim.lsp.buf.definition)
--- Go to declaration
-map('n', 'gD', vim.lsp.buf.declaration)
+map('n', 'gd', ':Telescope lsp_definitions<CR>')
+
 -- List all references
-map('n', 'gr', vim.lsp.buf.references)
+map('n', 'gr', ':Telescope lsp_references<CR>')
+
 -- Rename symbol
 map('n', '<F2>', vim.lsp.buf.rename)
+
+--TELESCOPE-----------------------------------------
+
+-- Find files
+map('n', '<leader>f', ':Telescope find_files<CR>')

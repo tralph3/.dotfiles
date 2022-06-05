@@ -142,7 +142,3 @@ alias syncmusic='rsync -av /mnt/Storage/Music/ T430:/mnt/Storage/Music'
 
 # get thumbnail from a video
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"
-
-# Docker
-alias fedora='sudo docker run -it fedora /bin/bash'
-alias ubuntu='sudo docker run -it ubuntu /bin/bash'

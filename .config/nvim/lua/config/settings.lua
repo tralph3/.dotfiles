@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 vim.opt.backup = false
 vim.opt.colorcolumn = { 79 }
+vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
@@ -12,6 +13,7 @@ vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 5
+vim.opt.sessionoptions = 'buffers'
 vim.opt.shiftwidth = 4
 vim.opt.smartcase = true
 vim.opt.smartindent = true
@@ -24,33 +26,6 @@ vim.opt.undofile = true
 vim.opt.updatetime = 300
 vim.opt.winblend = 10
 vim.opt.wrap = false
-
-vim.diagnostic.config({
-    virtual_text = {
-        prefix = '●',
-    },
-})
-
--- Remove trailing whitespace on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-    command = '%s/\\s\\+$//e',
-})
-
--- Show diagnostics on dialog on cursor hover
-vim.api.nvim_create_autocmd('CursorHold', {
-    callback = function()
-        vim.diagnostic.open_float({ focusable = false })
-    end,
-})
-
--- Highlight yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank(
-            { igroup="IncSearch", timeout=150, on_visual=true }
-        )
-    end,
-})
 
 -- Vim Smoothie
 vim.g.smoothie_update_interval=1

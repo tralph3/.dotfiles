@@ -4,31 +4,31 @@ require('gitsigns').setup({
             hl = "GitSignsAdd",
             text = "▎",
             numhl = "GitSignsAddNr",
-            linehl = "GitSignsAddLn"
+            linehl = "GitSignsAddLn",
         },
         change = {
             hl = "GitSignsChange",
             text = "▎",
             numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn"
+            linehl = "GitSignsChangeLn",
         },
         delete = {
             hl = "GitSignsDelete",
             text = "契",
             numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn"
+            linehl = "GitSignsDeleteLn",
         },
         topdelete = {
             hl = "GitSignsDelete",
             text = "契",
             numhl = "GitSignsDeleteNr",
-            linehl = "GitSignsDeleteLn"
+            linehl = "GitSignsDeleteLn",
         },
         changedelete = {
             hl = "GitSignsChange",
             text = "▎",
             numhl = "GitSignsChangeNr",
-            linehl = "GitSignsChangeLn"
+            linehl = "GitSignsChangeLn",
         },
     },
 })

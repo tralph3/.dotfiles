@@ -1,34 +1,6 @@
-vim.o.completeopt = 'menu,noinsert,preview,longest,menuone,noselect'
-
 local cmp = require('cmp')
+local icons = require('config.globals').icons
 
-local lsp_symbols = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "",
-    Interface = "שּׂ",
-    Module = "",
-    Property = "",
-    Unit = "塞",
-    Value = "",
-    Enum = "笠",
-    Keyword = "",
-    Snippet = "麗",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "狀",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = ""
-}
 
 cmp.setup({
     snippet = {
@@ -118,7 +90,7 @@ cmp.setup({
         fields = { 'kind', 'abbr', 'menu'},
         format = function(entry, item)
             local kind_name = item.kind
-            item.kind = lsp_symbols[item.kind] or ''
+            item.kind = icons[item.kind] or ''
             item.menu = ({
                 nvim_lsp = '[L]',
                 luasnip = '[S]',

@@ -95,7 +95,7 @@ src () {
 uall (){
     case $DISTRO in
         arch)
-            paru --sudoloop --skipreview -Syu;
+            paru --combinedupgrade --sudoloop --skipreview -Syu;
                 nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
                 paru --sudoloop -c --removemake --noconfirm
             ;;

@@ -1,3 +1,4 @@
+require('config.globals')
 require('config.plugins')
 require('config.styling')
 require('config.settings')

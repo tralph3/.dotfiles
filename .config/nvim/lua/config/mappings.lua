@@ -1,4 +1,4 @@
-local actions = require('config.globals').actions
+local actions = _G.actions
 local map = require('config.utils').map
 
 map('n', 'K', actions.next_buffer)
@@ -41,6 +41,8 @@ map('n', '<leader>w', actions.toggle_line_wrap)
 map('n', '<leader>J', actions.format_json)
 
 map('n', '<Esc>', actions.clear_search_highlight)
+
+map('t', '<Esc>', actions.exit_terminal_mode)
 
 map('n', 'gd', actions.lsp_go_definition)
 

@@ -1,4 +1,4 @@
-local actions = {
+_G.actions = {
     next_buffer = ':bn<CR>',
     prev_buffer = ':bp<CR>',
     buffer_delete  = ':bd<CR>',
@@ -29,9 +29,21 @@ local actions = {
 
     clear_search_highlight = ':nohlsearch<CR>',
 
+    exit_terminal_mode = '<C-\\><C-n>',
+
     lsp_go_definition = vim.lsp.buf.definition,
     lsp_go_reference = vim.lsp.buf.references,
     lsp_rename_symbol = vim.lsp.buf.rename,
 }
 
-return actions
+local action_metatable = {
+    __index = function(self, key)
+        if self[key] == nil then
+            error('attempting to access non-existant action '..key)
+        else
+            return self[key]
+        end
+    end,
+}
+
+setmetatable(_G.actions, action_metatable)

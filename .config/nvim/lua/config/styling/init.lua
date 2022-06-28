@@ -1,6 +1,6 @@
 require('config.styling.colorscheme')
 
-local icons = require('config.globals').icons
+local icons = _G.icons
 
 -- Diagnostic icons
 vim.fn.sign_define('DiagnosticSignError',

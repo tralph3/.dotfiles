@@ -1,4 +1,4 @@
-local icons = require('config.globals').icons
+local icons = _G.icons
 
 require('lualine').setup({
     options = {

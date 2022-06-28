@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-local icons = require('config.globals').icons
+local icons = _G.icons
 
 
 cmp.setup({

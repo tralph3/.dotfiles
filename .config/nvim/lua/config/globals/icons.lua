@@ -1,4 +1,4 @@
-local icons = {
+_G.icons = {
     Class = '',
     Color = '',
     Constant = '',
@@ -34,4 +34,14 @@ local icons = {
     Warning = '',
 }
 
-return icons
+local icon_metatable = {
+    __index = function(self, key)
+        if self[key] == nil then
+            error('attempting to access non-existant action '..key)
+        else
+            return self[key]
+        end
+    end,
+}
+
+setmetatable(_G.icons, icon_metatable)

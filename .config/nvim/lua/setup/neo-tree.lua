@@ -1,4 +1,4 @@
-local icons = require('config.globals').icons
+local icons = _G.icons
 local map = require('config.utils').map
 
 vim.g.neo_tree_remove_legacy_commands = 1

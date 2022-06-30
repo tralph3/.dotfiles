@@ -1,9 +1,9 @@
 local actions = _G.actions
 local map = require('config.utils').map
 
-actions.telescope_find_files = ':Telescope find_files<CR>'
-actions.lsp_go_definition = ':Telescope lsp_definitions<CR>'
-actions.lsp_go_reference = ':Telescope lsp_references<CR>'
+actions.telescope_find_files = require('telescope.builtin').find_files
+actions.lsp_go_definition = require('telescope.builtin').lsp_definitions
+actions.lsp_go_reference = require('telescope.builtin').lsp_references
 
 map('n', '<leader>f', actions.telescope_find_files)
 map('n', 'gd', actions.lsp_go_definition)

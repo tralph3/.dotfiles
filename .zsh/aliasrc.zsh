@@ -111,6 +111,14 @@ uall (){
     esac
 }
 
+# run windows executable in own prefix
+wn() {
+    if [ $1 ] ; then
+        WINEPREFIX=$(pwd)/prefix wine $1
+    else
+        echo "No file provided"
+    fi
+}
 # regular list
 alias ls='exa -l --icons --header --group-directories-first'
 # list all

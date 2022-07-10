@@ -1,7 +1,6 @@
 local cmp = require('cmp')
 local icons = _G.icons
 
-
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -9,7 +8,6 @@ cmp.setup({
         end,
     },
 
-    enabled = true,
     debug = false,
     throttle_time = 80,
     source_timeout = 200,

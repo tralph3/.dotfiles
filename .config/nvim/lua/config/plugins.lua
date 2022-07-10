@@ -43,7 +43,9 @@ return packer.startup({
 
         use 'tpope/vim-commentary'
 
-        use 'tpope/vim-surround'
+        use { 'kylechui/nvim-surround',
+            config = get_setup('nvim-surround'),
+        }
 
         use 'unblevable/quick-scope'
 

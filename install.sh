@@ -73,6 +73,9 @@ install_config .mozilla/firefox/user.js "$MOZ_DIR"/user.js
 # qtile
 install_config .config/qtile ~/.config/qtile
 
+# awesome
+install_config .config/awesome ~/.config/awesome
+
 # picom
 install_config .config/picom/picom.conf ~/.config/picom/picom.conf
 

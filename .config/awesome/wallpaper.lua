@@ -1,37 +1,36 @@
 local gears = require('gears')
 local awful = require('awful')
-
-local function list_images_in_dir(dir)
-    local images = {}
-    local p = io.popen(
-        string.format('find "%s" -iname "*.jpg" -type f', dir)
-    )
-    if not p then
-       return {}
-    end
-    for image in p:lines() do
-        table.insert(images, image)
-    end
-    p:close()
-    return images
-end
+local settings = require('settings')
 
 local function set_random_wallpaper(wallpapers)
     math.randomseed(os.time())
     local wallpaper = wallpapers[math.random(#wallpapers)]
-    for screen in awful.screen do
-        gears.wallpaper.maximized(wallpaper, screen)
+    for s in screen do
+        gears.wallpaper.maximized(wallpaper, s)
     end
 end
 
+local function set_random_wallpaper_from_dir(dir)
+    local images = {}
+    local command = string.format('find "%s" -iname "*.jpg" -type f', dir)
+    awful.spawn.with_line_callback(command, {
+        stdout = function(line)
+            table.insert(images, line)
+        end,
+        output_done = function()
+            if #images > 0 then
+                set_random_wallpaper(images)
+            end
+        end
+    })
+end
+
+
 gears.timer({
-    timeout = 600,
+    timeout = settings.background_switch_interval_in_minutes * 60,
     call_now = true,
     autostart = true,
     callback = function()
-        local backgrounds_path = string.format(
-            '%s/.local/share/backgrounds', os.getenv('HOME'))
-        local images = list_images_in_dir(backgrounds_path)
-        set_random_wallpaper(images)
+        set_random_wallpaper_from_dir(settings.backgrounds_directory)
     end
 })

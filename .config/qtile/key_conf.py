@@ -40,7 +40,6 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(),
         desc="Reset all window sizes"),
 
-
     # Switch layouts
     Key([mod], "Tab", lazy.next_layout(),
         desc="Toggle between layouts"),

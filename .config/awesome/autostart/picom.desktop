@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Picom
-Exec=env DISPLAY=":0" /usr/bin/picom --experimental-backends --unredir-if-possible
+Exec=env DISPLAY=":0" /usr/bin/picom --unredir-if-possible
 NoDisplay=true
 Type=Application

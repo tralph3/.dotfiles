@@ -63,6 +63,13 @@ local globalkeys = gears.table.join(
         awful.spawn.with_shell(commands.toggle_mute_mic)
     end),
 
+    awful.key({}, 'XF86MonBrightnessUp', function()
+        awful.spawn.with_shell(commands.brightness_up)
+    end),
+    awful.key({}, 'XF86MonBrightnessDown', function()
+        awful.spawn.with_shell(commands.brightness_down)
+    end),
+
     awful.key({ modkey }, 'i', function()
         awful.spawn.with_shell(commands.browser)
     end),

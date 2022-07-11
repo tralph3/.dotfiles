@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Flameshot
+Exec=/usr/bin/flameshot
+NoDisplay=true
+Type=Application

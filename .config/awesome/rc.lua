@@ -205,7 +205,7 @@ awful.rules.rules = {
                 'firefox',
             },
         },
-        properties = { screen = 1, tag = '2' },
+        properties = { screen = 1, tag = screen[1].tags[2] },
     },
 
     {
@@ -215,7 +215,7 @@ awful.rules.rules = {
                 'engrampa',
             },
         },
-        properties = { screen = 1, tag = '4' },
+        properties = { screen = 1, tag = screen[1].tags[4] },
     },
 
     {
@@ -226,7 +226,7 @@ awful.rules.rules = {
                 'gamescope',
             },
         },
-        properties = { screen = 1, tag = '5' },
+        properties = { screen = 1, tag = screen[1].tags[5] },
     },
 
     {
@@ -235,7 +235,7 @@ awful.rules.rules = {
                 'discord',
             },
         },
-        properties = { screen = 1, tag = '6' },
+        properties = { screen = 1, tag = screen[1].tags[6] },
     },
 
     {
@@ -245,7 +245,7 @@ awful.rules.rules = {
                 'Quodlibet',
             },
         },
-        properties = { screen = 1, tag = '7' },
+        properties = { screen = 1, tag = screen[1].tags[7] },
     },
 }
 

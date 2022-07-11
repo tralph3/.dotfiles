@@ -4,7 +4,7 @@
 setxkbmap -layout latam
 
 # Start picom
-DISPLAY=":0" /usr/bin/picom --experimental-backends --unredir-if-possible &
+DISPLAY=":0" /usr/bin/picom --unredir-if-possible &
 
 # Set background
 SCRIPT_DIR=$(dirname "$(realpath "$0")")

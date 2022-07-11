@@ -265,6 +265,11 @@ client.connect_signal('manage', function (c)
     end
 end)
 
+client.connect_signal('manage', function(c)
+    if c.maximized then
+        c.maximized = false
+    end
+end)
 client.connect_signal('mouse::enter', function(c)
     c:emit_signal('request::activate', 'mouse_enter', {raise = false})
 end)

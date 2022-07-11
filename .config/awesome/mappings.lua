@@ -56,10 +56,10 @@ local globalkeys = gears.table.join(
     awful.key({}, 'XF86AudioLowerVolume', function()
         awful.spawn.with_shell(commands.lower_volume)
     end),
-    awful.key({}, 'XF86AudioAudioMute', function()
+    awful.key({}, 'XF86AudioMute', function()
         awful.spawn.with_shell(commands.toggle_mute_audio)
     end),
-    awful.key({}, 'XF86AudioAudioMicMute', function()
+    awful.key({}, 'XF86AudioMicMute', function()
         awful.spawn.with_shell(commands.toggle_mute_mic)
     end),
 

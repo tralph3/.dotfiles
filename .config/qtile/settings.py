@@ -34,8 +34,8 @@ brightness_step = 5
 # commands
 commands = dict(
     terminal="alacritty",
-    raise_volume=f"/usr/bin/pactl set-sink-volume 0 +{volume_step}%",
-    lower_volume=f"/usr/bin/pactl set-sink-volume 0 -{volume_step}%",
+    raise_volume=f"/usr/bin/pactl set-sink-volume 0 +{volume_step}",
+    lower_volume=f"/usr/bin/pactl set-sink-volume 0 -{volume_step}",
     toggle_mute="pactl set-sink-mute 0 toggle",
     toggle_mute_mic="amixer set Capture toggle",
     rofi="rofi -show drun",

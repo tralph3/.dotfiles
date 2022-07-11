@@ -30,7 +30,7 @@ groups = [
 
     # Music
     Group("7", label="", matches=[
-        Match(wm_instance_class=["Spotify", "spotify"]),
+        Match(wm_class=["Spotify", "spotify"]),
         Match(wm_class=["Quodlibet"])
     ]),
 

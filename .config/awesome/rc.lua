@@ -102,10 +102,6 @@ end
 screen.connect_signal('property::geometry', set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    set_wallpaper(s)
-
-    -- Each screen has its own tag table.
     local tag_titles = {'', '', '', '', '', '', '', '', ''}
     awful.tag(tag_titles, s, awful.layout.layouts[1])
 
@@ -265,7 +261,7 @@ client.connect_signal('manage', function (c)
     end
 end)
 
-client.connect_signal('manage', function(c)
+client.connect_signal('request::manage', function(c)
     if c.maximized then
         c.maximized = false
     end

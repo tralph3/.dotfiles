@@ -49,6 +49,12 @@ local globalkeys = gears.table.join(
     awful.key({ modkey, 'Control' }, 'h', function()
         awful.tag.incmwfact(-0.05)
     end),
+    awful.key({ modkey, 'Control' }, 'k', function()
+        awful.client.incwfact(0.1)
+    end),
+    awful.key({ modkey, 'Control' }, 'j', function()
+        awful.client.incwfact(-0.1)
+    end),
 
     awful.key({}, 'XF86AudioRaiseVolume', function()
         awful.spawn.with_shell(commands.raise_volume)

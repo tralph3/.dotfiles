@@ -43,7 +43,7 @@ beautiful.init(theme_path)
 local modkey = 'Mod4'
 
 awful.layout.layouts = {
-    awful.layout.suit.fair,
+    awful.layout.suit.tile,
 }
 
 mytextclock = wibox.widget.textclock()

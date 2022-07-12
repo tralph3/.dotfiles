@@ -1,3 +1,5 @@
+package.loaded['naughty.dbus'] = {}
+
 require('autostart')
 require('wallpaper')
 local keys = require('mappings')
@@ -10,8 +12,6 @@ local beautiful = require('beautiful')
 local naughty = require('naughty')
 local hotkeys_popup = require('awful.hotkeys_popup')
 local commands = require('commands')
-
-package.loaded['naughty.dbus'] = {}
 
 if awesome.startup_errors then
     naughty.notify({

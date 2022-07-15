@@ -8,6 +8,7 @@ require('nvim-treesitter.configs').setup({
         'css',
         'dockerfile',
         'gdscript',
+        'haskell',
         'html',
         'javascript',
         'json',

@@ -31,6 +31,9 @@ local servers = {
 
     -- Latex
     { 'texlab' },
+
+    -- Haskell
+    { 'hls' },
 }
 
 -- Only enable the server if it's installed on the system

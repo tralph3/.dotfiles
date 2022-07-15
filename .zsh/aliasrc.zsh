@@ -127,6 +127,8 @@ alias la='exa -la --icons --header --group-directories-first'
 alias lr='exa -lT -L 2 --icons --header --group-directories-first'
 # list recursively indefinitely
 alias lR='exa -lT --icons --header --group-directories-first'
+# copy terminal stuff to clipboard
+alias clip='xclip -selection clipboard'
 
 # file editing
 export EDITOR=nvim

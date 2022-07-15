@@ -15,8 +15,14 @@ from widget_conf import screens
 from options import *
 
 
-# Autostart
+search_paths = [
+    '/etc/xdg/autostart',
+    os.path.expanduser('~/.config/autostart'),
+    os.path.expanduser('~/.config/qtile/autostart'),
+]
+
+
 @hook.subscribe.startup_once
 def autostart():
-    script_path = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.run([script_path])
+    autostart_paths = ':'.join(search_paths)
+    subprocess.run(['/usr/bin/dex', '-as', autostart_paths])

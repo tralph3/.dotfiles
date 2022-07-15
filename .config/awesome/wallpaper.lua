@@ -1,10 +1,17 @@
+local M = {}
+
 local gears = require('gears')
 local awful = require('awful')
 local settings = require('settings')
 
-local function set_random_wallpaper(wallpapers)
-    math.randomseed(os.time())
-    local wallpaper = wallpapers[math.random(#wallpapers)]
+math.randomseed(os.time())
+
+M.set_wallpaper = function(wallpaper)
+    if not wallpaper then
+        return
+    end
+
+    _G.current_wallpaper = wallpaper
     for s in screen do
         gears.wallpaper.maximized(wallpaper, s)
     end
@@ -19,7 +26,8 @@ local function set_random_wallpaper_from_dir(dir)
         end,
         output_done = function()
             if #images > 0 then
-                set_random_wallpaper(images)
+                local wallpaper = images[math.random(#images)]
+                M.set_wallpaper(wallpaper)
             end
         end
     })
@@ -34,3 +42,5 @@ gears.timer({
         set_random_wallpaper_from_dir(settings.backgrounds_directory)
     end
 })
+
+return M

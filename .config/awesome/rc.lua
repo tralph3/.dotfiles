@@ -1,7 +1,7 @@
 package.loaded['naughty.dbus'] = {}
 
 require('autostart')
-require('wallpaper')
+local wallpaper = require('wallpaper')
 local keys = require('mappings')
 require('awful.autofocus')
 
@@ -271,3 +271,6 @@ client.connect_signal('mouse::enter', function(c)
 end)
 client.connect_signal('focus', function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_normal end)
+screen.connect_signal("property::geometry", function()
+    wallpaper.set_wallpaper(_G.current_wallpaper)
+end)

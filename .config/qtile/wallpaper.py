@@ -1,6 +1,5 @@
 import os
 import random
-import threading
 from libqtile import qtile
 from typing import Callable
 from settings import WALLPAPERS_PATH

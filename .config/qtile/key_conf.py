@@ -115,7 +115,7 @@ for i in [str(x) for x in range(1, 10)]:
             Key(
                 [mod],
                 i,
-                lazy.group[i].toscreen(),
+                lazy.group[i].toscreen(toggle=True),
                 desc=f"Switch to group {i}",
             ),
 

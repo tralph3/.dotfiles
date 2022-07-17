@@ -27,6 +27,10 @@ BORDER_WIDTH = 2
 FONT = "UbuntuMono Nerd Font Mono"
 ICON_SIZE = 25
 FONT_SIZE = 15
+
+WALLPAPERS_PATH = "/usr/share/backgrounds/"
+WALLPAPER_TIMEOUT_MINUTES = 10
+
 mod = "mod4"
 volume_step = 5
 brightness_step = 5

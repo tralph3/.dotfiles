@@ -35,7 +35,6 @@ def create_separator():
 # Status bar
 screens = [
     Screen(
-        wallpaper_mode='fill',
         top=bar.Bar([
                 # Arch logo
                 widget.Image(
@@ -121,5 +120,3 @@ screens = [
         bottom=bar.Gap(MARGIN)
     ),
 ]
-
-# screens[0].cmd_set_wallpaper('/usr/share/backgrounds/pier.jpg', mode='fill')

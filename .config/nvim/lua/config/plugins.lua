@@ -29,7 +29,7 @@ return packer.startup({
             config = get_setup('telescope'),
         }
 
-        use { '/home/tralph3/git_projects/neoprojet/',
+        use { '/home/tralph3/projects/neoprojet/',
             config = get_setup('neoprojet'),
         }
 

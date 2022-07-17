@@ -73,12 +73,12 @@ require('neo-tree').setup({
     filesystem = {
         window = {
             mappings = {
-                ['H'] = 'toggle_hidden',
+                ['<C-h>'] = 'toggle_hidden',
                 ['/'] = '',
                 ['f'] = '',
-                ['<C-x>'] = 'clear_filter',
-                ['<C-h>'] = 'navigate_up',
-                ['<C-l>'] = 'set_root',
+                ['<Esc>'] = 'clear_filter',
+                ['H'] = 'navigate_up',
+                ['L'] = 'set_root',
             }
         },
         async_directory_scan = 'auto',

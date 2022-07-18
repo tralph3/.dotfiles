@@ -48,7 +48,7 @@ require('neo-tree').setup({
     window = {
         mappings = {
             ['<space>'] = '',
-            ['<2-LeftMouse>'] = '',
+            ['<2-LeftMouse>'] = 'open',
             ['<CR>'] = 'open',
             ['l'] = 'open',
             ['S'] = 'open_split',

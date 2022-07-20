@@ -4,18 +4,18 @@ local theme = {}
 
 theme.font          = "UbuntuMono NerdFont Mono 12"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
+theme.bg_normal     = "#1E1E2E"
+theme.bg_focus      = "#302D41"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#D9E0EE"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(4)
+theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(2)
 theme.border_normal = "#302D41"
 theme.border_focus  = "#89DCEB"

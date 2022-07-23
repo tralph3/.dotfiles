@@ -1,41 +1,57 @@
 local awful = require('awful')
 local wibox = require('wibox')
+local gears = require('gears')
+local dpi = require('beautiful.xresources').apply_dpi
 local taglist_buttons = require('mappings').taglist_buttons
 local tasklist_buttons = require('mappings').tasklist_buttons
-local mytextclock = wibox.widget.textclock()
+local text_clock = wibox.widget.textclock()
 
 awful.screen.connect_for_each_screen(function(s)
-    local tag_titles = {'', '', '', '', '', '', '', '', ''}
+    local tag_titles = { '', '', '', '', '', '', '', '', '' }
+    local shape = gears.shape.rectangle
     awful.tag(tag_titles, s, awful.layout.layouts[1])
 
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
+    s.taglist = awful.widget.taglist({
+        screen = s,
+        style = {
+            shape = shape,
+        },
+        layout = {
+            spacing = 5,
+            spacing_widget = {
+                shape = shape,
+                wibox.widget.separator,
+            },
+            layout = wibox.layout.fixed.horizontal,
+        },
+        filter = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons,
+    })
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
+    s.tasklist = awful.widget.tasklist({
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-    }
+        buttons = tasklist_buttons,
+    })
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = 'top', screen = s })
+    s.wibox = awful.wibar({
+        position = 'top',
+        screen = s,
+        margins = dpi(4),
+    })
 
-    -- Add widgets to the wibox
-    s.mywibox:setup {
+    s.wibox:setup({
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            s.mytaglist,
+            s.taglist,
         },
-        s.mytasklist, -- Middle widget
+        s.tasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            mytextclock,
+            text_clock,
         },
-    }
+    })
 end)

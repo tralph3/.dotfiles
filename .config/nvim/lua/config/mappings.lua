@@ -49,3 +49,9 @@ map('n', 'gd', actions.lsp_go_definition)
 map('n', 'gr', actions.lsp_go_reference)
 
 map('n', '<F2>', actions.lsp_rename_symbol)
+
+map('n', '<leader>b', actions.debug_toggle_breakpoint)
+map('n', '<F9>', actions.debug_run)
+map('n', '<F10>', actions.debug_step_into)
+map('n', '<F11>', actions.debug_step_over)
+map('n', '<F12>', actions.debug_close)

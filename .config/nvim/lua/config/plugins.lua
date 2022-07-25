@@ -23,7 +23,7 @@ end
 
 return packer.startup({
     function(use)
-        use 'wbthomason/packer.nvim'
+        use { 'wbthomason/packer.nvim' }
 
         use { 'nvim-telescope/telescope.nvim',
             config = get_setup('telescope'),
@@ -33,21 +33,34 @@ return packer.startup({
             config = get_setup('neoprojet'),
         }
 
-        use 'lewis6991/impatient.nvim'
+        use { 'lewis6991/impatient.nvim' }
 
         use { 'windwp/nvim-autopairs',
             config = get_setup('autopairs'),
         }
 
-        use 'psliwka/vim-smoothie'
+        use { 'williamboman/mason.nvim',
+            config = get_setup('mason'),
+        }
+        use { 'mfussenegger/nvim-dap',
+            config = get_setup('dap'),
+        }
+        use { 'rcarriga/nvim-dap-ui',
+            config = get_setup('dapui'),
+            requires = { 'mfussenegger/nvim-dap',
+                config = get_setup('dap'),
+            },
+        }
 
-        use 'tpope/vim-commentary'
+        use { 'psliwka/vim-smoothie' }
+
+        use { 'tpope/vim-commentary' }
 
         use { 'kylechui/nvim-surround',
             config = get_setup('nvim-surround'),
         }
 
-        use 'unblevable/quick-scope'
+        use { 'unblevable/quick-scope' }
 
         use { 'mrjones2014/smart-splits.nvim',
             config = get_setup('smart-splits'),
@@ -95,11 +108,7 @@ return packer.startup({
             config = get_setup('colorizer'),
         }
 
-        use 'kyazdani42/nvim-web-devicons'
-
-        use { 'sunjon/Shade.nvim',
-            config = get_setup('shade'),
-        }
+        use { 'kyazdani42/nvim-web-devicons' }
 
         use { 'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdateSync',
@@ -107,7 +116,7 @@ return packer.startup({
             requires = { 'nvim-treesitter/nvim-treesitter-textobjects' }
         }
 
-        use 'catppuccin/nvim'
+        use { 'catppuccin/nvim' }
 
         if PACKER_JUST_INSTALLED then
             vim.api.nvim_create_autocmd('User PackerComplete', {

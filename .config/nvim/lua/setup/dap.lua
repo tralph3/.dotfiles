@@ -10,10 +10,20 @@ dap.configurations.python = {
             return '/usr/bin/python'
         end,
     },
+    {
+        type = 'python',
+        request = 'launch',
+        name = 'Test with pytest',
+        module = 'pytest',
+        args = { 'test' },
+        pythonPath = function ()
+            return '/usr/bin/python'
+        end,
+    },
 }
 
 dap.adapters.python = {
     type = 'executable',
-    command = '/home/tralph3/.local/share/nvim/mason/packages/debugpy/venv/bin/python',
+    command = vim.fn.stdpath('data')..'/mason/packages/debugpy/venv/bin/python',
     args = { '-m', 'debugpy.adapter' },
 }

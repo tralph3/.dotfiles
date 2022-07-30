@@ -14,7 +14,7 @@ client.connect_signal('manage', function (c)
     end
 end)
 
-client.connect_signal('request::manage', function(c)
+client.connect_signal('property::maximized', function(c)
     c.maximized = false
 end)
 client.connect_signal('mouse::enter', function(c)

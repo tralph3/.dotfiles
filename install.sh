@@ -92,11 +92,11 @@ install_config .config/gtk-3.0 ~/.config/gtk-3.0
 # rofi
 install_config .config/rofi ~/.config/rofi
 
-# tridactyl
-install_config .config/tridactyl ~/.config/tridactyl
-
 # zathura
 install_config .config/zathura ~/.config/zathura
+
+# emacs
+install_config .config/emacs ~/.config/emacs
 
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Emacs Daemon
+Exec=emacs --daemon
+NoDisplay=true
+Type=Application

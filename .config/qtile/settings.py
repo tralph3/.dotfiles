@@ -38,6 +38,7 @@ brightness_step = 5
 # commands
 commands = dict(
     terminal="alacritty",
+    emacs="emacsclient -c",
     raise_volume=f"/usr/bin/pactl set-sink-volume 0 +{volume_step}%",
     lower_volume=f"/usr/bin/pactl set-sink-volume 0 -{volume_step}%",
     toggle_mute="pactl set-sink-mute 0 toggle",

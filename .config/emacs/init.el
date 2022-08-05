@@ -7,7 +7,7 @@
 (setq delete-old-versions t)
 (setq backup-directory-alist '(("." . ,(expand-file-name "backups" user-emacs-directory))))
 
-(load custom-file)
+(load custom-file :noerror)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)

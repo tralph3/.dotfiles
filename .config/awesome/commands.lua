@@ -2,6 +2,7 @@ local settings = require('settings')
 
 local commands = {
     terminal='alacritty',
+    emacs='emacsclient -c',
     raise_volume='/usr/bin/pactl set-sink-volume 0 +'..settings.volume_step..'%',
     lower_volume='/usr/bin/pactl set-sink-volume 0 -'..settings.volume_step..'%',
     toggle_mute_audio='pactl set-sink-mute 0 toggle',

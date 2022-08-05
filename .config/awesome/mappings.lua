@@ -36,6 +36,10 @@ local globalkeys = gears.table.join(
         awful.spawn.with_shell(commands.terminal)
     end),
 
+    awful.key({ modkey }, 'e', function()
+        awful.spawn.with_shell(commands.emacs)
+    end),
+
     awful.key({ modkey }, 'r', function()
             awful.spawn.with_shell(commands.run_prompt)
     end),

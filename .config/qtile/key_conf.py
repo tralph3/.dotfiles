@@ -58,6 +58,10 @@ keys = [
     Key([mod], "Return", lazy.spawn(commands["terminal"]),
         desc="Launch terminal"),
 
+    # Emacs
+    Key([mod], "e", lazy.spawn(commands["emacs"]),
+        desc="Launch emacs client"),
+
     # Rofi
     Key([mod], "r", lazy.spawn(commands["rofi"]),
         desc="Spawn a rofi window"),

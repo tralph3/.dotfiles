@@ -1,3 +1,5 @@
+local tree_sitter_parser_path = vim.fn.expand("~/.local/share/treesitter-parsers")
+vim.opt.runtimepath:append(tree_sitter_parser_path)
 require('nvim-treesitter.configs').setup({
     ensure_installed = {
         'bash',
@@ -22,6 +24,7 @@ require('nvim-treesitter.configs').setup({
         'vim',
         'yaml',
     },
+    parser_install_dir = tree_sitter_parser_path,
     sync_install = true,
     highlight = {
         enable = true,

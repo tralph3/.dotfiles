@@ -1,0 +1,16 @@
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode 1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(hl-line-mode 1)
+(blink-cursor-mode 1)
+(setq inhibit-startup-message t)
+
+(setq backup-by-copying t)
+(setq delete-old-versions t)
+(setq kept-new-versions 6)
+(setq kept-old-versions 2)
+(setq version-control t)
+
+(set-face-attribute 'default nil :font "UbuntuMono Nerd Font" :height 120)

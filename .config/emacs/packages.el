@@ -1,5 +1,7 @@
 (defun get-config (config-name)
-  (load (expand-file-name (concat "package-config/" config-name) user-config-directory)))
+  (let ((config-path (expand-file-name (concat "package-config/" config-name ".el") user-config-directory)))
+    (if (file-exists-p config-path)
+	(load config-path))))
 (require 'package)
 
 (add-to-list 'package-archives
@@ -42,3 +44,19 @@
 (use-package helm
   :ensure t
   :config (get-config "helm"))
+
+(use-package tree-sitter
+  :ensure t
+  :config (get-config "tree-sitter"))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :config (get-config "tree-sitter-langs"))
+
+(use-package lsp-mode
+  :ensure t
+  :config (get-config "lsp-mode"))
+
+(use-package company
+  :ensure t
+  :config (get-config "company"))

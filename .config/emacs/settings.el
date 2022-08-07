@@ -13,4 +13,4 @@
 (setq kept-old-versions 2)
 (setq version-control t)
 
-(set-face-attribute 'default nil :font "UbuntuMono Nerd Font" :height 120)
+(set-face-attribute 'default nil :font "UbuntuMono Nerd Font" :height 110)

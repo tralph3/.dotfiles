@@ -1,1 +1,2 @@
-(setq doom-modeline-height 10)
+(doom-modeline-mode 1)
+(setq doom-modeline-height 30)

@@ -17,10 +17,6 @@
   :ensure t
   :config (get-config "evil"))
 
-(use-package mood-one-theme
-  :ensure t
-  :config (get-config "mood-one-theme"))
-
 (use-package centaur-tabs
   :ensure t
   :config (get-config "centaur-tabs"))
@@ -35,7 +31,16 @@
 
 (use-package treemacs
   :ensure t
+  :after all-the-icons
   :config (get-config "treemacs"))
+
+(use-package treemacs-evil
+  :ensure t
+  :config (get-config "treemacs-evil"))
+
+(use-package treemacs-all-the-icons
+  :ensure t
+  :config (get-config "treemacs-all-the-icons"))
 
 (use-package all-the-icons
   :ensure t
@@ -60,3 +65,11 @@
 (use-package company
   :ensure t
   :config (get-config "company"))
+
+(use-package rust-mode
+  :ensure t
+  :config (get-config "rust-mode"))
+
+(use-package doom-themes
+  :ensure t
+  :config (get-config "doom-themes"))

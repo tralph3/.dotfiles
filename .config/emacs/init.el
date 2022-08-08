@@ -1,5 +1,7 @@
 (setq user-emacs-directory (expand-file-name "~/.local/share/emacs"))
 (setq user-config-directory (expand-file-name "~/.config/emacs"))
+
+(setq native-comp-eln-load-path '((. "~/.local/share/emacs/eln-cache")))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (setq url-history-file (expand-file-name "url/history" user-emacs-directory))

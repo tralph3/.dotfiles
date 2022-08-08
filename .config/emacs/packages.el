@@ -14,6 +14,8 @@
 (require 'use-package)
 
 (use-package evil
+  :init
+  (setq evil-want-C-u-scroll t)
   :ensure t
   :config (get-config "evil"))
 
@@ -29,9 +31,12 @@
   :ensure t
   :config (get-config "vterm"))
 
+(use-package all-the-icons
+  :ensure t
+  :config (get-config "all-the-icons"))
+
 (use-package treemacs
   :ensure t
-  :after all-the-icons
   :config (get-config "treemacs"))
 
 (use-package treemacs-evil
@@ -41,10 +46,6 @@
 (use-package treemacs-all-the-icons
   :ensure t
   :config (get-config "treemacs-all-the-icons"))
-
-(use-package all-the-icons
-  :ensure t
-  :config (get-config "all-the-icons"))
 
 (use-package helm
   :ensure t

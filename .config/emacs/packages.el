@@ -74,3 +74,7 @@
 (use-package doom-themes
   :ensure t
   :config (get-config "doom-themes"))
+
+(use-package org-bullets
+  :ensure t
+  :config (org-bullets-mode 1))

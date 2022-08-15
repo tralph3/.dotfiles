@@ -6,7 +6,7 @@
 (setq package-user-dir (expand-file-name "elpa" user-emacs-directory))
 (setq url-history-file (expand-file-name "url/history" user-emacs-directory))
 (setq delete-old-versions t)
-(setq create-lockfiles nil)
+(setq lock-file-name-transforms `(("^\\(.*\\)$" ,(concat user-emacs-directory "\\1") t)))
 (setq auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory))
 (setq backup-directory-alist '(("." . "~/.local/share/emacs/backups")))
 

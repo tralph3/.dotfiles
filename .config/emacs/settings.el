@@ -1,3 +1,5 @@
+(setq fill-column 79)
+(display-fill-column-indicator-mode)
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 (menu-bar-mode -1)

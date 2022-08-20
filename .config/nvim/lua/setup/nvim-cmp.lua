@@ -2,12 +2,6 @@ local cmp = require('cmp')
 local icons = _G.icons
 
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-
     debug = false,
     throttle_time = 80,
     source_timeout = 200,
@@ -31,49 +25,12 @@ cmp.setup({
             { behavior = cmp.SelectBehavior.Select }),
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<Tab>'] = cmp.mapping({
-            i = function(fallback)
-                -- If an option was explicitely selected, accept it.
-                local entry = cmp.get_selected_entry()
-                local luasnip = require('luasnip')
-
-                if entry ~= nil then
-                    cmp.confirm({ select = false })
-                    return
-                end
-
-                if luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
-                elseif cmp.visible() then
-                    cmp.confirm({ select = true })
-                else
-                    fallback()
-                end
-            end,
-            s = function(fallback)
-                local luasnip = require('luasnip')
-                if luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
-                else
-                    fallback()
-                end
-            end
-        }),
-        ['<S-Tab>'] = function(fallback)
-            local luasnip = require('luasnip')
-
-            if luasnip.expand_or_jumpable() then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end,
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
 
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'luasnip' },
         { name = 'buffer',
             options = {
                 get_bufnrs = function()
@@ -91,7 +48,6 @@ cmp.setup({
             item.kind = icons[item.kind] or ''
             item.menu = ({
                 nvim_lsp = '[L]',
-                luasnip = '[S]',
                 buffer = '[B]',
                 path = '[P]',
             })[entry.source.name]..' '..kind_name

@@ -104,6 +104,9 @@ install_config .config/eww ~/.config/eww
 # hyprland
 install_config .config/hypr ~/.config/hypr
 
+# wpaperd
+install_config .config/wpaperd ~/.config/wpaperd
+
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\
 last-details-view-zoom-level\|\

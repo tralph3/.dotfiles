@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=eww
+Exec=/usr/bin/eww open bar
+NoDisplay=true
+Type=Application

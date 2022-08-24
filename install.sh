@@ -98,6 +98,12 @@ install_config .config/zathura ~/.config/zathura
 # emacs
 install_config .config/emacs ~/.config/emacs
 
+# eww
+install_config .config/eww ~/.config/eww
+
+# hyprland
+install_config .config/hypr ~/.config/hypr
+
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\
 last-details-view-zoom-level\|\

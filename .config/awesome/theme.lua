@@ -19,7 +19,7 @@ theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(2)
 theme.border_normal = "#302D41"
 theme.border_focus  = "#89DCEB"
-theme.border_marked = "#91231c"
+theme.border_marked = "#91231C"
 
 local taglist_square_size = dpi(2)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(

@@ -1,3 +1,14 @@
+(defun indent-right-restore-visual ()
+  "Indents visual selection to the right and restores the same selection"
+  (interactive)
+  (evil-shift-right)
+  (evil-visual-restore))
+(defun indent-left-restore-visual ()
+  "Indents visual selection to the left and restores the same selection"
+  (interactive)
+  (evil-shift-left)
+  (evil-visual-restore))
+
 (define-key evil-normal-state-map "H" 'evil-first-non-blank)
 (define-key evil-normal-state-map "L" 'evil-end-of-line)
 (define-key evil-normal-state-map "J" 'centaur-tabs-backward-tab)
@@ -7,4 +18,6 @@
 (define-key evil-normal-state-map (kbd "M-j") 'windmove-down)
 (define-key evil-normal-state-map (kbd "M-k") 'windmove-up)
 (define-key evil-normal-state-map (kbd "M-l") 'windmove-right)
+(define-key evil-visual-state-map (kbd "<backtab>") 'indent-left-restore-visual)
+(define-key evil-visual-state-map (kbd "<tab>") 'indent-right-restore-visual)
 (evil-mode t)

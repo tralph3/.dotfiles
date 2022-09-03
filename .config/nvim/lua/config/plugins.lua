@@ -2,6 +2,7 @@ local fn = vim.fn
 local data_path = fn.stdpath('data')
 local compile_path = data_path..'/site/plugin/packer_compiled.lua'
 local install_path = data_path..'/site/pack/packer/start/packer.nvim'
+local np_path = vim.fn.expand('~/projects/neoprojet')
 
 -- Bootstrap Packer
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -29,9 +30,11 @@ return packer.startup({
             config = get_setup('telescope'),
         }
 
-        use { '/home/tralph3/projects/neoprojet/',
-            config = get_setup('neoprojet'),
-        }
+        if vim.fn.empty(vim.fn.glob(np_path)) > 0 then
+            use { np_path,
+                config = get_setup('neoprojet'),
+            }
+        end
 
         use { 'lewis6991/impatient.nvim' }
 

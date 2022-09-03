@@ -30,7 +30,7 @@ return packer.startup({
             config = get_setup('telescope'),
         }
 
-        if vim.fn.empty(vim.fn.glob(np_path)) > 0 then
+        if not (vim.fn.empty(vim.fn.glob(np_path)) > 0) then
             use { np_path,
                 config = get_setup('neoprojet'),
             }

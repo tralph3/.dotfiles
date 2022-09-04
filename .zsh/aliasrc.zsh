@@ -120,13 +120,13 @@ wn() {
     fi
 }
 # regular list
-alias ls='exa -l --icons --header --group-directories-first'
+alias ls='exa -lg --icons --header --group-directories-first'
 # list all
-alias la='exa -la --icons --header --group-directories-first'
+alias la='exa -lag --icons --header --group-directories-first'
 # list recursively with depth of 1
-alias lr='exa -lT -L 2 --icons --header --group-directories-first'
+alias lr='exa -lTg -L 2 --icons --header --group-directories-first'
 # list recursively indefinitely
-alias lR='exa -lT --icons --header --group-directories-first'
+alias lR='exa -lTg --icons --header --group-directories-first'
 # copy terminal stuff to clipboard
 alias clip='xclip -selection clipboard'
 

@@ -32,6 +32,13 @@ local globalkeys = gears.table.join(
         awful.client.swap.bydirection('right')
     end),
 
+    awful.key({ modkey }, ',', function()
+        awful.tag.incnmaster(1, nil, true)
+    end),
+    awful.key({ modkey }, '.', function()
+        awful.tag.incnmaster(-1, nil, true)
+    end),
+
     awful.key({ modkey }, 'Return', function()
         awful.spawn.with_shell(commands.terminal)
     end),

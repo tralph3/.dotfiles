@@ -40,10 +40,6 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(),
         desc="Reset all window sizes"),
 
-    # Switch layouts
-    Key([mod], "Tab", lazy.next_layout(),
-        desc="Toggle between layouts"),
-
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"]),
         desc="Turn volume up"),
@@ -76,10 +72,6 @@ keys = [
     Key([], "Print", lazy.spawn(commands["flameshot"]),
         desc="Take screenshot"),
 
-    # Thunar
-    Key([mod], "f", lazy.spawn(commands["thunar"]),
-        desc="File browser"),
-
     # Backlight
     Key([], "XF86MonBrightnessUp", lazy.spawn(commands["brightness_up"]),
         desc="Raise backlight brightness"),
@@ -95,10 +87,10 @@ keys = [
         desc="Shutdown computer"),
     Key([mod, "control", "shift"], "r", lazy.spawn(commands["reboot"]),
         desc="Reboot computer"),
-    Key([mod, "control"], "Return", lazy.window.toggle_fullscreen(),
-        desc="Fullscreen current window"),
-    Key([mod, "control"], "m", lazy.window.toggle_minimize(),
-        desc="Minimize/Maximize current window"),
+    Key([mod], "f", lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen in current window"),
+    Key([mod], "space", lazy.window.toggle_floating(),
+        desc="Toggle floating in current window"),
     Key([mod], "w", lazy.window.kill(),
         desc="Close focused window"),
 ]

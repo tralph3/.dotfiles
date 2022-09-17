@@ -56,10 +56,6 @@ screens = [
                         inactive=GROUP_INACTIVE,
                     ),
                 ),
-                create_separator(),
-                # Layout Indicator
-                widget.CurrentLayout(**widget_default),
-
                 # Separators
                 widget.TextBox(
                     background=BG_LIGHT,
@@ -78,7 +74,7 @@ screens = [
                         borderwidth=0,
                         icon_size=FONT_SIZE,
                         margin=0,
-                        max_title_width=200,
+                        max_title_width=300,
                         mouse_callbacks={"Button2": lazy.window.kill()},
                         padding_x=10,
                         padding_y=5,

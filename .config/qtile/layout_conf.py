@@ -7,7 +7,6 @@ from settings import layout_default
 ###########
 layouts = [
     layout.Columns(**layout_default),
-    layout.Floating(**layout_default),
 ]
 
 # Floating window config (different from the layout)

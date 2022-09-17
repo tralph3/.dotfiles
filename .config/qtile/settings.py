@@ -47,7 +47,6 @@ commands = dict(
     firefox="firefox",
     firefox_private="firefox --private-window",
     flameshot="flameshot gui",
-    thunar="thunar",
     poweroff="poweroff",
     reboot="reboot",
     brightness_up=f"light -A {brightness_step}",

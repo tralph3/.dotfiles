@@ -40,6 +40,9 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(),
         desc="Reset all window sizes"),
 
+    Key([mod], "Tab", lazy.screen.toggle_group(),
+        desc="Go to previous group"),
+
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"]),
         desc="Turn volume up"),

@@ -38,13 +38,13 @@ rmv () {
     if [ $1 ] ; then
         case $DISTRO in
             arch)
-                paru --sudoloop -R $@ && paru --sudoloop -c --noconfirm
+                paru --sudoloop -Rns $@ && paru --sudoloop -c --noconfirm
                 ;;
             ubuntu)
-                sudo apt purge $@ && sudo apt autoremove
+                sudo apt autoremove --purge $@
                 ;;
             fedora)
-                dnf remove $@
+                dnf remove $@ && dnf autoremove
                 ;;
         esac
     else
@@ -100,12 +100,12 @@ uall (){
                 paru --sudoloop -c --removemake --noconfirm
             ;;
         ubuntu)
-            sudo apt update && sudo apt upgrade;
+            sudo apt dist-upgrade;
                 nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
                 sudo apt autoremove
             ;;
         fedora)
-            sudo dnf upgrade;
+            sudo dnf distro-sync;
                 nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
             ;;
     esac

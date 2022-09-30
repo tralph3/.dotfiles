@@ -42,6 +42,9 @@ return packer.startup({
             config = get_setup('autopairs'),
         }
 
+        use { 'kartikp10/noctis.nvim' }
+        use { 'rktjmp/lush.nvim' }
+
         use { 'williamboman/mason.nvim',
             config = get_setup('mason'),
         }

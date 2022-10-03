@@ -41,9 +41,6 @@ user_pref("media.autoplay.blocking_policy", 2);
 user_pref("media.autoplay.allow-extension-background-pages", false);
 user_pref("media.autoplay.block-event.enabled", true);
 
-// Don't allow sites to mess with ma' context menu
-user_pref("dom.event.contextmenu.enabled", false);
-
 // Tracking protection
 user_pref("privacy.trackingprotection.enabled", true);
 

@@ -45,9 +45,13 @@ return packer.startup({
         use { 'kartikp10/noctis.nvim' }
         use { 'rktjmp/lush.nvim' }
 
-        use { 'williamboman/mason.nvim',
+        use { 'williamboman/mason.nvim' }
+
+        use { 'williamboman/mason-lspconfig.nvim',
             config = get_setup('mason'),
+            after = 'mason.nvim',
         }
+
         use { 'mfussenegger/nvim-dap',
             config = get_setup('dap'),
         }
@@ -83,6 +87,7 @@ return packer.startup({
 
         use { 'neovim/nvim-lspconfig',
             config = get_setup('lspconfig'),
+            after = 'mason-lspconfig.nvim',
         }
 
 

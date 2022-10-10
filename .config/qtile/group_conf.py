@@ -14,9 +14,7 @@ groups = [
     Group("3", label=""),
 
     # File manager
-    Group("4", label="", matches=[
-        Match(wm_class=["Thunar", "thunar"])
-    ]),
+    Group("4", label=""),
 
     # Gaming stuff
     Group("5", label="", matches=[

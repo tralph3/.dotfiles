@@ -2,7 +2,7 @@
 vim.api.nvim_command('syntax on')
 vim.opt.termguicolors = true
 
-local status_ok, _ = pcall(vim.api.nvim_command, 'colorscheme noctis')
+local status_ok, _ = pcall(vim.api.nvim_command, 'colorscheme catppuccin')
 if not status_ok then
     vim.api.nvim_command('colorscheme slate')
 end

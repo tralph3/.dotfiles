@@ -1,13 +1,8 @@
 get_volume () {
-    pactl list sinks | grep '^[[:space:]]Volume:' | cut -d "/" -f 4 | tr -d ' %'
+    volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d " " -f 2)
+    echo $volume*10 | awk -v volume=$volume "{print(volume*100)}"
 }
 
-raise_volume () {
-    pactl set-sink-volume 0 +$1%
-    VOLUME=$(get_volume)
-    bar=$(seq -s "─" $(($VOLUME / 5)) | sed 's/[0-9]//g')
-    dunstify -I /usr/share/icons/Papirus-Dark/16x16@2x/panel/audio-volume-high.svg -u normal -r 2593 "    $bar"
-}
 raise_volume () {
     pactl set-sink-volume 0 +$1%
     show_notification
@@ -20,8 +15,7 @@ lower_volume () {
 
 show_notification () {
     VOLUME=$(get_volume)
-    bar=$(seq -s "─" $(($VOLUME / 5)) | sed 's/[0-9]//g')
-    dunstify -t 1000 -I /usr/share/icons/Papirus-Dark/16x16@2x/panel/audio-volume-high.svg -u normal -r 2593 "    $bar"
+    dunstify -h int:value:$VOLUME -t 1000 -I /usr/share/icons/Papirus-Dark/16x16@2x/panel/audio-volume-high.svg -u normal -r 2593 "Volume"
 }
 
 case $1 in

@@ -9,6 +9,7 @@
 (setq lock-file-name-transforms `(("^\\(.*\\)$" ,(concat user-emacs-directory "\\1") t)))
 (setq auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory))
 (setq backup-directory-alist '(("." . "~/.local/share/emacs/backups")))
+(setq create-lockfiles nil)
 
 (load (expand-file-name "packages" user-config-directory))
 (load (expand-file-name "settings" user-config-directory))

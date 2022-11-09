@@ -44,6 +44,7 @@ commands = dict(
     emacs="emacsclient -c",
     raise_volume=f"sh {USER_HOME}/.config/qtile/volume.sh raise {volume_step}",
     lower_volume=f"sh {USER_HOME}/.config/qtile/volume.sh lower {volume_step}",
+    kill_window="xkill",
     toggle_mute="pactl set-sink-mute 0 toggle",
     toggle_mute_mic="amixer set Capture toggle",
     rofi="rofi -show drun",

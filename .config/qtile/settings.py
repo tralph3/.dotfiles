@@ -1,4 +1,5 @@
 from utils import SettingsDict
+import os
 
 #############
 # VARIABLES #
@@ -31,6 +32,8 @@ FONT_SIZE = 15
 WALLPAPERS_PATH = "/usr/share/backgrounds/"
 WALLPAPER_TIMEOUT_MINUTES = 10
 
+USER_HOME = os.path.expanduser("~")
+
 mod = "mod4"
 volume_step = 5
 brightness_step = 5
@@ -39,8 +42,8 @@ brightness_step = 5
 commands = dict(
     terminal="alacritty",
     emacs="emacsclient -c",
-    raise_volume=f"/usr/bin/pactl set-sink-volume 0 +{volume_step}%",
-    lower_volume=f"/usr/bin/pactl set-sink-volume 0 -{volume_step}%",
+    raise_volume=f"sh {USER_HOME}/.config/qtile/volume.sh raise {volume_step}",
+    lower_volume=f"sh {USER_HOME}/.config/qtile/volume.sh lower {volume_step}",
     toggle_mute="pactl set-sink-mute 0 toggle",
     toggle_mute_mic="amixer set Capture toggle",
     rofi="rofi -show drun",

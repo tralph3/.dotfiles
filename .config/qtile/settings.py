@@ -53,8 +53,8 @@ commands = dict(
     flameshot="flameshot gui",
     poweroff="poweroff",
     reboot="reboot",
-    brightness_up=f"light -A {brightness_step}",
-    brightness_down=f"light -U {brightness_step}",
+    brightness_up=f"sh {USER_HOME}/.config/qtile/brightness.sh raise {brightness_step}",
+    brightness_down=f"sh {USER_HOME}/.config/qtile/brightness.sh lower {brightness_step}",
 )
 
 layout_default = SettingsDict(

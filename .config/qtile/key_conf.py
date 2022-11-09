@@ -96,6 +96,8 @@ keys = [
         desc="Toggle floating in current window"),
     Key([mod], "w", lazy.window.kill(),
         desc="Close focused window"),
+    Key([mod, "shift"], "w", lazy.spawn(commands["kill_window"]),
+        desc="Force focused window"),
 ]
 
 # Drag floating layouts.

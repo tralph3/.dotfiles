@@ -3,6 +3,10 @@ get_volume () {
     echo $volume*10 | awk -v volume=$volume "{print(volume*100)}"
 }
 
+get_sink_name () {
+    wpctl inspect @DEFAULT_AUDIO_SINK@ | grep node.description | grep -o '".*"' | sed 's/"//g'
+}
+
 raise_volume () {
     pactl set-sink-volume 0 +$1%
     show_notification
@@ -15,7 +19,8 @@ lower_volume () {
 
 show_notification () {
     VOLUME=$(get_volume)
-    dunstify -h int:value:$VOLUME -t 1000 -I /usr/share/icons/Papirus-Dark/16x16@2x/panel/audio-volume-high.svg -u normal -r 2593 "Volume"
+    SINK_NAME=$(get_sink_name)
+    dunstify -h int:value:$VOLUME -t 1000 -I /usr/share/icons/Papirus-Dark/16x16@2x/panel/audio-volume-high.svg -u normal -r 2593 "$SINK_NAME"
 }
 
 case $1 in

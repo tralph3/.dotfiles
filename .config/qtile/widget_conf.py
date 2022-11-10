@@ -44,7 +44,7 @@ screens = [
                         mouse_callbacks={
                             "Button1": lazy.spawn(commands["rofi"])
                         },
-                        filename="~/.config/qtile/archlinux-icon.svg",
+                        filename="~/.config/qtile/assets/archlinux-icon.svg",
                     ),
                 ),
                 create_separator(),

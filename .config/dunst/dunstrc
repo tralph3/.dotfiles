@@ -1,7 +1,7 @@
 [global]
     monitor = 0
 
-    follow = keyboard
+    follow = mouse
     width = 300
     height = 300
     origin = bottom-left
@@ -10,10 +10,12 @@
     notification_limit = 4
 
     progress_bar = true
-    progress_bar_height = 10
+    progress_bar_height = 8
     progress_bar_frame_width = 1
     progress_bar_min_width = 150
     progress_bar_max_width = 300
+
+    highlight = "#D9E0EE"
 
     indicate_hidden = yes
 

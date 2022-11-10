@@ -36,7 +36,7 @@ lower_brightness () {
 show_notification () {
     BRIGHTNESS=$(get_brightness)
     ICON=$(get_brightness_icon $BRIGHTNESS)
-    dunstify -h int:value:$BRIGHTNESS -t 1000 -I $ICON -u normal -r 2593 "Brightness"
+    dunstify -a brightness -h int:value:$BRIGHTNESS -t 1000 -I $ICON -u normal -r 2593 "Brightness"
 }
 
 case $1 in

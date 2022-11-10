@@ -3,7 +3,8 @@ get_icon_theme_name () {
 }
 
 get_brightness () {
-    light
+    value=$(light)
+    printf "%.0f\n" "$value"
 }
 
 get_brightness_icon () {
@@ -35,7 +36,7 @@ lower_brightness () {
 show_notification () {
     BRIGHTNESS=$(get_brightness)
     ICON=$(get_brightness_icon $BRIGHTNESS)
-    dunstify -h int:value:$BRIGHTNESS -t 1000 -I $ICON -u normal -r 2593 "Screen Brightness"
+    dunstify -h int:value:$BRIGHTNESS -t 1000 -I $ICON -u normal -r 2593 "Brightness"
 }
 
 case $1 in

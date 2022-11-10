@@ -42,10 +42,10 @@ brightness_step = 5
 commands = dict(
     terminal="alacritty",
     emacs="emacsclient -c",
-    raise_volume=f"sh {USER_HOME}/.config/qtile/volume.sh raise {volume_step}",
-    lower_volume=f"sh {USER_HOME}/.config/qtile/volume.sh lower {volume_step}",
+    raise_volume=f"sh {USER_HOME}/.config/qtile/scripts/volume.sh raise {volume_step}",
+    lower_volume=f"sh {USER_HOME}/.config/qtile/scripts/volume.sh lower {volume_step}",
     kill_window="xkill",
-    toggle_mute=f"sh {USER_HOME}/.config/qtile/volume.sh mute",
+    toggle_mute=f"sh {USER_HOME}/.config/qtile/scripts/volume.sh mute",
     toggle_mute_mic="amixer set Capture toggle",
     rofi="rofi -show drun",
     firefox="firefox",
@@ -53,8 +53,8 @@ commands = dict(
     flameshot="flameshot gui",
     poweroff="poweroff",
     reboot="reboot",
-    brightness_up=f"sh {USER_HOME}/.config/qtile/brightness.sh raise {brightness_step}",
-    brightness_down=f"sh {USER_HOME}/.config/qtile/brightness.sh lower {brightness_step}",
+    brightness_up=f"sh {USER_HOME}/.config/qtile/scripts/brightness.sh raise {brightness_step}",
+    brightness_down=f"sh {USER_HOME}/.config/qtile/scripts/brightness.sh lower {brightness_step}",
 )
 
 layout_default = SettingsDict(

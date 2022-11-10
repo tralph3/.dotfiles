@@ -52,7 +52,7 @@ show_notification () {
     VOLUME=$(get_volume)
     SINK_NAME=$(get_sink_name)
     ICON=$(get_volume_icon $VOLUME)
-    dunstify -h int:value:$VOLUME -t 1000 -I $ICON -u normal -r 2593 "$SINK_NAME"
+    dunstify -a volume -h int:value:$VOLUME -t 1000 -I $ICON -u normal -r 2593 "$SINK_NAME"
 }
 
 case $1 in

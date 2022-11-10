@@ -21,7 +21,7 @@
 
     transparency = 10
 
-    separator_height = 5
+    separator_height = 3
 
     padding = 8
 
@@ -86,6 +86,14 @@
 
 frame_color = "#96CDFB"
 separator_color= frame
+
+[volume]
+    appname="volume"
+    history_ignore = yes
+
+[brightness]
+    appname="brightness"
+    history_ignore = yes
 
 [urgency_low]
     background = "#1E1E2E"

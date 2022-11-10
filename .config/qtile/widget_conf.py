@@ -101,10 +101,17 @@ screens = [
                 # Systray
                 widget.Systray(**widget_default),
                 create_separator(),
+                # Clock svg
+                widget.Image(
+                    **widget_default.extend(
+                        filename="~/.config/qtile/assets/clock.svg",
+                    ),
+                ),
                 # Clock
                 widget.Clock(
                     **widget_default.extend(
-                        format="%H:%M",
+                        format="%H:%M\n%y/%m/%d",
+                        fontsize=12,
                     ),
                 ),
             ],

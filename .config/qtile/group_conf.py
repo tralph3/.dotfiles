@@ -18,7 +18,7 @@ groups = [
 
     # Gaming stuff
     Group("5", label="", matches=[
-        Match(wm_class=["Steam"]),
+        Match(wm_class=["Steam", "steamwebhelper"]),
         Match(wm_class=["Lutris"]),
         Match(wm_class=["gamescope"]),
     ]),

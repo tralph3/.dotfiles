@@ -89,6 +89,9 @@ install_config .config/Thunar ~/.config/Thunar
 # gtk
 install_config .config/gtk-3.0 ~/.config/gtk-3.0
 
+# qt
+install_config .config/qt5ct ~/.config/qt5ct
+
 # rofi
 install_config .config/rofi ~/.config/rofi
 

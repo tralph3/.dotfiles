@@ -43,7 +43,7 @@ keys = [
     Key([mod], "Tab", lazy.screen.toggle_group(),
         desc="Go to previous group"),
 
-    # Volume
+    # Audio
     Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"]),
         desc="Turn volume up"),
     Key([], "XF86AudioLowerVolume", lazy.spawn(commands["lower_volume"]),
@@ -52,6 +52,8 @@ keys = [
         desc="Mute volume"),
     Key([], "XF86AudioMicMute", lazy.spawn(commands["toggle_mute_mic"]),
         desc="Mute microphone"),
+    Key([mod], "a", lazy.spawn(commands["switch_audio_sink"]),
+        desc="Switch audio sink"),
 
     # Terminal
     Key([mod], "Return", lazy.spawn(commands["terminal"]),

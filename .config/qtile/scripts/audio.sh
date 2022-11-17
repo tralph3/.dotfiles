@@ -48,6 +48,18 @@ toggle_mute_volume () {
     show_notification
 }
 
+switch_audio_sink() {
+    declare -A SINKS
+    SINK_NAMES=$(pactl list sinks | grep -E "Description" | sed "s/\s*Description: //")
+    SINK_INFO=$(pactl list sinks | grep -E "Description|object.id" | sed "s/\s*Description: \|\s*object.id = //" | tr -d "\"")
+    while read -r sink_name; read -r sink_id; do
+        SINKS["$sink_name"]="$sink_id"
+    done <<< "$SINK_INFO"
+    CHOSEN_SINK=$(echo ${SINKS[$(echo "$SINK_NAMES" | rofi -dmenu -i -p "Choose audio output")]} | tr -d "\n")
+    pactl set-default-sink $CHOSEN_SINK
+    show_notification
+}
+
 show_notification () {
     VOLUME=$(get_volume)
     SINK_NAME=$(get_sink_name)
@@ -59,4 +71,5 @@ case $1 in
     raise) raise_volume $2 ;;
     lower) lower_volume $2 ;;
     mute)  toggle_mute_volume ;;
+    switch_sink) switch_audio_sink ;;
 esac

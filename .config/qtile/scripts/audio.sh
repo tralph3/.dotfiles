@@ -56,8 +56,10 @@ switch_audio_sink() {
         SINKS["$sink_name"]="$sink_id"
     done <<< "$SINK_INFO"
     CHOSEN_SINK=$(echo ${SINKS[$(echo "$SINK_NAMES" | rofi -dmenu -i -p "Choose audio output")]} | tr -d "\n")
-    pactl set-default-sink $CHOSEN_SINK
-    show_notification
+    if [ -n "$CHOSEN_SINK" ]; then
+        pactl set-default-sink $CHOSEN_SINK
+        show_notification
+    fi
 }
 
 show_notification () {

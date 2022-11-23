@@ -7,10 +7,11 @@ EDITOR=nvim
 
 # Ignore commands that start with a space
 setopt HIST_IGNORE_SPACE
+setopt appendhistory
+setopt INC_APPEND_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zshhistory
-setopt appendhistory
 
 # Basic auto/tab complete:
 autoload -U compinit

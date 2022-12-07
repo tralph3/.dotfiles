@@ -51,7 +51,7 @@ toggle_mute_volume () {
 switch_audio_sink() {
     declare -A SINKS
     SINK_NAMES=$(pactl list sinks | grep -E "Description" | sed "s/\s*Description: //")
-    SINK_INFO=$(pactl list sinks | grep -E "Description|object.id" | sed "s/\s*Description: \|\s*object.id = //" | tr -d "\"")
+    SINK_INFO=$(pactl list sinks | grep -E "Description|object.id" | sed "s/\s*Description: \(.*\)\|\s*object.id = \"\(.*\)\"/\1\2/")
     while read -r sink_name; read -r sink_id; do
         SINKS["$sink_name"]="$sink_id"
     done <<< "$SINK_INFO"

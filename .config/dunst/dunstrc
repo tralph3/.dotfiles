@@ -63,7 +63,7 @@
     max_icon_size = 32
     icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/categories/
 
-    sticky_history = yes
+    sticky_history = no
     history_length = 20
 
     browser = /usr/bin/firefox
@@ -84,8 +84,8 @@
     mouse_middle_click = open_url
     mouse_right_click = close_all
 
-frame_color = "#96CDFB"
-separator_color= frame
+    frame_color = "#96CDFB"
+    separator_color= frame
 
 [volume]
     appname="volume"

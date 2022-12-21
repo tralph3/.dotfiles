@@ -34,7 +34,13 @@ get_sink_name () {
 }
 
 raise_volume () {
-    pactl set-sink-volume 0 +$1%
+    VOLUME=$(get_volume)
+    VOLUME=$((VOLUME + $1))
+    if [[ $VOLUME -ge 100 ]]; then
+        pactl set-sink-volume 0 100%
+    else
+        pactl set-sink-volume 0 +$1%
+    fi
     show_notification
 }
 

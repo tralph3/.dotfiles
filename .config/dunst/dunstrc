@@ -15,8 +15,6 @@
     progress_bar_min_width = 150
     progress_bar_max_width = 300
 
-    highlight = "#D9E0EE"
-
     indicate_hidden = yes
 
     transparency = 10
@@ -84,7 +82,6 @@
     mouse_middle_click = open_url
     mouse_right_click = close_all
 
-    frame_color = "#96CDFB"
     separator_color= frame
 
 [volume]
@@ -94,19 +91,6 @@
 [brightness]
     appname="brightness"
     history_ignore = yes
-
-[urgency_low]
-    background = "#1E1E2E"
-    foreground = "#D9E0EE"
-
-[urgency_normal]
-    background = "#1E1E2E"
-    foreground = "#D9E0EE"
-
-[urgency_critical]
-    background = "#1E1E2E"
-    foreground = "#D9E0EE"
-    frame_color = "#F8BD96"
 
 [experimental]
     per_monitor_dpi = false

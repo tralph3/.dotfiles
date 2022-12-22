@@ -1,19 +1,17 @@
+from colors import USER_HOME, load_colorscheme
 from utils import SettingsDict
-import os
 
-#############
-# VARIABLES #
-#############
-FG_LIGHT = "#D9E0EE"
+colors = load_colorscheme()
+FG_LIGHT = colors["FOREGROUND_1"]
 FG_DARK = ""
 
-BG_DARK = "#161320"
-BG_LIGHT = "#1E1E2E"
+BG_DARK = colors["BACKGROUND_1"]
+BG_LIGHT = colors["BACKGROUND_2"]
 
-WINDOW_FOCUS = "#89DCEB"
-WINDOW_UNFOCUS = "#302D41"
+WINDOW_FOCUS = colors["HIGHLIGHT_1"]
+WINDOW_UNFOCUS = colors["HIGHLIGHT_2"]
 
-BAR_BORDER = "#302D41"
+BAR_BORDER = colors["HIGHLIGHT_2"]
 
 GROUP_ACTIVE = FG_LIGHT
 GROUP_INACTIVE = BG_LIGHT
@@ -32,16 +30,14 @@ FONT_SIZE = 15
 WALLPAPERS_PATH = "/usr/share/backgrounds/"
 WALLPAPER_TIMEOUT_MINUTES = 10
 
-USER_HOME = os.path.expanduser("~")
-
 mod = "mod4"
 volume_step = 5
 brightness_step = 5
 
-# commands
 commands = dict(
     terminal="alacritty",
     emacs="emacsclient -c",
+    change_color=f"sh {USER_HOME}/.dotfiles/scripts/change_colorscheme.sh",
     raise_volume=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh raise {volume_step}",
     lower_volume=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh lower {volume_step}",
     play_pause_audio="playerctl play-pause",

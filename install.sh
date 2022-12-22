@@ -110,6 +110,11 @@ install_config .config/hypr ~/.config/hypr
 # wpaperd
 install_config .config/wpaperd ~/.config/wpaperd
 
+# colorschemes
+install_config .config/colorschemes ~/.config/colorschemes
+
+$DOTFILES_DIR/scripts/change_colorscheme.sh Catppuccin
+
 # config thunar ignore filter
 THUNAR_IGNORE="sed \"/\
 last-details-view-zoom-level\|\

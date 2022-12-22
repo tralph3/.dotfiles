@@ -108,6 +108,8 @@ keys = [
         desc="Close focused window"),
     Key([mod, "shift"], "w", lazy.spawn(commands["kill_window"]),
         desc="Force focused window"),
+    Key([mod], "c", lazy.spawn(commands["change_color"]),
+        desc="Change the colorscheme"),
 ]
 
 # Drag floating layouts.

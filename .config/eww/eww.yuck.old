@@ -1,7 +1,8 @@
 (defwidget bar []
   (centerbox :orientation "h"
     (workspaces)
-    (music)
+    (workspaces)
+    ; (title)
     (sidestuff)))
 
 (defwidget sidestuff []
@@ -23,22 +24,16 @@
        :space-evenly true
        :halign "start"
        :spacing 10
-    (button :onclick "wmctrl -s 0" 1)
-    (button :onclick "wmctrl -s 1" 2)
-    (button :onclick "wmctrl -s 2" 3)
-    (button :onclick "wmctrl -s 3" 4)
-    (button :onclick "wmctrl -s 4" 5)
-    (button :onclick "wmctrl -s 5" 6)
-    (button :onclick "wmctrl -s 6" 7)
-    (button :onclick "wmctrl -s 7" 8)
-    (button :onclick "wmctrl -s 8" 9)))
-
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "center"
-    {music != "" ? "🎵 ${music}" : ""}))
+    (button :onclick "hyprctl dispatch workspace 1" 1)
+    (button :onclick "hyprctl dispatch workspace 2" 2)
+    (button :onclick "hyprctl dispatch workspace 3" 3)
+    (button :onclick "hyprctl dispatch workspace 4" 4)
+    (button :onclick "hyprctl dispatch workspace 5" 5)
+    (button :onclick "hyprctl dispatch workspace 6" 6)
+    (button :onclick "hyprctl dispatch workspace 7" 7)
+    (button :onclick "hyprctl dispatch workspace 8" 8)
+    (button :onclick "hyprctl dispatch workspace 9" 9)
+    (button :onclick "hyprctl dispatch workspace 0" 0)))
 
 
 (defwidget metric [label value onchange]
@@ -53,9 +48,18 @@
            :onchange onchange)))
 
 
+; (defwidget title []
+;   (box :class "title"
+;        :orientation "h"
+;        :space-evenly false
+;        :halign "center"
+;     {title}))
+
+; (deflisten title :initial ""
+;     "while true; do hyprctl activewindow -j | jq -r '.title'; done")
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ album }} - {{ title }}' || true")
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol")
@@ -66,11 +70,12 @@
 (defwindow bar
   :monitor 0
   :windowtype "dock"
+  :stacking "fg"
+  :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
-                      :height "10px"
+                      :height "2%"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
+  :reserve (struts :side "top")
   (bar))
-

@@ -5,6 +5,7 @@ configuration{
     icon-theme: "Papirus-Dark";
     terminal: "alacritty";
     drun-display-format: "{icon} {name}";
+    drun-match-fields: "name,generic";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;

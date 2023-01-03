@@ -1,6 +1,15 @@
 #!/bin/bash
 
 DOTFILES_DIR=$(dirname "$(realpath "$0")")
+USER_ID=$(id -u)
+VARIABLES=$(cat << EOF
+#!/bin/bash
+
+export DOTFILES_DIR=$DOTFILES_DIR
+export QT_QPA_PLATFORMTHEME=qt5ct
+export WALLPAPERS_DIR="/usr/share/backgrounds"
+EOF
+)
 
 NO_CONFIRM=0
 
@@ -113,15 +122,11 @@ install_config .config/wpaperd ~/.config/wpaperd
 # colorschemes
 install_config .config/colorschemes ~/.config/colorschemes
 
-$DOTFILES_DIR/scripts/change_colorscheme.sh Catppuccin
+$DOTFILES_DIR/scripts/colorscheme/generate_colorscheme_files.sh $DOTFILES_DIR/.config/colorschemes/Catppuccin.scheme
 
-# config thunar ignore filter
-THUNAR_IGNORE="sed \"/\
-last-details-view-zoom-level\|\
-last-details-view-column-widths\|\
-last-icon-view-zoom-level\|\
-last-sort-column\|\
-last-sort-order/d\" %f"
-
-git -C $DOTFILES_DIR config --local filter.ignore_thunar.clean  "$THUNAR_IGNORE"
-git -C $DOTFILES_DIR config --local filter.ignore_thunar.smudge "$THUNAR_IGNORE"
+if [[ $USER_ID -ne 0 ]]; then
+    echo "Root access is needed to create a file that will set environment variables on startup."
+    echo "$VARIABLES" | sudo tee /etc/profile.d/dotfiles.sh
+else
+    echo "$VARIABLES" > /etc/profile.d/dotfiles.sh
+fi

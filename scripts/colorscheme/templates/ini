@@ -1,0 +1,16 @@
+[global]
+    highlight = "$FOREGROUND_1"
+    frame_color = "$HIGHLIGHT_1"
+
+[urgency_low]
+    background = "$BACKGROUND_2"
+    foreground = "$FOREGROUND_1"
+
+[urgency_normal]
+    background = "$BACKGROUND_2"
+    foreground = "$FOREGROUND_1"
+
+[urgency_critical]
+    background = "$BACKGROUND_2"
+    foreground = "$FOREGROUND_1"
+    frame_color = "$HIGHLIGHT_1"

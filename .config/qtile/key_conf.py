@@ -85,6 +85,10 @@ keys = [
     Key([], "Print", lazy.spawn(commands["flameshot"]),
         desc="Take screenshot"),
 
+    # Calculator
+    Key([], "XF86Calculator", lazy.spawn(commands["calculator"]),
+        desc="Open calculator"),
+
     # Backlight
     Key([], "XF86MonBrightnessUp", lazy.spawn(commands["brightness_up"]),
         desc="Raise backlight brightness"),

@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Picom
-Exec=env DISPLAY=":0" /usr/bin/picom
-NoDisplay=true
-Type=Application

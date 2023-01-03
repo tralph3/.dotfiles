@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Dunst
+Exec=/bin/bash -c "source $DOTFILES_DIR/scripts/colorscheme/reload_programs.sh && reload_dunst"
+NoDisplay=true
+Type=Application

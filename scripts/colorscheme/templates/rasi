@@ -1,0 +1,11 @@
+* {
+    bg-col:  $BACKGROUND_2;
+    bg-col-light: $BACKGROUND_2;
+    border-col: $BACKGROUND_2;
+    selected-col: $BACKGROUND_2;
+    blue: #7aa2f7;
+    fg-col: $FOREGROUND_1;
+    fg-col2: #F28FAD;
+    grey: $FOREGROUND_1;
+    width: 600;
+}

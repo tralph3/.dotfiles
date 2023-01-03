@@ -21,7 +21,7 @@ configuration{
     kb-row-down: "Control+j,Down";
 }
 
-@theme "catppuccin"
+@theme "~/.config/colorschemes/current_colorscheme/colors.rasi"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;

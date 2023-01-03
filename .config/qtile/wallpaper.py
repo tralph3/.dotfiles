@@ -2,7 +2,7 @@ import os
 import random
 from libqtile import qtile
 from typing import Callable
-from settings import WALLPAPERS_PATH
+from settings import WALLPAPERS_DIR
 
 
 class Timer():
@@ -21,7 +21,7 @@ class Timer():
 
 def set_random_wallpaper() -> None:
     wallpapers = [
-        os.path.join(WALLPAPERS_PATH, x) for x in os.listdir(WALLPAPERS_PATH) if x[-4:] == ".jpg"
+        os.path.join(WALLPAPERS_DIR, x) for x in os.listdir(WALLPAPERS_DIR) if x[-4:] == ".jpg"
     ]
     wallpaper = random.choice(wallpapers)
     set_wallpaper(wallpaper)

@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Dunst
-Exec=/usr/bin/dunst
-NoDisplay=true
-Type=Application

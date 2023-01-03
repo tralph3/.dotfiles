@@ -5,6 +5,7 @@ from settings import (
     BAR_BORDER,
     BG_DARK,
     BG_LIGHT,
+    DOTFILES_DIR,
     FG_LIGHT,
     FONT,
     FONT_SIZE,
@@ -44,7 +45,7 @@ screens = [
                         mouse_callbacks={
                             "Button1": lazy.spawn(commands["rofi"])
                         },
-                        filename="~/.config/qtile/assets/archlinux-icon.svg",
+                        filename=f"{DOTFILES_DIR}/assets/archlinux-icon.svg",
                     ),
                 ),
                 create_separator(),
@@ -104,7 +105,7 @@ screens = [
                 # Clock svg
                 widget.Image(
                     **widget_default.extend(
-                        filename="~/.config/qtile/assets/clock.svg",
+                        filename=f"{DOTFILES_DIR}/assets/clock.svg",
                     ),
                 ),
                 # Clock

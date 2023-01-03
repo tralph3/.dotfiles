@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Dunst
-Exec=/bin/bash -c "~/.dotfiles/scripts/reload_dunst.sh"
-NoDisplay=true
-Type=Application

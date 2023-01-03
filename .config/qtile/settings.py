@@ -1,4 +1,5 @@
-from colors import USER_HOME, load_colorscheme
+import os
+from colors import load_colorscheme
 from utils import SettingsDict
 
 colors = load_colorscheme()
@@ -27,8 +28,9 @@ FONT = "UbuntuMono Nerd Font Mono"
 ICON_SIZE = 25
 FONT_SIZE = 15
 
-WALLPAPERS_PATH = "/usr/share/backgrounds/"
 WALLPAPER_TIMEOUT_MINUTES = 10
+WALLPAPERS_DIR = os.getenv('WALLPAPERS_DIR')
+DOTFILES_DIR = os.getenv('DOTFILES_DIR')
 
 mod = "mod4"
 volume_step = 5
@@ -37,16 +39,17 @@ brightness_step = 5
 commands = dict(
     terminal="alacritty",
     emacs="emacsclient -c",
-    change_color=f"sh {USER_HOME}/.dotfiles/scripts/change_colorscheme.sh",
-    raise_volume=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh raise {volume_step}",
-    lower_volume=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh lower {volume_step}",
+    change_color=f"sh {DOTFILES_DIR}/scripts/colorscheme/change_colorscheme.sh",
+    raise_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh raise {volume_step}",
+    lower_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh lower {volume_step}",
+    calculator="speedcrunch",
     play_pause_audio="playerctl play-pause",
     stop_audio="playerctl stop",
     skip_audio="playerctl next",
     prev_audio="playerctl previous",
     kill_window="xkill",
-    switch_audio_sink=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh switch_sink",
-    toggle_mute=f"sh {USER_HOME}/.config/qtile/scripts/audio.sh mute",
+    switch_audio_sink=f"sh {DOTFILES_DIR}/scripts/audio.sh switch_sink",
+    toggle_mute=f"sh {DOTFILES_DIR}/scripts/audio.sh mute",
     toggle_mute_mic="amixer set Capture toggle",
     rofi="rofi -show drun",
     firefox="firefox",
@@ -54,8 +57,8 @@ commands = dict(
     flameshot="flameshot gui",
     poweroff="poweroff",
     reboot="reboot",
-    brightness_up=f"sh {USER_HOME}/.config/qtile/scripts/brightness.sh raise {brightness_step}",
-    brightness_down=f"sh {USER_HOME}/.config/qtile/scripts/brightness.sh lower {brightness_step}",
+    brightness_up=f"sh {DOTFILES_DIR}/scripts/brightness.sh raise {brightness_step}",
+    brightness_down=f"sh {DOTFILES_DIR}/scripts/brightness.sh lower {brightness_step}",
 )
 
 layout_default = SettingsDict(

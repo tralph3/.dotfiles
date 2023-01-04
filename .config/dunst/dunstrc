@@ -17,7 +17,7 @@
 
     indicate_hidden = yes
 
-    transparency = 10
+    transparency = 0
 
     separator_height = 3
 

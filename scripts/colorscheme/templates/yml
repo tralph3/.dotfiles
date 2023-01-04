@@ -9,26 +9,26 @@ colors:
     cursor: '$FOREGROUND_1'
 
   normal:
-    black:   '#6E6C7E'
-    red:     '#F28FAD'
-    green:   '#ABE9B3'
-    yellow:  '#FAE3B0'
-    blue:    '#96CDFB'
-    magenta: '#F5C2E7'
-    cyan:    '#89DCEB'
-    white:   '#D9E0EE'
+    black:   '$BLACK'
+    red:     '$RED'
+    green:   '$GREEN'
+    yellow:  '$YELLOW'
+    blue:    '$BLUE'
+    magenta: '$MAGENTA'
+    cyan:    '$CYAN'
+    white:   '$WHITE'
 
   bright:
-    black:   '#988BA2'
-    red:     '#F28FAD'
-    green:   '#ABE9B3'
-    yellow:  '#FAE3B0'
-    blue:    '#96CDFB'
-    magenta: '#F5C2E7'
-    cyan:    '#89DCEB'
-    white:   '#D9E0EE'
+    black:   '$BLACK'
+    red:     '$RED'
+    green:   '$GREEN'
+    yellow:  '$YELLOW'
+    blue:    '$BLUE'
+    magenta: '$MAGENTA'
+    cyan:    '$CYAN'
+    white:   '$WHITE'
 
   indexed_colors:
-    - { index: 16, color: '#F8BD96' }
-    - { index: 17, color: '#F5E0DC' }
+    - { index: 16, color: '$ACCENT_1' }
+    - { index: 17, color: '$ACCENT_2' }
 

@@ -1,11 +1,22 @@
 * {
-    bg-col:  $BACKGROUND_2;
-    bg-col-light: $BACKGROUND_2;
-    border-col: $BACKGROUND_2;
-    selected-col: $BACKGROUND_2;
-    blue: #7aa2f7;
-    fg-col: $FOREGROUND_1;
-    fg-col2: #F28FAD;
-    grey: $FOREGROUND_1;
-    width: 600;
+    bg-col1: $BACKGROUND_1;
+    bg-col2:  $BACKGROUND_2;
+    bg-col3:  $BACKGROUND_3;
+
+    fg-col1: $FOREGROUND_1;
+    fg-col2: $FOREGROUND_2;
+    fg-col3: $FOREGROUND_2;
+
+    accent1: $ACCENT_1;
+    accent2: $ACCENT_2;
+    accent3: $ACCENT_3;
+
+    black: $BLACK;
+    red: $RED;
+    green: $GREEN;
+    yellow: $YELLOW;
+    blue: $BLUE;
+    magenta: $MAGENTA;
+    cyan: $CYAN;
+    white: $WHITE;
 }

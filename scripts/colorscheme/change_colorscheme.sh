@@ -7,6 +7,9 @@ show_colorscheme_chooser() {
         basename -s .scheme $(ls -1 $COLORSCHEME_DIRECTORY*.scheme) |\
         rofi -dmenu -p "Choose colorscheme"
     )
+    if [[ -z $COLORSCHEME ]]; then
+        exit
+    fi
 }
 
 

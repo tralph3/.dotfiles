@@ -95,6 +95,9 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn(commands["brightness_down"]),
         desc="Lower backlight brightness"),
 
+    Key([mod], "Q", lazy.spawn(commands["decode_qr"]),
+        desc="Take screenshot of qr code and decode it"),
+
     # Qtile
     Key([mod, "control"], "r", lazy.reload_config(),
         desc="Reload the config"),

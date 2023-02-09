@@ -1,16 +1,18 @@
 [global]
-    highlight = "$FOREGROUND_1"
-    frame_color = "$ACCENT_1"
+    highlight = "#${FOREGROUND_1}"
+    frame_color = "#${ACCENT_1}"
 
 [urgency_low]
-    background = "$BACKGROUND_2"
-    foreground = "$FOREGROUND_1"
+    background = "#${BACKGROUND_1}"
+    foreground = "#${FOREGROUND_1}"
+    frame_color = "#${GREEN}"
 
 [urgency_normal]
-    background = "$BACKGROUND_2"
-    foreground = "$FOREGROUND_1"
+    background = "#${BACKGROUND_1}"
+    foreground = "#${FOREGROUND_1}"
+    frame_color = "#${ACCENT_1}"
 
 [urgency_critical]
-    background = "$BACKGROUND_2"
-    foreground = "$FOREGROUND_1"
-    frame_color = "$ACCENT_1"
+    background = "#${BACKGROUND_1}"
+    foreground = "#${FOREGROUND_1}"
+    frame_color = "#${RED}"

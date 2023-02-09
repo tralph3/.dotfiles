@@ -1,0 +1,4 @@
+general {
+    col.active_border=0xFF${ACCENT_1}
+    col.inactive_border=0xFF${ACCENT_2}
+}

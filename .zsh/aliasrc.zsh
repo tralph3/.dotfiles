@@ -148,7 +148,6 @@ alias localip='ip -brief -color address'
 
 # Recording device
 alias record='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
-alias syncmusic='rsync -av /mnt/Storage/Music/ T430:/mnt/Storage/Music'
 
 # get thumbnail from a video
 alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"

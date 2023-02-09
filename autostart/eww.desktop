@@ -1,5 +1,6 @@
 [Desktop Entry]
-Name=Dunst
-Exec=dunst
+Name=eww
+Exec=eww open bar
 NoDisplay=true
+OnlyShowIn=Hyprland
 Type=Application

@@ -15,7 +15,7 @@
             (label
               :text "•")))))))
 
-(deflisten window :initial "..." "bash ~/.config/eww/scripts/get-window-title")
+(deflisten window :initial "" "bash ~/.config/eww/scripts/get-window-title")
 (defwidget window_w []
   (box
     (label :text "${window}")))
@@ -37,7 +37,7 @@
     )
 )
 
-(defwindow example
+(defwindow bar
   :monitor 0
   :geometry (geometry :x "0%"
                       :y "0px"

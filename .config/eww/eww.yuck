@@ -6,14 +6,13 @@
     :class "workspaces-widget"
     (box
       :space-evenly false
-      :spacing 15
       (for workspace in workspaces
         (eventbox
           :onclick "hyprctl dispatch workspace ${workspace.id}"
           (box
             :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
             (label
-              :text "•")))))))
+              :text "")))))))
 
 (deflisten window :initial "" "bash ~/.config/eww/scripts/get-window-title")
 (defwidget window_w []

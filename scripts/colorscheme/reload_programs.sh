@@ -35,6 +35,6 @@ reload_all() {
     reload_dunst
     reload_eww
     reload_qtile
-    reload_mouse
-    reload_keyboard
+    # reload_mouse
+    # reload_keyboard
 }

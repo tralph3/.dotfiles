@@ -13,10 +13,7 @@ reload_dunst() {
     fi
 
     kill $DUNST
-
-    cat ~/.config/dunst/dunstrc\
-        ~/.config/colorschemes/current_colorscheme/colors.ini |\
-        dunst -config - & disown
+    dunst & disown
 }
 
 reload_mouse() {

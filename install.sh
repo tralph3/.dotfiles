@@ -10,6 +10,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export WALLPAPERS_DIR="/usr/share/my_wallpapers"
 EOF
 )
+DEFAULT_COLORSCHEME=$DOTFILES_DIR/.config/colorschemes/Catppuccin.scheme
 
 NO_CONFIRM=0
 
@@ -122,7 +123,10 @@ install_config .config/wpaperd ~/.config/wpaperd
 # colorschemes
 install_config .config/colorschemes ~/.config/colorschemes
 
-$DOTFILES_DIR/scripts/colorscheme/generate_colorscheme_files.sh $DOTFILES_DIR/.config/colorschemes/Catppuccin.scheme
+$DOTFILES_DIR/scripts/colorscheme/generate_colorscheme_files.sh $DEFAULT_COLORSCHEME
+
+# dunst colors
+install_config .config/colorschemes/current_colorscheme/colors.ini ~/.config/dunst/dunstrc.d/10-colors.conf
 
 if [[ $USER_ID -ne 0 ]]; then
     echo "Root access is needed to create a file that will set environment variables on startup."

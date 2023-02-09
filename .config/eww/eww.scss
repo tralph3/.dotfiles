@@ -2,13 +2,15 @@
 
 .bar {
     color: map-get($COLORS, "FOREGROUND_1");
-    background-color: map-get($COLORS, "BACKGROUND_1");;
+    background-color: map-get($COLORS, "BACKGROUND_1");
     border-color: map-get($COLORS, "ACCENT_2");
 }
 
 .current {
-    background-color: map-get($COLORS, "FOREGROUND_1");;
+    background-color: map-get($COLORS, "FOREGROUND_1");
     color: map-get($COLORS, "ACCENT_1");
-    padding-left: 10px;
-    padding-right: 10px;
+}
+
+.workspace-entry {
+    padding: 0px 10px;
 }

@@ -1,12 +1,14 @@
+@import '/home/tralph3/.config/colorschemes/current_colorscheme/colors.scss';
+
 .bar {
-    color: #D9E0EE;
-    background-color: #1e1e2e;
-    border-color: #302D41;
+    color: map-get($COLORS, "FOREGROUND_1");
+    background-color: map-get($COLORS, "BACKGROUND_1");;
+    border-color: map-get($COLORS, "ACCENT_2");
 }
 
 .current {
-    background-color: #D9E0EE;
-    color: #96CDFB;
+    background-color: map-get($COLORS, "FOREGROUND_1");;
+    color: map-get($COLORS, "ACCENT_1");
     padding-left: 10px;
     padding-right: 10px;
 }

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# needed for the scss workaround
+export COLORS=\$COLORS
+
 COLORSCHEME=$1
 TEMPLATES_DIR="$DOTFILES_DIR/scripts/colorscheme/templates"
 

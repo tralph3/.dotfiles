@@ -2,6 +2,10 @@
 
 source ~/.config/colorschemes/current_colorscheme/colors.sh
 
+reload_eww() {
+    eww reload
+}
+
 reload_qtile() {
     pkill -USR1 qtile
 }
@@ -29,6 +33,7 @@ reload_keyboard() {
 
 reload_all() {
     reload_dunst
+    reload_eww
     reload_qtile
     reload_mouse
     reload_keyboard

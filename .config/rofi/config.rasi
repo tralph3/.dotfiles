@@ -33,24 +33,24 @@ window {
     width: 700px;
     border: 3px;
     border-color: @accent1;
-    background-color: @bg-col2;
+    background-color: @bg-col1;
 }
 
 mainbox {
-    background-color: @bg-col2;
+    background-color: @bg-col1;
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col2;
+    background-color: @bg-col1;
     border-radius: 5px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @accent1;
     padding: 6px;
-    text-color: @bg-col2;
+    text-color: @bg-col1;
     border-radius: 3px;
     margin: 20px 0px 0px 20px;
 }
@@ -64,7 +64,7 @@ entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
     text-color: @fg-col1;
-    background-color: @bg-col2;
+    background-color: @bg-col1;
 }
 
 listview {
@@ -72,12 +72,12 @@ listview {
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
     columns: 2;
-    background-color: @bg-col2;
+    background-color: @bg-col1;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-col2;
+    background-color: @bg-col1;
     text-color: @fg-col1;
 }
 
@@ -86,7 +86,7 @@ element-icon {
 }
 
 element selected {
-    text-color: @red;
+    text-color: @accent2;
 }
 
 mode-switcher {
@@ -95,13 +95,13 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col2;
+    background-color: @bg-col1;
     text-color: @black;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-    background-color: @bg-col2;
-    text-color: @blue;
+    background-color: @bg-col1;
+    text-color: @accent2;
 }

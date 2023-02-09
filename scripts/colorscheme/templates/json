@@ -1,22 +1,22 @@
 {
-    "BACKGROUND_1": "$BACKGROUND_1",
-    "BACKGROUND_2": "$BACKGROUND_2",
-    "BACKGROUND_3": "$BACKGROUND_3",
+    "BACKGROUND_1": "#${BACKGROUND_1}",
+    "BACKGROUND_2": "#${BACKGROUND_2}",
+    "BACKGROUND_3": "#${BACKGROUND_3}",
 
-    "FOREGROUND_1": "$FOREGROUND_1",
-    "FOREGROUND_2": "$FOREGROUND_2",
-    "FOREGROUND_3": "$FOREGROUND_3",
+    "FOREGROUND_1": "#${FOREGROUND_1}",
+    "FOREGROUND_2": "#${FOREGROUND_2}",
+    "FOREGROUND_3": "#${FOREGROUND_3}",
 
-    "ACCENT_1": "$ACCENT_1",
-    "ACCENT_2": "$ACCENT_2",
-    "ACCENT_3": "$ACCENT_3",
+    "ACCENT_1": "#${ACCENT_1}",
+    "ACCENT_2": "#${ACCENT_2}",
+    "ACCENT_3": "#${ACCENT_3}",
 
-    "BLACK": "$BLACK",
-    "RED": "$RED",
-    "GREEN": "$GREEN",
-    "YELLOW": "$YELLOW",
-    "BLUE": "$BLUE",
-    "MAGENTA": "$MAGENTA",
-    "CYAN": "$CYAN",
-    "WHITE": "$WHITE"
+    "BLACK": "#${BLACK}",
+    "RED": "#${RED}",
+    "GREEN": "#${GREEN}",
+    "YELLOW": "#${YELLOW}",
+    "BLUE": "#${BLUE}",
+    "MAGENTA": "#${MAGENTA}",
+    "CYAN": "#${CYAN}",
+    "WHITE": "#${WHITE}"
 }

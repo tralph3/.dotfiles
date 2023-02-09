@@ -22,8 +22,30 @@ dap.configurations.python = {
     },
 }
 
+dap.configurations.rust = {
+    {
+        name = 'Launch Debug',
+        type = 'lldb',
+        request = "launch",
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/' .. '')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        initCommand = {},
+        runInTerminal = false
+    }
+}
+
 dap.adapters.python = {
     type = 'executable',
     command = vim.fn.stdpath('data')..'/mason/packages/debugpy/venv/bin/python',
     args = { '-m', 'debugpy.adapter' },
+}
+
+dap.adapters.lldb = {
+    type = 'executable',
+    command = 'rust-lldb',
+    name = 'lldb'
 }

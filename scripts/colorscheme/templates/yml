@@ -1,34 +1,34 @@
 colors:
   primary:
-    background: '$BACKGROUND_2'
-    foreground: '$FOREGROUND_1'
+    background: '#${BACKGROUND_1}'
+    foreground: '#${FOREGROUND_1}'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '$FOREGROUND_1'
-    cursor: '$FOREGROUND_1'
+    text: '#${FOREGROUND_1}'
+    cursor: '#${FOREGROUND_1}'
 
   normal:
-    black:   '$BLACK'
-    red:     '$RED'
-    green:   '$GREEN'
-    yellow:  '$YELLOW'
-    blue:    '$BLUE'
-    magenta: '$MAGENTA'
-    cyan:    '$CYAN'
-    white:   '$WHITE'
+    black:   '#${BLACK}'
+    red:     '#${RED}'
+    green:   '#${GREEN}'
+    yellow:  '#${YELLOW}'
+    blue:    '#${BLUE}'
+    magenta: '#${MAGENTA}'
+    cyan:    '#${CYAN}'
+    white:   '#${WHITE}'
 
   bright:
-    black:   '$BLACK'
-    red:     '$RED'
-    green:   '$GREEN'
-    yellow:  '$YELLOW'
-    blue:    '$BLUE'
-    magenta: '$MAGENTA'
-    cyan:    '$CYAN'
-    white:   '$WHITE'
+    black:   '#${BLACK}'
+    red:     '#${RED}'
+    green:   '#${GREEN}'
+    yellow:  '#${YELLOW}'
+    blue:    '#${BLUE}'
+    magenta: '#${MAGENTA}'
+    cyan:    '#${CYAN}'
+    white:   '#${WHITE}'
 
   indexed_colors:
-    - { index: 16, color: '$ACCENT_1' }
-    - { index: 17, color: '$ACCENT_2' }
+    - { index: 16, color: '#${ACCENT_1}' }
+    - { index: 17, color: '#${ACCENT_2}' }
 

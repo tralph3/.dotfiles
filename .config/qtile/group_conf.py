@@ -28,8 +28,8 @@ groups = [
 
     # Music
     Group("7", label="", matches=[
-        Match(wm_class=["Spotify", "spotify"]),
-        Match(wm_class=["Quodlibet"])
+        Match(wm_class=["deadbeef"]),
+        Match(wm_class=["Quodlibet"]),
     ]),
 
     # Image editing

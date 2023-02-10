@@ -4,6 +4,7 @@
     color: map-get($COLORS, "FOREGROUND_1");
     background-color: map-get($COLORS, "BACKGROUND_1");
     border-color: map-get($COLORS, "ACCENT_2");
+    font-family: "UbuntuMono Nerd Font Mono";
 }
 
 .current {
@@ -13,4 +14,5 @@
 
 .workspace-entry {
     padding: 0px 10px;
+    font-size: x-large;
 }

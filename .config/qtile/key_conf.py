@@ -56,7 +56,7 @@ keys = [
         desc="Toggle play and pause"),
     Key([], "XF86AudioStop", lazy.spawn(commands["stop_audio"]),
         desc="Stops the audio"),
-    Key([], "XF86AudioNext", lazy.spawn(commands["skip_audio"]),
+    Key([], "XF86AudioNext", lazy.spawn(commands["next_audio"]),
         desc="Goes to the next track"),
     Key([], "XF86AudioPrev", lazy.spawn(commands["prev_audio"]),
         desc="Goes to the previous track"),

@@ -96,19 +96,22 @@ uall (){
     case $DISTRO in
         arch)
             paru --combinedupgrade --sudoloop --skipreview -Syu;
-                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
                 paru --sudoloop -c --removemake --noconfirm
             ;;
         ubuntu)
             sudo apt dist-upgrade;
-                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync';
                 sudo apt autoremove
             ;;
         fedora)
             sudo dnf distro-sync;
-                nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
             ;;
     esac
+    if [[ -f $(which nvim) ]]; then
+        nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    fi
+    if [[ -f $(which rustup) ]]; then
+        rustup update
+    fi
 }
 
 # run windows executable in own prefix

@@ -50,7 +50,7 @@
             (label :class "icon reboot" :text "")
         )
         (button
-            :onclick "hyprctl dispatch exit"
+            :onclick "hyprctl dispatch exit 0"
             (label :class "icon logout" :text "󰍃")
         )
     )

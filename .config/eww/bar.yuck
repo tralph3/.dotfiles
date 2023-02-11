@@ -1,0 +1,50 @@
+(deflisten workspaces :initial "[]" "scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "scripts/get-current-workspace")
+(defwidget workspaces []
+  (eventbox
+    :onscroll "scripts/change-current-workspace {} ${current_workspace}"
+    :class "workspaces-widget"
+    (box
+      :space-evenly false
+      (for workspace in workspaces
+        (eventbox
+          :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box
+            :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label
+              :text "${workspace.windows > 0 ? "" : ""}")))))))
+
+(deflisten window :initial "" "scripts/get-window-title")
+(defwidget window_w []
+  (box
+    (label :text "${window}")))
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwidget clock []
+    (box :class "clock" :halign "end" time)
+)
+
+(defwidget bar []
+    (centerbox
+        :class "bar"
+        :orientation "h"
+        (workspaces)
+        (window_w)
+        (clock)
+    )
+)
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0px"
+                      :width "100%"
+                      :height "20px"
+                      :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  :reserve (struts :distance "40px" :side "top")
+  (bar)
+)

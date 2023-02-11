@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=eww
-Exec=eww open bar
+Exec=eww open-many bar status
 NoDisplay=true
 OnlyShowIn=Hyprland
 Type=Application

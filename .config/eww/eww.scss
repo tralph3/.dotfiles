@@ -1,18 +1,57 @@
 @import '/home/tralph3/.config/colorschemes/current_colorscheme/colors.scss';
 
+* {
+    font-family: "UbuntuMono Nerd Font Mono";
+    border-color: map-get($COLORS, "ACCENT_1");
+    border-radius: 0px;
+}
+
 .bar {
     color: map-get($COLORS, "FOREGROUND_1");
     background-color: map-get($COLORS, "BACKGROUND_1");
-    border-color: map-get($COLORS, "ACCENT_2");
-    font-family: "UbuntuMono Nerd Font Mono";
+    border-bottom: 2px solid map-get($COLORS, "ACCENT_1");
 }
 
 .current {
-    background-color: map-get($COLORS, "FOREGROUND_1");
-    color: map-get($COLORS, "ACCENT_1");
+    background-color: map-get($COLORS, "ACCENT_1");
 }
 
 .workspace-entry {
     padding: 0px 10px;
     font-size: x-large;
+}
+
+.status {
+    background-color: map-get($COLORS, "BACKGROUND_1");
+    color: map-get($COLORS, "FOREGROUND_1");
+    border: 2px solid map-get($COLORS, "ACCENT_1");
+}
+
+.icon {
+    font-size: xx-large;
+}
+
+.powerbuttons {
+    padding: 10px;
+    & button {
+        border: 0px;
+        background-color: map-get($COLORS, "BACKGROUND_1");
+        & .off {
+            background-color: map-get($COLORS, "RED");
+        }
+        & .reboot {
+            background-color: map-get($COLORS, "YELLOW");
+        }
+        & .logout {
+            background-color: map-get($COLORS, "GREEN");
+        }
+    }
+}
+
+progressbar {
+    padding: 20px 0px;
+    min-width: 100px;
+    & trough progress {
+        background-color: map-get($COLORS, "ACCENT_1");
+    }
 }

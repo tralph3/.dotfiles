@@ -1,0 +1,79 @@
+(defwidget ram_bar []
+    (box
+        :orientation "h"
+        (label
+          :class "icon"
+          :text ""
+          :xalign 0.9
+        )
+        (progress
+          :value "${EWW_RAM.used_mem_perc}"
+          :valign "center"
+        )
+        (label
+          :text "${round("${EWW_RAM.used_mem_perc}", 0)}%"
+          :xalign 0.1
+        )
+    )
+)
+
+(defwidget cpu_bar []
+    (box
+        :orientation "h"
+        (label
+          :class "icon"
+          :text ""
+          :xalign 0.9
+        )
+        (progress
+          :value "${EWW_CPU.avg}"
+          :valign "center"
+        )
+        (label
+          :text "${round("${EWW_CPU.avg}", 0)}%"
+          :xalign 0.1
+        )
+    )
+)
+
+(defwidget power []
+    (box
+        :class "powerbuttons"
+        :spacing 10
+        :orientation "h"
+        (button
+            :onclick "poweroff"
+            (label :class "icon off" :text "")
+        )
+        (button
+            :onclick "reboot"
+            (label :class "icon reboot" :text "")
+        )
+        (button
+            :onclick "hyprctl dispatch exit"
+            (label :class "icon logout" :text "󰍃")
+        )
+    )
+)
+
+(defwidget all []
+    (box
+        :orientation "v"
+        (ram_bar)
+        (cpu_bar)
+        (power)
+    )
+)
+
+(defwindow status
+    :class "status"
+    :monitor 0
+    :geometry (geometry
+        :x "20px"
+        :y "20px"
+        :anchor "top right")
+    :stacking "bg"
+    :focusable false
+    :exclusive false
+    (all)
+)

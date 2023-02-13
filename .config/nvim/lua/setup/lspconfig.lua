@@ -8,7 +8,7 @@ local servers = {
     { 'pyright' },
 
     -- Lua
-    { 'sumneko_lua',
+    { 'lua_ls',
         settings = {
             Lua = {
                 diagnostics = {

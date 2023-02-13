@@ -49,8 +49,8 @@
 }
 
 progressbar {
-    padding: 20px 0px;
-    min-width: 100px;
+    padding: 1rem 0rem;
+    min-width: 8rem;
     & trough progress {
         background-color: map-get($COLORS, "ACCENT_1");
     }

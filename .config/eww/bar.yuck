@@ -17,7 +17,9 @@
 (deflisten window :initial "" "scripts/get-window-title")
 (defwidget window_w []
   (box
-    (label :text "${window}")))
+    (label
+        :limit-width 100
+        :text "${window}")))
 
 (defpoll time :interval "10s"
   "date '+%H:%M %b %d, %Y'")

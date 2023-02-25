@@ -1,0 +1,20 @@
+(setq BACKGROUND_1 "#${BACKGROUND_1}")
+(setq BACKGROUND_2 "#${BACKGROUND_2}")
+(setq BACKGROUND_3 "#${BACKGROUND_3}")
+
+(setq FOREGROUND_1 "#${FOREGROUND_1}")
+(setq FOREGROUND_2 "#${FOREGROUND_2}")
+(setq FOREGROUND_3 "#${FOREGROUND_3}")
+
+(setq ACCENT_1 "#${ACCENT_1}")
+(setq ACCENT_2 "#${ACCENT_2}")
+(setq ACCENT_3 "#${ACCENT_3}")
+
+(setq BLACK "#${BLACK}")
+(setq RED "#${RED}")
+(setq GREEN "#${GREEN}")
+(setq YELLOW "#${YELLOW}")
+(setq BLUE "#${BLUE}")
+(setq MAGENTA "#${MAGENTA}")
+(setq CYAN "#${CYAN}")
+(setq WHITE "#${WHITE}")

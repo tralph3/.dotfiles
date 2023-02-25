@@ -17,8 +17,8 @@ configuration {
     kb-remove-to-eol: "";
     kb-row-tab: "";
     kb-accept-entry: "Return,KP_Enter";
-    kb-row-up: "Control+k,Up";
-    kb-row-down: "Control+j,Down";
+    kb-row-up: "Control+k,Up,Control+p";
+    kb-row-down: "Control+j,Down,Control+n";
 }
 
 @theme "~/.config/colorschemes/current_colorscheme/colors.rasi"

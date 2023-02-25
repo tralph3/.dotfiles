@@ -91,30 +91,39 @@ src () {
     fi
 }
 
-
-uall (){
-    case $DISTRO in
-        arch)
-            paru --combinedupgrade --sudoloop --skipreview -Syu;
-                paru --sudoloop -c --removemake --noconfirm
-            ;;
-        ubuntu)
-            sudo apt dist-upgrade;
-                sudo apt autoremove
-            ;;
-        fedora)
-            sudo dnf distro-sync;
-            ;;
-    esac
-    if [[ -f $(which nvim) ]]; then
-        nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+update_component() {
+    COMPONENT_NAME=$1
+    COMPONENT_BINARY=$2
+    COMPONENT_COMMAND=$3
+    if ! [[ -f $(which $(echo $2 | cut -d " " -f1)) ]]; then
+        return
     fi
-    if [[ -f $(which rustup) ]]; then
-        rustup update
-    fi
+    echo "\x1b[1;33m"
+    echo "-------------------------------"
+    echo "Updating $1"
+    echo "-------------------------------\x1b[0m"
+    eval $3
 }
 
-# run windows executable in own prefix
+uall (){
+    update_component "system packages" "paru"\
+        "paru --combinedupgrade --sudoloop --skipreview -Syu;
+        paru --sudoloop -c --removemake --noconfirm"
+
+    update_component "system packages" "apt"\
+        "sudo apt dist-upgrade; sudo apt autoremove"
+
+    update_component "system packages" "dnf" "sudo dnf distro-sync"
+
+    update_component "neovim plugins" "nvim"\
+        "nvim -c 'autocmd User PackerComplete quitall'\
+        -c 'PackerSync' --headless --embed"
+
+    update_component "rust" "rustup" "rustup update"
+
+    update_component "pip" "pip" "pip install --upgrade pip"
+}
+
 wn() {
     if [ $1 ] ; then
         WINEPREFIX=$(pwd)/prefix wine $1
@@ -122,24 +131,30 @@ wn() {
         echo "No file provided"
     fi
 }
-# regular list
-alias ls='exa -lg --icons --header --group-directories-first'
-# list all
-alias la='exa -lag --icons --header --group-directories-first'
-# list recursively with depth of 1
-alias lr='exa -lTg -L 2 --icons --header --group-directories-first'
-# list recursively indefinitely
-alias lR='exa -lTg --icons --header --group-directories-first'
-# copy terminal stuff to clipboard
-alias clip='xclip -selection clipboard'
 
-# file editing
+alias ls='exa -lg --icons --header --group-directories-first'
+alias la='exa -lag --icons --header --group-directories-first'
+alias lr='exa -lTg -L 2 --icons --header --group-directories-first'
+alias lR='exa -lTg --icons --header --group-directories-first'
+
+SESSION_TYPE=$(loginctl show-session\
+    $(loginctl -o json | jq --raw-output '.[] .session') -p Type | cut -d= -f2)
+case $SESSION_TYPE in
+    wayland)
+        alias clip='wl-copy'
+        ;;
+    x11)
+        alias clip='xclip -selection clipboard'
+        ;;
+esac
+
+
 export EDITOR=nvim
 
-alias zshrc="${=EDITOR} ~/.zshrc" # Quick access to the ~/.zshrc file
-alias aliasrc="${=EDITOR} ~/.zsh/aliasrc.zsh" # Quick access to this file
-alias nvimrc="cd ~/.config/nvim; ${=EDITOR} ~/.config/nvim/init.lua; cd - &> /dev/null" # Quick access to init.lua
-alias alarc="${=EDITOR} ~/.config/alacritty/alacritty.yml" # Quick access to alacritty config
+alias zshrc="${=EDITOR} ~/.zshrc"
+alias aliasrc="${=EDITOR} ~/.zsh/aliasrc.zsh"
+alias nvimrc="cd ~/.config/nvim; ${=EDITOR} ~/.config/nvim/init.lua; cd - &> /dev/null"
+alias alarc="${=EDITOR} ~/.config/alacritty/alacritty.yml"
 
 gp() {
     git add -A
@@ -148,9 +163,4 @@ gp() {
 }
 
 alias localip='ip -brief -color address'
-
-# Recording device
 alias record='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
-
-# get thumbnail from a video
-alias get-thumbnail="youtube-dl --write-thumbnail --skip-download"

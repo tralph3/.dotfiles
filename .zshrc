@@ -54,13 +54,6 @@ bindkey "\e\d"  undo
 bindkey '^R' history-incremental-search-backward
 
 # Load plugins
-case $DISTRO in
-    arch)
-        source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-        source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-        ;;
-    ubuntu)
-        # I forgot where ubuntu drops these files lol
-        ;;
-esac
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

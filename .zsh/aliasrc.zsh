@@ -1,13 +1,4 @@
 #!/bin/zsh
-source /etc/os-release
-
-if [ $ID_LIKE ]; then
-    DISTRO=$ID_LIKE
-else
-    DISTRO=$ID
-fi
-
-
 # extracting utility
 ex () {
     for i in "${@}"; do
@@ -35,93 +26,106 @@ ex () {
 
 # rmv - to remove packages and its dependencies
 rmv () {
-    if [ $1 ] ; then
-        case $DISTRO in
-            arch)
-                paru --sudoloop -Rns $@ && paru --sudoloop -c --noconfirm
-                ;;
-            ubuntu)
-                sudo apt autoremove --purge $@
-                ;;
-            fedora)
-                dnf remove $@ && dnf autoremove
-                ;;
-        esac
-    else
+    if ! [ $1 ]; then
         echo "No package provided"
+        return
+    fi
+    if command_exists "paru"; then
+        paru --sudoloop -Rns $@ && paru --sudoloop -c --noconfirm
+    elif command_exists "apt"; then
+        sudo apt autoremove --purge $@
+    elif command_exists "dnf"; then
+        dnf remove $@ && dnf autoremove
     fi
 }
 
 # ins - shorter way to install packages
 ins () {
-    if [ $1 ] ; then
-        case $DISTRO in
-            arch)
-                paru --sudoloop --skipreview -S $@;
-                    paru --sudoloop -c --removemake --noconfirm
-                ;;
-            ubuntu)
-                sudo apt install $@; sudo apt autoremove
-                ;;
-            fedora)
-                dnf install $@
-                ;;
-        esac
-    else
+    if ! [ $1 ]; then
         echo "No package provided"
+        return
+    fi
+    if command_exists "paru"; then
+        paru --sudoloop --skipreview -S $@
+        paru --sudoloop -c --removemake --noconfirm
+    elif command_exists "apt"; then
+        sudo apt install $@; sudo apt autoremove
+    elif command_exists "dnf"; then
+        dnf install $@
     fi
 }
 
 # src - shorter way to search for packages
 src () {
-    if [ $1 ] ; then
-        case $DISTRO in
-            arch)
-                paru --bottomup --skipreview --sudoloop "$*"
-                ;;
-            ubuntu)
-                apt search "$*"
-                ;;
-            fedora)
-                dnf search "$*"
-                ;;
-        esac
-    else
+    if ! [ $1 ]; then
         echo "No package provided"
+        return
     fi
+    if command_exists "paru"; then
+        paru --bottomup --skipreview --sudoloop "$*"
+    elif command_exists "apt"; then
+        apt search "$*"
+    elif command_exists "dnf"; then
+        dnf search "$*"
+    fi
+}
+
+command_exists() {
+    BINARY=$1
+    which $BINARY &> /dev/null
+    return $?
+}
+
+print_result() {
+    RESULT=$1
+    COMPONENT=$2
+    if [[ $RESULT -eq 0 ]]; then
+        echo "\x1b[1;32m Successfully updated $COMPONENT\x1b[0m"
+    else
+        echo "\x1b[1;31m Error updating $COMPONENT\x1b[0m"
+    fi
+    echo
 }
 
 update_component() {
-    COMPONENT_NAME=$1
-    COMPONENT_BINARY=$2
-    COMPONENT_COMMAND=$3
-    if ! [[ -f $(which $(echo $2 | cut -d " " -f1)) ]]; then
+    BINARY=$1
+    COMPONENT=$2
+    COMMAND=$3
+    if ! command_exists $BINARY; then
         return
     fi
-    echo "\x1b[1;33m"
-    echo "-------------------------------"
-    echo "Updating $1"
-    echo "-------------------------------\x1b[0m"
-    eval $3
+    echo "\x1b[1;33m Updating $COMPONENT\x1b[0m"
+    eval "$COMMAND"
+    RESULT=$?
+    print_result $RESULT $COMPONENT
 }
 
 uall (){
-    update_component "system packages" "paru"\
-        "paru --combinedupgrade --sudoloop --skipreview -Syu;
-        paru --sudoloop -c --removemake --noconfirm"
+    update_component "paru" "system packages" "
+        paru --combinedupgrade --sudoloop --skipreview -Syu
+        paru --sudoloop -c --removemake --noconfirm
+    "
 
-    update_component "system packages" "apt"\
-        "sudo apt dist-upgrade; sudo apt autoremove"
+    update_component "apt" "system packages" "
+        sudo apt dist-upgrade; sudo apt autoremove
+    "
 
-    update_component "system packages" "dnf" "sudo dnf distro-sync"
+    update_component "dnf" "system packages" "
+        sudo dnf distro-sync
+    "
 
-    update_component "neovim plugins" "nvim"\
-        "nvim -c 'autocmd User PackerComplete quitall'\
-        -c 'PackerSync' --headless --embed"
+    update_component "nvim" "neovim plugins" "
+        nvim -c 'autocmd User PackerComplete quitall'\
+        -c 'PackerSync' --headless --embed
+    "
 
-    update_component "rust" "rustup" "rustup update"
+    update_component "rustup" "rust" "
+        rustup update
+    "
 
-    update_component "pip" "pip" "pip install --upgrade pip"
+    update_component "pip" "pip" "
+        pip install --upgrade pip
+    "
 }
 
 wn() {

@@ -115,8 +115,10 @@ uall (){
     "
 
     update_component "nvim" "neovim plugins" "
-        nvim -c 'autocmd User PackerComplete quitall'\
-        -c 'PackerSync' --headless --embed
+        nvim --headless --embed\
+            -c 'if !exists(\":PackerSync\") | qall! | endif'\
+            -c 'autocmd User PackerComplete qall!'\
+            -c 'PackerSync'
     "
 
     update_component "rustup" "rust" "

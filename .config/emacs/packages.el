@@ -20,3 +20,30 @@
 	    (setq company-minimum-prefix-length 1)
 	    (setq company-selection-wrap-around t)
 	    ))
+
+(use-package rust-mode
+  :ensure t)
+
+(use-package tree-sitter
+  :ensure t
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+
+(use-package treemacs
+  :ensure t
+  :config
+  (require 'treemacs-all-the-icons)
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+  (global-set-key (kbd "M-n") 'treemacs))
+
+(use-package treemacs-all-the-icons
+  :ensure t
+  :after treemacs
+  :config
+  (treemacs-load-theme "all-the-icons")
+  (treemacs))

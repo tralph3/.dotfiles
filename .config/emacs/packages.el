@@ -7,7 +7,16 @@
   (package-install 'use-package))
 
 (use-package eglot
-  :ensure t)
+  :ensure t
+  :hook (prog-mode . eglot-ensure))
 
 (use-package company
-  :ensure t)
+  :ensure t
+  :config (progn
+	    (global-company-mode)
+	    (setq company-tooltip-idle-delay 0)
+	    (setq company-tooltip-minimum-width 40)
+	    (setq company-idle-delay 0)
+	    (setq company-minimum-prefix-length 1)
+	    (setq company-selection-wrap-around t)
+	    ))

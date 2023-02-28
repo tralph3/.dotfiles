@@ -1,5 +1,6 @@
 (load-file (concat user-config-directory "colorscheme.el"))
 (load-file (concat user-config-directory "binds.el"))
+(load-file (concat user-config-directory "packages.el"))
 
 (setq display-line-numbers-type 'relative)
 (tab-line-mode 1)

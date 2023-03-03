@@ -47,3 +47,9 @@
   :config
   (treemacs-load-theme "all-the-icons")
   (treemacs))
+
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode)
+  (vertico-mouse-mode))

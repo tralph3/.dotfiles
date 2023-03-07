@@ -52,4 +52,10 @@
   :ensure t
   :after treemacs
   :config
-    (treemacs-load-theme "all-the-icons"))
+  (treemacs-load-theme "all-the-icons"))
+
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode)
+  (vertico-mouse-mode))

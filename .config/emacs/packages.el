@@ -10,16 +10,22 @@
   :ensure t
   :hook (prog-mode . eglot-ensure))
 
-(use-package company
+(use-package company-quickhelp
   :ensure t
+  :config
+    (require 'company)
+    (company-quickhelp-mode t))
+
+(use-package company-box
+  :ensure t
+  :hook (company-mode . company-box-mode)
   :config (progn
-	    (global-company-mode)
-	    (setq company-tooltip-idle-delay 0)
-	    (setq company-tooltip-minimum-width 40)
-	    (setq company-idle-delay 0)
-	    (setq company-minimum-prefix-length 1)
-	    (setq company-selection-wrap-around t)
-	    ))
+    (setq company-tooltip-idle-delay 0)
+    (setq company-tooltip-minimum-width 40)
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 1)
+    (setq company-selection-wrap-around t)
+    (global-company-mode t)))
 
 (use-package rust-mode
   :ensure t)
@@ -37,13 +43,13 @@
 (use-package treemacs
   :ensure t
   :config
-  (require 'treemacs-all-the-icons)
-  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
-  (global-set-key (kbd "M-n") 'treemacs))
+    (require 'treemacs-all-the-icons)
+    (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+    (treemacs-project-follow-mode t)
+    (global-set-key (kbd "M-n") 'treemacs))
 
 (use-package treemacs-all-the-icons
   :ensure t
   :after treemacs
   :config
-  (treemacs-load-theme "all-the-icons")
-  (treemacs))
+    (treemacs-load-theme "all-the-icons"))

@@ -10,23 +10,30 @@
   :ensure t
   :hook (prog-mode . eglot-ensure))
 
+(use-package company
+  :ensure t
+  :custom
+    (company-tooltip-idle-delay 0.5)
+    (company-tooltip-minimum-width 40)
+    (company-idle-delay 0.5)
+    (company-minimum-prefix-length 1)
+    (company-selection-wrap-around t)
+  :config
+    (global-company-mode))
+
 (use-package company-quickhelp
   :ensure t
+  :after company
+  :custom
+    (company-quickhelp-delay 0)
   :config
-    (require 'company)
-    (company-quickhelp-mode t)
-    (setq company-quickhelp-delay 0))
+    (company-quickhelp-mode t))
+
 
 (use-package company-box
   :ensure t
-  :hook (company-mode . company-box-mode)
-  :config (progn
-    (setq company-tooltip-idle-delay 0.5)
-    (setq company-tooltip-minimum-width 40)
-    (setq company-idle-delay 0.5)
-    (setq company-minimum-prefix-length 1)
-    (setq company-selection-wrap-around t)
-    (global-company-mode t)))
+  :after company
+  :hook (company-mode . company-box-mode))
 
 (use-package rust-mode
   :ensure t)
@@ -61,3 +68,6 @@
   :config
     (vertico-mode)
     (vertico-mouse-mode))
+
+(use-package magit
+  :ensure t)

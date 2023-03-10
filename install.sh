@@ -8,6 +8,7 @@ VARIABLES=$(cat << EOF
 export DOTFILES_DIR=$DOTFILES_DIR
 export QT_QPA_PLATFORMTHEME=qt5ct
 export WALLPAPERS_DIR="/usr/share/my_wallpapers"
+export GTK_THEME=Breeze-Dark
 EOF
 )
 DEFAULT_COLORSCHEME=$DOTFILES_DIR/.config/colorschemes/Catppuccin.scheme

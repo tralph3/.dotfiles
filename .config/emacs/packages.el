@@ -26,9 +26,9 @@
   :after company
   :custom
     (company-quickhelp-delay 0)
+    (company-quickhelp-max-lines 20)
   :config
     (company-quickhelp-mode t))
-
 
 (use-package company-box
   :ensure t

@@ -124,7 +124,9 @@ install_config .config/wpaperd ~/.config/wpaperd
 # colorschemes
 install_config .config/colorschemes ~/.config/colorschemes
 
-$DOTFILES_DIR/scripts/colorscheme/generate_colorscheme_files.sh $DEFAULT_COLORSCHEME
+if ! [ -f "~/.config/colorschemes/current_colorscheme/colors.sh" ]; then
+    $DOTFILES_DIR/scripts/colorscheme/generate_colorscheme_files.sh $DEFAULT_COLORSCHEME
+fi
 
 # dunst colors
 install_config .config/colorschemes/current_colorscheme/colors.ini ~/.config/dunst/dunstrc.d/10-colors.conf

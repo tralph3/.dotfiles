@@ -10,30 +10,26 @@
   :ensure t
   :hook (prog-mode . eglot-ensure))
 
-(use-package company
+(use-package corfu
   :ensure t
   :custom
-    (company-tooltip-idle-delay 0.5)
-    (company-tooltip-minimum-width 40)
-    (company-idle-delay 0.5)
-    (company-minimum-prefix-length 1)
-    (company-selection-wrap-around t)
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 0)
+  (corfu-min-width 60)
+  (corfu-popupinfo-delay t)
   :config
-    (global-company-mode))
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
 
-(use-package company-quickhelp
+(use-package kind-icon
   :ensure t
-  :after company
+  :after corfu
   :custom
-    (company-quickhelp-delay 0)
-    (company-quickhelp-max-lines 20)
+    (kind-icon-default-face 'corfu-default)
+    (kind-icon-blend-background nil)
   :config
-    (company-quickhelp-mode t))
-
-(use-package company-box
-  :ensure t
-  :after company
-  :hook (company-mode . company-box-mode))
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 (use-package rust-mode
   :ensure t)
@@ -55,7 +51,7 @@
     (require 'treemacs-all-the-icons)
     (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
     (treemacs-project-follow-mode t)
-    (global-set-key (kbd "M-n") 'treemacs))
+    (treemacs-fringe-indicator-mode -1))
 
 (use-package treemacs-all-the-icons
   :ensure t
@@ -70,4 +66,5 @@
     (vertico-mouse-mode))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :bind (("C-c g" . 'magit-status)))

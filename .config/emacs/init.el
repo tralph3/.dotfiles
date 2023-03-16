@@ -10,8 +10,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq-default whitespace-style '(trailing))
-(global-whitespace-mode t)
+(setq-default truncate-lines t)
 (setq inhibit-startup-screen t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

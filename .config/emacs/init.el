@@ -12,6 +12,7 @@
 (setq-default tab-width 4)
 (setq-default truncate-lines t)
 (setq inhibit-startup-screen t)
+(set-face-attribute 'default nil :font "UbuntuMono Nerd Font Mono-12")
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

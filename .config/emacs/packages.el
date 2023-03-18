@@ -17,7 +17,7 @@
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 0)
   (corfu-min-width 60)
-  (corfu-popupinfo-delay t)
+  (corfu-popupinfo-delay 0.5)
   :config
   (corfu-popupinfo-mode)
   (global-corfu-mode))
@@ -68,3 +68,8 @@
 (use-package magit
   :ensure t
   :bind (("C-c g" . 'magit-status)))
+
+(use-package orderless
+  :ensure t
+  :config
+    (add-to-list 'completion-styles 'orderless))

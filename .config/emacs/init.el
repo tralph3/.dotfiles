@@ -1,6 +1,7 @@
-(load-file (concat user-config-directory "colorscheme.el"))
 (load-file (concat user-config-directory "binds.el"))
 (load-file (concat user-config-directory "packages.el"))
+(load-file (concat user-config-directory "colorscheme.el"))
+(load-file (concat user-config-directory "smooth-scrolling.el"))
 
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)

@@ -11,3 +11,5 @@
 
 (global-set-key (kbd "M-o") 'insert-blank-line-bottom)
 (global-set-key (kbd "M-O") 'insert-blank-line-top)
+
+(global-set-key (kbd "M-Z") 'zap-up-to-char)

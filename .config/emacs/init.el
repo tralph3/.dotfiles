@@ -13,6 +13,8 @@
 (setq-default truncate-lines t)
 (setq inhibit-startup-screen t)
 (set-face-attribute 'default nil :font "UbuntuMono Nerd Font Mono-12")
+(setq-default scroll-conservatively 10000)
+(setq-default scroll-margin 5)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

@@ -79,7 +79,7 @@ These settings require emacs 29. They make emacs scroll smoothly with a mouse, t
 * Packages
 These are the emacs packages I use.
 ** Setup
-Here we setup the `package-archives` variable to include the [[https://elpa.gnu.org/packages/][MELPA]] repository.
+Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]] repository.
 #+begin_src emacs-lisp
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")

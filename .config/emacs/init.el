@@ -1,7 +1,6 @@
 (load-file (concat user-config-directory "binds.el"))
 (load-file (concat user-config-directory "packages.el"))
 (load-file (concat user-config-directory "colorscheme.el"))
-(load-file (concat user-config-directory "smooth-scrolling.el"))
 
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
@@ -16,5 +15,11 @@
 (push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
 (setq-default scroll-conservatively 10000)
 (setq-default scroll-margin 5)
+
+(pixel-scroll-precision-mode t)
+(setq pixel-scroll-precision-use-momentum t)
+(setq pixel-scroll-precision-interpolate-mice t)
+(setq pixel-scroll-precision-large-scroll-height 10.0)
+(setq pixel-scroll-precision-interpolate-page t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

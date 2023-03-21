@@ -13,3 +13,6 @@
 (global-set-key (kbd "M-O") 'insert-blank-line-top)
 
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+(global-set-key (kbd "C-v") 'pixel-scroll-interpolate-down)
+(global-set-key (kbd "M-v") 'pixel-scroll-interpolate-up)

@@ -1,18 +1,16 @@
-(load-file (concat user-config-directory "binds.el"))
-(load-file (concat user-config-directory "packages.el"))
-(load-file (concat user-config-directory "colorscheme.el"))
-
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+(push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
-(setq-default truncate-lines t)
 (setq inhibit-startup-screen t)
-(push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (setq-default scroll-conservatively 10000)
 (setq-default scroll-margin 5)
 
@@ -22,4 +20,119 @@
 (setq pixel-scroll-precision-large-scroll-height 10.0)
 (setq pixel-scroll-precision-interpolate-page t)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-set-key (kbd "C-v") 'pixel-scroll-interpolate-down)
+(global-set-key (kbd "M-v") 'pixel-scroll-interpolate-up)
+
+(defun insert-blank-line-top ()
+  (interactive)
+  (move-beginning-of-line nil)
+  (open-line 1))
+
+(defun insert-blank-line-bottom ()
+  (interactive)
+  (move-end-of-line nil)
+  (open-line 1)
+  (next-line 1))
+
+(global-set-key (kbd "M-o") 'insert-blank-line-bottom)
+(global-set-key (kbd "M-O") 'insert-blank-line-top)
+
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(use-package corfu
+  :ensure t
+  :custom
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 0)
+  (corfu-min-width 60)
+  (corfu-popupinfo-delay 0.5)
+  (corfu-preview-current nil)
+  (corfu-preselect 'prompt)
+  (corfu-quit-no-match t)
+  (corfu-on-exact-match 'quit)
+  (corfu-cycle t)
+  :config
+  (corfu-popupinfo-mode)
+  (global-corfu-mode))
+
+(defun corfu-handle-tab-completion ()
+  (interactive)
+  (if (>= corfu--index 0)
+      (corfu-complete)
+    (progn
+      (setq corfu--index 0)
+      (corfu-complete))))
+
+(defun corfu-handle-return-completion ()
+  (interactive)
+  (if (>= corfu--index 0)
+      (corfu-complete)
+    (newline)))
+
+(setq corfu-map (make-sparse-keymap))
+(define-key corfu-map (kbd "M-n") 'corfu-next)
+(define-key corfu-map (kbd "M-p") 'corfu-previous)
+(define-key corfu-map (kbd "TAB") 'corfu-handle-tab-completion)
+(define-key corfu-map (kbd "RET") 'corfu-handle-return-completion)
+
+(use-package kind-icon
+  :ensure t
+  :after corfu
+  :custom
+  (kind-icon-default-face 'corfu-default)
+  (kind-icon-blend-background nil)
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package rust-mode
+  :ensure t)
+
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode)
+  (vertico-mouse-mode))
+
+(use-package magit
+  :ensure t
+  :bind (("C-c g" . 'magit-status)))
+
+(use-package orderless
+  :ensure t
+  :config
+  (add-to-list 'completion-styles 'orderless))
+
+(load-file "~/.config/colorschemes/current_colorscheme/colors.el")
+
+(push `(background-color . ,BACKGROUND_1) default-frame-alist)
+(push `(foreground-color . ,FOREGROUND_1) default-frame-alist)
+(set-face-background 'fringe BACKGROUND_1)
+
+(set-face-background 'cursor ACCENT_1)
+
+(set-face-background 'mode-line BACKGROUND_2)
+(set-face-foreground 'mode-line FOREGROUND_1)
+(set-face-background 'mode-line-inactive BACKGROUND_1)
+(set-face-background 'mode-line-highlight ACCENT_1)
+(set-face-foreground 'mode-line-highlight FOREGROUND_2)
+
+(set-face-background 'corfu-default BACKGROUND_2)
+(set-face-foreground 'corfu-default FOREGROUND_1)
+
+(require 'org-faces)
+(set-face-background 'org-block BACKGROUND_2)
+(set-face-background 'org-block-begin-line BACKGROUND_2)
+(set-face-background 'org-block-end-line BACKGROUND_2)
+(set-face-attribute 'org-level-1 nil :height 1.8)
+(set-face-attribute 'org-level-2 nil :height 1.7)
+(set-face-attribute 'org-level-3 nil :height 1.6)
+(set-face-attribute 'org-level-4 nil :height 1.5)
+(set-face-attribute 'org-level-5 nil :height 1.4)
+(set-face-attribute 'org-level-6 nil :height 1.3)
+(set-face-attribute 'org-level-7 nil :height 1.2)
+(set-face-attribute 'org-level-8 nil :height 1.1)

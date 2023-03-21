@@ -1,0 +1,216 @@
+#+TITLE: Emacs Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :tangle init.el
+#+STARTUP: showeverything
+#+OPTIONS: toc:nil
+
+* Early Init
+Here we define variables that we want emacs to read as soon as possible. Mainly, we set variables to stop emacs from littering the config directory with lockfiles, auto-save files, backups, or even packages.
+#+begin_src emacs-lisp :tangle early-init.el
+  (setq user-emacs-directory "~/.local/share/emacs/")
+  (setq user-config-directory "~/.config/emacs/")
+
+  (setq-default create-lockfiles nil)
+  (setq-default make-backup-files nil)
+  (setq-default backup-inhibited t)
+  (setq-default auto-save-list-file-prefix (concat user-emacs-directory "auto-saves/.saves-"))
+  (setq-default custom-file (concat user-emacs-directory "custom-file"))
+  (setq-default package-user-dir (concat user-emacs-directory "elpa"))
+  (setq-default url-history-file (concat user-emacs-directory "url/history"))
+  (setq-default lock-file-name-transforms `(("^\\(.*\\)$" "/tmp/\\1") t))
+
+  (setq-default pgtk-wait-for-event-timeout 0)
+#+end_src
+* General Settings
+These settings are just personal preference.
+** User Interface
+How I prefer emacs to look.
+#+begin_src emacs-lisp
+  (setq display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode t)
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
+#+end_src
+** Behavioral Settings
+How I prefer emacs to behavior.
+#+begin_src emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq inhibit-startup-screen t)
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+*** Smooth Scrolling
+These settings require emacs 29. They make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
+#+begin_src emacs-lisp
+  (setq-default scroll-conservatively 10000)
+  (setq-default scroll-margin 5)
+
+  (pixel-scroll-precision-mode t)
+  (setq pixel-scroll-precision-use-momentum t)
+  (setq pixel-scroll-precision-interpolate-mice t)
+  (setq pixel-scroll-precision-large-scroll-height 10.0)
+  (setq pixel-scroll-precision-interpolate-page t)
+
+  (global-set-key (kbd "C-v") 'pixel-scroll-interpolate-down)
+  (global-set-key (kbd "M-v") 'pixel-scroll-interpolate-up)
+#+end_src
+*** Comfort Keybindings
+#+begin_src emacs-lisp
+  (defun insert-blank-line-top ()
+    (interactive)
+    (move-beginning-of-line nil)
+    (open-line 1))
+
+  (defun insert-blank-line-bottom ()
+    (interactive)
+    (move-end-of-line nil)
+    (open-line 1)
+    (next-line 1))
+
+  (global-set-key (kbd "M-o") 'insert-blank-line-bottom)
+  (global-set-key (kbd "M-O") 'insert-blank-line-top)
+
+  (global-set-key (kbd "M-Z") 'zap-up-to-char)
+#+end_src
+
+* Packages
+These are the emacs packages I use.
+** Setup
+Here we setup the `package-archives` variable to include the [[https://elpa.gnu.org/packages/][MELPA]] repository.
+#+begin_src emacs-lisp
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                           ("org" . "https://orgmode.org/elpa/")
+                           ("elpa" . "https://elpa.gnu.org/packages/")))
+#+end_src
+** Corfu
+Corfu provides a quick popup that displays completion candidates for whatever it is you're currently typing. It can also show documentation next to the completions buffer for the symbol you're currently selecting. Goes well wit [[Orderless]].
+#+begin_src emacs-lisp
+  (use-package corfu
+    :ensure t
+    :custom
+    (corfu-auto t)
+    (corfu-auto-delay 0.2)
+    (corfu-auto-prefix 0)
+    (corfu-min-width 60)
+    (corfu-popupinfo-delay 0.5)
+    (corfu-preview-current nil)
+    (corfu-preselect 'prompt)
+    (corfu-quit-no-match t)
+    (corfu-on-exact-match 'quit)
+    (corfu-cycle t)
+    :config
+    (corfu-popupinfo-mode)
+    (global-corfu-mode))
+#+end_src
+*** Keybinds
+Corfu by default sets up the `corfu-keymap` variable which overrides some common keybindings. I found the defaults to be obtrusive. I defined my own keybinds. I want the completion to appear as quickly as possible, but I don't want it to be in the way of my typing. So, I have bound a separate set of keys to scroll the popup, since otherwise I would be stuck scrolling the popup when I actually wanted to scroll the document I'm working with. I have also defined custom functions for `TAB` and `RETURN`. `TAB` should always complete either the first completion candidate, or any other explicitly selected candidate. `RETURN` will only autocomplete if a candidate has been explicitly selected. This allows me to insert a newline with `RETURN` even if the popup is present.
+#+begin_src emacs-lisp
+  (defun corfu-handle-tab-completion ()
+    (interactive)
+    (if (>= corfu--index 0)
+        (corfu-complete)
+      (progn
+        (setq corfu--index 0)
+        (corfu-complete))))
+
+  (defun corfu-handle-return-completion ()
+    (interactive)
+    (if (>= corfu--index 0)
+        (corfu-complete)
+      (newline)))
+
+  (setq corfu-map (make-sparse-keymap))
+  (define-key corfu-map (kbd "M-n") 'corfu-next)
+  (define-key corfu-map (kbd "M-p") 'corfu-previous)
+  (define-key corfu-map (kbd "TAB") 'corfu-handle-tab-completion)
+  (define-key corfu-map (kbd "RET") 'corfu-handle-return-completion)
+#+end_src
+*** User Interface
+I like kind-icons to be shown next to the completion candidates. Hence, this package.
+#+begin_src emacs-lisp
+  (use-package kind-icon
+    :ensure t
+    :after corfu
+    :custom
+    (kind-icon-default-face 'corfu-default)
+    (kind-icon-blend-background nil)
+    :config
+    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+#+end_src
+
+** Extra Programming Modes
+These packages provide major modes for other programming languages that are not included by default.
+#+begin_src emacs-lisp
+  (use-package rust-mode
+    :ensure t)
+#+end_src
+** Vertico
+Vertico provides a performant and minimalistic vertical completion UI based on the default completion system. It makes it really easy to search for functions or variables in the minibuffer. Goes well with [[Orderless]].
+#+begin_src emacs-lisp
+  (use-package vertico
+    :ensure t
+    :config
+    (vertico-mode)
+    (vertico-mouse-mode))
+#+end_src
+** Magit
+Magit is an interface for git.
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind (("C-c g" . 'magit-status)))
+#+end_src
+** Orderless
+Orderless is a completion style that lets you search for completions based on keywords, in any order.
+#+begin_src emacs-lisp
+  (use-package orderless
+    :ensure t
+    :config
+    (add-to-list 'completion-styles 'orderless))
+#+end_src
+* Colorscheme
+I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
+#+begin_src emacs-lisp
+  (load-file "~/.config/colorschemes/current_colorscheme/colors.el")
+#+end_src
+** Basic Colors
+This sets the basic colors for the frames, such as background, foreground, and cursor.
+#+begin_src emacs-lisp
+  (push `(background-color . ,BACKGROUND_1) default-frame-alist)
+  (push `(foreground-color . ,FOREGROUND_1) default-frame-alist)
+  (set-face-background 'fringe BACKGROUND_1)
+
+  (set-face-background 'cursor ACCENT_1)
+#+end_src
+** Modeline
+#+begin_src emacs-lisp
+  (set-face-background 'mode-line BACKGROUND_2)
+  (set-face-foreground 'mode-line FOREGROUND_1)
+  (set-face-background 'mode-line-inactive BACKGROUND_1)
+  (set-face-background 'mode-line-highlight ACCENT_1)
+  (set-face-foreground 'mode-line-highlight FOREGROUND_2)
+#+end_src
+
+** Corfu
+#+begin_src emacs-lisp
+  (set-face-background 'corfu-default BACKGROUND_2)
+  (set-face-foreground 'corfu-default FOREGROUND_1)
+#+end_src
+** Org Mode
+#+begin_src emacs-lisp
+  (require 'org-faces)
+  (set-face-background 'org-block BACKGROUND_2)
+  (set-face-background 'org-block-begin-line BACKGROUND_2)
+  (set-face-background 'org-block-end-line BACKGROUND_2)
+  (set-face-attribute 'org-level-1 nil :height 1.8)
+  (set-face-attribute 'org-level-2 nil :height 1.7)
+  (set-face-attribute 'org-level-3 nil :height 1.6)
+  (set-face-attribute 'org-level-4 nil :height 1.5)
+  (set-face-attribute 'org-level-5 nil :height 1.4)
+  (set-face-attribute 'org-level-6 nil :height 1.3)
+  (set-face-attribute 'org-level-7 nil :height 1.2)
+  (set-face-attribute 'org-level-8 nil :height 1.1)
+#+end_src

@@ -9,4 +9,5 @@
 (setq-default package-user-dir (concat user-emacs-directory "elpa"))
 (setq-default url-history-file (concat user-emacs-directory "url/history"))
 (setq-default lock-file-name-transforms `(("^\\(.*\\)$" "/tmp/\\1") t))
+
 (setq-default pgtk-wait-for-event-timeout 0)

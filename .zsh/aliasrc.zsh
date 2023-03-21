@@ -3,19 +3,22 @@
 ex () {
     for i in "${@}"; do
         if [ -f $i ] ; then
+            DIR_NAME=$(echo "${i%.*}")
+            mkdir $DIR_NAME
+            cd $DIR_NAME
             case $i in
-                *.tar.bz2)   tar xjf $i   ;;
-                *.tar.gz)    tar xzf $i   ;;
-                *.tar.xz)    tar xJf $i   ;;
-                *.bz2)       bunzip2 $i   ;;
-                *.rar)       unrar x $i     ;;
-                *.gz)        gunzip $i    ;;
-                *.tar)       tar xf $i    ;;
-                *.tbz2)      tar xjf $i   ;;
-                *.tgz)       tar xzf $i   ;;
-                *.zip)       unzip $i     ;;
-                *.Z)         uncompress $i;;
-                *.7z)        7z x $i      ;;
+                *.tar.bz2)   tar xjf ../$i   ;;
+                *.tar.gz)    tar xzf ../$i   ;;
+                *.tar.xz)    tar xJf ../$i   ;;
+                *.bz2)       bunzip2 ../$i   ;;
+                *.rar)       unrar x ../$i     ;;
+                *.gz)        gunzip ../$i    ;;
+                *.tar)       tar xf ../$i    ;;
+                *.tbz2)      tar xjf ../$i   ;;
+                *.tgz)       tar xzf ../$i   ;;
+                *.zip)       unzip ../$i     ;;
+                *.Z)         uncompress ../$i;;
+                *.7z)        7z x ../$i      ;;
                 *)           echo "'$i' has an unrecognized file type." ;;
             esac
         else

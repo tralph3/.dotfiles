@@ -19,9 +19,34 @@
   (corfu-auto-prefix 0)
   (corfu-min-width 60)
   (corfu-popupinfo-delay 0.5)
+  (corfu-preview-current nil)
+  (corfu-preselect 'prompt)
+  (corfu-quit-no-match t)
+  (corfu-on-exact-match 'quit)
+  (corfu-cycle t)
   :config
   (corfu-popupinfo-mode)
   (global-corfu-mode))
+
+(defun corfu-handle-tab-completion ()
+  (interactive)
+  (if (>= corfu--index 0)
+      (corfu-complete)
+    (progn
+      (setq corfu--index 0)
+      (corfu-complete))))
+
+(defun corfu-handle-return-completion ()
+  (interactive)
+  (if (>= corfu--index 0)
+      (corfu-complete)
+    (newline)))
+
+(setq corfu-map (make-sparse-keymap))
+(define-key corfu-map (kbd "M-n") 'corfu-next)
+(define-key corfu-map (kbd "M-p") 'corfu-previous)
+(define-key corfu-map (kbd "TAB") 'corfu-handle-tab-completion)
+(define-key corfu-map (kbd "RET") 'corfu-handle-return-completion)
 
 (use-package kind-icon
   :ensure t

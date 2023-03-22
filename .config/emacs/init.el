@@ -115,24 +115,40 @@
 
 (set-face-background 'cursor ACCENT_1)
 
-(set-face-background 'mode-line BACKGROUND_2)
-(set-face-foreground 'mode-line FOREGROUND_1)
-(set-face-background 'mode-line-inactive BACKGROUND_1)
-(set-face-background 'mode-line-highlight ACCENT_1)
-(set-face-foreground 'mode-line-highlight FOREGROUND_2)
+(set-face-attribute 'header-line nil
+                    :background BACKGROUND_2
+                    :foreground FOREGROUND_1)
 
-(set-face-background 'corfu-default BACKGROUND_2)
-(set-face-foreground 'corfu-default FOREGROUND_1)
+(set-face-attribute 'mode-line nil
+                    :background BACKGROUND_2
+                    :foreground FOREGROUND_1
+                    :box nil)
+(set-face-attribute 'mode-line-highlight nil
+                    :background ACCENT_1
+                    :foreground FOREGROUND_2
+                    :box nil)
+(set-face-background 'mode-line-inactive BACKGROUND_1)
+
+(set-face-attribute 'corfu-default nil
+                    :background BACKGROUND_2
+                    :foreground FOREGROUND_1)
 
 (require 'org-faces)
 (set-face-background 'org-block BACKGROUND_2)
 (set-face-background 'org-block-begin-line BACKGROUND_2)
 (set-face-background 'org-block-end-line BACKGROUND_2)
-(set-face-attribute 'org-level-1 nil :height 1.8)
-(set-face-attribute 'org-level-2 nil :height 1.7)
-(set-face-attribute 'org-level-3 nil :height 1.6)
-(set-face-attribute 'org-level-4 nil :height 1.5)
-(set-face-attribute 'org-level-5 nil :height 1.4)
-(set-face-attribute 'org-level-6 nil :height 1.3)
-(set-face-attribute 'org-level-7 nil :height 1.2)
-(set-face-attribute 'org-level-8 nil :height 1.1)
+(set-face-attribute 'org-level-1 nil :height 1.5 :weight 'bold)
+(set-face-attribute 'org-level-2 nil :height 1.3 :weight 'bold)
+(set-face-attribute 'org-level-3 nil :height 1.1 :weight 'bold)
+(set-face-attribute 'org-level-4 nil :weight 'normal)
+(set-face-attribute 'org-level-5 nil :weight 'normal)
+(set-face-attribute 'org-level-6 nil :weight 'normal)
+(set-face-attribute 'org-level-7 nil :weight 'normal)
+(set-face-attribute 'org-level-8 nil :weight 'normal)
+
+(require 'eglot)
+(setq eglot-autoshutdown t)
+(define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+(define-key eglot-mode-map (kbd "C-c d") 'xref-find-definitions)
+(define-key eglot-mode-map (kbd "C-c h") 'eldoc)
+(add-hook 'prog-mode-hook 'eglot-ensure)

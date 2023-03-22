@@ -1,6 +1,7 @@
 (setq user-emacs-directory "~/.local/share/emacs/")
 (setq user-config-directory "~/.config/emacs/")
 
+(setq-default startup-redirect-eln-cache user-emacs-directory)
 (setq-default create-lockfiles nil)
 (setq-default make-backup-files nil)
 (setq-default backup-inhibited t)
@@ -9,5 +10,6 @@
 (setq-default package-user-dir (concat user-emacs-directory "elpa"))
 (setq-default url-history-file (concat user-emacs-directory "url/history"))
 (setq-default lock-file-name-transforms `(("^\\(.*\\)$" "/tmp/\\1") t))
+(auto-save-mode nil)
 
 (setq-default pgtk-wait-for-event-timeout 0)

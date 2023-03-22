@@ -86,7 +86,7 @@ Here we setup the `package-archives` variable to include the [[https://melpa.org
                            ("elpa" . "https://elpa.gnu.org/packages/")))
 #+end_src
 ** Corfu
-Corfu provides a quick popup that displays completion candidates for whatever it is you're currently typing. It can also show documentation next to the completions buffer for the symbol you're currently selecting. Goes well wit [[Orderless]].
+Corfu provides a quick popup that displays completion candidates for whatever it is you're currently typing. It can also show documentation next to the completions buffer for the symbol you're currently selecting. Goes well with [[Orderless]].
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t

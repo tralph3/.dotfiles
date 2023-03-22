@@ -107,6 +107,27 @@
   :config
   (add-to-list 'completion-styles 'orderless))
 
+(use-package dashboard
+  :ensure t
+  :custom
+  (dashboard-set-file-icons t)
+  (dashboard-banner-logo-title "TitoMacs")
+  (dashboard-center-content t)
+  (dashboard-show-shortcuts t)
+  (dashboard-projects-backend 'project-el)
+  (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
+  (dashboard-heading-icons t)
+  (dashboard-startup-banner 'logo)
+  :config
+  (dashboard-setup-startup-hook))
+
+(use-package which-key
+  :ensure t
+  :custom
+  (which-key-idle-delay 0.2)
+  :config
+  (which-key-mode))
+
 (load-file "~/.config/colorschemes/current_colorscheme/colors.el")
 
 (push `(background-color . ,BACKGROUND_1) default-frame-alist)

@@ -13,3 +13,6 @@
 (setq-default auto-save-default nil)
 
 (setq-default pgtk-wait-for-event-timeout 0)
+
+(setq-default gc-cons-threshold 100000000)
+(setq-default read-process-output-max (* 1024 1024))

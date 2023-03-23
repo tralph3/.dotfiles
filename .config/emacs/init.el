@@ -170,6 +170,6 @@
 (require 'eglot)
 (setq eglot-autoshutdown t)
 (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-(define-key eglot-mode-map (kbd "C-c d") 'xref-find-definitions)
+(global-set-key (kbd "C-c d") 'xref-find-definitions)
 (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
 (add-hook 'prog-mode-hook 'eglot-ensure)

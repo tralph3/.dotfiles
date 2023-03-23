@@ -186,12 +186,12 @@ Provides a nice dashboard on every new frame.
     :ensure t
     :custom
     (dashboard-set-file-icons t)
+    (dashboard-set-heading-icons t)
     (dashboard-banner-logo-title "TitoMacs")
     (dashboard-center-content t)
     (dashboard-show-shortcuts t)
     (dashboard-projects-backend 'project-el)
     (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
-    (dashboard-heading-icons t)
     (dashboard-startup-banner 'logo)
     :config
     (dashboard-setup-startup-hook))

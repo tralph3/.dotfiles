@@ -1,15 +1,13 @@
 * {
     bg-col1: #${BACKGROUND_1};
-    bg-col2:  #${BACKGROUND_2};
-    bg-col3:  #${BACKGROUND_3};
+    bg-col2: #${BACKGROUND_2};
 
     fg-col1: #${FOREGROUND_1};
     fg-col2: #${FOREGROUND_2};
     fg-col3: #${FOREGROUND_2};
 
-    accent1: #${ACCENT_1};
-    accent2: #${ACCENT_2};
-    accent3: #${ACCENT_3};
+    accent1: #${ACCENT};
+    accent2: #${ACCENT};
 
     black: #${BLACK};
     red: #${RED};
@@ -19,4 +17,6 @@
     magenta: #${MAGENTA};
     cyan: #${CYAN};
     white: #${WHITE};
+    orange: #${ORANGE};
+    pink: #${PINK};
 }

@@ -3,7 +3,6 @@ colors:
     background: '#${BACKGROUND_1}'
     foreground: '#${FOREGROUND_1}'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
     text: '#${FOREGROUND_1}'
     cursor: '#${FOREGROUND_1}'
@@ -17,6 +16,8 @@ colors:
     magenta: '#${MAGENTA}'
     cyan:    '#${CYAN}'
     white:   '#${WHITE}'
+    orange:   '#${ORANGE}'
+    pink:   '#${PINK}'
 
   bright:
     black:   '#${BLACK}'
@@ -27,8 +28,9 @@ colors:
     magenta: '#${MAGENTA}'
     cyan:    '#${CYAN}'
     white:   '#${WHITE}'
+    orange:   '#${ORANGE}'
+    pink:   '#${PINK}'
 
   indexed_colors:
-    - { index: 16, color: '#${ACCENT_1}' }
-    - { index: 17, color: '#${ACCENT_2}' }
-
+    - { index: 16, color: '#${ACCENT}' }
+    - { index: 17, color: '#${INACTIVE}' }

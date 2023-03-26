@@ -1,14 +1,15 @@
 (setq BACKGROUND_1 "#${BACKGROUND_1}")
 (setq BACKGROUND_2 "#${BACKGROUND_2}")
-(setq BACKGROUND_3 "#${BACKGROUND_3}")
 
 (setq FOREGROUND_1 "#${FOREGROUND_1}")
 (setq FOREGROUND_2 "#${FOREGROUND_2}")
-(setq FOREGROUND_3 "#${FOREGROUND_3}")
 
-(setq ACCENT_1 "#${ACCENT_1}")
-(setq ACCENT_2 "#${ACCENT_2}")
-(setq ACCENT_3 "#${ACCENT_3}")
+(setq HIGHLIGHT_BG "#${HIGHLIGHT_BG}")
+(setq HIGHLIGHT_FG "#${HIGHLIGHT_FG}")
+
+(setq ACCENT "#${ACCENT}")
+
+(setq INACTIVE "#${INACTIVE}")
 
 (setq BLACK "#${BLACK}")
 (setq RED "#${RED}")
@@ -18,3 +19,19 @@
 (setq MAGENTA "#${MAGENTA}")
 (setq CYAN "#${CYAN}")
 (setq WHITE "#${WHITE}")
+(setq ORANGE "#${ORANGE}")
+(setq PINK "#${PINK}")
+
+(setq COMMENT "#${COMMENT}")
+(setq KEYWORD "#${KEYWORD}")
+(setq OPERATOR "#${OPERATOR}")
+(setq BUILTIN "#${BUILTIN}")
+(setq STRING "#${STRING}")
+(setq NUMBER "#${NUMBER}")
+(setq VARIABLE "#${VARIABLE}")
+(setq FUNCTION "#${FUNCTION}")
+(setq METHOD "#${METHOD}")
+(setq CLASS "#${CLASS}")
+(setq ATTRIBUTE "#${ATTRIBUTE}")
+(setq PARAMETER "#${PARAMETER}")
+(setq TYPE "#${TYPE}")

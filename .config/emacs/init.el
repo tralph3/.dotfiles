@@ -139,6 +139,8 @@
   :config
   (which-key-mode))
 
+(defun reload-colorscheme ()
+  (interactive)
 (load-file "~/.config/colorschemes/current_colorscheme/colors.el")
 
 (push `(background-color . ,BACKGROUND_1) default-frame-alist)
@@ -289,6 +291,13 @@
                     :inherit 'font-lock-operator-face)
 (set-face-attribute 'show-paren-match nil
                     :background ACCENT)
+(set-face-attribute 'highlight nil
+                    :foreground HIGHLIGHT_FG
+                    :background HIGHLIGHT_BG)
+
+) ; closes the function
+(reload-colorscheme)
+(define-key special-event-map [sigusr1] 'reload-colorscheme)
 
 (require 'eglot)
 (setq eglot-autoshutdown t)

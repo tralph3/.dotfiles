@@ -20,6 +20,10 @@ reload_dunst() {
     dunst & disown
 }
 
+reload_emacs () {
+    pkill -USR1 emacs
+}
+
 reload_mouse() {
     MOUSE=$(ratbagctl | head -n 1 | cut -d ":" -f 1)
     ratbagctl $MOUSE profile 0 led 0 set color $(echo $BACKGROUND_2 | tr -d \#)
@@ -35,6 +39,7 @@ reload_all() {
     reload_dunst
     reload_eww
     reload_qtile
+    reload_emacs
     # reload_mouse
     # reload_keyboard
 }

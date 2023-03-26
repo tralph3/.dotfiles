@@ -259,7 +259,7 @@
 (set-face-attribute 'tree-sitter-hl-face:variable.parameter nil
                     :foreground PARAMETER)
 (set-face-attribute 'region nil
-                    :foreground 'unspecified
+                    :foreground HIGHLIGHT_FG
                     :background HIGHLIGHT_BG)
 (set-face-attribute 'mode-line-highlight nil
                     :foreground HIGHLIGHT_FG

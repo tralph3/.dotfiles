@@ -2,18 +2,18 @@
 
 * {
     font-family: "UbuntuMono Nerd Font Mono";
-    border-color: map-get($COLORS, "ACCENT_1");
+    border-color: map-get($COLORS, "ACCENT");
     border-radius: 0px;
 }
 
 .bar {
     color: map-get($COLORS, "FOREGROUND_1");
     background-color: map-get($COLORS, "BACKGROUND_1");
-    border-bottom: 2px solid map-get($COLORS, "ACCENT_1");
+    border-bottom: 2px solid map-get($COLORS, "ACCENT");
 }
 
 .current {
-    background-color: map-get($COLORS, "ACCENT_1");
+    background-color: map-get($COLORS, "ACCENT");
 }
 
 .workspace-entry {
@@ -24,7 +24,7 @@
 .status {
     background-color: map-get($COLORS, "BACKGROUND_1");
     color: map-get($COLORS, "FOREGROUND_1");
-    border: 2px solid map-get($COLORS, "ACCENT_1");
+    border: 2px solid map-get($COLORS, "ACCENT");
 }
 
 .icon {
@@ -52,6 +52,6 @@ progressbar {
     padding: 1rem 0rem;
     min-width: 8rem;
     & trough progress {
-        background-color: map-get($COLORS, "ACCENT_1");
+        background-color: map-get($COLORS, "ACCENT");
     }
 }

@@ -134,25 +134,25 @@
 (push `(foreground-color . ,FOREGROUND_1) default-frame-alist)
 (set-face-background 'fringe BACKGROUND_1)
 
-(set-face-background 'cursor ACCENT_1)
+(set-face-background 'cursor FOREGROUND_2)
 
 (set-face-attribute 'header-line nil
                     :background BACKGROUND_2
-                    :foreground FOREGROUND_1)
+                    :foreground FOREGROUND_2)
 
 (set-face-attribute 'mode-line nil
                     :background BACKGROUND_2
-                    :foreground FOREGROUND_1
-                    :box nil)
-(set-face-attribute 'mode-line-highlight nil
-                    :background ACCENT_1
                     :foreground FOREGROUND_2
                     :box nil)
-(set-face-background 'mode-line-inactive BACKGROUND_1)
+(set-face-attribute 'mode-line-highlight nil
+                    :background HIGHLIGHT_BG
+                    :foreground HIGHLIGHT_FG
+                    :box nil)
+(set-face-background 'mode-line-inactive INACTIVE)
 
 (set-face-attribute 'corfu-default nil
                     :background BACKGROUND_2
-                    :foreground FOREGROUND_1)
+                    :foreground FOREGROUND_2)
 
 (require 'org-faces)
 (set-face-background 'org-block BACKGROUND_2)
@@ -166,6 +166,118 @@
 (set-face-attribute 'org-level-6 nil :weight 'normal)
 (set-face-attribute 'org-level-7 nil :weight 'normal)
 (set-face-attribute 'org-level-8 nil :weight 'normal)
+
+(require 'tree-sitter-hl)
+(set-face-attribute 'font-lock-keyword-face nil
+                    :foreground KEYWORD)
+(set-face-attribute 'font-lock-comment-face nil
+                    :foreground COMMENT
+                    :slant 'italic)
+(set-face-attribute 'font-lock-operator-face nil
+                    :foreground OPERATOR)
+(set-face-attribute 'font-lock-string-face nil
+                    :foreground STRING)
+(set-face-attribute 'font-lock-number-face nil
+                    :foreground NUMBER)
+(set-face-attribute 'font-lock-variable-use-face nil
+                    :foreground VARIABLE)
+(set-face-attribute 'font-lock-variable-name-face nil
+                    :foreground VARIABLE)
+(set-face-attribute 'font-lock-function-name-face nil
+                    :foreground FUNCTION)
+(set-face-attribute 'font-lock-function-call-face nil
+                    :foreground FUNCTION)
+(set-face-attribute 'font-lock-builtin-face nil
+                    :foreground BUILTIN)
+(set-face-attribute 'font-lock-comment-delimiter-face nil
+                    :inherit 'font-lock-comment-face)
+(set-face-attribute 'font-lock-constant-face nil
+                    :foreground VARIABLE)
+(set-face-attribute 'font-lock-doc-face nil
+                    :inherit 'font-lock-comment-face)
+(set-face-attribute 'link nil
+                    :foreground CYAN
+                    :underline t)
+(set-face-attribute 'link-visited nil
+                    :foreground MAGENTA
+                    :underline t)
+(set-face-attribute 'tree-sitter-hl-face:function.call nil
+                    :inherit 'font-lock-function-call-face)
+(set-face-attribute 'font-lock-negation-char-face nil
+                    :inherit 'font-lock-operator-face)
+(set-face-attribute 'font-lock-preprocessor-face nil
+                    :foreground ORANGE)
+(set-face-attribute 'tree-sitter-hl-face:comment nil
+                    :inherit font-lock-comment-face)
+(set-face-attribute 'line-number nil
+                    :foreground COMMENT)
+(set-face-attribute 'line-number-current-line nil
+                    :foreground FOREGROUND_1)
+(set-face-attribute 'tree-sitter-hl-face:attribute nil
+                    :inherit 'font-lock-constant-face)
+(set-face-attribute 'tree-sitter-hl-face:constant nil
+                    :inherit 'font-lock-constant-face)
+(set-face-attribute 'tree-sitter-hl-face:constant.builtin nil
+                    :inherit 'font-lock-builtin-face)
+(set-face-attribute 'tree-sitter-hl-face:constructor nil
+                    :inherit 'font-lock-constant-face)
+(set-face-attribute 'tree-sitter-hl-face:escape nil
+                    :inherit 'font-lock-string
+                    :foreground KEYWORD)
+(set-face-attribute 'warning nil
+                    :foreground ORANGE)
+(set-face-attribute 'font-lock-warning-face nil
+                    :inherit 'warning)
+(set-face-attribute 'tree-sitter-hl-face:function nil
+                    :inherit 'font-lock-function-name-face)
+(set-face-attribute 'tree-sitter-hl-face:function.builtin nil
+                    :inherit 'font-lock-builtin-face)
+(set-face-attribute 'tree-sitter-hl-face:function.call nil
+                    :inherit 'font-lock-function-name-face
+                    :weight 'normal)
+(set-face-attribute 'tree-sitter-hl-face:keyword nil
+                    :inherit 'font-lock-keyword-face)
+(set-face-attribute 'tree-sitter-hl-face:string nil
+                    :inherit 'font-lock-string-face)
+(set-face-attribute 'tree-sitter-hl-face:type.parameter nil
+                    :foreground PARAMETER)
+(set-face-attribute 'tree-sitter-hl-face:variable nil
+                    :foreground VARIABLE)
+(set-face-attribute 'tree-sitter-hl-face:variable.parameter nil
+                    :inherit 'tree-sitter-hl-face:variable
+                    :weight 'normal)
+(set-face-attribute 'tree-sitter-hl-face:method nil
+                    :foreground METHOD)
+(set-face-attribute 'tree-sitter-hl-face:method.call nil
+                    :slant 'italic
+                    :foreground FUNCTION)
+(set-face-attribute 'tree-sitter-hl-face:type.argument nil
+                    :foreground PARAMETER
+                    :slant 'italic)
+(set-face-attribute 'tree-sitter-hl-face:constructor nil
+                    :foreground CLASS)
+(set-face-attribute 'tree-sitter-hl-face:variable.parameter nil
+                    :foreground PARAMETER)
+(set-face-attribute 'region nil
+                    :foreground 'unspecified
+                    :background HIGHLIGHT_BG)
+(set-face-attribute 'mode-line-highlight nil
+                    :foreground HIGHLIGHT_FG
+                    :background HIGHLIGHT_BG)
+(set-face-attribute 'tree-sitter-hl-face:property nil
+                    :foreground ATTRIBUTE)
+(set-face-attribute 'window-divider nil
+                    :foreground INACTIVE)
+(set-face-attribute 'vertical-border nil
+                    :foreground INACTIVE)
+(set-face-attribute 'tree-sitter-hl-face:type nil
+                    :foreground TYPE)
+(set-face-attribute 'tree-sitter-hl-face:constant nil
+                    :foreground TYPE)
+(set-face-attribute 'tree-sitter-hl-face:operator nil
+                    :inherit 'font-lock-operator-face)
+(set-face-attribute 'show-paren-match nil
+                    :background ACCENT)
 
 (require 'eglot)
 (setq eglot-autoshutdown t)

@@ -17,6 +17,8 @@ configuration {
     kb-remove-to-eol: "";
     kb-row-tab: "";
     kb-accept-entry: "Return,KP_Enter";
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
     kb-row-up: "Control+k,Up,Control+p";
     kb-row-down: "Control+j,Down,Control+n";
 }

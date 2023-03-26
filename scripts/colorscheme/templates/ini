@@ -1,6 +1,6 @@
 [global]
     highlight = "#${FOREGROUND_1}"
-    frame_color = "#${ACCENT_1}"
+    frame_color = "#${ACCENT}"
 
 [urgency_low]
     background = "#${BACKGROUND_1}"
@@ -10,7 +10,7 @@
 [urgency_normal]
     background = "#${BACKGROUND_1}"
     foreground = "#${FOREGROUND_1}"
-    frame_color = "#${ACCENT_1}"
+    frame_color = "#${ACCENT}"
 
 [urgency_critical]
     background = "#${BACKGROUND_1}"

@@ -196,6 +196,19 @@ Provides a nice dashboard on every new frame.
     :config
     (dashboard-setup-startup-hook))
 #+end_src
+** Treesitter
+#+begin_src emacs-lisp
+  (use-package tree-sitter
+    :ensure t
+    :config
+    (require 'tree-sitter-langs)
+    (global-tree-sitter-mode)
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+
+  (use-package tree-sitter-langs
+    :ensure t
+    :after tree-sitter)
+#+end_src
 ** Which Key
 Which Key provides a list of possible keys to type and to which functions they are bound when you're in the middle of typing a key-chord. Can be useful to learn new packages or discover new functionality.
 #+begin_src emacs-lisp

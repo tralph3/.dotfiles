@@ -1,9 +1,7 @@
 #+TITLE: Emacs Config
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :tangle init.el
-#+STARTUP: showeverything
-#+OPTIONS: toc:
-
+#+STARTUP: overview
 
 * Early Init
 Here we define variables that we want emacs to read as soon as possible. Mainly, we set variables to stop emacs from littering the config directory with lockfiles, auto-save files, backups, or even packages.
@@ -222,6 +220,8 @@ Which Key provides a list of possible keys to type and to which functions they a
 * Colorscheme
 I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
 #+begin_src emacs-lisp
+  (defun reload-colorscheme ()
+    (interactive)
   (load-file "~/.config/colorschemes/current_colorscheme/colors.el")
 #+end_src
 ** Basic Colors
@@ -385,8 +385,16 @@ This sets the basic colors for the frames, such as background, foreground, and c
                       :inherit 'font-lock-operator-face)
   (set-face-attribute 'show-paren-match nil
                       :background ACCENT)
+  (set-face-attribute 'highlight nil
+                      :foreground HIGHLIGHT_FG
+                      :background HIGHLIGHT_BG)
 #+end_src
-
+** End Reload Colorscheme Function
+#+begin_src emacs-lisp
+  ) ; closes the function
+(reload-colorscheme)
+(define-key special-event-map [sigusr1] 'reload-colorscheme)
+#+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp

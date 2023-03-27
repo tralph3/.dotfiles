@@ -37,7 +37,7 @@ How I prefer emacs to look.
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
   (menu-bar-mode 0)
-  (push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
+  (set-frame-font "UbuntuMono Nerd Font Mono-13")
 #+end_src
 ** Behavioral Settings
 How I prefer emacs to behavior.
@@ -227,11 +227,16 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
 ** Basic Colors
 This sets the basic colors for the frames, such as background, foreground, and cursor.
 #+begin_src emacs-lisp
-  (push `(background-color . ,BACKGROUND_1) default-frame-alist)
-  (push `(foreground-color . ,FOREGROUND_1) default-frame-alist)
-  (set-face-background 'fringe BACKGROUND_1)
 
-  (set-face-background 'cursor FOREGROUND_2)
+  (set-face-attribute 'default nil
+                      :foreground FOREGROUND_1
+                      :background BACKGROUND_1)
+  (set-face-attribute 'fringe nil
+                      :foreground FOREGROUND_1
+                      :background BACKGROUND_1)
+
+  (set-face-attribute 'cursor nil
+                      :foreground FOREGROUND_2)
 #+end_src
 ** Headerline
 #+begin_src emacs-lisp

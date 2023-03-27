@@ -3,7 +3,7 @@
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(push '(font . "UbuntuMono Nerd Font Mono-13") default-frame-alist)
+(set-frame-font "UbuntuMono Nerd Font Mono-13")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
@@ -143,11 +143,15 @@
   (interactive)
 (load-file "~/.config/colorschemes/current_colorscheme/colors.el")
 
-(push `(background-color . ,BACKGROUND_1) default-frame-alist)
-(push `(foreground-color . ,FOREGROUND_1) default-frame-alist)
-(set-face-background 'fringe BACKGROUND_1)
+(set-face-attribute 'default nil
+                    :foreground FOREGROUND_1
+                    :background BACKGROUND_1)
+(set-face-attribute 'fringe nil
+                    :foreground FOREGROUND_1
+                    :background BACKGROUND_1)
 
-(set-face-background 'cursor FOREGROUND_2)
+(set-face-attribute 'cursor nil
+                    :foreground FOREGROUND_2)
 
 (set-face-attribute 'header-line nil
                     :background BACKGROUND_2

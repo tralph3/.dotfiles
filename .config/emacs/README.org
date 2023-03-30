@@ -37,7 +37,8 @@ How I prefer emacs to look.
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
   (menu-bar-mode 0)
-  (set-frame-font "UbuntuMono Nerd Font Mono-13")
+  (set-face-attribute 'default nil
+                      :font "UbuntuMono Nerd Font Mono-13")
 #+end_src
 ** Behavioral Settings
 How I prefer emacs to behavior.
@@ -46,6 +47,7 @@ How I prefer emacs to behavior.
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq inhibit-startup-screen t)
+  (delete-selection-mode t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 *** Smooth Scrolling
@@ -84,6 +86,11 @@ These settings require emacs 29. They make emacs scroll smoothly with a mouse, t
 
 * Packages
 These are the emacs packages I use.
+** All The Icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t)
+#+end_src
 ** Setup
 Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]] repository.
 #+begin_src emacs-lisp
@@ -182,6 +189,7 @@ Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
   (use-package dashboard
     :ensure t
+    :after all-the-icons
     :custom
     (dashboard-set-file-icons t)
     (dashboard-set-heading-icons t)
@@ -191,6 +199,13 @@ Provides a nice dashboard on every new frame.
     (dashboard-projects-backend 'project-el)
     (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
     (dashboard-startup-banner 'logo)
+    (dashboard-set-navigator t)
+    (dashboard-navigator-buttons
+          `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
+              "Emacs Config"
+              "Open the Emacs config file"
+              (lambda (&rest _)
+                (find-file (concat user-config-directory "README.org")))))))
     :config
     (dashboard-setup-startup-hook))
 #+end_src
@@ -217,6 +232,15 @@ Which Key provides a list of possible keys to type and to which functions they a
     :config
     (which-key-mode))
 #+end_src
+** Treemacs
+Treemacs provides a nice looking tree view of the working you're currently working with. It also provides the ability to list all symbols on a given file, and browse it that way.
+#+begin_src emacs-lisp
+  (use-package treemacs
+    :ensure t
+    :custom
+    (treemacs-read-string-input 'from-minibuffer))
+#+end_src
+
 * Colorscheme
 I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
 #+begin_src emacs-lisp
@@ -227,7 +251,6 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
 ** Basic Colors
 This sets the basic colors for the frames, such as background, foreground, and cursor.
 #+begin_src emacs-lisp
-
   (set-face-attribute 'default nil
                       :foreground FOREGROUND_1
                       :background BACKGROUND_1)
@@ -372,7 +395,8 @@ This sets the basic colors for the frames, such as background, foreground, and c
                       :foreground PARAMETER)
   (set-face-attribute 'region nil
                       :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
+                      :background HIGHLIGHT_BG
+                      :weight 'bold)
   (set-face-attribute 'mode-line-highlight nil
                       :foreground HIGHLIGHT_FG
                       :background HIGHLIGHT_BG)
@@ -393,6 +417,9 @@ This sets the basic colors for the frames, such as background, foreground, and c
   (set-face-attribute 'highlight nil
                       :foreground HIGHLIGHT_FG
                       :background HIGHLIGHT_BG)
+  (set-face-attribute 'hl-line nil
+                      :foreground HIGHLIGHT_FG
+                      :background HIGHLIGHT_BG)
 #+end_src
 ** End Reload Colorscheme Function
 #+begin_src emacs-lisp
@@ -407,6 +434,7 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq eglot-autoshutdown t)
   (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
   (global-set-key (kbd "C-c d") 'xref-find-definitions)
-  (define-key eglot-mode-map (kbd "C-c h") 'eldoc)
+  (global-set-key (kbd "C-c h") 'eldoc)
+  (global-set-key (kbd "C-c b") 'xref-go-back)
   (add-hook 'prog-mode-hook 'eglot-ensure)
 #+end_src

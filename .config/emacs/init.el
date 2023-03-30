@@ -3,12 +3,14 @@
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(set-frame-font "UbuntuMono Nerd Font Mono-13")
+(set-face-attribute 'default nil
+                    :font "UbuntuMono Nerd Font Mono-13")
 
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq inhibit-startup-screen t)
+(delete-selection-mode t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq-default scroll-conservatively 10000)
@@ -38,6 +40,9 @@
 (global-set-key (kbd "M-O") 'insert-blank-line-top)
 
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+(use-package all-the-icons
+  :ensure t)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
@@ -109,6 +114,7 @@
 
 (use-package dashboard
   :ensure t
+  :after all-the-icons
   :custom
   (dashboard-set-file-icons t)
   (dashboard-set-heading-icons t)
@@ -118,6 +124,13 @@
   (dashboard-projects-backend 'project-el)
   (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
   (dashboard-startup-banner 'logo)
+  (dashboard-set-navigator t)
+  (dashboard-navigator-buttons
+        `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
+            "Emacs Config"
+            "Open the Emacs config file"
+            (lambda (&rest _)
+              (find-file (concat user-config-directory "README.org")))))))
   :config
   (dashboard-setup-startup-hook))
 
@@ -138,6 +151,11 @@
   (which-key-idle-delay 0.2)
   :config
   (which-key-mode))
+
+(use-package treemacs
+  :ensure t
+  :custom
+  (treemacs-read-string-input 'from-minibuffer))
 
 (defun reload-colorscheme ()
   (interactive)
@@ -277,7 +295,8 @@
                     :foreground PARAMETER)
 (set-face-attribute 'region nil
                     :foreground HIGHLIGHT_FG
-                    :background HIGHLIGHT_BG)
+                    :background HIGHLIGHT_BG
+                    :weight 'bold)
 (set-face-attribute 'mode-line-highlight nil
                     :foreground HIGHLIGHT_FG
                     :background HIGHLIGHT_BG)
@@ -298,6 +317,9 @@
 (set-face-attribute 'highlight nil
                     :foreground HIGHLIGHT_FG
                     :background HIGHLIGHT_BG)
+(set-face-attribute 'hl-line nil
+                    :foreground HIGHLIGHT_FG
+                    :background HIGHLIGHT_BG)
 
 ) ; closes the function
 (reload-colorscheme)
@@ -307,5 +329,6 @@
 (setq eglot-autoshutdown t)
 (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
-(define-key eglot-mode-map (kbd "C-c h") 'eldoc)
+(global-set-key (kbd "C-c h") 'eldoc)
+(global-set-key (kbd "C-c b") 'xref-go-back)
 (add-hook 'prog-mode-hook 'eglot-ensure)

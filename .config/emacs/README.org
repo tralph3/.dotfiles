@@ -1,7 +1,7 @@
 #+TITLE: Emacs Config
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :tangle init.el
-#+STARTUP: overview
+#+STARTUP: showeverything
 
 * Early Init
 Here we define variables that we want emacs to read as soon as possible. Mainly, we set variables to stop emacs from littering the config directory with lockfiles, auto-save files, backups, or even packages.
@@ -420,6 +420,10 @@ This sets the basic colors for the frames, such as background, foreground, and c
   (set-face-attribute 'hl-line nil
                       :foreground HIGHLIGHT_FG
                       :background HIGHLIGHT_BG)
+  (set-face-attribute 'error nil
+                      :foreground RED)
+  (set-face-attribute 'warning nil
+                      :foreground ORANGE)
 #+end_src
 ** End Reload Colorscheme Function
 #+begin_src emacs-lisp

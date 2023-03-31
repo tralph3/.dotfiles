@@ -320,6 +320,10 @@
 (set-face-attribute 'hl-line nil
                     :foreground HIGHLIGHT_FG
                     :background HIGHLIGHT_BG)
+(set-face-attribute 'error nil
+                    :foreground RED)
+(set-face-attribute 'warning nil
+                    :foreground ORANGE)
 
 ) ; closes the function
 (reload-colorscheme)

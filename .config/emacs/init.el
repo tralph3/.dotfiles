@@ -324,6 +324,8 @@
                     :foreground RED)
 (set-face-attribute 'warning nil
                     :foreground ORANGE)
+(set-face-attribute 'tree-sitter-hl-face:label nil
+                    :foreground PARAMETER)
 
 ) ; closes the function
 (reload-colorscheme)

@@ -184,6 +184,19 @@ Orderless is a completion style that lets you search for completions based on ke
     :config
     (add-to-list 'completion-styles 'orderless))
 #+end_src
+** Treemacs
+Treemacs provides a nice looking tree view of the working you're currently working with. It also provides the ability to list all symbols on a given file, and browse it that way.
+#+begin_src emacs-lisp
+  (defun project-open (project-root)
+    (cd project-root)
+    (treemacs-add-and-display-current-project-exclusively))
+
+  (use-package treemacs
+    :ensure t
+    :custom
+    (treemacs-read-string-input 'from-minibuffer))
+#+end_src
+
 ** Dashboard
 Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
@@ -201,11 +214,12 @@ Provides a nice dashboard on every new frame.
     (dashboard-startup-banner 'logo)
     (dashboard-set-navigator t)
     (dashboard-navigator-buttons
-          `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
-              "Emacs Config"
-              "Open the Emacs config file"
-              (lambda (&rest _)
-                (find-file (concat user-config-directory "README.org")))))))
+     `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
+         "Emacs Config"
+         "Open the Emacs config file"
+         (lambda (&rest _)
+           (find-file (concat user-config-directory "README.org")))))))
+    (dashboard-projects-switch-function 'project-open)
     :config
     (dashboard-setup-startup-hook))
 #+end_src
@@ -232,15 +246,6 @@ Which Key provides a list of possible keys to type and to which functions they a
     :config
     (which-key-mode))
 #+end_src
-** Treemacs
-Treemacs provides a nice looking tree view of the working you're currently working with. It also provides the ability to list all symbols on a given file, and browse it that way.
-#+begin_src emacs-lisp
-  (use-package treemacs
-    :ensure t
-    :custom
-    (treemacs-read-string-input 'from-minibuffer))
-#+end_src
-
 * Colorscheme
 I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
 #+begin_src emacs-lisp

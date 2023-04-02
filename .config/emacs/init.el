@@ -112,6 +112,15 @@
   :config
   (add-to-list 'completion-styles 'orderless))
 
+(defun project-open (project-root)
+  (cd project-root)
+  (treemacs-add-and-display-current-project-exclusively))
+
+(use-package treemacs
+  :ensure t
+  :custom
+  (treemacs-read-string-input 'from-minibuffer))
+
 (use-package dashboard
   :ensure t
   :after all-the-icons
@@ -126,11 +135,12 @@
   (dashboard-startup-banner 'logo)
   (dashboard-set-navigator t)
   (dashboard-navigator-buttons
-        `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
-            "Emacs Config"
-            "Open the Emacs config file"
-            (lambda (&rest _)
-              (find-file (concat user-config-directory "README.org")))))))
+   `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
+       "Emacs Config"
+       "Open the Emacs config file"
+       (lambda (&rest _)
+         (find-file (concat user-config-directory "README.org")))))))
+  (dashboard-projects-switch-function 'project-open)
   :config
   (dashboard-setup-startup-hook))
 
@@ -151,11 +161,6 @@
   (which-key-idle-delay 0.2)
   :config
   (which-key-mode))
-
-(use-package treemacs
-  :ensure t
-  :custom
-  (treemacs-read-string-input 'from-minibuffer))
 
 (defun reload-colorscheme ()
   (interactive)

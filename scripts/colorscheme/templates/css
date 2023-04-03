@@ -6,6 +6,11 @@
 
 @define-color ACCENT #${ACCENT};
 
+@define-color HIGHLIGHT_BG #${HIGHLIGHT_BG};
+@define-color HIGHLIGHT_FG #${HIGHLIGHT_FG};
+
+@define-color INACTIVE #${INACTIVE};
+
 @define-color BLACK #${BLACK};
 @define-color RED #${RED};
 @define-color GREEN #${GREEN};

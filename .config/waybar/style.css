@@ -35,6 +35,8 @@ button:hover {
 #clock,
 #tray {
     padding: 0 10px;
+    color: @FOREGROUND_1;
+    background-color: transparent;
 }
 
 #workspaces button {
@@ -44,21 +46,17 @@ button:hover {
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background-color: @HIGHLIGHT_BG;
+    color: @HIGHLIGHT_FG;
 }
 
 #workspaces button.active {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: @ACCENT;
+    color: @FOREGROUND_1;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background-color: @RED;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -71,10 +69,6 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    color: @FOREGROUND_1;
-}
-
 @keyframes blink {
     to {
         background-color: #ffffff;
@@ -84,10 +78,6 @@ button:hover {
 
 label:focus {
     background-color: #000000;
-}
-
-#tray {
-    color: @FOREGROUND_1;
 }
 
 #tray > .passive {

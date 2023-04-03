@@ -86,17 +86,17 @@ Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
 
 * Packages
 These are the emacs packages I use.
-** All The Icons
-#+begin_src emacs-lisp
-  (use-package all-the-icons
-    :ensure t)
-#+end_src
 ** Setup
 Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]] repository.
 #+begin_src emacs-lisp
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")
                            ("elpa" . "https://elpa.gnu.org/packages/")))
+#+end_src
+** All The Icons
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t)
 #+end_src
 ** Corfu
 Corfu provides a quick popup that displays completion candidates for whatever it is you're currently typing. It can also show documentation next to the completions buffer for the symbol you're currently selecting. Goes well with [[Orderless]].

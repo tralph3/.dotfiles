@@ -120,6 +120,8 @@ install_config .config/hypr ~/.config/hypr
 
 # wpaperd
 install_config .config/wpaperd ~/.config/wpaperd
+# waybar
+install_config .config/waybar ~/.config/waybar
 
 # colorschemes
 install_config .config/colorschemes ~/.config/colorschemes

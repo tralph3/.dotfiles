@@ -41,12 +41,12 @@
 
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
-(use-package all-the-icons
-  :ensure t)
-
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(use-package all-the-icons
+  :ensure t)
 
 (use-package corfu
   :ensure t

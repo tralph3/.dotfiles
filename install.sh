@@ -118,8 +118,6 @@ install_config .config/eww ~/.config/eww
 # hyprland
 install_config .config/hypr ~/.config/hypr
 
-# wpaperd
-install_config .config/wpaperd ~/.config/wpaperd
 # waybar
 install_config .config/waybar ~/.config/waybar
 

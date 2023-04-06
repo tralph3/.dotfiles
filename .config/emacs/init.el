@@ -11,6 +11,7 @@
 (setq-default tab-width 4)
 (setq inhibit-startup-screen t)
 (delete-selection-mode t)
+(electric-pair-mode t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq-default scroll-conservatively 10000)
@@ -331,6 +332,22 @@
                     :foreground ORANGE)
 (set-face-attribute 'tree-sitter-hl-face:label nil
                     :foreground PARAMETER)
+(set-face-attribute 'minibuffer-prompt nil
+                    :foreground ACCENT)
+(set-face-attribute 'success nil
+                    :foreground GREEN)
+(set-face-attribute 'compilation-error nil
+                    :foreground RED)
+(set-face-attribute 'compilation-warning nil
+                    :foreground ORANGE)
+(set-face-attribute 'compilation-info nil
+                    :foreground BLUE)
+(set-face-attribute 'compilation-mode-line-fail nil
+                    :foreground RED)
+(set-face-attribute 'compilation-mode-line-exit nil
+                    :foreground GREEN)
+(set-face-attribute 'compilation-mode-line-run nil
+                    :foreground ORANGE)
 
 ) ; closes the function
 (reload-colorscheme)
@@ -338,6 +355,7 @@
 
 (require 'eglot)
 (setq eglot-autoshutdown t)
+(setq eglot-sync-connect 0)
 (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
 (global-set-key (kbd "C-c d") 'xref-find-definitions)
 (global-set-key (kbd "C-c h") 'eldoc)

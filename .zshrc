@@ -12,6 +12,7 @@ setopt INC_APPEND_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zshhistory
+WORDCHARS=" "
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -42,7 +43,7 @@ bindkey "\e[1;5D" backward-word
 bindkey "\e[1;5C" forward-word
 # ctrl-bs and ctrl-del
 bindkey "\e[3;5~" kill-word
-bindkey "\C-_"    backward-kill-word
+bindkey ""    backward-kill-word
 # del, home and end
 bindkey "\e[3~" delete-char
 bindkey "\e[H"  beginning-of-line

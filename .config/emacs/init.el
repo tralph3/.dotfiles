@@ -348,6 +348,8 @@
                     :foreground GREEN)
 (set-face-attribute 'compilation-mode-line-run nil
                     :foreground ORANGE)
+(set-face-attribute 'tree-sitter-hl-face:number nil
+                    :foreground NUMBER)
 
 ) ; closes the function
 (reload-colorscheme)

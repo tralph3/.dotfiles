@@ -5,7 +5,12 @@
     "FOREGROUND_1": "#${FOREGROUND_1}",
     "FOREGROUND_2": "#${FOREGROUND_2}",
 
-    "ACCENT_1": "#${ACCENT}",
+    "ACCENT": "#${ACCENT}",
+
+    "INACTIVE": "#${INACTIVE}",
+
+    "HIGHLIGHT_BG": "#${HIGHLIGHT_BG}",
+    "HIGHLIGHT_FG": "#${HIGHLIGHT_FG}",
 
     "BLACK": "#${BLACK}",
     "RED": "#${RED}",
@@ -16,5 +21,5 @@
     "CYAN": "#${CYAN}",
     "WHITE": "#${WHITE}",
     "ORANGE": "#${ORANGE}",
-    "PINK": "#${PINK}",
+    "PINK": "#${PINK}"
 }

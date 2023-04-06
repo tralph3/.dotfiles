@@ -5,15 +5,16 @@ from utils import SettingsDict
 colors = load_colorscheme()
 BACKGROUND1 = colors["BACKGROUND_1"]
 BACKGROUND2 = colors["BACKGROUND_2"]
-BACKGROUND3 = colors["BACKGROUND_3"]
 
 FOREGROUND1 = colors["FOREGROUND_1"]
 FOREGROUND2 = colors["FOREGROUND_2"]
-FOREGROUND3 = colors["FOREGROUND_3"]
 
-ACCENT1 = colors["ACCENT_1"]
-ACCENT2 = colors["ACCENT_2"]
-ACCENT3 = colors["ACCENT_3"]
+ACCENT = colors["ACCENT"]
+
+INACTIVE = colors["INACTIVE"]
+
+HIGHLIGHT_BG = colors["HIGHLIGHT_BG"]
+HIGHLIGHT_FG = colors["HIGHLIGHT_FG"]
 
 MARGIN = 5
 BORDER_WIDTH = 2
@@ -57,10 +58,10 @@ commands = dict(
 )
 
 layout_default = SettingsDict(
-    border_focus=ACCENT1,
-    border_focus_stack=ACCENT1,
-    border_normal=ACCENT2,
-    border_normal_stack=ACCENT2,
+    border_focus=ACCENT,
+    border_focus_stack=ACCENT,
+    border_normal=INACTIVE,
+    border_normal_stack=INACTIVE,
     border_width=BORDER_WIDTH,
     margin=MARGIN,
     margin_on_single=MARGIN,
@@ -70,16 +71,16 @@ layout_default = SettingsDict(
 
 widget_default = SettingsDict(
     background=BACKGROUND1,
-    border=ACCENT1,
+    border=ACCENT,
     font=FONT,
     fontsize=FONT_SIZE,
     foreground=FOREGROUND1,
     highlight_method="block",
     margin=MARGIN,
-    other_current_screen_border=ACCENT2,
-    other_screen_border=ACCENT2,
+    other_current_screen_border=INACTIVE,
+    other_screen_border=INACTIVE,
     rounded=False,
-    this_current_screen_border=ACCENT2,
-    this_screen_border=ACCENT2,
+    this_current_screen_border=INACTIVE,
+    this_screen_border=INACTIVE,
     urgent_alert_method="border",
 )

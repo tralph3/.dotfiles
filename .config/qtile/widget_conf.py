@@ -4,8 +4,8 @@ from libqtile.lazy import lazy
 from settings import (
     BACKGROUND1,
     BACKGROUND2,
-    ACCENT1,
-    ACCENT2,
+    ACCENT,
+    INACTIVE,
     DOTFILES_DIR,
     FOREGROUND1,
     FONT,
@@ -72,7 +72,7 @@ screens = [
                 widget.TaskList(
                     **widget_default.extend(
                         background=BACKGROUND2,
-                        border=ACCENT2,
+                        border=INACTIVE,
                         borderwidth=0,
                         icon_size=FONT_SIZE,
                         margin=0,
@@ -119,7 +119,7 @@ screens = [
             margin=MARGIN,
             border_width=2,
             background=BACKGROUND1,
-            border_color=ACCENT2,
+            border_color=INACTIVE,
         ),
         left=bar.Gap(MARGIN),
         right=bar.Gap(MARGIN),

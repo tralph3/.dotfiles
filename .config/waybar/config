@@ -6,6 +6,9 @@
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "clock"],
     "gtk-layer-shell": true,
+    "clock": {
+        "tooltip": false
+    },
     "wlr/workspaces": {
         "on-click": "activate",
         "on-scroll-up": "hyprctl dispatch workspace e+1",

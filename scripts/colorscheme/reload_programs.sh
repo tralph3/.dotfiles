@@ -41,11 +41,11 @@ reload_keyboard() {
 }
 
 reload_all() {
-    reload_dunst
-    reload_eww
-    reload_qtile
-    reload_emacs
-    reload_waybar
+    reload_dunst &
+    reload_eww &
+    reload_qtile &
+    reload_emacs &
+    reload_waybar &
     # reload_mouse
     # reload_keyboard
 }

@@ -12,7 +12,7 @@ setopt INC_APPEND_HISTORY
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zshhistory
-WORDCHARS=" "
+WORDCHARS=""
 
 # Basic auto/tab complete:
 autoload -U compinit

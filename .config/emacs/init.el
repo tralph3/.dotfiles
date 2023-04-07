@@ -85,6 +85,7 @@
 (define-key corfu-map (kbd "M-p") 'corfu-previous)
 (define-key corfu-map (kbd "TAB") 'corfu-handle-tab-completion)
 (define-key corfu-map (kbd "RET") 'corfu-handle-return-completion)
+(define-key corfu-map (kbd "M-SPC") 'corfu-insert-separator)
 
 (use-package kind-icon
   :ensure t

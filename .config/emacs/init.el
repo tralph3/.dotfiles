@@ -119,7 +119,8 @@
   (treemacs-add-and-display-current-project-exclusively))
 
 (defun open-config ()
-  (let ((dotfiles-dir "DOTFILES_DIR"))
+  (interactive)
+  (let ((dotfiles-dir (getenv"DOTFILES_DIR")))
     (cd (concat dotfiles-dir "/.config"))
     (treemacs-select-directory)))
 

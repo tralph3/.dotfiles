@@ -193,6 +193,14 @@ Treemacs provides a nice looking tree view of the working you're currently worki
     (cd project-root)
     (treemacs-add-and-display-current-project-exclusively))
 
+  (defun open-config ()
+    (interactive)
+    (let ((dotfiles-dir (getenv"DOTFILES_DIR")))
+      (cd (concat dotfiles-dir "/.config"))
+      (treemacs-select-directory)))
+
+  (global-set-key (kbd "C-c c") 'open-config)
+
   (use-package treemacs
     :ensure t
     :custom

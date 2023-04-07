@@ -3,11 +3,22 @@
     "position": "top",
     "height": 20,
     "modules-left": ["wlr/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "clock"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "wireplumber"],
     "gtk-layer-shell": true,
     "clock": {
+        "format": "{:%B %d %Y, %A - %H:%M}",
         "tooltip": false
+    },
+    "wireplumber": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "MUTED",
+        "format-icons": ["", "", "", "", "", "", ""],
+        "tooltip": false,
+        "on-click": "$DOTFILES_DIR/scripts/audio.sh mute",
+        "on-click-right": "$DOTFILES_DIR/scripts/audio.sh switch_sink",
+        "on-scroll-up": "$DOTFILES_DIR/scripts/audio.sh raise 2",
+        "on-scroll-down": "$DOTFILES_DIR/scripts/audio.sh lower 2"
     },
     "wlr/workspaces": {
         "on-click": "activate",
@@ -17,8 +28,5 @@
     },
     "tray": {
         "spacing": 10
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    },
+    }
 }

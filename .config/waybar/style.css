@@ -1,53 +1,37 @@
 @import url("../colorschemes/current_colorscheme/colors.css");
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: UbuntuMono Nerd Font Mono;
-    font-size: 13px;
+    font-family: UbuntuMono Nerd Font;
+    font-size: 14px;
 }
 
 window#waybar {
     background-color: @BACKGROUND_1;
-    border-bottom: 2px solid @ACCENT;
-    color: @FOREGROUND_1;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
+    color: @BACKGROUND_2;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px @HIGHLIGHT_BG;
-}
-
+#wireplumber,
+#workspaces,
 #clock,
 #tray {
-    padding: 0 10px;
     color: @FOREGROUND_1;
-    background-color: transparent;
-}
-
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: @FOREGROUND_1;
+    background-color: @BACKGROUND_2;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 #workspaces button:hover {
     background-color: @HIGHLIGHT_BG;
     color: @HIGHLIGHT_FG;
+    box-shadow: inset 0 -3px transparent;
 }
 
 #workspaces button.active {
@@ -57,34 +41,4 @@ button:hover {
 
 #workspaces button.urgent {
     background-color: @RED;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: @HIGHLIGHT_BG;
 }

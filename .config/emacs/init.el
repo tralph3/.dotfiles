@@ -118,6 +118,13 @@
   (cd project-root)
   (treemacs-add-and-display-current-project-exclusively))
 
+(defun open-config ()
+  (let ((dotfiles-dir "DOTFILES_DIR"))
+    (cd (concat dotfiles-dir "/.config"))
+    (treemacs-select-directory)))
+
+(global-set-key (kbd "C-c c") 'open-config)
+
 (use-package treemacs
   :ensure t
   :custom

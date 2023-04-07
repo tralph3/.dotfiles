@@ -1,4 +1,4 @@
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 (global-display-line-numbers-mode t)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)

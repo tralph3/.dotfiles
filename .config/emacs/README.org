@@ -165,7 +165,6 @@ I like kind-icons to be shown next to the completion candidates. Hence, this pac
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
-
 ** Extra Programming Modes
 These packages provide major modes for other programming languages that are not included by default.
 #+begin_src emacs-lisp
@@ -214,9 +213,10 @@ Treemacs provides a nice looking tree view of the working you're currently worki
   (use-package treemacs
     :ensure t
     :custom
-    (treemacs-read-string-input 'from-minibuffer))
+    (treemacs-read-string-input 'from-minibuffer)
+    :config
+    (treemacs-fringe-indicator-mode -1))
 #+end_src
-
 ** Dashboard
 Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp

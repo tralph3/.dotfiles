@@ -266,6 +266,14 @@ Which Key provides a list of possible keys to type and to which functions they a
     :config
     (which-key-mode))
 #+end_src
+** Marginalia
+Adds annotations to completion candidates.
+#+begin_src emacs-lisp
+  (use-package marginalia
+    :ensure t
+    :config
+    (marginalia-mode))
+#+end_src
 * Colorscheme
 I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
 #+begin_src emacs-lisp

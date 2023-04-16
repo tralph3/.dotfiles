@@ -56,6 +56,10 @@ How I prefer emacs to behavior.
   (delete-selection-mode t)
   (electric-pair-mode t)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+  (setq global-auto-revert-non-file-buffers t)
+  (global-auto-revert-mode t)
+  (xterm-mouse-mode t)
+  (setq native-comp-async-report-warnings-errors nil)
 #+end_src
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
@@ -63,11 +67,11 @@ Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
   (setq-default scroll-conservatively 10000)
   (setq-default scroll-margin 5)
 
-  (pixel-scroll-precision-mode t)
   (setq pixel-scroll-precision-use-momentum t)
   (setq pixel-scroll-precision-interpolate-mice t)
   (setq pixel-scroll-precision-large-scroll-height 10.0)
   (setq pixel-scroll-precision-interpolate-page t)
+  (pixel-scroll-precision-mode t)
 
   (global-set-key (kbd "C-v") 'pixel-scroll-interpolate-down)
   (global-set-key (kbd "M-v") 'pixel-scroll-interpolate-up)

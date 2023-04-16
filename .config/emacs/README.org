@@ -560,5 +560,6 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (global-set-key (kbd "C-c d") 'xref-find-definitions)
   (global-set-key (kbd "C-c h") 'eldoc)
   (global-set-key (kbd "C-c b") 'xref-go-back)
+  (global-set-key (kbd "C-c R") 'xref-find-references)
   (add-hook 'prog-mode-hook 'eglot-ensure)
 #+end_src

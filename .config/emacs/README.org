@@ -304,7 +304,8 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
   (defun reload-colorscheme ()
     (interactive)
     (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
-    (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage))
+    (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
+    (treemacs-realign-icon-colors))
 
   (define-key special-event-map [sigusr1] 'reload-colorscheme)
   (reload-colorscheme)
@@ -569,7 +570,11 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
   (set-face-attribute 'tty-menu-enabled-face nil
                       :foreground FOREGROUND_2
                       :background BACKGROUND_2)
-  (setq treemacs-window-background-color `(,BACKGROUND_2 . ,HIGHLIGHT_BG))
+  (set-face-attribute 'treemacs-window-background-face nil
+                      :background BACKGROUND_2)
+  (set-face-attribute 'treemacs-hl-line-face nil
+                      :background HIGHLIGHT_BG
+                      :foreground HIGHLIGHT_FG)
 #+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with emacs, using its built-in tools as much as possible.
@@ -593,4 +598,18 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq org-hide-emphasis-markers t)
   (setq org-startup-with-inline-images t)
   (add-hook 'org-mode-hook 'org-bullets-mode)
+#+end_src
+* Emms
+#+begin_src emacs-lisp
+  (require 'emms-setup)
+  (require 'emms-player-mpd)
+  (emms-all)
+  (setq emms-browser-covers 'emms-browser-cache-thumbnail-async)
+  (setq emms-player-list '(emms-player-mpd))
+  (setq emms-info-functions '(emms-info-mpd))
+  (emms-player-mpd-connect)
+  (emms-cache-set-from-mpd-all)
+  (setq emms-player-mpd-server-name "localhost")
+  (setq emms-player-mpd-server-port "6600")
+  (setq emms-player-mpd-music-directory "~/Music")
 #+end_src

@@ -213,4 +213,8 @@
 (set-face-attribute 'tty-menu-enabled-face nil
                     :foreground FOREGROUND_2
                     :background BACKGROUND_2)
-(setq treemacs-window-background-color `(,BACKGROUND_2 . ,HIGHLIGHT_BG))
+(set-face-attribute 'treemacs-window-background-face nil
+                    :background BACKGROUND_2)
+(set-face-attribute 'treemacs-hl-line-face nil
+                    :background HIGHLIGHT_BG
+                    :foreground HIGHLIGHT_FG)

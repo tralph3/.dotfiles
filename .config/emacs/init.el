@@ -208,7 +208,8 @@
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
-  (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage))
+  (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
+  (treemacs-realign-icon-colors))
 
 (define-key special-event-map [sigusr1] 'reload-colorscheme)
 (reload-colorscheme)

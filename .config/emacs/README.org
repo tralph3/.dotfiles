@@ -39,6 +39,8 @@ How I prefer emacs to look.
   (menu-bar-mode 0)
   (set-face-attribute 'default nil
                       :font "UbuntuMono Nerd Font Mono-13")
+  (set-face-attribute 'variable-pitch nil
+                      :font "Ubuntu-13")
 #+end_src
 ** Custom File
 Load the custom file

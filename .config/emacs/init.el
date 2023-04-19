@@ -5,6 +5,8 @@
 (menu-bar-mode 0)
 (set-face-attribute 'default nil
                     :font "UbuntuMono Nerd Font Mono-13")
+(set-face-attribute 'variable-pitch nil
+                    :font "Ubuntu-13")
 
 (when (file-exists-p custom-file)
   (load custom-file 'noerror 'nomessage))

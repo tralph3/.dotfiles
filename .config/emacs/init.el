@@ -217,6 +217,10 @@
 (add-hook 'prog-mode-hook 'eglot-ensure)
 
 (require 'org-tempo)
+(setq org-startup-indented t)
+(setq org-pretty-entities t)
+(setq org-hide-emphasis-markers t)
+(setq org-startup-with-inline-images t)
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
 (require 'emms-setup)

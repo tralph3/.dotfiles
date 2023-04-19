@@ -581,5 +581,9 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
 ** General Settings
 #+begin_src emacs-lisp
   (require 'org-tempo)
+  (setq org-startup-indented t)
+  (setq org-pretty-entities t)
+  (setq org-hide-emphasis-markers t)
+  (setq org-startup-with-inline-images t)
   (add-hook 'org-mode-hook 'org-bullets-mode)
 #+end_src

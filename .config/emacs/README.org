@@ -274,6 +274,16 @@ Adds annotations to completion candidates.
     :config
     (marginalia-mode))
 #+end_src
+** Org Roam
+#+begin_src emacs-lisp
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory "~/Documents/Wiki"))
+
+  (use-package org-roam-ui
+    :ensure t)
+#+end_src
 * Colorscheme
 :PROPERTIES:
 :header-args: :tangle colorscheme.el
@@ -562,4 +572,10 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (global-set-key (kbd "C-c b") 'xref-go-back)
   (global-set-key (kbd "C-c R") 'xref-find-references)
   (add-hook 'prog-mode-hook 'eglot-ensure)
+#+end_src
+* Org Mode
+** General Settings
+#+begin_src emacs-lisp
+  (require 'org-tempo)
+  (add-hook 'org-mode-hook 'org-bullets-mode)
 #+end_src

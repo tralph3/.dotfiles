@@ -186,6 +186,14 @@
   :config
   (marginalia-mode))
 
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory "~/Documents/Wiki"))
+
+(use-package org-roam-ui
+  :ensure t)
+
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)

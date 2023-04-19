@@ -282,6 +282,13 @@ Adds annotations to completion candidates.
     :ensure t
     :custom
     (org-roam-directory "~/Documents/Wiki")
+    :bind
+    (("C-c n f" . org-roam-node-find)
+     (:map org-mode-map
+           (("C-c n i" . org-roam-node-insert)
+            ("C-c n t" . org-roam-tag-add)
+            ("C-c n a" . org-roam-alias-add)
+            ("C-c n b" . org-roam-buffer-toggle))))
     :config
     (org-roam-db-autosync-mode t))
 

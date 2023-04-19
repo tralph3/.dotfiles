@@ -189,7 +189,9 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/Documents/Wiki"))
+  (org-roam-directory "~/Documents/Wiki")
+  :config
+  (org-roam-db-autosync-mode t))
 
 (use-package org-roam-ui
   :ensure t)

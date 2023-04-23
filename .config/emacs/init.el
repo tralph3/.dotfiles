@@ -22,6 +22,7 @@
 (global-auto-revert-mode t)
 (xterm-mouse-mode t)
 (setq native-comp-async-report-warnings-errors nil)
+(context-menu-mode t)
 
 (setq-default scroll-conservatively 10000)
 (setq-default scroll-margin 5)
@@ -205,6 +206,15 @@
 (use-package org-roam-ui
   :ensure t)
 
+(use-package org-superstar
+  :ensure t
+  :custom
+  (org-superstar-item-bullet-alist '((42 . 8226)
+                                     (43 . 8226)
+                                     (45 . 8211)))
+  :config
+  (org-superstar-mode t))
+
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
@@ -229,7 +239,7 @@
 (setq org-pretty-entities t)
 (setq org-hide-emphasis-markers t)
 (setq org-startup-with-inline-images t)
-(add-hook 'org-mode-hook 'org-bullets-mode)
+(add-hook 'org-mode-hook 'org-superstar-mode)
 
 (require 'emms-setup)
 (require 'emms-player-mpd)

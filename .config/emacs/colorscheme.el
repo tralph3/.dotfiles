@@ -126,6 +126,9 @@
 (set-face-attribute 'tree-sitter-hl-face:escape nil
                     :inherit 'font-lock-string
                     :foreground KEYWORD)
+(set-face-attribute 'show-paren-match nil
+                    :foreground HIGHLIGHT_FG
+                    :background HIGHLIGHT_BG)
 
 (set-face-attribute 'font-lock-doc-face nil
                     :inherit 'font-lock-comment-face)

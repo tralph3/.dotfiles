@@ -62,6 +62,7 @@ How I prefer emacs to behavior.
   (global-auto-revert-mode t)
   (xterm-mouse-mode t)
   (setq native-comp-async-report-warnings-errors nil)
+  (context-menu-mode t)
 #+end_src
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
@@ -295,6 +296,17 @@ Adds annotations to completion candidates.
   (use-package org-roam-ui
     :ensure t)
 #+end_src
+** Org Superstar
+#+begin_src emacs-lisp
+  (use-package org-superstar
+    :ensure t
+    :custom
+    (org-superstar-item-bullet-alist '((42 . 8226)
+                                       (43 . 8226)
+                                       (45 . 8211)))
+    :config
+    (org-superstar-mode t))
+#+end_src
 * Colorscheme
 :PROPERTIES:
 :header-args: :tangle colorscheme.el
@@ -479,6 +491,9 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
   (set-face-attribute 'tree-sitter-hl-face:escape nil
                       :inherit 'font-lock-string
                       :foreground KEYWORD)
+  (set-face-attribute 'show-paren-match nil
+                      :foreground HIGHLIGHT_FG
+                      :background HIGHLIGHT_BG)
 #+end_src
 
 #+begin_src emacs-lisp
@@ -597,7 +612,7 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq org-pretty-entities t)
   (setq org-hide-emphasis-markers t)
   (setq org-startup-with-inline-images t)
-  (add-hook 'org-mode-hook 'org-bullets-mode)
+  (add-hook 'org-mode-hook 'org-superstar-mode)
 #+end_src
 * Emms
 #+begin_src emacs-lisp

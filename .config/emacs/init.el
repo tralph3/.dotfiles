@@ -192,7 +192,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "~/Documents/Wiki")
+  (org-roam-directory "~/Documents/wiki")
   :bind
   (("C-c n f" . org-roam-node-find)
    (:map org-mode-map

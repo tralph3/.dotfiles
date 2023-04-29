@@ -294,7 +294,10 @@ Adds annotations to completion candidates.
     (org-roam-db-autosync-mode t))
 
   (use-package org-roam-ui
-    :ensure t)
+    :ensure t
+    :custom
+    (org-roam-ui-open-on-start nil)
+    (org-roam-ui-sync-theme nil))
 #+end_src
 ** Org Superstar
 #+begin_src emacs-lisp
@@ -317,7 +320,9 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
     (interactive)
     (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
     (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
-    (treemacs-realign-icon-colors))
+    (treemacs-realign-icon-colors)
+    (ignore-errors
+      (org-roam-ui-sync-theme)))
 
   (define-key special-event-map [sigusr1] 'reload-colorscheme)
   (reload-colorscheme)
@@ -376,6 +381,22 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
   (set-face-attribute 'org-level-6 nil :weight 'normal)
   (set-face-attribute 'org-level-7 nil :weight 'normal)
   (set-face-attribute 'org-level-8 nil :weight 'normal)
+#+end_src
+** Org Roam UI
+#+begin_src emacs-lisp
+(setq org-roam-ui-custom-theme
+    `((bg . ,BACKGROUND_1)
+        (bg-alt . ,BACKGROUND_2)
+        (fg . ,FOREGROUND_1)
+        (fg-alt . ,FOREGROUND_2)
+        (red . ,RED)
+        (orange . ,ORANGE)
+        (yellow . ,YELLOW)
+        (green . ,GREEN)
+        (cyan . ,CYAN)
+        (blue . ,BLUE)
+        (violet . ,PINK)
+        (magenta . ,MAGENTA)))
 #+end_src
 ** Programming
 *** Comments
@@ -612,6 +633,7 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq org-pretty-entities t)
   (setq org-hide-emphasis-markers t)
   (setq org-startup-with-inline-images t)
+  (setq org-src-preserve-indentation t)
   (add-hook 'org-mode-hook 'org-superstar-mode)
 #+end_src
 * Emms

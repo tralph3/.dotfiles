@@ -279,12 +279,27 @@ Adds annotations to completion candidates.
 #+end_src
 ** Org Roam
 #+begin_src emacs-lisp
+  (setq zettlekasten-paths-alist '(("Main" . "~/Documents/wiki/")
+                                   ("NesWiki" . "~/Documents/NesWiki/")))
+
+  (defun switch-zettlekasten ()
+    (interactive)
+    (let* ((keys (mapcar #'car zettlekasten-paths-alist))
+           (prompt (format "Select Zettlekasten:"))
+           (key (completing-read prompt keys))
+           (chosen-zettlekasten-path (cdr (assoc key zettlekasten-paths-alist))))
+      (setq org-roam-directory chosen-zettlekasten-path)
+      (setq org-roam-db-location (concat chosen-zettlekasten-path "org-roam.db"))
+      (org-roam-db-sync)))
+
   (use-package org-roam
     :ensure t
     :custom
-    (org-roam-directory "~/Documents/wiki")
+    (org-roam-directory (cdr (assoc-string "Main" zettlekasten-paths-alist)))
+    (org-roam-db-location (concat (cdr (assoc-string "Main" zettlekasten-paths-alist)) "org-roam.db"))
     :bind
     (("C-c n f" . org-roam-node-find)
+     ("C-c n s" . switch-zettlekasten)
      (:map org-mode-map
            (("C-c n i" . org-roam-node-insert)
             ("C-c n t" . org-roam-tag-add)
@@ -633,20 +648,5 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq org-pretty-entities t)
   (setq org-hide-emphasis-markers t)
   (setq org-startup-with-inline-images t)
-  (setq org-src-preserve-indentation t)
   (add-hook 'org-mode-hook 'org-superstar-mode)
-#+end_src
-* Emms
-#+begin_src emacs-lisp
-  (require 'emms-setup)
-  (require 'emms-player-mpd)
-  (emms-all)
-  (setq emms-browser-covers 'emms-browser-cache-thumbnail-async)
-  (setq emms-player-list '(emms-player-mpd))
-  (setq emms-info-functions '(emms-info-mpd))
-  (emms-player-mpd-connect)
-  (emms-cache-set-from-mpd-all)
-  (setq emms-player-mpd-server-name "localhost")
-  (setq emms-player-mpd-server-port "6600")
-  (setq emms-player-mpd-music-directory "~/Music")
 #+end_src

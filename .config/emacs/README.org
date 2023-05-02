@@ -279,27 +279,27 @@ Adds annotations to completion candidates.
 #+end_src
 ** Org Roam
 #+begin_src emacs-lisp
-  (setq zettlekasten-paths-alist '(("Main" . "~/Documents/wiki/")
+  (setq zettelkasten-paths-alist '(("Main" . "~/Documents/wiki/")
                                    ("NesWiki" . "~/Documents/NesWiki/")))
 
-  (defun switch-zettlekasten ()
+  (defun switch-zettelkasten ()
     (interactive)
-    (let* ((keys (mapcar #'car zettlekasten-paths-alist))
-           (prompt (format "Select Zettlekasten:"))
+    (let* ((keys (mapcar #'car zettelkasten-paths-alist))
+           (prompt (format "Select Zettelkasten:"))
            (key (completing-read prompt keys))
-           (chosen-zettlekasten-path (cdr (assoc key zettlekasten-paths-alist))))
-      (setq org-roam-directory chosen-zettlekasten-path)
-      (setq org-roam-db-location (concat chosen-zettlekasten-path "org-roam.db"))
+           (chosen-zettelkasten-path (cdr (assoc key zettelkasten-paths-alist))))
+      (setq org-roam-directory chosen-zettelkasten-path)
+      (setq org-roam-db-location (concat chosen-zettelkasten-path "org-roam.db"))
       (org-roam-db-sync)))
 
   (use-package org-roam
     :ensure t
     :custom
-    (org-roam-directory (cdr (assoc-string "Main" zettlekasten-paths-alist)))
-    (org-roam-db-location (concat (cdr (assoc-string "Main" zettlekasten-paths-alist)) "org-roam.db"))
+    (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
+    (org-roam-db-location (concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
     :bind
     (("C-c n f" . org-roam-node-find)
-     ("C-c n s" . switch-zettlekasten)
+     ("C-c n s" . switch-zettelkasten)
      (:map org-mode-map
            (("C-c n i" . org-roam-node-insert)
             ("C-c n t" . org-roam-tag-add)

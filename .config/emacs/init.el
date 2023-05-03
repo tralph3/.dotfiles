@@ -131,7 +131,7 @@
 (defun open-config ()
   (interactive)
   (let ((dotfiles-dir (getenv"DOTFILES_DIR")))
-    (cd (concat dotfiles-dir "/.config"))
+    (cd (file-name-concat dotfiles-dir "/.config"))
     (treemacs-select-directory)))
 
 (global-set-key (kbd "C-c c") 'open-config)
@@ -161,7 +161,7 @@
        "Emacs Config"
        "Open the Emacs config file"
        (lambda (&rest _)
-         (find-file (concat user-config-directory "README.org")))))))
+         (find-file (file-name-concat user-config-directory "README.org")))))))
   (dashboard-projects-switch-function 'project-open)
   :config
   (dashboard-setup-startup-hook))
@@ -199,14 +199,14 @@
          (key (completing-read prompt keys))
          (chosen-zettelkasten-path (cdr (assoc key zettelkasten-paths-alist))))
     (setq org-roam-directory chosen-zettelkasten-path)
-    (setq org-roam-db-location (concat chosen-zettelkasten-path "org-roam.db"))
+    (setq org-roam-db-location (file-name-concat chosen-zettelkasten-path "org-roam.db"))
     (org-roam-db-sync)))
 
 (use-package org-roam
   :ensure t
   :custom
   (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
-  (org-roam-db-location (concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
+  (org-roam-db-location (file-name-concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
   :bind
   (("C-c n f" . org-roam-node-find)
    ("C-c n s" . switch-zettelkasten)
@@ -236,7 +236,7 @@
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
-  (load (concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
+  (load (file-name-concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
   (treemacs-realign-icon-colors)
   (ignore-errors
     (org-roam-ui-sync-theme)))

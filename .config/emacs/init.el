@@ -233,6 +233,11 @@
   :config
   (org-superstar-mode t))
 
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode))
+
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)

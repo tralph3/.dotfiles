@@ -259,4 +259,6 @@
 (setq org-pretty-entities t)
 (setq org-hide-emphasis-markers t)
 (setq org-startup-with-inline-images t)
+(setq org-preview-latex-default-process 'dvisvgm)
+(setq org-preview-latex-image-directory "~/.cache/ltximg")
 (add-hook 'org-mode-hook 'org-superstar-mode)

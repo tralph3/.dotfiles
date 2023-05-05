@@ -20,6 +20,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq global-auto-revert-non-file-buffers t)
 (global-auto-revert-mode t)
+(setq c-default-style "stroustrup")
 (xterm-mouse-mode t)
 (setq native-comp-async-report-warnings-errors nil)
 (context-menu-mode t)

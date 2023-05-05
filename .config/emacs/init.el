@@ -235,6 +235,8 @@
 
 (use-package undo-tree
   :ensure t
+  :custom
+  (undo-tree-history-directory-alist `(("." . ,(file-name-concat user-emacs-directory "undo-tree"))))
   :config
   (global-undo-tree-mode))
 

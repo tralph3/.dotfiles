@@ -329,6 +329,8 @@ Adds annotations to completion candidates.
 #+begin_src emacs-lisp
   (use-package undo-tree
     :ensure t
+    :custom
+    (undo-tree-history-directory-alist `(("." . ,(file-name-concat user-emacs-directory "undo-tree"))))
     :config
     (global-undo-tree-mode))
 #+end_src

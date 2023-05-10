@@ -257,7 +257,13 @@
                                      (43 . 8226)
                                      (45 . 8211)))
   :config
+  (add-hook 'org-mode-hook 'org-superstar-mode)
   (org-superstar-mode t))
+
+(use-package org-fragtog
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook 'org-fragtog-mode))
 
 (use-package undo-tree
   :ensure t
@@ -294,7 +300,8 @@
 (setq org-startup-with-inline-images t)
 (setq org-preview-latex-default-process 'dvisvgm)
 (setq org-preview-latex-image-directory "~/.cache/ltximg")
-(add-hook 'org-mode-hook 'org-superstar-mode)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
+(setq org-startup-with-latex-preview t)
 
 (add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1)))

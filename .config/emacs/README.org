@@ -4,7 +4,10 @@
 #+STARTUP: showeverything
 
 * Early Init
-Here we define variables that we want emacs to read as soon as possible. Mainly, we set variables to stop emacs from littering the config directory with lockfiles, auto-save files, backups, or even packages.
+Here we define variables that we want emacs to read as soon as
+possible. Mainly, we set variables to stop emacs from littering the
+config directory with lockfiles, auto-save files, backups, or even
+packages.
 #+begin_src emacs-lisp :tangle early-init.el
   (setq user-emacs-directory "~/.local/share/emacs/")
   (setq user-config-directory "~/.config/emacs/")
@@ -98,11 +101,44 @@ Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
 
   (global-set-key (kbd "M-Z") 'zap-up-to-char)
 #+end_src
+*** Display Size in Milimiters Workaround
+My monitor doesn't seem to report proper values to get the display
+size in milimiters. These values are needed to compute the size of
+numerous UI elements, such as LaTeX preview images in org files. The
+functions to get these values are returning 0. For this reason, I
+check if they do return 0, and then redefine the
+pgtk-display-monitor-attributes-list function to calculate the values
+manually.
 
+The method to calculate the milimiter dimensions has been borrowed
+from the [[https://gitlab.freedesktop.org/xorg/xserver/-/blob/f08ab719df921e1269691553daf56853380fb241/randr/rrmonitor.c#L77][Xorg source code]].
+#+begin_src emacs-lisp
+  (if (eq (x-display-mm-width) 0)
+      (progn
+        (let* ((default-pixels-per-mm (/ 96.0 25.4))
+               (display-mm-width (floor (+ (/ (display-pixel-width) default-pixels-per-mm) 0.5)))
+               (display-mm-height (floor (+ (/ (display-pixel-height) default-pixels-per-mm) 0.5))))
+          (setq display-mm-dimensions-alist `((t . (,display-mm-width . ,display-mm-height)))))
+
+        (defun pgtk-display-monitor-attributes-list (&optional terminal)
+          (let ((display-name (frame-parameter nil 'display))
+                (geometry (list 0 0 (display-pixel-width terminal)
+                                (display-pixel-height terminal)))
+                (mm-size (list (display-mm-width terminal)
+                               (display-mm-height terminal))))
+            `(((name . ,display-name)
+               (geometry . ,geometry)
+               (workarea . ,geometry)
+               (mm-size . ,mm-size)
+               (scale-factor . 1.0)
+               (frames . ,(frames-on-display-list terminal))
+               (source . "Gdk")))))))
+#+end_src
 * Packages
 These are the emacs packages I use.
 ** Setup
-Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]] repository.
+Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]]
+repository.
 #+begin_src emacs-lisp
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")
@@ -114,7 +150,10 @@ Here we setup the `package-archives` variable to include the [[https://melpa.org
     :ensure t)
 #+end_src
 ** Corfu
-Corfu provides a quick popup that displays completion candidates for whatever it is you're currently typing. It can also show documentation next to the completions buffer for the symbol you're currently selecting. Goes well with [[Orderless]].
+Corfu provides a quick popup that displays completion candidates for
+whatever it is you're currently typing. It can also show documentation
+next to the completions buffer for the symbol you're currently
+selecting. Goes well with [[Orderless]].
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t
@@ -134,7 +173,18 @@ Corfu provides a quick popup that displays completion candidates for whatever it
     (global-corfu-mode))
 #+end_src
 *** Keybinds
-Corfu by default sets up the `corfu-keymap` variable which overrides some common keybindings. I found the defaults to be obtrusive. I defined my own keybinds. I want the completion to appear as quickly as possible, but I don't want it to be in the way of my typing. So, I have bound a separate set of keys to scroll the popup, since otherwise I would be stuck scrolling the popup when I actually wanted to scroll the document I'm working with. I have also defined custom functions for `TAB` and `RETURN`. `TAB` should always complete either the first completion candidate, or any other explicitly selected candidate. `RETURN` will only autocomplete if a candidate has been explicitly selected. This allows me to insert a newline with `RETURN` even if the popup is present.
+Corfu by default sets up the `corfu-keymap` variable which overrides
+some common keybindings. I found the defaults to be obtrusive. I
+defined my own keybinds. I want the completion to appear as quickly as
+possible, but I don't want it to be in the way of my typing. So, I
+have bound a separate set of keys to scroll the popup, since otherwise
+I would be stuck scrolling the popup when I actually wanted to scroll
+the document I'm working with. I have also defined custom functions
+for `TAB` and `RETURN`. `TAB` should always complete either the first
+completion candidate, or any other explicitly selected
+candidate. `RETURN` will only autocomplete if a candidate has been
+explicitly selected. This allows me to insert a newline with `RETURN`
+even if the popup is present.
 #+begin_src emacs-lisp
   (defun corfu-handle-tab-completion ()
     (interactive)
@@ -158,7 +208,8 @@ Corfu by default sets up the `corfu-keymap` variable which overrides some common
   (define-key corfu-map (kbd "M-SPC") 'corfu-insert-separator)
 #+end_src
 *** User Interface
-I like kind-icons to be shown next to the completion candidates. Hence, this package.
+I like kind-icons to be shown next to the completion
+candidates. Hence, this package.
 #+begin_src emacs-lisp
   (use-package kind-icon
     :ensure t
@@ -170,13 +221,17 @@ I like kind-icons to be shown next to the completion candidates. Hence, this pac
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 #+end_src
 ** Extra Programming Modes
-These packages provide major modes for other programming languages that are not included by default.
+These packages provide major modes for other programming languages
+that are not included by default.
 #+begin_src emacs-lisp
   (use-package rust-mode
     :ensure t)
 #+end_src
 ** Vertico
-Vertico provides a performant and minimalistic vertical completion UI based on the default completion system. It makes it really easy to search for functions or variables in the minibuffer. Goes well with [[Orderless]].
+Vertico provides a performant and minimalistic vertical completion UI
+based on the default completion system. It makes it really easy to
+search for functions or variables in the minibuffer. Goes well with
+[[Orderless]].
 #+begin_src emacs-lisp
   (use-package vertico
     :ensure t
@@ -192,7 +247,8 @@ Magit is an interface for git.
     :bind (("C-c g" . 'magit-status)))
 #+end_src
 ** Orderless
-Orderless is a completion style that lets you search for completions based on keywords, in any order.
+Orderless is a completion style that lets you search for completions
+based on keywords, in any order.
 #+begin_src emacs-lisp
   (use-package orderless
     :ensure t
@@ -200,7 +256,9 @@ Orderless is a completion style that lets you search for completions based on ke
     (add-to-list 'completion-styles 'orderless))
 #+end_src
 ** Treemacs
-Treemacs provides a nice looking tree view of the working you're currently working with. It also provides the ability to list all symbols on a given file, and browse it that way.
+Treemacs provides a nice looking tree view of the working you're
+currently working with. It also provides the ability to list all
+symbols on a given file, and browse it that way.
 #+begin_src emacs-lisp
   (defun project-open (project-root)
     (cd project-root)
@@ -261,7 +319,10 @@ Provides a nice dashboard on every new frame.
     :after tree-sitter)
 #+end_src
 ** Which Key
-Which Key provides a list of possible keys to type and to which functions they are bound when you're in the middle of typing a key-chord. Can be useful to learn new packages or discover new functionality.
+Which Key provides a list of possible keys to type and to which
+functions they are bound when you're in the middle of typing a
+key-chord. Can be useful to learn new packages or discover new
+functionality.
 #+begin_src emacs-lisp
   (use-package which-key
     :ensure t
@@ -298,6 +359,10 @@ Adds annotations to completion candidates.
     :custom
     (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
     (org-roam-db-location (file-name-concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
+    (org-roam-capture-templates '(("d" "default" plain "%?"
+                                    :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                                                       "#+title: ${title}\n#+filetags: :Unfinished:")
+                                    :unnarrowed t)))
     :bind
     (("C-c n f" . org-roam-node-find)
      ("C-c n s" . switch-zettelkasten)
@@ -339,7 +404,11 @@ Adds annotations to completion candidates.
 :PROPERTIES:
 :header-args: :tangle colorscheme.el
 :END:
-I don't use any specific colorscheme. Instead, I have a system that applies a certain colorscheme to many programs at once. The colorscheme defines some variables, and each program uses these variables in its own way. For emacs, I first need to load these variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
+I don't use any specific colorscheme. Instead, I have a system that
+applies a certain colorscheme to many programs at once. The
+colorscheme defines some variables, and each program uses these
+variables in its own way. For emacs, I first need to load these
+variables by loading the [[file:~/.config/colorschemes/current_colorscheme/colors.el][colors.el]] file.
 #+begin_src emacs-lisp :tangle init.el
   (defun reload-colorscheme ()
     (interactive)
@@ -638,7 +707,8 @@ I don't use any specific colorscheme. Instead, I have a system that applies a ce
                       :foreground HIGHLIGHT_FG)
 #+end_src
 * Eglot
-Eglot is a minimalistic LSP client. It integrates very well with emacs, using its built-in tools as much as possible.
+Eglot is a minimalistic LSP client. It integrates very well with
+emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp
   (require 'eglot)
   (setq eglot-autoshutdown t)
@@ -661,4 +731,12 @@ Eglot is a minimalistic LSP client. It integrates very well with emacs, using it
   (setq org-preview-latex-default-process 'dvisvgm)
   (setq org-preview-latex-image-directory "~/.cache/ltximg")
   (add-hook 'org-mode-hook 'org-superstar-mode)
+#+end_src
+* Doc View Mode
+** General Settings
+#+begin_src emacs-lisp
+  (add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+  (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1)))
+  (setq doc-view-scale-internally t)
+  (setq doc-view-continuous t)
 #+end_src

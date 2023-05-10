@@ -53,6 +53,27 @@
 
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
+(if (eq (x-display-mm-width) 0)
+    (progn
+      (let* ((default-pixels-per-mm (/ 96.0 25.4))
+             (display-mm-width (floor (+ (/ (display-pixel-width) default-pixels-per-mm) 0.5)))
+             (display-mm-height (floor (+ (/ (display-pixel-height) default-pixels-per-mm) 0.5))))
+        (setq display-mm-dimensions-alist `((t . (,display-mm-width . ,display-mm-height)))))
+
+      (defun pgtk-display-monitor-attributes-list (&optional terminal)
+        (let ((display-name (frame-parameter nil 'display))
+              (geometry (list 0 0 (display-pixel-width terminal)
+                              (display-pixel-height terminal)))
+              (mm-size (list (display-mm-width terminal)
+                             (display-mm-height terminal))))
+          `(((name . ,display-name)
+             (geometry . ,geometry)
+             (workarea . ,geometry)
+             (mm-size . ,mm-size)
+             (scale-factor . 1.0)
+             (frames . ,(frames-on-display-list terminal))
+             (source . "Gdk")))))))
+
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
@@ -208,6 +229,10 @@
   :custom
   (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
   (org-roam-db-location (file-name-concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
+  (org-roam-capture-templates '(("d" "default" plain "%?"
+                                  :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                                                     "#+title: ${title}\n#+filetags: :Unfinished:")
+                                  :unnarrowed t)))
   :bind
   (("C-c n f" . org-roam-node-find)
    ("C-c n s" . switch-zettelkasten)
@@ -270,3 +295,8 @@
 (setq org-preview-latex-default-process 'dvisvgm)
 (setq org-preview-latex-image-directory "~/.cache/ltximg")
 (add-hook 'org-mode-hook 'org-superstar-mode)
+
+(add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+(add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1)))
+(setq doc-view-scale-internally t)
+(setq doc-view-continuous t)

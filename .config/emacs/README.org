@@ -389,7 +389,17 @@ Adds annotations to completion candidates.
                                        (43 . 8226)
                                        (45 . 8211)))
     :config
+    (add-hook 'org-mode-hook 'org-superstar-mode)
     (org-superstar-mode t))
+#+end_src
+** Org Fragtog
+Org Fragtog allows me to seamlessly edit latex previews in org
+documents whenever the point is over them.
+#+begin_src emacs-lisp
+  (use-package org-fragtog
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook 'org-fragtog-mode))
 #+end_src
 ** Undo Tree
 #+begin_src emacs-lisp
@@ -730,7 +740,8 @@ emacs, using its built-in tools as much as possible.
   (setq org-startup-with-inline-images t)
   (setq org-preview-latex-default-process 'dvisvgm)
   (setq org-preview-latex-image-directory "~/.cache/ltximg")
-  (add-hook 'org-mode-hook 'org-superstar-mode)
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
+  (setq org-startup-with-latex-preview t)
 #+end_src
 * Doc View Mode
 ** General Settings

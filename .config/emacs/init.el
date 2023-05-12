@@ -273,6 +273,38 @@
   :config
   (global-undo-tree-mode))
 
+(use-package dirvish
+  :ensure t
+  :init
+  (dirvish-override-dired-mode t)
+  :custom
+  (dired-mouse-drag-files t)
+  (dired-listing-switches "-lA --group-directories-first --human-readable")
+  (dirvish-attributes '(vc-state subtree-state all-the-icons collapse file-time file-size))
+  :config
+  (dirvish-side-follow-mode t)
+  :bind
+  (:map dirvish-mode-map
+        ("<mouse-1>" . dirvish-subtree-toggle-or-open)
+        ("<mouse-2>" . dired-mouse-find-file-other-window)
+        ("a"   . dirvish-quick-access)
+        ("f"   . dirvish-file-info-menu)
+        ("y"   . dirvish-yank-menu)
+        ("N"   . dirvish-narrow)
+        ("^"   . dirvish-history-last)
+        ("h"   . dirvish-history-jump)
+        ("s"   . dirvish-quicksort)
+        ("v"   . dirvish-vc-menu)
+        ("TAB" . dirvish-subtree-toggle)
+        ("M-f" . dirvish-history-go-forward)
+        ("M-b" . dirvish-history-go-backward)
+        ("M-l" . dirvish-ls-switches-menu)
+        ("M-m" . dirvish-mark-menu)
+        ("M-t" . dirvish-layout-toggle)
+        ("M-s" . dirvish-setup-menu)
+        ("M-e" . dirvish-emerge-menu)
+        ("M-j" . dirvish-fd-jump)))
+
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)

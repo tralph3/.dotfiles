@@ -4,7 +4,7 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (set-face-attribute 'default nil
-                    :font "UbuntuMono Nerd Font Mono-13")
+                    :font "JuliaMono-13")
 (set-face-attribute 'variable-pitch nil
                     :font "Ubuntu-13")
 

@@ -335,6 +335,7 @@
 (setq org-preview-latex-image-directory "~/.cache/ltximg")
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
 (setq org-startup-with-latex-preview t)
+(add-hook 'org-mode-hook 'auto-fill-mode)
 
 (add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
 (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1)))

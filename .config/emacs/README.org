@@ -779,6 +779,7 @@ emacs, using its built-in tools as much as possible.
   (setq org-preview-latex-image-directory "~/.cache/ltximg")
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
   (setq org-startup-with-latex-preview t)
+  (add-hook 'org-mode-hook 'auto-fill-mode)
 #+end_src
 * Doc View Mode
 ** General Settings

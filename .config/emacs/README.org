@@ -67,6 +67,7 @@ How I prefer emacs to behavior.
   (xterm-mouse-mode t)
   (setq native-comp-async-report-warnings-errors nil)
   (context-menu-mode t)
+  (setq mouse-drag-and-drop-region-cross-program t)
 #+end_src
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.

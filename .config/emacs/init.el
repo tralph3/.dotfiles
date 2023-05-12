@@ -24,6 +24,7 @@
 (xterm-mouse-mode t)
 (setq native-comp-async-report-warnings-errors nil)
 (context-menu-mode t)
+(setq mouse-drag-and-drop-region-cross-program t)
 
 (setq-default scroll-conservatively 10000)
 (setq-default scroll-margin 5)

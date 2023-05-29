@@ -22,6 +22,7 @@ packages.
   (setq-default url-history-file (file-name-concat user-emacs-directory "url/history"))
   (setq-default lock-file-name-transforms `(("^\\(.*\\)$" "/tmp/\\1") t))
   (setq-default auto-save-default nil)
+  (setq-default custom-theme-directory (file-name-concat user-emacs-directory "custom-themes"))
 
   (setq-default pgtk-wait-for-event-timeout 0)
 #+end_src
@@ -449,7 +450,7 @@ behaves nicer.
 #+end_src
 * Colorscheme
 :PROPERTIES:
-:header-args: :tangle colorscheme.el
+:header-args: :tangle (file-name-concat custom-theme-directory "system-theme-theme.el")
 :END:
 I don't use any specific colorscheme. Instead, I have a system that
 applies a certain colorscheme to many programs at once. The
@@ -460,298 +461,248 @@ variables by loading the [[file:~/.config/colorschemes/current_colorscheme/color
   (defun reload-colorscheme ()
     (interactive)
     (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
-    (load (file-name-concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
+    (load-theme 'system-theme t)
     (treemacs-realign-icon-colors)
+    (setq org-roam-ui-custom-theme
+          `((bg . ,BACKGROUND_1)
+            (bg-alt . ,BACKGROUND_2)
+            (fg . ,FOREGROUND_1)
+            (fg-alt . ,FOREGROUND_2)
+            (red . ,RED)
+            (orange . ,ORANGE)
+            (yellow . ,YELLOW)
+            (green . ,GREEN)
+            (cyan . ,CYAN)
+            (blue . ,BLUE)
+            (violet . ,PINK)
+            (magenta . ,MAGENTA)))
     (ignore-errors
       (org-roam-ui-sync-theme)))
 
   (define-key special-event-map [sigusr1] 'reload-colorscheme)
   (reload-colorscheme)
 #+end_src
-** Load faces
+** Colorscheme Setup
+Here we define the colorscheme and the first part of the mechanism to
+set the faces.
 #+begin_src emacs-lisp
-  (require 'org-faces)
-  (require 'tree-sitter-hl)
+(deftheme system-theme
+  "Synchronizes colors with the system theme.")
+(let ((faces `(
 #+end_src
 ** Basic Colors
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil
-                      :foreground FOREGROUND_1
-                      :background BACKGROUND_1)
-  (set-face-attribute 'fringe nil
-                      :foreground FOREGROUND_1
-                      :background BACKGROUND_1)
-  (set-face-attribute 'cursor nil
-                      :foreground FOREGROUND_2)
+  (default :foreground ,FOREGROUND_1
+           :background ,BACKGROUND_1)
+  (fringe :foreground ,FOREGROUND_1
+          :background ,BACKGROUND_1)
+  (cursor :foreground ,FOREGROUND_2)
 #+end_src
 ** Headerline
 #+begin_src emacs-lisp
-  (set-face-attribute 'header-line nil
-                      :background BACKGROUND_2
-                      :foreground FOREGROUND_2)
+  (header-line :background ,BACKGROUND_2
+               :foreground ,FOREGROUND_2)
 #+end_src
 ** Modeline
 #+begin_src emacs-lisp
-  (set-face-attribute 'mode-line nil
-                      :background BACKGROUND_2
-                      :foreground FOREGROUND_2
-                      :box nil)
-  (set-face-attribute 'mode-line-highlight nil
-                      :background HIGHLIGHT_BG
-                      :foreground HIGHLIGHT_FG
-                      :box nil)
-  (set-face-attribute 'mode-line-inactive nil
-                      :background INACTIVE)
+  (mode-line :background ,BACKGROUND_2
+             :foreground ,FOREGROUND_2
+             :box nil)
+  (mode-line-highlight :background ,HIGHLIGHT_BG
+                       :foreground ,HIGHLIGHT_FG
+                       :box nil)
+  (mode-line-inactive :background ,INACTIVE)
 #+end_src
 ** Corfu
 #+begin_src emacs-lisp
-  (set-face-attribute 'corfu-default nil
-                      :background BACKGROUND_2
-                      :foreground FOREGROUND_2)
+  (corfu-default :background ,BACKGROUND_2
+                 :foreground ,FOREGROUND_2)
 #+end_src
 ** Org Mode
 #+begin_src emacs-lisp
-  (set-face-background 'org-block BACKGROUND_2)
-  (set-face-background 'org-block-begin-line BACKGROUND_2)
-  (set-face-background 'org-block-end-line BACKGROUND_2)
-  (set-face-attribute 'org-level-1 nil :height 1.5 :weight 'bold)
-  (set-face-attribute 'org-level-2 nil :height 1.3 :weight 'bold)
-  (set-face-attribute 'org-level-3 nil :height 1.1 :weight 'bold)
-  (set-face-attribute 'org-level-4 nil :weight 'normal)
-  (set-face-attribute 'org-level-5 nil :weight 'normal)
-  (set-face-attribute 'org-level-6 nil :weight 'normal)
-  (set-face-attribute 'org-level-7 nil :weight 'normal)
-  (set-face-attribute 'org-level-8 nil :weight 'normal)
-#+end_src
-** Org Roam UI
-#+begin_src emacs-lisp
-(setq org-roam-ui-custom-theme
-    `((bg . ,BACKGROUND_1)
-        (bg-alt . ,BACKGROUND_2)
-        (fg . ,FOREGROUND_1)
-        (fg-alt . ,FOREGROUND_2)
-        (red . ,RED)
-        (orange . ,ORANGE)
-        (yellow . ,YELLOW)
-        (green . ,GREEN)
-        (cyan . ,CYAN)
-        (blue . ,BLUE)
-        (violet . ,PINK)
-        (magenta . ,MAGENTA)))
+  (org-block :background ,BACKGROUND_2 :extend t)
+  (org-block-begin-line :background ,BACKGROUND_2
+                        :foreground ,COMMENT
+                        :slant italic
+                        :extend t)
+  (org-block-end-line :background ,BACKGROUND_2
+                      :foreground ,COMMENT
+                      :slant italic
+                      :extend t)
+  (org-hide :foreground ,COMMENT)
+  (org-level-1 :height 1.5 :weight bold)
+  (org-level-2 :height 1.3 :weight bold)
+  (org-level-3 :height 1.1 :weight bold)
+  (org-level-4 :weight normal)
+  (org-level-5 :weight normal)
+  (org-level-6 :weight normal)
+  (org-level-7 :weight normal)
+  (org-level-8 :weight normal)
 #+end_src
 ** Programming
 *** Comments
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-comment-face nil
-                      :foreground COMMENT
-                      :slant 'italic)
-  (set-face-attribute 'font-lock-comment-delimiter-face nil
-                      :inherit 'font-lock-comment-face)
-  (set-face-attribute 'tree-sitter-hl-face:comment nil
-                      :inherit font-lock-comment-face)
+  (font-lock-comment-face :foreground ,COMMENT
+                          :slant italic)
+  (font-lock-comment-delimiter-face :inherit 'font-lock-comment-face)
+  (tree-sitter-hl-face:comment :inherit font-lock-comment-face)
 #+end_src
 *** Keywords
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-keyword-face nil
-                      :foreground KEYWORD)
-  (set-face-attribute 'tree-sitter-hl-face:keyword nil
-                      :inherit 'font-lock-keyword-face)
+  (font-lock-keyword-face :foreground ,KEYWORD)
+  (tree-sitter-hl-face:keyword :inherit 'font-lock-keyword-face)
 #+end_src
 *** Operators
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-operator-face nil
-                      :foreground OPERATOR)
-  (set-face-attribute 'tree-sitter-hl-face:operator nil
-                      :inherit 'font-lock-operator-face)
+  (font-lock-operator-face :foreground ,OPERATOR)
+  (tree-sitter-hl-face:operator :inherit 'font-lock-operator-face)
 #+end_src
 *** Strings
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-string-face nil
-                      :foreground STRING)
-  (set-face-attribute 'tree-sitter-hl-face:string nil
-                      :inherit 'font-lock-string-face)
+  (font-lock-string-face :foreground ,STRING)
+  (tree-sitter-hl-face:string :inherit 'font-lock-string-face)
 #+end_src
 *** Builtins
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-builtin-face nil
-                      :foreground BUILTIN)
-  (set-face-attribute 'tree-sitter-hl-face:constant.builtin nil
-                      :inherit 'font-lock-builtin-face)
-  (set-face-attribute 'tree-sitter-hl-face:function.builtin nil
-                      :inherit 'font-lock-builtin-face)
+  (font-lock-builtin-face :foreground ,BUILTIN)
+  (tree-sitter-hl-face:constant.builtin :inherit 'font-lock-builtin-face)
+  (tree-sitter-hl-face:function.builtin :inherit 'font-lock-builtin-face)
 #+end_src
 *** Numbers
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-number-face nil
-                      :foreground NUMBER)
-  (set-face-attribute 'tree-sitter-hl-face:number nil
-                      :foreground NUMBER)
+  (font-lock-number-face :foreground ,NUMBER)
+  (tree-sitter-hl-face:number :foreground ,NUMBER)
 #+end_src
 *** Variables
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-variable-use-face nil
-                      :foreground VARIABLE)
-  (set-face-attribute 'font-lock-variable-name-face nil
-                      :foreground VARIABLE)
-  (set-face-attribute 'tree-sitter-hl-face:variable nil
-                      :foreground VARIABLE)
-  (set-face-attribute 'tree-sitter-hl-face:variable.parameter nil
-                      :inherit 'tree-sitter-hl-face:variable
-                      :weight 'normal)
+  (font-lock-variable-use-face :foreground ,VARIABLE)
+  (font-lock-variable-name-face :foreground ,VARIABLE)
+  (tree-sitter-hl-face:variable :foreground ,VARIABLE)
+  (tree-sitter-hl-face:variable.parameter :inherit 'tree-sitter-hl-face:variable
+                                          :weight normal)
 #+end_src
 *** Functions
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-function-name-face nil
-                      :foreground FUNCTION)
-  (set-face-attribute 'font-lock-function-call-face nil
-                      :foreground FUNCTION
-                      :slant 'italic)
-  (set-face-attribute 'tree-sitter-hl-face:function nil
-                      :inherit 'font-lock-function-name-face)
-  (set-face-attribute 'tree-sitter-hl-face:function.call nil
-                      :inherit 'font-lock-function-call-face)
+  (font-lock-function-name-face :foreground ,FUNCTION)
+  (font-lock-function-call-face :foreground ,FUNCTION
+                                :slant italic)
+  (tree-sitter-hl-face:function :inherit 'font-lock-function-name-face)
+  (tree-sitter-hl-face:function.call :inherit 'font-lock-function-call-face)
 #+end_src
 *** Methods
 #+begin_src emacs-lisp
-  (set-face-attribute 'tree-sitter-hl-face:method nil
-                      :foreground METHOD)
-  (set-face-attribute 'tree-sitter-hl-face:method.call nil
-                      :slant 'italic
-                      :foreground METHOD)
+  (tree-sitter-hl-face:method :foreground ,METHOD)
+  (tree-sitter-hl-face:method.call :slant italic
+                                   :foreground ,METHOD)
 #+end_src
 *** Classes
 #+begin_src emacs-lisp
-  (set-face-attribute 'tree-sitter-hl-face:constructor nil
-                      :foreground CLASS)
+  (tree-sitter-hl-face:constructor :foreground ,CLASS)
 #+end_src
 *** Attributes
 #+begin_src emacs-lisp
-  (set-face-attribute 'tree-sitter-hl-face:property nil
-                      :foreground ATTRIBUTE)
-  (set-face-attribute 'tree-sitter-hl-face:attribute nil
-                      :foreground ATTRIBUTE)
+  (tree-sitter-hl-face:property :foreground ,ATTRIBUTE)
+  (tree-sitter-hl-face:attribute :foreground ,ATTRIBUTE)
 #+end_src
 *** Parameters
 #+begin_src emacs-lisp
-  (set-face-attribute 'tree-sitter-hl-face:type.parameter nil
-                      :foreground PARAMETER)
-  (set-face-attribute 'tree-sitter-hl-face:type.argument nil
-                      :foreground PARAMETER
-                      :slant 'italic)
+  (font-lock-type-face :foreground ,PARAMETER)
+  (tree-sitter-hl-face:type.parameter :foreground ,PARAMETER)
+  (tree-sitter-hl-face:type.argument :foreground ,PARAMETER
+                                     :slant italic)
 #+end_src
 *** Types
 #+begin_src emacs-lisp
-  (set-face-attribute 'font-lock-constant-face nil
-                      :foreground TYPE)
-  (set-face-attribute 'tree-sitter-hl-face:type nil
-                      :foreground TYPE)
-  (set-face-attribute 'tree-sitter-hl-face:constant nil
-                      :foreground TYPE)
+  (font-lock-constant-face :foreground ,TYPE)
+  (tree-sitter-hl-face:type :foreground ,TYPE)
+  (tree-sitter-hl-face:constant :foreground ,TYPE)
 #+end_src
 *** Misc
 #+begin_src emacs-lisp
-  (set-face-attribute 'tree-sitter-hl-face:escape nil
-                      :inherit 'font-lock-string
-                      :foreground KEYWORD)
-  (set-face-attribute 'show-paren-match nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
+  (tree-sitter-hl-face:escape :inherit 'font-lock-string
+                              :foreground ,KEYWORD)
+  (show-paren-match :foreground ,HIGHLIGHT_FG
+                    :background ,HIGHLIGHT_BG)
 #+end_src
 
 #+begin_src emacs-lisp
 
+  (shadow :foreground ,COMMENT)
+  (font-lock-doc-face :inherit 'font-lock-comment-face)
+  (link :foreground ,CYAN
+        :underline t)
+  (link-visited :foreground ,MAGENTA
+                :underline t)
 
-  (set-face-attribute 'font-lock-doc-face nil
-                      :inherit 'font-lock-comment-face)
-  (set-face-attribute 'link nil
-                      :foreground CYAN
-                      :underline t)
-  (set-face-attribute 'link-visited nil
-                      :foreground MAGENTA
-                      :underline t)
+  (font-lock-negation-char-face :inherit 'font-lock-operator-face)
+  (font-lock-preprocessor-face :foreground ,ORANGE)
 
-  (set-face-attribute 'font-lock-negation-char-face nil
-                      :inherit 'font-lock-operator-face)
-  (set-face-attribute 'font-lock-preprocessor-face nil
-                      :foreground ORANGE)
+  (line-number :foreground ,COMMENT)
+  (line-number-current-line :foreground ,FOREGROUND_1)
 
-  (set-face-attribute 'line-number nil
-                      :foreground COMMENT)
-  (set-face-attribute 'line-number-current-line nil
-                      :foreground FOREGROUND_1)
-
-  (set-face-attribute 'tree-sitter-hl-face:constant nil
-                      :inherit 'font-lock-constant-face)
+  (tree-sitter-hl-face:constant :inherit 'font-lock-constant-face)
 
 
 
-  (set-face-attribute 'warning nil
-                      :foreground ORANGE)
-  (set-face-attribute 'font-lock-warning-face nil
-                      :inherit 'warning)
+  (warning :foreground ,ORANGE)
+  (font-lock-warning-face :inherit 'warning)
 
 
-  (set-face-attribute 'tree-sitter-hl-face:variable.parameter nil
-                      :foreground PARAMETER)
-  (set-face-attribute 'region nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG
-                      :weight 'bold)
-  (set-face-attribute 'mode-line-highlight nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
+  (tree-sitter-hl-face:variable.parameter :foreground ,PARAMETER)
+  (region :foreground ,HIGHLIGHT_FG
+          :background ,HIGHLIGHT_BG
+          :weight bold)
+  (mode-line-highlight :foreground ,HIGHLIGHT_FG
+                       :background ,HIGHLIGHT_BG)
 
-  (set-face-attribute 'window-divider nil
-                      :foreground INACTIVE)
-  (set-face-attribute 'vertical-border nil
-                      :foreground INACTIVE)
+  (window-divider :foreground ,INACTIVE)
+  (vertical-border :foreground ,INACTIVE)
 
 
-  (set-face-attribute 'show-paren-match nil
-                      :background ACCENT)
-  (set-face-attribute 'highlight nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
-  (set-face-attribute 'hl-line nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
-  (set-face-attribute 'error nil
-                      :foreground RED)
-  (set-face-attribute 'warning nil
-                      :foreground ORANGE)
-  (set-face-attribute 'tree-sitter-hl-face:label nil
-                      :foreground PARAMETER)
-  (set-face-attribute 'minibuffer-prompt nil
-                      :foreground ACCENT)
-  (set-face-attribute 'success nil
-                      :foreground GREEN)
-  (set-face-attribute 'compilation-error nil
-                      :foreground RED)
-  (set-face-attribute 'compilation-warning nil
-                      :foreground ORANGE)
-  (set-face-attribute 'compilation-info nil
-                      :foreground BLUE)
-  (set-face-attribute 'compilation-mode-line-fail nil
-                      :foreground RED)
-  (set-face-attribute 'compilation-mode-line-exit nil
-                      :foreground GREEN)
-  (set-face-attribute 'compilation-mode-line-run nil
-                      :foreground ORANGE)
+  (show-paren-match :background ,ACCENT)
+  (highlight :foreground ,HIGHLIGHT_FG
+             :background ,HIGHLIGHT_BG)
+  (hl-line :foreground ,HIGHLIGHT_FG
+           :background ,HIGHLIGHT_BG)
+  (error :foreground ,RED)
+  (flymake-error :underline (:color ,RED :style wave))
+  (flymake-warning :underline (:color ,ORANGE :style wave))
+  (flymake-note :underline (:color ,BLUE :style wave))
+  (warning :foreground ,ORANGE)
+  (tree-sitter-hl-face:label :foreground ,PARAMETER)
+  (minibuffer-prompt :foreground ,ACCENT)
+  (success :foreground ,GREEN)
+  (compilation-error :foreground ,RED)
+  (compilation-warning :foreground ,ORANGE)
+  (compilation-info :foreground ,BLUE)
+  (compilation-mode-line-fail :foreground ,RED)
+  (compilation-mode-line-exit :foreground ,GREEN)
+  (compilation-mode-line-run :foreground ,ORANGE)
 
-  (set-face-attribute 'tty-menu-disabled-face nil
-                      :foreground INACTIVE
-                      :background BACKGROUND_2)
-  (set-face-attribute 'tty-menu-selected-face nil
-                      :foreground HIGHLIGHT_FG
-                      :background HIGHLIGHT_BG)
-  (set-face-attribute 'tty-menu-enabled-face nil
-                      :foreground FOREGROUND_2
-                      :background BACKGROUND_2)
-  (set-face-attribute 'treemacs-window-background-face nil
-                      :background BACKGROUND_2)
-  (set-face-attribute 'treemacs-hl-line-face nil
-                      :background HIGHLIGHT_BG
-                      :foreground HIGHLIGHT_FG)
+  (tty-menu-disabled-face :foreground ,INACTIVE
+                          :background ,BACKGROUND_2)
+  (tty-menu-selected-face :foreground ,HIGHLIGHT_FG
+                          :background ,HIGHLIGHT_BG)
+  (tty-menu-enabled-face :foreground ,FOREGROUND_2
+                         :background ,BACKGROUND_2)
+  (treemacs-window-background-face :background ,BACKGROUND_2)
+  (treemacs-hl-line-face :background ,HIGHLIGHT_BG
+                         :foreground ,HIGHLIGHT_FG)
+#+end_src
+** Colorscheme Setup End
+Here's the second part of the mechanism to set the faces, after all
+the faces have been defined.
+#+begin_src emacs-lisp
+               ))) ; this closes the faces list and the first argument of let
+  (dolist (face-definition faces)
+    (let ((face (car face-definition))
+          (attributes (cdr face-definition)))
+      (custom-theme-set-faces
+       'system-theme
+       `(,face ((t (,@attributes)))))
+      (custom-theme-recalc-face face))))
+
+(provide-theme 'system-theme)
 #+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with

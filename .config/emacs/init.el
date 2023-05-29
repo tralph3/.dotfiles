@@ -308,8 +308,21 @@
 (defun reload-colorscheme ()
   (interactive)
   (load "~/.config/colorschemes/current_colorscheme/colors.el" 'noerror 'nomessage)
-  (load (file-name-concat user-config-directory "colorscheme.el") 'noerror 'nomessage)
+  (load-theme 'system-theme t)
   (treemacs-realign-icon-colors)
+  (setq org-roam-ui-custom-theme
+        `((bg . ,BACKGROUND_1)
+          (bg-alt . ,BACKGROUND_2)
+          (fg . ,FOREGROUND_1)
+          (fg-alt . ,FOREGROUND_2)
+          (red . ,RED)
+          (orange . ,ORANGE)
+          (yellow . ,YELLOW)
+          (green . ,GREEN)
+          (cyan . ,CYAN)
+          (blue . ,BLUE)
+          (violet . ,PINK)
+          (magenta . ,MAGENTA)))
   (ignore-errors
     (org-roam-ui-sync-theme)))
 

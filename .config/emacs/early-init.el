@@ -11,6 +11,7 @@
 (setq-default url-history-file (file-name-concat user-emacs-directory "url/history"))
 (setq-default lock-file-name-transforms `(("^\\(.*\\)$" "/tmp/\\1") t))
 (setq-default auto-save-default nil)
+(setq-default custom-theme-directory (file-name-concat user-emacs-directory "custom-themes"))
 
 (setq-default pgtk-wait-for-event-timeout 0)
 

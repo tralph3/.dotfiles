@@ -153,8 +153,8 @@
 
 (defun open-config ()
   (interactive)
-  (let ((dotfiles-dir (getenv"DOTFILES_DIR")))
-    (cd (file-name-concat dotfiles-dir "/.config"))
+  (let ((dotfiles-dir (getenv "DOTFILES_DIR")))
+    (cd (file-name-concat dotfiles-dir ".config"))
     (treemacs-select-directory)))
 
 (global-set-key (kbd "C-c c") 'open-config)

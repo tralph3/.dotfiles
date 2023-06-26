@@ -127,10 +127,6 @@ uall (){
     update_component "rustup" "rust" "
         rustup update
     "
-
-    update_component "pip" "pip" "
-        pip install --upgrade pip
-    "
 }
 
 wn() {

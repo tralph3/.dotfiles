@@ -1,3 +1,4 @@
+
 #+TITLE: Emacs Config
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :tangle init.el
@@ -175,17 +176,17 @@ selecting. Goes well with [[Orderless]].
     (global-corfu-mode))
 #+end_src
 *** Keybinds
-Corfu by default sets up the `corfu-keymap` variable which overrides
+Corfu by default sets up the =corfu-keymap= variable which overrides
 some common keybindings. I found the defaults to be obtrusive. I
 defined my own keybinds. I want the completion to appear as quickly as
 possible, but I don't want it to be in the way of my typing. So, I
 have bound a separate set of keys to scroll the popup, since otherwise
 I would be stuck scrolling the popup when I actually wanted to scroll
 the document I'm working with. I have also defined custom functions
-for `TAB` and `RETURN`. `TAB` should always complete either the first
+for =TAB= and =RETURN=. =TAB= should always complete either the first
 completion candidate, or any other explicitly selected
-candidate. `RETURN` will only autocomplete if a candidate has been
-explicitly selected. This allows me to insert a newline with `RETURN`
+candidate. =RETURN= will only autocomplete if a candidate has been
+explicitly selected. This allows me to insert a newline with =RETURN=
 even if the popup is present.
 #+begin_src emacs-lisp
   (defun corfu-handle-tab-completion ()
@@ -626,7 +627,6 @@ set the faces.
 #+end_src
 
 #+begin_src emacs-lisp
-
   (shadow :foreground ,COMMENT)
   (font-lock-doc-face :inherit 'font-lock-comment-face)
   (link :foreground ,CYAN
@@ -665,6 +665,10 @@ set the faces.
   (hl-line :foreground ,HIGHLIGHT_FG
            :background ,HIGHLIGHT_BG)
   (error :foreground ,RED)
+  (custom-state :foreground ,GREEN)
+  (custom-button :background ,BACKGROUND_2
+                 :foreground ,FOREGROUND_2
+                 :box (:line-width 2 :style flat))
   (flymake-error :underline (:color ,RED :style wave))
   (flymake-warning :underline (:color ,ORANGE :style wave))
   (flymake-note :underline (:color ,BLUE :style wave))

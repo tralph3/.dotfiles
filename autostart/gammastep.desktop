@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Gammastep
+Exec=gammastep-indicator
+NoDisplay=true
+Type=Application

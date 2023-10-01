@@ -137,10 +137,10 @@ wn() {
     fi
 }
 
-alias ls='exa -lg --icons --header --group-directories-first'
-alias la='exa -lag --icons --header --group-directories-first'
-alias lr='exa -lTg -L 2 --icons --header --group-directories-first'
-alias lR='exa -lTg --icons --header --group-directories-first'
+alias ls='eza -lg --icons --header --group-directories-first'
+alias la='eza -lag --icons --header --group-directories-first'
+alias lr='eza -lTg -L 2 --icons --header --group-directories-first'
+alias lR='eza -lTg --icons --header --group-directories-first'
 
 SESSION_TYPE=$(loginctl show-session\
     $(loginctl -o json | jq --raw-output '.[] .session') -p Type | cut -d= -f2)

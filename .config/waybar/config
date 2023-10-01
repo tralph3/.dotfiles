@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 20,
-    "modules-left": ["wlr/workspaces"],
+    "height": 30,
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "wireplumber"],
     "gtk-layer-shell": true,
@@ -20,11 +20,15 @@
         "on-scroll-up": "$DOTFILES_DIR/scripts/audio.sh raise 2",
         "on-scroll-down": "$DOTFILES_DIR/scripts/audio.sh lower 2"
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "on-click": "activate",
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "active-only": false
+        "active-only": false,
+        "sort-by-number": true,
+        "persistent_workspaces": {
+            "*": 9
+        }
     },
     "tray": {
         "spacing": 10

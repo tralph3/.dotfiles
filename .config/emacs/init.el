@@ -84,6 +84,7 @@
 
 (use-package corfu
   :ensure t
+  :disabled t
   :custom
   (corfu-auto t)
   (corfu-auto-delay 0.2)
@@ -128,6 +129,14 @@
   (kind-icon-blend-background nil)
   :config
   (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
+(use-package company
+  :ensure t
+  :custom
+  (company-tooltip-minimum-width 60)
+  (company-minimum-prefix-length 1)
+  :config
+  (global-company-mode))
 
 (use-package rust-mode
   :ensure t)

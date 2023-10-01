@@ -1,4 +1,3 @@
-
 #+TITLE: Emacs Config
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :tangle init.el
@@ -160,6 +159,7 @@ selecting. Goes well with [[Orderless]].
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t
+    :disabled t
     :custom
     (corfu-auto t)
     (corfu-auto-delay 0.2)
@@ -222,6 +222,16 @@ candidates. Hence, this package.
     (kind-icon-blend-background nil)
     :config
     (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+#+end_src
+** Company
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :custom
+    (company-tooltip-minimum-width 60)
+    (company-minimum-prefix-length 1)
+    :config
+    (global-company-mode))
 #+end_src
 ** Extra Programming Modes
 These packages provide major modes for other programming languages

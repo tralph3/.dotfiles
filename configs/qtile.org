@@ -1,0 +1,566 @@
+#+TITLE: Qtile Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+#+begin_src python :tangle ~/.config/qtile/colors.py
+  import json
+  import os
+
+  HOME = os.path.expanduser('~')
+
+
+  def load_colorscheme():
+      colors = {}
+      with open(f"{HOME}/.config/colorschemes/current_colorscheme/colors.json") as f:
+          colors = json.load(f)
+      return colors
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/config.py
+  import os
+  import subprocess
+
+  from libqtile import hook
+
+  # init groups
+  from group_conf import groups
+
+  # init keybindings
+  from key_conf import keys, mouse
+
+  # init layouts
+  from layout_conf import layouts, floating_layout
+
+  # init widgets
+  from widget_conf import screens
+
+  # general settings
+  from options import *
+
+  import wallpaper
+  from settings import WALLPAPER_TIMEOUT_MINUTES
+
+  DOTFILES_DIR = os.getenv("DOTFILES_DIR")
+
+
+  @hook.subscribe.startup_once
+  def autostart():
+      subprocess.run([f"{DOTFILES_DIR}/scripts/autostart_all.sh"])
+
+
+  @hook.subscribe.startup_once
+  def setup_wallpaper_timer():
+      wallpaper.Timer(WALLPAPER_TIMEOUT_MINUTES * 60, wallpaper.set_random_wallpaper)
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/group_conf.py
+  from libqtile.config import Group, Match
+
+  ##########
+  # GROUPS #
+  ##########
+  groups = [
+      # Terminal
+      Group("1", label=""),
+
+      # Web browser
+      Group("2", label="", matches=[Match(wm_class=["firefox"])]),
+
+      # Coding
+      Group("3", label=""),
+
+      # File manager
+      Group("4", label=""),
+
+      # Gaming stuff
+      Group("5", label="", matches=[
+          Match(wm_class=["Steam", "steamwebhelper"]),
+          Match(wm_class=["Lutris"]),
+          Match(wm_class=["gamescope"]),
+      ]),
+
+      # Discord/Communication
+      Group("6", label="", matches=[Match(wm_class=["discord"])]),
+
+      # Music
+      Group("7", label="", matches=[
+          Match(wm_class=["deadbeef"]),
+          Match(wm_class=["Quodlibet"]),
+      ]),
+
+      # Image editing
+      Group("8", label=""),
+
+      # Anything else
+      Group("9", label=""),
+  ]
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/key_conf.py
+  from libqtile.config import Key, Drag, Click
+  from libqtile.lazy import lazy
+  from settings import commands, mod
+
+  ############
+  # KEYBINDS #
+  ############
+  keys = [
+      # Switch windows
+      Key([mod], "h", lazy.layout.left(),
+          desc="Move focus to left"),
+      Key([mod], "l", lazy.layout.right(),
+          desc="Move focus to right"),
+      Key([mod], "j", lazy.layout.down(),
+          desc="Move focus down"),
+      Key([mod], "k", lazy.layout.up(),
+          desc="Move focus up"),
+      Key([mod], "space", lazy.layout.next(),
+          desc="Move window focus to other window"),
+
+      # Move windows
+      Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+          desc="Move window to the left"),
+      Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+          desc="Move window to the right"),
+      Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
+          desc="Move window down"),
+      Key([mod, "shift"], "k", lazy.layout.shuffle_up(),
+          desc="Move window up"),
+
+      # Resize windows
+      Key([mod, "control"], "h", lazy.layout.grow_left(),
+          desc="Grow window to the left"),
+      Key([mod, "control"], "l", lazy.layout.grow_right(),
+          desc="Grow window to the right"),
+      Key([mod, "control"], "j", lazy.layout.grow_down(),
+          desc="Grow window down"),
+      Key([mod, "control"], "k", lazy.layout.grow_up(),
+          desc="Grow window up"),
+      Key([mod], "n", lazy.layout.normalize(),
+          desc="Reset all window sizes"),
+
+      Key([mod], "Tab", lazy.screen.toggle_group(),
+          desc="Go to previous group"),
+
+      # Audio
+      Key([], "XF86AudioRaiseVolume", lazy.spawn(commands["raise_volume"]),
+          desc="Turn volume up"),
+      Key([], "XF86AudioLowerVolume", lazy.spawn(commands["lower_volume"]),
+          desc="Turn volume down"),
+      Key([], "XF86AudioMute", lazy.spawn(commands["toggle_mute"]),
+          desc="Mute volume"),
+      Key([], "XF86AudioMicMute", lazy.spawn(commands["toggle_mute_mic"]),
+          desc="Mute microphone"),
+      Key([], "XF86AudioPlay", lazy.spawn(commands["play_pause_audio"]),
+          desc="Toggle play and pause"),
+      Key([], "XF86AudioStop", lazy.spawn(commands["stop_audio"]),
+          desc="Stops the audio"),
+      Key([], "XF86AudioNext", lazy.spawn(commands["next_audio"]),
+          desc="Goes to the next track"),
+      Key([], "XF86AudioPrev", lazy.spawn(commands["prev_audio"]),
+          desc="Goes to the previous track"),
+      Key([mod], "a", lazy.spawn(commands["switch_audio_sink"]),
+          desc="Switch audio sink"),
+
+      # Terminal
+      Key([mod], "Return", lazy.spawn(commands["terminal"]),
+          desc="Launch terminal"),
+
+      # Emacs
+      Key([mod], "e", lazy.spawn(commands["emacs"]),
+          desc="Launch emacs client"),
+
+      # Rofi
+      Key([mod], "r", lazy.spawn(commands["rofi"]),
+          desc="Spawn a rofi window"),
+
+      # Firefox
+      Key([mod], "i", lazy.spawn(commands["firefox"]),
+          desc="Open Firefox"),
+      Key([mod, "shift"], "i", lazy.spawn(commands["firefox_private"]),
+          desc="Open Firefox in Incognito mode"),
+
+      # Flameshot
+      Key([], "Print", lazy.spawn(commands["flameshot"]),
+          desc="Take screenshot"),
+
+      # Calculator
+      Key([], "XF86Calculator", lazy.spawn(commands["calculator"]),
+          desc="Open calculator"),
+
+      # Backlight
+      Key([], "XF86MonBrightnessUp", lazy.spawn(commands["brightness_up"]),
+          desc="Raise backlight brightness"),
+      Key([], "XF86MonBrightnessDown", lazy.spawn(commands["brightness_down"]),
+          desc="Lower backlight brightness"),
+
+      Key([mod], "Q", lazy.spawn(commands["decode_qr"]),
+          desc="Take screenshot of qr code and decode it"),
+
+      # Qtile
+      Key([mod, "control"], "r", lazy.reload_config(),
+          desc="Reload the config"),
+      Key([mod, "control"], "q", lazy.shutdown(),
+          desc="Shutdown Qtile"),
+      Key([mod, "control", "shift"], "q", lazy.spawn(commands["poweroff"]),
+          desc="Shutdown computer"),
+      Key([mod, "control", "shift"], "r", lazy.spawn(commands["reboot"]),
+          desc="Reboot computer"),
+      Key([mod], "f", lazy.window.toggle_fullscreen(),
+          desc="Toggle fullscreen in current window"),
+      Key([mod], "space", lazy.window.toggle_floating(),
+          desc="Toggle floating in current window"),
+      Key([mod], "w", lazy.window.kill(),
+          desc="Close focused window"),
+      Key([mod, "shift"], "w", lazy.spawn(commands["kill_window"]),
+          desc="Force focused window"),
+      Key([mod], "c", lazy.spawn(commands["change_color"]),
+          desc="Change the colorscheme"),
+  ]
+
+  # Drag floating layouts.
+  mouse = [
+      Drag([mod], "Button1", lazy.window.set_position_floating(),
+           start=lazy.window.get_position()),
+      Drag([mod], "Button3", lazy.window.set_size_floating(),
+           start=lazy.window.get_size()),
+      Click([mod], "Button2", lazy.window.bring_to_front()),
+  ]
+
+  # swich groups
+  for i in [str(x) for x in range(1, 10)]:
+      keys.extend(
+          [
+              Key(
+                  [mod],
+                  i,
+                  lazy.group[i].toscreen(toggle=True),
+                  desc=f"Switch to group {i}",
+              ),
+
+              Key(
+                  [mod, "shift"],
+                  i,
+                  lazy.window.togroup(i),
+                  desc=f"Switch to & move focused window to group {i}",
+              ),
+          ]
+      )
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/layout_conf.py
+  from libqtile.config import Match
+  from libqtile import layout
+  from settings import layout_default
+
+  ###########
+  # LAYOUTS #
+  ###########
+  layouts = [
+      layout.Columns(**layout_default),
+  ]
+
+  # Floating window config (different from the layout)
+  floating_layout = layout.Floating(
+      ,**layout_default.extend(
+          float_rules=[
+              ,*layout.Floating.default_float_rules,
+              Match(wm_class="confirmreset"),  # gitk
+              Match(wm_class="makebranch"),  # gitk
+              Match(wm_class="maketag"),  # gitk
+              Match(wm_class="ssh-askpass"),  # ssh-askpass
+              Match(wm_class="flameshot"),  # Flameshot upload window
+              Match(wm_class="pavucontrol"),  # Pulse Audio Volume Control
+              Match(wm_class="helvum"),  # Volume control GUI for Pipewire
+              Match(title="branchdialog"),  # gitk
+              Match(title="pinentry"),  # GPG key password entry
+          ],
+      ),
+  )
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/options.py
+  # focus window on mouse hover
+  follow_mouse_focus = True
+
+  dgroups_app_rules = []
+
+  bring_front_click = True
+
+  cursor_warp = False
+
+  auto_fullscreen = True
+
+  focus_on_window_activation = "smart"
+
+  reconfigure_screens = True
+
+  auto_minimize = True
+
+  wmname = "LG3D"
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/settings.py
+  import os
+  from colors import load_colorscheme
+  from utils import SettingsDict
+
+  colors = load_colorscheme()
+  BACKGROUND1 = colors["BACKGROUND_1"]
+  BACKGROUND2 = colors["BACKGROUND_2"]
+
+  FOREGROUND1 = colors["FOREGROUND_1"]
+  FOREGROUND2 = colors["FOREGROUND_2"]
+
+  ACCENT = colors["ACCENT"]
+
+  INACTIVE = colors["INACTIVE"]
+
+  HIGHLIGHT_BG = colors["HIGHLIGHT_BG"]
+  HIGHLIGHT_FG = colors["HIGHLIGHT_FG"]
+
+  MARGIN = 5
+  BORDER_WIDTH = 2
+
+  FONT = "UbuntuMono Nerd Font Mono"
+  ICON_SIZE = 25
+  FONT_SIZE = 15
+
+  WALLPAPER_TIMEOUT_MINUTES = 10
+  WALLPAPERS_DIR = os.getenv('WALLPAPERS_DIR')
+  DOTFILES_DIR = os.getenv('DOTFILES_DIR')
+
+  mod = "mod4"
+  volume_step = 5
+  brightness_step = 5
+
+  commands = dict(
+      terminal="alacritty",
+      emacs="emacsclient -c",
+      change_color=f"sh {DOTFILES_DIR}/scripts/colorscheme/change_colorscheme.sh",
+      raise_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh raise {volume_step}",
+      lower_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh lower {volume_step}",
+      calculator="speedcrunch",
+      play_pause_audio="playerctl play-pause",
+      stop_audio="playerctl stop",
+      next_audio="playerctl next",
+      prev_audio="playerctl previous",
+      kill_window="xkill",
+      decode_qr="sh -c \"flameshot gui --raw | zbarimg --raw - | xclip -selection clipboard\"",
+      switch_audio_sink=f"sh {DOTFILES_DIR}/scripts/audio.sh switch_sink",
+      toggle_mute=f"sh {DOTFILES_DIR}/scripts/audio.sh mute",
+      toggle_mute_mic="amixer set Capture toggle",
+      rofi="rofi -show drun",
+      firefox="firefox",
+      firefox_private="firefox --private-window",
+      flameshot="flameshot gui",
+      poweroff="poweroff",
+      reboot="reboot",
+      brightness_up=f"sh {DOTFILES_DIR}/scripts/brightness.sh raise {brightness_step}",
+      brightness_down=f"sh {DOTFILES_DIR}/scripts/brightness.sh lower {brightness_step}",
+  )
+
+  layout_default = SettingsDict(
+      border_focus=ACCENT,
+      border_focus_stack=ACCENT,
+      border_normal=INACTIVE,
+      border_normal_stack=INACTIVE,
+      border_width=BORDER_WIDTH,
+      margin=MARGIN,
+      margin_on_single=MARGIN,
+      border_on_single=True,
+      fair=True,
+  )
+
+  widget_default = SettingsDict(
+      background=BACKGROUND1,
+      border=ACCENT,
+      font=FONT,
+      fontsize=FONT_SIZE,
+      foreground=FOREGROUND1,
+      highlight_method="block",
+      margin=MARGIN,
+      other_current_screen_border=INACTIVE,
+      other_screen_border=INACTIVE,
+      rounded=False,
+      this_current_screen_border=INACTIVE,
+      this_screen_border=INACTIVE,
+      urgent_alert_method="border",
+  )
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/utils.py
+  # special dictionary that allows in-place redefinition
+  class SettingsDict(dict):
+      def extend(self, **kwargs):
+          new_dict = self.copy()
+          for key in kwargs:
+              new_dict[key] = kwargs[key]
+          return new_dict
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/wallpaper.py
+  import os
+  import random
+  from libqtile import qtile
+  from typing import Callable
+  from settings import WALLPAPERS_DIR
+
+
+  class Timer():
+      def __init__(self, timeout: int, callback: Callable) -> None:
+          self.callback = callback
+          self.timeout = timeout
+          self.call()
+
+      def call(self) -> None:
+          self.callback()
+          self.setup_timer()
+
+      def setup_timer(self) -> None:
+          self.timer = qtile.call_later(self.timeout, self.call)
+
+
+  def set_random_wallpaper() -> None:
+      wallpapers = [
+          os.path.join(WALLPAPERS_DIR, x) for x in os.listdir(WALLPAPERS_DIR) if x[-4:] == ".jpg"
+      ]
+      wallpaper = random.choice(wallpapers)
+      set_wallpaper(wallpaper)
+
+
+  def set_wallpaper(file_path: str) -> None:
+      for screen in qtile.screens:
+          screen.cmd_set_wallpaper(file_path, 'fill')
+#+end_src
+
+#+begin_src python :tangle ~/.config/qtile/widget_conf.py
+  from libqtile import bar, widget
+  from libqtile.config import Screen
+  from libqtile.lazy import lazy
+  from settings import (
+      BACKGROUND1,
+      BACKGROUND2,
+      ACCENT,
+      INACTIVE,
+      DOTFILES_DIR,
+      FOREGROUND1,
+      FONT,
+      FONT_SIZE,
+      ICON_SIZE,
+      MARGIN,
+      commands,
+      widget_default,
+  )
+
+
+  ###########
+  # WIDGETS #
+  ###########
+  def create_separator():
+      separator = widget.TextBox(
+          fontsize=30,
+          font=FONT,
+          foreground=FOREGROUND1,
+          background=BACKGROUND1,
+          margin=0,
+          padding=0,
+          text=""
+      ),
+      return separator[0]
+
+
+  # Status bar
+  screens = [
+      Screen(
+          top=bar.Bar([
+                  # Arch logo
+                  widget.Image(
+                      ,**widget_default.extend(
+                          mouse_callbacks={
+                              "Button1": lazy.spawn(commands["rofi"])
+                          },
+                          filename=f"{DOTFILES_DIR}/assets/archlinux-icon.svg",
+                      ),
+                  ),
+                  create_separator(),
+                  # Group Box
+                  widget.GroupBox(
+                      ,**widget_default.extend(
+                          disable_drag=True,
+                          fontsize=ICON_SIZE,
+                          margin=3,
+                          active=FOREGROUND1,
+                          inactive=BACKGROUND2,
+                      ),
+                  ),
+                  # Separators
+                  widget.TextBox(
+                      background=BACKGROUND2,
+                      fontsize=30,
+                      font=FONT,
+                      foreground=BACKGROUND1,
+                      margin=0,
+                      padding=0,
+                      text="",
+                  ),
+                  widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+
+                  widget.TaskList(
+                      ,**widget_default.extend(
+                          background=BACKGROUND2,
+                          border=INACTIVE,
+                          borderwidth=0,
+                          icon_size=FONT_SIZE,
+                          margin=0,
+                          max_title_width=300,
+                          mouse_callbacks={"Button2": lazy.window.kill()},
+                          padding_x=10,
+                          padding_y=5,
+                          txt_floating="[F] ",
+                          txt_maximized="[M] ",
+                          txt_minimized="[m] ",
+                      ),
+                  ),
+                  # Separators
+                  widget.TextBox(margin=MARGIN, background=BACKGROUND2),
+                  widget.TextBox(
+                      background=BACKGROUND1,
+                      fontsize=30,
+                      font=FONT,
+                      foreground=BACKGROUND2,
+                      margin=0,
+                      padding=0,
+                      text="",
+                  ),
+
+                  # Systray
+                  widget.Systray(**widget_default),
+                  create_separator(),
+                  # Clock svg
+                  widget.Image(
+                      ,**widget_default.extend(
+                          filename=f"{DOTFILES_DIR}/assets/clock.svg",
+                      ),
+                  ),
+                  # Clock
+                  widget.Clock(
+                      ,**widget_default.extend(
+                          format="%H:%M\n%y/%m/%d",
+                          fontsize=12,
+                      ),
+                  ),
+              ],
+
+              size=26,
+              margin=MARGIN,
+              border_width=2,
+              background=BACKGROUND1,
+              border_color=INACTIVE,
+          ),
+          left=bar.Gap(MARGIN),
+          right=bar.Gap(MARGIN),
+          bottom=bar.Gap(MARGIN)
+      ),
+  ]
+#+end_src

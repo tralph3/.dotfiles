@@ -1,0 +1,224 @@
+#+TITLE: Eww Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+#+begin_src lisp :tangle ~/.config/eww/eww.yuck
+  (deflisten workspaces :initial "[]" "scripts/get-workspaces")
+  (deflisten current_workspace :initial "1" "scripts/get-current-workspace")
+  (defwidget workspaces []
+    (eventbox
+     :onscroll "scripts/change-current-workspace {} ${current_workspace}"
+     :class "workspaces-widget"
+     (box
+      :space-evenly false
+      (for workspace in workspaces
+           (eventbox
+            :onclick "hyprctl dispatch workspace ${workspace.id}"
+            (box
+             :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+             (label
+              :text "${workspace.windows > 0 ? "" : ""}")))))))
+
+  (deflisten window :initial "" "scripts/get-window-title")
+  (defwidget window_w []
+    (box
+     (label
+      :limit-width 100
+      :text "${window}")))
+
+  (defpoll time :interval "10s"
+           "date '+%H:%M %b %d, %Y'")
+
+  (defwidget clock []
+    (box :class "clock" :halign "end" time))
+
+  (defwidget bar []
+    (centerbox
+     :class "bar"
+     :orientation "h"
+     (workspaces)
+     (window_w)
+     (clock)))
+
+  (defwindow bar
+      :monitor 0
+      :geometry (geometry :x "0%"
+                          :y "0px"
+                          :width "100%"
+                          :height "20px"
+                          :anchor "top center")
+      :stacking "fg"
+      :exclusive true
+      :reserve (struts :distance "40px" :side "top")
+      (bar))
+
+  (defwidget ram_bar []
+    (box
+     :orientation "h"
+     (label
+      :class "icon"
+      :text ""
+      :xalign 0.9)
+     (progress
+      :value "${EWW_RAM.used_mem_perc}"
+      :valign "center")
+     (label
+      :text "${round("${EWW_RAM.used_mem_perc}", 0)}%"
+      :xalign 0.1)))
+
+  (defwidget cpu_bar []
+    (box
+     :orientation "h"
+     (label
+      :class "icon"
+      :text ""
+      :xalign 0.9)
+     (progress
+      :value "${EWW_CPU.avg}"
+      :valign "center")
+     (label
+      :text "${round("${EWW_CPU.avg}", 0)}%"
+      :xalign 0.1)))
+
+  (defwidget power []
+    (box
+     :class "powerbuttons"
+     :spacing 10
+     :orientation "h"
+     (button
+      :onclick "poweroff"
+      (label :class "icon off" :text ""))
+     (button
+      :onclick "reboot"
+      (label :class "icon reboot" :text ""))
+     (button
+      :onclick "hyprctl dispatch exit 0"
+      (label :class "icon logout" :text "󰍃"))))
+
+  (defwidget all []
+    (box
+     :orientation "v"
+     (ram_bar)
+     (cpu_bar)
+     (power)))
+
+  (defwindow status
+      :class "status"
+      :monitor 0
+      :geometry (geometry
+                 :x "20px"
+                 :y "20px"
+                 :anchor "top right")
+      :stacking "bg"
+      :focusable false
+      :exclusive false
+      (all))
+#+end_src
+
+#+begin_src scss :tangle ~/.config/eww/eww.scss
+  ,* {
+      font-family: "UbuntuMono Nerd Font Mono";
+      border-color: map-get($COLORS, "ACCENT");
+      border-radius: 0px;
+  }
+
+  .bar {
+      color: map-get($COLORS, "FOREGROUND_1");
+      background-color: map-get($COLORS, "BACKGROUND_1");
+      border-bottom: 2px solid map-get($COLORS, "ACCENT");
+  }
+
+  .current {
+      background-color: map-get($COLORS, "ACCENT");
+  }
+
+  .workspace-entry {
+      padding: 0px 10px;
+      font-size: x-large;
+  }
+
+  .status {
+      background-color: map-get($COLORS, "BACKGROUND_1");
+      color: map-get($COLORS, "FOREGROUND_1");
+      border: 2px solid map-get($COLORS, "ACCENT");
+  }
+
+  .icon {
+      font-size: xx-large;
+  }
+
+  .powerbuttons {
+      padding: 10px;
+      & button {
+          border: 0px;
+          background-color: map-get($COLORS, "BACKGROUND_1");
+          & .off {
+              background-color: map-get($COLORS, "RED");
+          }
+          & .reboot {
+              background-color: map-get($COLORS, "YELLOW");
+          }
+          & .logout {
+              background-color: map-get($COLORS, "GREEN");
+          }
+      }
+  }
+
+  progressbar {
+      padding: 1rem 0rem;
+      min-width: 8rem;
+      & trough progress {
+          background-color: map-get($COLORS, "ACCENT");
+      }
+  }
+#+end_src
+
+#+begin_src shell-script :tangle ~/.config/eww/scripts/change-current-workspace
+  #! /bin/bash
+  function clamp {
+      min=$1
+      max=$2
+      val=$3
+      python -c "print(max($min, min($val, $max)))"
+  }
+
+  direction=$1
+  current=$2
+  if test "$direction" = "down"
+  then
+      target=$(clamp 1 10 $(($current+1)))
+      echo "jumping to $target"
+      hyprctl dispatch workspace $target
+  elif test "$direction" = "up"
+  then
+      target=$(clamp 1 10 $(($current-1)))
+      echo "jumping to $target"
+      hyprctl dispatch workspace $target
+  fi
+#+end_src
+
+#+begin_src shell-script :tangle ~/.config/eww/scripts/get-current-workspace
+  #!/bin/bash
+  hyprctl monitors -j | jq --raw-output .[0].activeWorkspace.id
+  socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 grep '^workspace>>' | stdbuf -o0 awk -F '>>|,' '{print $2}'
+#+end_src
+
+#+begin_src shell-script :tangle ~/.config/eww/scripts/get-window-title
+  #!/bin/bash
+  hyprctl activewindow -j | jq --raw-output .title
+  socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 grep '^activewindow>>' | stdbuf -o0 awk -F '>>|,' '{print $3}'
+#+end_src
+
+#+begin_src shell-script :tangle ~/.config/eww/scripts/get-workspaces
+  #!/bin/bash
+
+  spaces (){
+      WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+      seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
+  }
+
+  spaces
+  socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
+      spaces
+  done
+#+end_src

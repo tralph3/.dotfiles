@@ -173,7 +173,7 @@
   }
 #+end_src
 
-#+begin_src shell-script :tangle ~/.config/eww/scripts/change-current-workspace
+#+begin_src bash :tangle ~/.config/eww/scripts/change-current-workspace
   #! /bin/bash
   function clamp {
       min=$1
@@ -197,19 +197,19 @@
   fi
 #+end_src
 
-#+begin_src shell-script :tangle ~/.config/eww/scripts/get-current-workspace
+#+begin_src bash :tangle ~/.config/eww/scripts/get-current-workspace
   #!/bin/bash
   hyprctl monitors -j | jq --raw-output .[0].activeWorkspace.id
   socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 grep '^workspace>>' | stdbuf -o0 awk -F '>>|,' '{print $2}'
 #+end_src
 
-#+begin_src shell-script :tangle ~/.config/eww/scripts/get-window-title
+#+begin_src bash :tangle ~/.config/eww/scripts/get-window-title
   #!/bin/bash
   hyprctl activewindow -j | jq --raw-output .title
   socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | stdbuf -o0 grep '^activewindow>>' | stdbuf -o0 awk -F '>>|,' '{print $3}'
 #+end_src
 
-#+begin_src shell-script :tangle ~/.config/eww/scripts/get-workspaces
+#+begin_src bash :tangle ~/.config/eww/scripts/get-workspaces
   #!/bin/bash
 
   spaces (){

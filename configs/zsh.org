@@ -2,7 +2,7 @@
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :noweb yes :tangle ~/.config/zsh/.zshrc :mkdirp yes
 
-#+begin_src shell-script
+#+begin_src bash
   export EDITOR=nvim
 
   # Ignore commands that start with a space

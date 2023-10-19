@@ -1,7 +1,9 @@
 #!/bin/bash
 
 reload_eww() {
-    eww reload
+    if [ -f "$(which eww &> /dev/null)" ]; then
+        eww reload
+    fi
 }
 
 reload_qtile() {
@@ -10,7 +12,6 @@ reload_qtile() {
 
 reload_dunst() {
     pkill dunst
-    dunst & disown
 }
 
 reload_emacs () {

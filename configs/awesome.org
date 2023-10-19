@@ -1,0 +1,606 @@
+#+TITLE: Awesome Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+#+begin_src lua :tangle ~/.config/awesome/autostart.lua
+  local awful = require("awful")
+
+  DOTFILES_DIR = os.getenv('DOTFILES_DIR')
+
+  awful.spawn(DOTFILES_DIR..'/scripts/autostart_all.sh')
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/bar.lua
+  local awful = require('awful')
+  local wibox = require('wibox')
+  local gears = require('gears')
+  local dpi = require('beautiful.xresources').apply_dpi
+  local taglist_buttons = require('mappings').taglist_buttons
+  local tasklist_buttons = require('mappings').tasklist_buttons
+  local text_clock = wibox.widget.textclock()
+
+  awful.screen.connect_for_each_screen(function(s)
+      local tag_titles = { '', '', '', '', '', '', '', '', '' }
+      local shape = gears.shape.rectangle
+      awful.tag(tag_titles, s, awful.layout.layouts[1])
+
+      s.taglist = awful.widget.taglist({
+          screen = s,
+          style = {
+              shape = shape,
+          },
+          layout = {
+              spacing = 5,
+              spacing_widget = {
+                  shape = shape,
+                  wibox.widget.separator,
+              },
+              layout = wibox.layout.fixed.horizontal,
+          },
+          filter = awful.widget.taglist.filter.all,
+          buttons = taglist_buttons,
+      })
+
+      -- Create a tasklist widget
+      s.tasklist = awful.widget.tasklist({
+          screen  = s,
+          filter  = awful.widget.tasklist.filter.currenttags,
+          buttons = tasklist_buttons,
+      })
+
+      s.wibox = awful.wibar({
+          position = 'top',
+          screen = s,
+          margins = dpi(4),
+      })
+
+      s.wibox:setup({
+          layout = wibox.layout.align.horizontal,
+          { -- Left widgets
+              layout = wibox.layout.fixed.horizontal,
+              s.taglist,
+          },
+          s.tasklist, -- Middle widget
+          { -- Right widgets
+              layout = wibox.layout.fixed.horizontal,
+              wibox.widget.systray(),
+              text_clock,
+          },
+      })
+  end)
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/commands.lua
+  local settings = require('settings')
+
+  local commands = {
+      terminal='alacritty',
+      emacs='emacsclient -c',
+      raise_volume='/usr/bin/pactl set-sink-volume 0 +'..settings.volume_step..'%',
+      lower_volume='/usr/bin/pactl set-sink-volume 0 -'..settings.volume_step..'%',
+      toggle_mute_audio='pactl set-sink-mute 0 toggle',
+      toggle_mute_mic='amixer set Capture toggle',
+      run_prompt = 'rofi -show drun',
+      browser='firefox',
+      browser_private='firefox --private-window',
+      screenshot='flameshot gui',
+      poweroff='poweroff',
+      reboot='reboot',
+      brightness_up='light -A '..settings.brightness_step,
+      brightness_down='light -U '..settings.brightness_step,
+  }
+
+  return commands
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/errors.lua
+  local naughty = require('naughty')
+
+  if awesome.startup_errors then
+      naughty.notify({
+          title = 'There were errors during startup.',
+          preset = naughty.config.presets.critical,
+          text = awesome.startup_errors,
+      })
+  end
+
+  local in_error = false
+  awesome.connect_signal('debug::error', function(err)
+      if in_error then
+          return
+      end
+      in_error = true
+      naughty.notify({
+          title = 'An error occurred.',
+          text = tostring(err),
+          preset = naughty.config.presets.critical,
+      })
+      in_error = false
+  end)
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/layouts.lua
+  local awful = require('awful')
+
+  awful.layout.layouts = {
+      awful.layout.suit.tile,
+  }
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/mappings.lua
+  local awful = require('awful')
+  local gears = require('gears')
+  local commands = require('commands')
+  local modkey = 'Mod4'
+
+  local globalkeys = gears.table.join(
+      awful.key({ modkey }, 'Tab', awful.tag.history.restore),
+
+      awful.key({ modkey }, 'h', function ()
+          awful.client.focus.bydirection('left')
+      end),
+      awful.key({ modkey }, 'j', function ()
+          awful.client.focus.bydirection('down')
+      end),
+      awful.key({ modkey }, 'k', function ()
+          awful.client.focus.bydirection('up')
+      end),
+      awful.key({ modkey }, 'l', function ()
+          awful.client.focus.bydirection('right')
+      end),
+
+      awful.key({ modkey, 'Shift' }, 'h', function ()
+          awful.client.swap.bydirection('left')
+      end),
+      awful.key({ modkey, 'Shift' }, 'j', function ()
+          awful.client.swap.bydirection('down')
+      end),
+      awful.key({ modkey, 'Shift' }, 'k', function ()
+          awful.client.swap.bydirection('up')
+      end),
+      awful.key({ modkey, 'Shift' }, 'l', function ()
+          awful.client.swap.bydirection('right')
+      end),
+
+      awful.key({ modkey }, ',', function()
+          awful.tag.incnmaster(1, nil, true)
+      end),
+      awful.key({ modkey }, '.', function()
+          awful.tag.incnmaster(-1, nil, true)
+      end),
+
+      awful.key({ modkey }, 'Return', function()
+          awful.spawn.with_shell(commands.terminal)
+      end),
+
+      awful.key({ modkey }, 'e', function()
+          awful.spawn.with_shell(commands.emacs)
+      end),
+
+      awful.key({ modkey }, 'r', function()
+              awful.spawn.with_shell(commands.run_prompt)
+      end),
+
+      awful.key({ modkey, 'Control' }, 'r', awesome.restart),
+      awful.key({ modkey, 'Control' }, 'q', awesome.quit),
+
+      awful.key({ modkey, 'Control' }, 'l', function()
+          awful.tag.incmwfact(0.05)
+      end),
+      awful.key({ modkey, 'Control' }, 'h', function()
+          awful.tag.incmwfact(-0.05)
+      end),
+      awful.key({ modkey, 'Control' }, 'k', function()
+          awful.client.incwfact(0.1)
+      end),
+      awful.key({ modkey, 'Control' }, 'j', function()
+          awful.client.incwfact(-0.1)
+      end),
+
+      awful.key({}, 'XF86AudioRaiseVolume', function()
+          awful.spawn.with_shell(commands.raise_volume)
+      end),
+      awful.key({}, 'XF86AudioLowerVolume', function()
+          awful.spawn.with_shell(commands.lower_volume)
+      end),
+      awful.key({}, 'XF86AudioMute', function()
+          awful.spawn.with_shell(commands.toggle_mute_audio)
+      end),
+      awful.key({}, 'XF86AudioMicMute', function()
+          awful.spawn.with_shell(commands.toggle_mute_mic)
+      end),
+
+      awful.key({}, 'XF86MonBrightnessUp', function()
+          awful.spawn.with_shell(commands.brightness_up)
+      end),
+      awful.key({}, 'XF86MonBrightnessDown', function()
+          awful.spawn.with_shell(commands.brightness_down)
+      end),
+
+      awful.key({ modkey }, 'i', function()
+          awful.spawn.with_shell(commands.browser)
+      end),
+      awful.key({ modkey, 'Shift' }, 'i', function()
+          awful.spawn.with_shell(commands.browser_private)
+      end),
+
+      awful.key({}, 'Print', function()
+          awful.spawn.with_shell(commands.screenshot)
+      end),
+
+      awful.key({ modkey, 'Control', 'Shift' }, 'q', function()
+          awful.spawn.with_shell(commands.poweroff)
+      end),
+      awful.key({ modkey, 'Control', 'Shift' }, 'r', function()
+          awful.spawn.with_shell(commands.reboot)
+      end)
+  )
+
+  for i = 1, 9 do
+      globalkeys = gears.table.join(
+          globalkeys,
+
+          awful.key({ modkey }, '#'..i + 9, function()
+              local screen = awful.screen.focused()
+              local tag = screen.tags[i]
+              if tag then
+                  tag:view_only()
+              end
+          end),
+
+          awful.key({ modkey, 'Shift' }, '#'..i + 9, function()
+              if client.focus then
+                  local tag = client.focus.screen.tags[i]
+                  if tag then
+                      client.focus:move_to_tag(tag)
+                  end
+              end
+          end)
+      )
+  end
+
+  local globalbuttons = {}
+
+  local clientkeys = gears.table.join(
+      awful.key({ modkey }, 'f', function(c)
+          c.fullscreen = not c.fullscreen
+          c:raise()
+      end),
+
+      awful.key({ modkey }, 'w', function(c)
+          c:kill()
+      end),
+
+      awful.key({ modkey }, 'space', awful.client.floating.toggle),
+
+      awful.key({ modkey }, 't', function(c)
+          c.ontop = not c.ontop
+      end)
+  )
+
+  local clientbuttons = gears.table.join(
+      awful.button({}, 1, function(c)
+          c:emit_signal('request::activate', 'mouse_click', { raise = true })
+      end),
+      awful.button({ modkey }, 1, function(c)
+          c:emit_signal('request::activate', 'mouse_click', { raise = true })
+          awful.mouse.client.move(c)
+      end),
+      awful.button({ modkey }, 3, function(c)
+          c:emit_signal('request::activate', 'mouse_click', { raise = true })
+          awful.mouse.client.resize(c)
+      end)
+  )
+
+  local taglist_buttons = gears.table.join(
+      awful.button({ }, 1, function(t) t:view_only() end),
+      awful.button({ modkey }, 1, function(t)
+                if client.focus then
+                    client.focus:move_to_tag(t)
+                end
+            end),
+      awful.button({ }, 3, awful.tag.viewtoggle),
+      awful.button({ modkey }, 3, function(t)
+                if client.focus then
+                    client.focus:toggle_tag(t)
+                end
+            end),
+      awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+      awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+  )
+
+  local tasklist_buttons = gears.table.join(
+      awful.button({ }, 1, function (c)
+          if c == client.focus then
+              c.minimized = true
+          else
+              c:emit_signal(
+                  'request::activate',
+                  'tasklist',
+                  {raise = true}
+              )
+          end
+      end),
+      awful.button({ }, 3, function()
+          awful.menu.client_list({ theme = { width = 250 } })
+      end),
+      awful.button({ }, 4, function ()
+          awful.client.focus.byidx(1)
+      end),
+      awful.button({ }, 5, function ()
+          awful.client.focus.byidx(-1)
+      end)
+  )
+
+  root.keys(globalkeys)
+
+  return {
+      globalkeys = globalkeys,
+      globalbuttons = globalbuttons,
+      clientkeys = clientkeys,
+      clientbuttons = clientbuttons,
+      taglist_buttons = taglist_buttons,
+      tasklist_buttons = tasklist_buttons,
+  }
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/rc.lua
+  package.loaded['naughty.dbus'] = {}
+
+  require('autostart')
+  require('awful.autofocus')
+  require('errors')
+  require('layouts')
+  require('bar')
+  require('signals')
+  require('rules')
+  local beautiful = require('beautiful')
+
+  local theme_path = string.format(
+      '%s/.config/awesome/theme.lua', os.getenv('HOME'))
+
+  beautiful.init(theme_path)
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/rules.lua
+  local beautiful = require('beautiful')
+  local keys = require('mappings')
+  local awful = require('awful')
+
+  awful.rules.rules = {
+      {
+          rule = { },
+          properties = {
+              border_color = beautiful.border_normal,
+              border_width = beautiful.border_width,
+              buttons = keys.clientbuttons,
+              focus = awful.client.focus.filter,
+              keys = keys.clientkeys,
+              placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+              raise = true,
+              screen = awful.screen.preferred,
+              size_hints_honor = false,
+              titlebars_enabled = false,
+          },
+      },
+
+      {
+          rule_any = {
+              instance = {
+                  'DTA',
+                  'branchdialog',
+                  'copyq',
+                  'pinentry',
+              },
+              class = {
+                  'Arandr',
+                  'Blueman-manager',
+                  'Gpick',
+                  'Kruler',
+                  'MessageWin',
+                  'Sxiv',
+                  'Tor Browser',
+                  'Wpa_gui',
+                  'confirmreset',
+                  'flameshot',
+                  'helvum',
+                  'makebranch',
+                  'maketag',
+                  'mpv',
+                  'pavucontrol',
+                  'ssh-askpass',
+                  'veromix',
+                  'xtightvncviewer',
+              },
+
+              name = {
+                  'Event Tester',
+              },
+              role = {
+                  'AlarmWindow',
+                  'ConfigManager',
+                  'pop-up',
+              },
+          },
+          properties = {
+              floating = true
+          }
+      },
+
+      {
+          rule_any = {
+              class = {
+                  'firefox',
+              },
+          },
+          properties = { screen = 1, tag = screen[1].tags[2] },
+      },
+
+      {
+          rule_any = {
+              class = {
+                  'thunar',
+                  'engrampa',
+              },
+          },
+          properties = { screen = 1, tag = screen[1].tags[4] },
+      },
+
+      {
+          rule_any = {
+              class = {
+                  'Steam',
+                  'Lutris',
+                  'gamescope',
+              },
+          },
+          properties = { screen = 1, tag = screen[1].tags[5] },
+      },
+
+      {
+          rule_any = {
+              class = {
+                  'discord',
+              },
+          },
+          properties = { screen = 1, tag = screen[1].tags[6] },
+      },
+
+      {
+          rule_any = {
+              class = {
+                  'Spotify',
+                  'Quodlibet',
+              },
+          },
+          properties = { screen = 1, tag = screen[1].tags[7] },
+      },
+  }
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/settings.lua
+  local settings = {
+      background_switch_interval_in_minutes = 10,
+      backgrounds_directory = '/usr/share/backgrounds',
+      volume_step = 5,
+      brightness_step = 5,
+  }
+
+  return settings
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/signals.lua
+  local awful = require('awful')
+  local beautiful = require('beautiful')
+  local set_wallpaper = require('wallpaper').set_wallpaper
+
+  client.connect_signal('manage', function (c)
+      if not awesome.startup then
+          awful.client.setslave(c)
+      end
+      if awesome.startup
+          and not c.size_hints.user_position
+          and not c.size_hints.program_position
+      then
+          awful.placement.no_offscreen(c)
+      end
+  end)
+
+  client.connect_signal('property::maximized', function(c)
+      c.maximized = false
+  end)
+  client.connect_signal('mouse::enter', function(c)
+      c:emit_signal('request::activate', 'mouse_enter', {raise = false})
+  end)
+  client.connect_signal('focus', function(c) c.border_color = beautiful.border_focus end)
+  client.connect_signal('unfocus', function(c) c.border_color = beautiful.border_normal end)
+  screen.connect_signal("property::geometry", function()
+      set_wallpaper(_G.current_wallpaper)
+  end)
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/theme.lua
+  local theme_assets = require('beautiful.theme_assets')
+  local dpi = require('beautiful.xresources').apply_dpi
+  local theme = {}
+
+  theme.font          = "UbuntuMono NerdFont Mono 12"
+
+  theme.bg_normal     = "#1E1E2E"
+  theme.bg_focus      = "#302D41"
+  theme.bg_urgent     = "#ff0000"
+  theme.bg_minimize   = "#444444"
+  theme.bg_systray    = theme.bg_normal
+
+  theme.fg_normal     = "#D9E0EE"
+  theme.fg_focus      = "#ffffff"
+  theme.fg_urgent     = "#ffffff"
+  theme.fg_minimize   = "#ffffff"
+
+  theme.useless_gap   = dpi(3)
+  theme.border_width  = dpi(2)
+  theme.border_normal = "#302D41"
+  theme.border_focus  = "#89DCEB"
+  theme.border_marked = "#91231C"
+
+  local taglist_square_size = dpi(2)
+  theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+      taglist_square_size, theme.fg_normal
+  )
+  theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+      taglist_square_size, theme.fg_normal
+  )
+
+  theme.icon_theme = 'Papirus-Dark'
+
+  return theme
+#+end_src
+
+#+begin_src lua :tangle ~/.config/awesome/wallpaper.lua
+  local M = {}
+
+  local gears = require('gears')
+  local awful = require('awful')
+  local settings = require('settings')
+
+  math.randomseed(os.time())
+
+  M.set_wallpaper = function(wallpaper)
+      if not wallpaper then
+          return
+      end
+
+      _G.current_wallpaper = wallpaper
+      for s in screen do
+          gears.wallpaper.maximized(wallpaper, s)
+      end
+  end
+
+  local function set_random_wallpaper_from_dir(dir)
+      local images = {}
+      local command = string.format('find "%s" -iname "*.jpg" -type f', dir)
+      awful.spawn.with_line_callback(command, {
+          stdout = function(line)
+              table.insert(images, line)
+          end,
+          output_done = function()
+              if #images > 0 then
+                  local wallpaper = images[math.random(#images)]
+                  M.set_wallpaper(wallpaper)
+              end
+          end
+      })
+  end
+
+
+  gears.timer({
+      timeout = settings.background_switch_interval_in_minutes * 60,
+      call_now = true,
+      autostart = true,
+      callback = function()
+          set_random_wallpaper_from_dir(settings.backgrounds_directory)
+      end
+  })
+
+  return M
+#+end_src

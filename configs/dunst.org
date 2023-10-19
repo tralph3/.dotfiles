@@ -1,0 +1,120 @@
+#+TITLE: Dunst Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :tangle ~/.config/dunst/dunstrc :noweb yes :mkdirp yes
+
+#+begin_src conf
+  [global]
+  monitor = 0
+
+  follow = mouse
+  width = 300
+  height = 300
+  origin = bottom-left
+  offset = 50x50
+  scale = 0
+  notification_limit = 4
+
+  progress_bar = true
+  progress_bar_height = 8
+  progress_bar_frame_width = 1
+  progress_bar_min_width = 150
+  progress_bar_max_width = 300
+
+  indicate_hidden = yes
+
+  transparency = 0
+
+  separator_height = 3
+
+  padding = 8
+
+  horizontal_padding = 8
+
+  text_icon_padding = 0
+
+  frame_width = 3
+
+  sort = yes
+
+  idle_threshold = 60
+
+  font = Ubuntu 9
+  line_height = 0
+
+  markup = full
+
+  format = "<b><i>%s</i></b>\n%b"
+
+  alignment = left
+
+  vertical_alignment = center
+
+  show_age_threshold = 60
+
+  ellipsize = middle
+
+  ignore_newline = no
+
+  stack_duplicates = true
+
+  hide_duplicate_count = false
+
+  show_indicators = yes
+
+  icon_position = left
+  min_icon_size = 0
+  max_icon_size = 32
+  icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/categories/
+
+  sticky_history = no
+  history_length = 20
+
+  browser = /usr/bin/firefox
+
+  always_run_script = true
+
+  title = Dunst
+  class = Dunst
+
+  corner_radius = 0
+
+  ignore_dbusclose = false
+
+  force_xwayland = false
+  force_xinerama = false
+
+  mouse_left_click = do_action, close_current
+  mouse_middle_click = open_url
+  mouse_right_click = close_all
+
+  separator_color= frame
+
+  highlight = "#<<base(i="02")>>"
+  frame_color = "#<<base(i="09")>>"
+
+  [volume]
+  appname="volume"
+  history_ignore = yes
+
+  [brightness]
+  appname="brightness"
+  history_ignore = yes
+
+  [experimental]
+  per_monitor_dpi = false
+
+  [urgency_low]
+  background = "#<<base(i="00")>>"
+  foreground = "#<<base(i="05")>>"
+  frame_color = "#<<base(i="0B")>>"
+
+  [urgency_normal]
+  background = "#<<base(i="00")>>"
+  foreground = "#<<base(i="05")>>"
+  frame_color = "#<<base(i="09")>>"
+
+  [urgency_critical]
+  background = "#<<base(i="00")>>"
+  foreground = "#<<base(i="05")>>"
+  frame_color = "#<<base(i="08")>>"
+#+end_src

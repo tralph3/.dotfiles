@@ -1,0 +1,13 @@
+#+TITLE: Git Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :tangle ~/.config/git/config :mkdirp yes
+
+#+begin_src conf
+  [safe]
+      directory = /opt/flutter
+  [user]
+      name = tralph3
+      email = tomasralph2000@gmail.com
+  [credentials]
+      helper = store
+#+end_src

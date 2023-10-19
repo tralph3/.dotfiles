@@ -1,0 +1,18 @@
+;; Name: Catppuccin Macchiato
+;; Author: https://github.com/catppuccin/catppuccin
+(setq base00 "24273a")
+(setq base01 "1e2030")
+(setq base02 "363a4f")
+(setq base03 "494d64")
+(setq base04 "5b6078")
+(setq base05 "cad3f5")
+(setq base06 "f4dbd6")
+(setq base07 "b7bdf8")
+(setq base08 "ed8796")
+(setq base09 "f5a97f")
+(setq base0A "eed49f")
+(setq base0B "a6da95")
+(setq base0C "8bd5ca")
+(setq base0D "8aadf4")
+(setq base0E "c6a0f6")
+(setq base0F "f0c6c6")

@@ -1,0 +1,18 @@
+;; Name: Bespin
+;; Author: Jan T. Sott
+(setq base00 "28211c")
+(setq base01 "36312e")
+(setq base02 "5e5d5c")
+(setq base03 "666666")
+(setq base04 "797977")
+(setq base05 "8a8986")
+(setq base06 "9d9b97")
+(setq base07 "baae9e")
+(setq base08 "cf6a4c")
+(setq base09 "cf7d34")
+(setq base0A "f9ee98")
+(setq base0B "54be0d")
+(setq base0C "afc4db")
+(setq base0D "5ea6ea")
+(setq base0E "9b859d")
+(setq base0F "937121")

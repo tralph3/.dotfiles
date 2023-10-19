@@ -1,0 +1,101 @@
+#+TITLE: Waybar Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+#+begin_src js :tangle ~/.config/waybar/config
+  {
+      "layer": "top",
+      "position": "top",
+      "height": 30,
+      "modules-left": ["hyprland/workspaces"],
+      "modules-center": ["clock"],
+      "modules-right": ["tray", "wireplumber"],
+      "gtk-layer-shell": true,
+      "clock": {
+          "format": "{:%B %d %Y, %A - %H:%M}",
+          "tooltip": false
+      },
+      "wireplumber": {
+          "format": "{icon}  {volume}%",
+          "format-muted": "MUTED",
+          "format-icons": ["", "", "", "", "", "", ""],
+          "tooltip": false,
+          "on-click": "$DOTFILES_DIR/scripts/audio.sh mute",
+          "on-click-right": "$DOTFILES_DIR/scripts/audio.sh switch_sink",
+          "on-scroll-up": "$DOTFILES_DIR/scripts/audio.sh raise 2",
+          "on-scroll-down": "$DOTFILES_DIR/scripts/audio.sh lower 2"
+      },
+      "hyprland/workspaces": {
+          "on-click": "activate",
+          "on-scroll-up": "hyprctl dispatch workspace e+1",
+          "on-scroll-down": "hyprctl dispatch workspace e-1",
+          "active-only": false,
+          "sort-by-number": true,
+          "persistent_workspaces": {
+              "*": 9
+          }
+      },
+      "tray": {
+          "spacing": 10
+      }
+  }
+#+end_src
+
+#+begin_src css :tangle ~/.config/waybar/style.css
+  ,* {
+      font-family: UbuntuMono Nerd Font;
+      font-size: 14px;
+  }
+
+  window#waybar {
+      background-color: #<<base(i="00")>>;
+      color: #<<base(i="01")>>;
+  }
+
+  button {
+      border: none;
+      border-radius: 0;
+  }
+
+  #wireplumber,
+  #workspaces,
+  #clock,
+  #tray {
+      color: #<<base(i="05")>>;
+      background-color: #<<base(i="01")>>;
+      margin: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      border-radius: 3;
+  }
+
+  /* Open windows, not active */
+  #workspaces button {
+      background-color: #<<base(i="03")>>;
+      color: #<<base(i="06")>>;
+  }
+
+  /* Empty workspace */
+  #workspaces button.persistent {
+      background-color: #<<base(i="01")>>;
+      color: #<<base(i="05")>>;
+  }
+
+  /* Current workspace */
+  #workspaces button.active {
+      background-color: #<<base(i="09")>>;
+      color: #<<base(i="01")>>;
+  }
+
+  #workspaces button.urgent {
+      background-color: #<<base(i="08")>>;
+  }
+
+  #workspaces button:hover {
+      background-color: #<<base(i="02")>>;
+      color: #<<base(i="05")>>;
+      box-shadow: inset 0 -3px transparent;
+  }
+#+end_src

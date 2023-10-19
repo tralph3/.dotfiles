@@ -1,0 +1,18 @@
+;; Name: vice
+;; Author: Thomas Leon Highbaugh thighbaugh@zoho.com
+(setq base00 "17191E")
+(setq base01 "22262d")
+(setq base02 "3c3f4c")
+(setq base03 "383a47")
+(setq base04 "555e70")
+(setq base05 "8b9cbe")
+(setq base06 "B2BFD9")
+(setq base07 "f4f4f7")
+(setq base08 "ff29a8")
+(setq base09 "85ffe0")
+(setq base0A "f0ffaa")
+(setq base0B "0badff")
+(setq base0C "8265ff")
+(setq base0D "00eaff")
+(setq base0E "00f6d9")
+(setq base0F "ff3d81")

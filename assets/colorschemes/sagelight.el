@@ -1,0 +1,18 @@
+;; Name: Sagelight
+;; Author: Carter Veldhuizen
+(setq base00 "f8f8f8")
+(setq base01 "e8e8e8")
+(setq base02 "d8d8d8")
+(setq base03 "b8b8b8")
+(setq base04 "585858")
+(setq base05 "383838")
+(setq base06 "282828")
+(setq base07 "181818")
+(setq base08 "fa8480")
+(setq base09 "ffaa61")
+(setq base0A "ffdc61")
+(setq base0B "a0d2c8")
+(setq base0C "a2d6f5")
+(setq base0D "a0a7d2")
+(setq base0E "c8a0d2")
+(setq base0F "d2b2a0")

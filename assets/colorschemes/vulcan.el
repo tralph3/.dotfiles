@@ -1,0 +1,18 @@
+;; Name: vulcan
+;; Author: Andrey Varfolomeev
+(setq base00 "041523")
+(setq base01 "122339")
+(setq base02 "003552")
+(setq base03 "7a5759")
+(setq base04 "6b6977")
+(setq base05 "5b778c")
+(setq base06 "333238")
+(setq base07 "214d68")
+(setq base08 "818591")
+(setq base09 "9198a3")
+(setq base0A "adb4b9")
+(setq base0B "977d7c")
+(setq base0C "977d7c")
+(setq base0D "977d7c")
+(setq base0E "9198a3")
+(setq base0F "977d7c")

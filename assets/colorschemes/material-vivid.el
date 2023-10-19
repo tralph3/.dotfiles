@@ -1,0 +1,18 @@
+;; Name: Material Vivid
+;; Author: joshyrobot
+(setq base00 "202124")
+(setq base01 "27292c")
+(setq base02 "323639")
+(setq base03 "44464d")
+(setq base04 "676c71")
+(setq base05 "80868b")
+(setq base06 "9e9e9e")
+(setq base07 "ffffff")
+(setq base08 "f44336")
+(setq base09 "ff9800")
+(setq base0A "ffeb3b")
+(setq base0B "00e676")
+(setq base0C "00bcd4")
+(setq base0D "2196f3")
+(setq base0E "673ab7")
+(setq base0F "8d6e63")

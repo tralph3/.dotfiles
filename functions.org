@@ -1,0 +1,34 @@
+* Functions
+This file contains various helper functions that are used throughout
+the config
+** Base
+Given an index, it returns the apropriate hex code for the base16
+color.
+#+NAME:base
+#+begin_src emacs-lisp :var i="00"
+  (cond
+   ((string= i "00") (message base00))
+   ((string= i "01") (message base01))
+   ((string= i "02") (message base02))
+   ((string= i "03") (message base03))
+   ((string= i "04") (message base04))
+   ((string= i "05") (message base05))
+   ((string= i "06") (message base06))
+   ((string= i "07") (message base07))
+   ((string= i "08") (message base08))
+   ((string= i "09") (message base09))
+   ((string= i "0A") (message base0A))
+   ((string= i "0B") (message base0B))
+   ((string= i "0C") (message base0C))
+   ((string= i "0D") (message base0D))
+   ((string= i "0E") (message base0E))
+   ((string= i "0F") (message base0F)))
+#+end_src
+
+** Var
+Given a symbol, it returns its value.
+#+NAME:var
+#+begin_src emacs-lisp :var v='pi
+  (when (boundp v)
+    (symbol-value v))
+#+end_src

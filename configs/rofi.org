@@ -1,0 +1,92 @@
+#+TITLE: Rofi Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :tangle ~/.config/rofi/config.rasi :mkdirp yes
+
+#+begin_src css
+  configuration {
+      modi: "drun";
+      font: "Berkeley\ Mono\ 14";
+      show-icons: true;
+      icon-theme: "Papirus-Dark";
+      terminal: "alacritty";
+      drun-display-format: "{icon} {name}";
+      drun-match-fields: "name,generic";
+      location: 0;
+      disable-history: false;
+      display-drun: "Run";
+
+      kb-remove-to-eol: "";
+      kb-row-tab: "";
+      kb-accept-entry: "Return,KP_Enter";
+      me-select-entry: "";
+      me-accept-entry: "MousePrimary";
+      kb-row-up: "Control+k,Up,Control+p";
+      kb-row-down: "Control+j,Down,Control+n";
+  }
+
+  ,* {
+      background: #<<base(i="00")>>;
+      lightbg: #<<base(i="01")>>;
+      foreground: #<<base(i="05")>>;
+      alternate-normal-background: var(background);
+      selected-normal-background: transparent;
+      selected-normal-foreground: #<<base(i="09")>>;
+      border-color: #<<base(i="09")>>;
+  }
+
+  window {
+      height: 360px;
+      width: 700px;
+      border: 3px;
+  }
+
+  inputbar {
+      children: [prompt,entry];
+      border-radius: 5px;
+      padding: 2px;
+  }
+
+  prompt {
+      padding: 6px 15px 6px 15px;
+      border-radius: 3px;
+      margin: 20px 0px 0px 20px;
+      background-color: var(border-color);
+      text-color: var(background);
+  }
+
+  textbox-prompt-colon {
+      expand: false;
+      str: ":";
+  }
+
+  entry {
+      padding: 6px;
+      margin: 20px 0px 0px 10px;
+  }
+
+  listview {
+      border: 0px 0px 0px;
+      padding: 6px 0px 0px;
+      margin: 10px 0px 0px 20px;
+      columns: 1;
+      scrollbar: false;
+  }
+
+  element {
+      padding: 5px;
+  }
+
+  element-icon {
+      size: 25px;
+  }
+
+  mode-switcher {
+      spacing: 0;
+  }
+
+  button {
+      padding: 10px;
+      vertical-align: 0.5;
+      horizontal-align: 0.5;
+  }
+#+end_src

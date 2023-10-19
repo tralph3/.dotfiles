@@ -1,0 +1,18 @@
+;; Name: selenized-black
+;; Author: Jan Warchol (https://github.com/jan-warchol/selenized) / adapted to base16 by ali
+(setq base00 "181818")
+(setq base01 "252525")
+(setq base02 "3b3b3b")
+(setq base03 "777777")
+(setq base04 "777777")
+(setq base05 "b9b9b9")
+(setq base06 "dedede")
+(setq base07 "dedede")
+(setq base08 "ed4a46")
+(setq base09 "e67f43")
+(setq base0A "dbb32d")
+(setq base0B "70b433")
+(setq base0C "3fc5b7")
+(setq base0D "368aeb")
+(setq base0E "a580e2")
+(setq base0F "eb6eb7")

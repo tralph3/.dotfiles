@@ -1,0 +1,18 @@
+;; Name: Catppuccin Latte
+;; Author: https://github.com/catppuccin/catppuccin
+(setq base00 "eff1f5")
+(setq base01 "e6e9ef")
+(setq base02 "ccd0da")
+(setq base03 "bcc0cc")
+(setq base04 "acb0be")
+(setq base05 "4c4f69")
+(setq base06 "dc8a78")
+(setq base07 "7287fd")
+(setq base08 "d20f39")
+(setq base09 "fe640b")
+(setq base0A "df8e1d")
+(setq base0B "40a02b")
+(setq base0C "179299")
+(setq base0D "1e66f5")
+(setq base0E "8839ef")
+(setq base0F "dd7878")

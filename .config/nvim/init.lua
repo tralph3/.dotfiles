@@ -1,6 +1,0 @@
-require('config.globals')
-require('config.plugins')
-require('config.styling')
-require('config.settings')
-require('config.autocmds')
-require('config.mappings')

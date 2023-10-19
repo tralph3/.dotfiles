@@ -1,0 +1,18 @@
+;; Name: Catppuccin Frappe
+;; Author: https://github.com/catppuccin/catppuccin
+(setq base00 "303446")
+(setq base01 "292c3c")
+(setq base02 "414559")
+(setq base03 "51576d")
+(setq base04 "626880")
+(setq base05 "c6d0f5")
+(setq base06 "f2d5cf")
+(setq base07 "babbf1")
+(setq base08 "e78284")
+(setq base09 "ef9f76")
+(setq base0A "e5c890")
+(setq base0B "a6d189")
+(setq base0C "81c8be")
+(setq base0D "8caaee")
+(setq base0E "ca9ee6")
+(setq base0F "eebebe")

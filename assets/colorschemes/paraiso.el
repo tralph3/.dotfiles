@@ -1,0 +1,18 @@
+;; Name: Paraiso
+;; Author: Jan T. Sott
+(setq base00 "2f1e2e")
+(setq base01 "41323f")
+(setq base02 "4f424c")
+(setq base03 "776e71")
+(setq base04 "8d8687")
+(setq base05 "a39e9b")
+(setq base06 "b9b6b0")
+(setq base07 "e7e9db")
+(setq base08 "ef6155")
+(setq base09 "f99b15")
+(setq base0A "fec418")
+(setq base0B "48b685")
+(setq base0C "5bc4bf")
+(setq base0D "06b6ef")
+(setq base0E "815ba4")
+(setq base0F "e96ba8")

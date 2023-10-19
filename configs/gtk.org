@@ -1,0 +1,100 @@
+#+TITLE: Gtk Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+* Gtk 4
+#+NAME:settings
+#+begin_src conf :tangle ~/.config/gtk-4.0/settings.ini
+  [Settings]
+  gtk-icon-theme-name=Papirus-Dark
+  gtk-theme-name=adw-gtk3
+#+end_src
+
+#+NAME:css
+#+begin_src css :tangle ~/.config/gtk-4.0/gtk.css
+  @define-color accent_color #<<base(i="09")>>;
+  @define-color accent_bg_color #<<base(i="09")>>;
+  @define-color accent_fg_color #<<base(i="01")>>;
+
+  @define-color destructive_color #<<base(i="08")>>;
+  @define-color destructive_bg_color #<<base(i="08")>>;
+  @define-color destructive_fg_color #<<base(i="01")>>;
+
+  @define-color success_color #<<base(i="0B")>>;
+  @define-color success_bg_color #<<base(i="0B")>>;
+  @define-color success_fg_color #<<base(i="01")>>;
+
+  @define-color warning_color #<<base(i="0E")>>;
+  @define-color warning_bg_color #<<base(i="0E")>>;
+  @define-color warning_fg_color #<<base(i="01")>>;
+
+  @define-color error_color #<<base(i="08")>>;
+  @define-color error_bg_color #<<base(i="08")>>;
+  @define-color error_fg_color #<<base(i="01")>>;
+
+  @define-color window_bg_color #<<base(i="01")>>;
+  @define-color window_fg_color #<<base(i="05")>>;
+
+  @define-color view_bg_color #<<base(i="00")>>;
+  @define-color view_fg_color #<<base(i="05")>>;
+
+  @define-color headerbar_bg_color #<<base(i="01")>>;
+  @define-color headerbar_fg_color #<<base(i="04")>>;
+  @define-color headerbar_border_color #<<base(i="03")>>;
+  @define-color headerbar_backdrop_color #<<base(i="01")>>;
+  @define-color headerbar_shade_color #<<base(i="01")>>;
+  @define-color headerbar_darker_shade_color #<<base(i="00")>>;
+
+  @define-color sidebar_bg_color #<<base(i="01")>>;
+  @define-color sidebar_fg_color #<<base(i="05")>>;
+  @define-color sidebar_backdrop_color #<<base(i="01")>>;
+  @define-color sidebar_shade_color #<<base(i="01")>>;
+
+  @define-color secondary_sidebar_bg_color #<<base(i="00")>>;
+  @define-color secondary_sidebar_fg_color #<<base(i="05")>>;
+  @define-color secondary_sidebar_backdrop_color #<<base(i="01")>>;
+  @define-color secondary_sidebar_shade_color #<<base(i="00")>>;
+
+  @define-color card_bg_color #<<base(i="00")>>;
+  @define-color card_fg_color #<<base(i="05")>>;
+  @define-color card_shade_color #<<base(i="01")>>;
+
+  @define-color thumbnail_bg_color #<<base(i="00")>>;
+  @define-color thumbnail_fg_color #<<base(i="05")>>;
+
+  @define-color dialog_bg_color #<<base(i="00")>>;
+  @define-color dialog_fg_color #<<base(i="05")>>;
+
+  @define-color popover_bg_color #<<base(i="00")>>;
+  @define-color popover_fg_color #<<base(i="05")>>;
+  @define-color popover_shade_color #<<base(i="01")>>;
+
+  @define-color shade_color #<<base(i="01")>>;
+  @define-color scrollbar_outline_color #<<base(i="02")>>;
+#+end_src
+
+* Gtk 3
+#+begin_src conf :tangle ~/.config/gtk-3.0/settings.ini
+  <<settings>>
+#+end_src
+
+#+begin_src css :tangle ~/.config/gtk-3.0/gtk.css
+  <<css>>
+#+end_src
+
+* Gtk 2
+#+begin_src conf :tangle ~/.config/gtk-2.0/gtkrc
+  gtk-theme-name = "Adwaita-dark"
+  gtk-color-scheme = "bg_color:#<<base(i="00")>>
+  color0:#<<base(i="00")>>
+  text_color:#<<base(i="05")>>
+  selected_bg_color:#<<base(i="02")>>
+  selected_fg_color:#<<base(i="05")>>
+  tooltip_bg_color:#<<base(i="00")>>
+  tooltip_fg_color:#<<base(i="05")>>
+  titlebar_bg_color:#<<base(i="00")>>
+  titlebar_fg_color:#<<base(i="05")>>
+  menu_bg_color:#<<base(i="00")>>
+  menu_fg_color:#<<base(i="05")>>
+  link_color:#<<base(i="02")>>"
+#+end_src

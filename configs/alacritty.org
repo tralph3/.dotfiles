@@ -1,0 +1,69 @@
+#+TITLE: Alacritty Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml :noweb yes
+
+#+begin_src yaml
+  cursor:
+    style:
+      shape: Block
+      blinking: Always
+
+  font:
+    normal:
+      family: Berkeley Mono
+      style: Regular
+    bold:
+      family: Berkeley Mono
+      style: Bold
+    italic:
+      family: Berkeley Mono
+      style: Italic
+    bold_italic:
+      family: Berkeley Mono
+      style: Bold Italic
+    size: 12.5
+
+  selection:
+    save_to_clipboard: true
+
+  window:
+    padding:
+      x: 5
+      y: 5
+    dynamic_padding: true
+    decorations: none
+    opacity: 1
+    startup_mode: Windowed
+    dynamic_title: true
+
+
+  draw_bold_text_with_bright_colors: false
+  colors:
+    primary:
+      background: '#<<base(i="00")>>'
+      foreground: '#<<base(i="05")>>'
+
+    cursor:
+      text: '#<<base(i="00")>>'
+      cursor: '#<<base(i="05")>>'
+
+    normal:
+      black:   '#<<base(i="00")>>'
+      red:     '#<<base(i="08")>>'
+      green:   '#<<base(i="0B")>>'
+      yellow:  '#<<base(i="0A")>>'
+      blue:    '#<<base(i="0D")>>'
+      magenta: '#<<base(i="0E")>>'
+      cyan:    '#<<base(i="0C")>>'
+      white:   '#<<base(i="05")>>'
+
+    bright:
+      black:   '#<<base(i="03")>>'
+      red:     '#<<base(i="09")>>'
+      green:   '#<<base(i="01")>>'
+      yellow:  '#<<base(i="02")>>'
+      blue:    '#<<base(i="04")>>'
+      magenta: '#<<base(i="06")>>'
+      cyan:    '#<<base(i="0F")>>'
+      white:   '#<<base(i="07")>>'
+#+end_src

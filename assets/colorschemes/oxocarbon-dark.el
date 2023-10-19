@@ -1,0 +1,18 @@
+;; Name: Oxocarbon Dark
+;; Author: shaunsingh/IBM
+(setq base00 "161616")
+(setq base01 "262626")
+(setq base02 "393939")
+(setq base03 "525252")
+(setq base04 "dde1e6")
+(setq base05 "f2f4f8")
+(setq base06 "ffffff")
+(setq base07 "08bdba")
+(setq base08 "3ddbd9")
+(setq base09 "78a9ff")
+(setq base0A "ee5396")
+(setq base0B "33b1ff")
+(setq base0C "ff7eb6")
+(setq base0D "42be65")
+(setq base0E "be95ff")
+(setq base0F "82cfff")

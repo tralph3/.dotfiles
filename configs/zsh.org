@@ -1,0 +1,207 @@
+#+TITLE: Zsh Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :tangle ~/.config/zsh/.zshrc :mkdirp yes
+
+#+begin_src shell-script
+  export EDITOR=nvim
+
+  # Ignore commands that start with a space
+  setopt HIST_IGNORE_SPACE
+  setopt appendhistory
+  setopt INC_APPEND_HISTORY
+  HISTSIZE=10000
+  SAVEHIST=10000
+  HISTFILE=$ZDOTDIR/history
+  WORDCHARS=""
+
+  # Basic auto/tab complete:
+  autoload -U compinit
+  zstyle ':completion:*' menu select
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+  zmodload zsh/complist
+  compinit
+
+  # Include hidden files.
+  _comp_options+=(globdots)
+
+  # Custom keybinds
+  # enable emacs keybindings
+  bindkey -e
+
+  bindkey '^ ' autosuggest-accept
+  # Enable Ctrl-x-e to edit command line
+  autoload -U edit-command-line
+  zle -N edit-command-line
+  bindkey '^xe' edit-command-line
+  bindkey '^x^e' edit-command-line
+
+  # Load aliases and shortcuts if existent.
+  [ -f "$HOME/.zsh/aliasrc.zsh" ] && source "$HOME/.zsh/aliasrc.zsh"
+
+  # ctrl-left and ctrl-right
+  bindkey "\e[1;5D" backward-word
+  bindkey "\e[1;5C" forward-word
+  # C-bs and M-d
+  bindkey "\e[1;3D" kill-word
+  bindkey ""    backward-kill-word
+  # del, home and end
+  bindkey "\e[3~" delete-char
+  bindkey "\e[H"  beginning-of-line
+  bindkey "\e[F"  end-of-line
+
+  autoload colors && colors
+  PROMPT="%{$fg[white]%}[ %{$fg[red]%}%n%{$fg[white]%}@%{$fg[blue]%}%M%{$fg[yellow]%} %~%{$fg[white]%} ]%{$reset_color%}%  "
+
+  # Reverse search
+  bindkey '^R' history-incremental-search-backward
+
+  # Load plugins
+  [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+  [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+  # extracting utility
+  ex () {
+      for i in "${@}"; do
+          if [ -f $i ] ; then
+              DIR_NAME=$(echo "${i%.*}")
+              mkdir $DIR_NAME
+              cd $DIR_NAME
+              case $i in
+                  ,*.tar.bz2)   tar xjf ../$i   ;;
+                  ,*.tar.gz)    tar xzf ../$i   ;;
+                  ,*.tar.xz)    tar xJf ../$i   ;;
+                  ,*.bz2)       bunzip2 ../$i   ;;
+                  ,*.rar)       unrar x ../$i     ;;
+                  ,*.gz)        gunzip ../$i    ;;
+                  ,*.tar)       tar xf ../$i    ;;
+                  ,*.tbz2)      tar xjf ../$i   ;;
+                  ,*.tgz)       tar xzf ../$i   ;;
+                  ,*.zip)       unzip ../$i     ;;
+                  ,*.Z)         uncompress ../$i;;
+                  ,*.7z)        7z x ../$i      ;;
+                  ,*)           echo "'$i' has an unrecognized file type." ;;
+              esac
+          else
+              echo "'$i' is not a valid file"
+          fi
+      done
+  }
+
+  # rmv - to remove packages and its dependencies
+  rmv () {
+      if ! [ $1 ]; then
+          echo "No package provided"
+          return
+      fi
+      if command_exists "paru"; then
+          paru --sudoloop -Rns $@ && paru --sudoloop -c --noconfirm
+      elif command_exists "apt"; then
+          sudo apt autoremove --purge $@
+      elif command_exists "dnf"; then
+          dnf remove $@ && dnf autoremove
+      fi
+  }
+
+  # ins - shorter way to install packages
+  ins () {
+      if ! [ $1 ]; then
+          echo "No package provided"
+          return
+      fi
+      if command_exists "paru"; then
+          paru --sudoloop --skipreview -S $@
+          paru --sudoloop -c --removemake --noconfirm
+      elif command_exists "apt"; then
+          sudo apt install $@; sudo apt autoremove
+      elif command_exists "dnf"; then
+          dnf install $@
+      fi
+  }
+
+  # src - shorter way to search for packages
+  src () {
+      if ! [ $1 ]; then
+          echo "No package provided"
+          return
+      fi
+      if command_exists "paru"; then
+          paru --bottomup --skipreview --sudoloop "$*"
+      elif command_exists "apt"; then
+          apt search "$*"
+      elif command_exists "dnf"; then
+          dnf search "$*"
+      fi
+  }
+
+  command_exists() {
+      BINARY=$1
+      which $BINARY &> /dev/null
+      return $?
+  }
+
+  print_result() {
+      RESULT=$1
+      COMPONENT=$2
+      if [[ $RESULT -eq 0 ]]; then
+          echo "\x1b[1;32m Successfully updated $COMPONENT\x1b[0m"
+      else
+          echo "\x1b[1;31m Error updating $COMPONENT\x1b[0m"
+      fi
+      echo
+  }
+
+  update_component() {
+      BINARY=$1
+      COMPONENT=$2
+      COMMAND=$3
+      if ! command_exists $BINARY; then
+          return
+      fi
+      echo "\x1b[1;33m Updating $COMPONENT\x1b[0m"
+      eval "$COMMAND"
+      RESULT=$?
+      print_result $RESULT $COMPONENT
+  }
+
+  uall (){
+      update_component "paru" "system packages" "
+          paru --combinedupgrade --sudoloop --skipreview -Syu
+          paru --sudoloop -c --removemake --noconfirm
+      "
+
+      update_component "apt" "system packages" "
+          sudo apt dist-upgrade; sudo apt autoremove
+      "
+
+      update_component "dnf" "system packages" "
+          sudo dnf distro-sync
+      "
+  }
+
+  wn() {
+      if [ $1 ] ; then
+          WINEPREFIX=$(pwd)/prefix wine $1
+      else
+          echo "No file provided"
+      fi
+  }
+
+  alias ls='eza -lg --icons --header --group-directories-first'
+  alias la='eza -lag --icons --header --group-directories-first'
+  alias lr='eza -lTg -L 2 --icons --header --group-directories-first'
+  alias lR='eza -lTg --icons --header --group-directories-first'
+
+  SESSION_TYPE=$(loginctl show-session\
+      $(loginctl -o json | jq --raw-output '.[0] .session') -p Type | cut -d= -f2)
+  case $SESSION_TYPE in
+      wayland)
+          alias clip='wl-copy'
+          ;;
+      x11)
+          alias clip='xclip -selection clipboard'
+          ;;
+  esac
+
+  alias localip='ip -brief -color address'
+  alias load_null_sink='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
+#+end_src

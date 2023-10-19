@@ -1,0 +1,18 @@
+;; Name: Tango
+;; Author: @Schnouki, based on the Tango Desktop Project
+(setq base00 "2e3436")
+(setq base01 "8ae234")
+(setq base02 "fce94f")
+(setq base03 "555753")
+(setq base04 "729fcf")
+(setq base05 "d3d7cf")
+(setq base06 "ad7fa8")
+(setq base07 "eeeeec")
+(setq base08 "cc0000")
+(setq base09 "ef2929")
+(setq base0A "c4a000")
+(setq base0B "4e9a06")
+(setq base0C "06989a")
+(setq base0D "3465a4")
+(setq base0E "75507b")
+(setq base0F "34e2e2")

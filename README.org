@@ -17,6 +17,7 @@
 - [[file:configs/picom.org][Picom]]
 - [[file:configs/qtile.org][Qtile]]
 - [[file:configs/rofi.org][Rofi]]
+- [[file:configs/wallpapers.org][Wallpapers]]
 - [[file:configs/waybar.org][Waybar]]
 - [[file:configs/zsh.org][Zsh]]
 

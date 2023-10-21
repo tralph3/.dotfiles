@@ -7,7 +7,7 @@ VARIABLES=$(cat << EOF
 
 export DOTFILES_DIR=$DOTFILES_DIR
 export QT_QPA_PLATFORMTHEME=qt5ct
-export WALLPAPERS_DIR="/usr/share/wallpapers"
+export WALLPAPERS_DIR="/home/tralph3/.local/share/wallpapers"
 export GTK_THEME=adw-gtk3
 export ZDOTDIR=/home/tralph3/.config/zsh
 export ANDROID_HOME=/home/tralph3/.local/share/android

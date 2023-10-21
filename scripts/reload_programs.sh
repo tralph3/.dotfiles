@@ -22,12 +22,17 @@ reload_waybar() {
     pkill -USR2 waybar
 }
 
+reload_wallpaper() {
+    "$DOTFILES_DIR/scripts/wayland_wallpaper.sh" "-s"
+}
+
 reload_all() {
     reload_dunst &
     reload_eww &
     reload_qtile &
     reload_emacs &
     reload_waybar &
+    reload_wallpaper &
 }
 
 reload_all

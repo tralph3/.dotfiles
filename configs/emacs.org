@@ -531,6 +531,9 @@ emacs, using its built-in tools as much as possible.
   (global-set-key (kbd "C-c b") 'xref-go-back)
   (global-set-key (kbd "C-c R") 'xref-find-references)
   (add-hook 'prog-mode-hook 'eglot-ensure)
+  (fset #'jsonrpc--log-event #'ignore)
+  (setq eglot-events-buffer-size 0)
+  (add-hook 'focus-out-hook 'garbage-collect)
 #+end_src
 * Org Mode
 ** General Settings

@@ -560,6 +560,17 @@ emacs, using its built-in tools as much as possible.
 #+end_src
 
 * Colorscheme
+#+begin_src emacs-lisp
+  (defun reload-colorscheme()
+    "Unload the current theme and set it again."
+    (interactive)
+    (let ((current-theme (car custom-enabled-themes)))
+      (unload-feature current-theme)
+      (load-theme current-theme t)))
+
+  (define-key special-event-map [sigusr1] 'reload-colorscheme)
+#+end_src
+
 #+begin_src emacs-lisp :tangle ~/.local/share/emacs/custom-themes/system-theme-theme.el
   (defcustom base16-theme-256-color-source 'terminal
     "Where to get the colors in a 256-color terminal.

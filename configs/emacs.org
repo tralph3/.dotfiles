@@ -63,6 +63,7 @@ How I prefer emacs to behavior.
   (setq inhibit-startup-screen t)
   (delete-selection-mode t)
   (electric-pair-mode t)
+  (set-default-coding-systems 'utf-8)
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
   (setq global-auto-revert-non-file-buffers t)
   (global-auto-revert-mode t)

@@ -5,7 +5,7 @@
 
 * Early Init
 :PROPERTIES:
-:HEADER-ARGS: :tangle ~/.config/emacs/early-init.el
+:HEADER-ARGS: :tangle ~/.config/emacs/early-init.el :mkdirp yes
 :END:
 Here we define variables that we want emacs to read as soon as
 possible. Mainly, we set variables to stop emacs from littering the
@@ -549,6 +549,18 @@ emacs, using its built-in tools as much as possible.
   (setq org-startup-with-latex-preview t)
   (add-hook 'org-mode-hook 'auto-fill-mode)
   (add-hook 'org-mode-hook 'flyspell-mode)
+#+end_src
+** Enable Languages for Execution
+This setting allows me to have more languages available to execute
+[[https://orgmode.org/worg/org-contrib/babel/][Org-Babel]] source blocks.
+
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (python . t)
+     (shell . t)
+     (gnuplot . t)))
 #+end_src
 * Doc View Mode
 ** General Settings

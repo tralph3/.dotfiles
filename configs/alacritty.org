@@ -1,6 +1,6 @@
 #+TITLE: Alacritty Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml :noweb yes
+#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml :noweb yes :mkdirp yes
 
 #+begin_src yaml
   cursor:

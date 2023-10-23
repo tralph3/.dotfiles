@@ -73,6 +73,9 @@ How I prefer emacs to behavior.
   (context-menu-mode t)
   (setq mouse-drag-and-drop-region-cross-program t)
   (setq kill-whole-line t)
+  (setq isearch-allow-scroll 'unlimited)
+  (setq isearch-repeat-on-direction-change t)
+  (setq isearch-wrap-pause 'no-ding)
 #+end_src
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.

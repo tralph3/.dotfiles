@@ -259,6 +259,24 @@ candidates. Hence, this package.
     :config
     (global-company-mode))
 #+end_src
+
+*** Keybindings
+#+begin_src emacs-lisp
+  (setq company-active-map (make-sparse-keymap))
+  (define-key company-active-map (kbd "M-n") 'company-select-next)
+  (define-key company-active-map (kbd "M-p") 'company-select-previous)
+  (define-key company-active-map (kbd "C-h") 'company-show-doc-buffer)
+  (define-key company-active-map (kbd "TAB") 'company-complete-selection)
+  (define-key company-active-map (kbd "RET") 'company-handle-return-completion)
+  (define-key company-active-map (kbd "C-g") 'company-abort)
+  (define-key company-active-map (kbd "<mouse-1>") 'company-complete-mouse)
+
+  (defun company-handle-return-completion()
+    (interactive)
+    (if (> company-selection 0)
+        (company-complete-selection)
+      (newline-and-indent)))
+#+end_src
 ** Extra Programming Modes
 These packages provide major modes for other programming languages
 that are not included by default.

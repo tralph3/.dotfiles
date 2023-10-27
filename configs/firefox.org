@@ -94,6 +94,7 @@
 
   // Disable Firefox view
   user_pref("browser.tabs.firefox-view", false);
+  user_pref("browser.tabs.firefox-view-next", false);
 
   // Disable password saving
   user_pref("signon.rememberSignons", false);

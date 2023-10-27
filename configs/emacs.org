@@ -54,28 +54,100 @@ How I prefer emacs to look.
                         :font "Ubuntu-13"))
 #+end_src
 ** Behavioral Settings
-How I prefer emacs to behavior.
+
+Let me answer prompts with a single key.
 #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+Set all themes as safe. This is specially useful for me since my
+custom system theme changes colors often, and emacs constantly sees it
+as different themes.
+#+begin_src emacs-lisp
   (setq custom-safe-themes t)
+#+end_src
+
+I prefer indenting with spaces for now.
+#+begin_src emacs-lisp
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
+#+end_src
+
+My startup screen is [[Dashboard]].
+#+begin_src emacs-lisp
   (setq inhibit-startup-screen t)
+#+end_src
+
+Allow me to delete a selection by just typing or pressing
+backspace. Behaves more like other editors.
+#+begin_src emacs-lisp
   (delete-selection-mode t)
+#+end_src
+
+Auto-insert closing parenthesis, quotes, brackets and more.
+#+begin_src emacs-lisp
   (electric-pair-mode t)
+#+end_src
+
+Ensure UTF-8.
+#+begin_src emacs-lisp
   (set-default-coding-systems 'utf-8)
+#+end_src
+
+Self explanatory.
+#+begin_src emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+
+If files change on disk while opened on emacs, this ensures they get
+reloaded.
+#+begin_src emacs-lisp
   (setq global-auto-revert-non-file-buffers t)
   (global-auto-revert-mode t)
+#+end_src
+
+Braces go in the function signature.
+#+begin_src emacs-lisp
   (setq c-default-style "stroustrup")
+#+end_src
+
+Allows using the mouse when using emacs in a terminal.
+#+begin_src emacs-lisp
   (xterm-mouse-mode t)
+#+end_src
+
+Disable native compilation warnings.
+#+begin_src emacs-lisp
   (setq native-comp-async-report-warnings-errors nil)
+#+end_src
+
+Provide a context menu when right clicking.
+#+begin_src emacs-lisp
   (context-menu-mode t)
+#+end_src
+
+Allows dragging text to other programs.
+#+begin_src emacs-lisp
   (setq mouse-drag-and-drop-region-cross-program t)
+#+end_src
+
+If I'm at the start of the line, =C-k= will delete the entire line,
+newline included.
+#+begin_src emacs-lisp
   (setq kill-whole-line t)
+#+end_src
+
+Require less key-presses to use isearch.
+#+begin_src emacs-lisp
   (setq isearch-allow-scroll 'unlimited)
   (setq isearch-repeat-on-direction-change t)
   (setq isearch-wrap-pause 'no-ding)
+#+end_src
+
+Stop the minibuffer from growing past a single line. I access the
+documentation of symbols at point with =C-c h=.
+#+begin_src emacs-lisp
+  (setq resize-mini-windows nil)
 #+end_src
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
@@ -172,10 +244,20 @@ repository.
                            ("org" . "https://orgmode.org/elpa/")
                            ("elpa" . "https://elpa.gnu.org/packages/")))
 #+end_src
-** All The Icons
+** Nerd Icons
 #+begin_src emacs-lisp
-  (use-package all-the-icons
+  (use-package nerd-icons
     :ensure t)
+  (use-package nerd-icons-completion
+    :after marginalia
+    :hook
+    (marginalia-mode . nerd-icons-completion-marginalia-setup)
+    :config
+    (nerd-icons-completion-mode))
+  (use-package nerd-icons-dired
+    :ensure t
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
 #+end_src
 ** Corfu
 Corfu provides a quick popup that displays completion candidates for
@@ -283,16 +365,12 @@ that are not included by default.
 #+begin_src emacs-lisp
   (use-package rust-mode
     :ensure t)
-
   (use-package flutter
     :ensure t)
-
   (use-package dart-mode
     :ensure t)
-
   (use-package lua-mode
     :ensure t)
-
   (use-package yaml-mode
     :ensure t)
 #+end_src
@@ -345,7 +423,7 @@ Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
   (use-package dashboard
     :ensure t
-    :after all-the-icons
+    :after nerd-icons
     :custom
     (dashboard-set-file-icons t)
     (dashboard-set-heading-icons t)
@@ -357,8 +435,8 @@ Provides a nice dashboard on every new frame.
     (dashboard-startup-banner 'logo)
     (dashboard-set-navigator t)
     (dashboard-navigator-buttons
-     `(((,(all-the-icons-octicon "file-text" :height 1.0 :v-adjust 0.0)
-         "System Config"
+     `(((,(nerd-icons-codicon "nf-cod-vm" :height 1.0 :v-adjust 0.0)
+         " System Config"
          "Open the system config file"
          (lambda (&rest _)
            (find-file (file-name-concat (getenv "DOTFILES_DIR") "README.org")))))))
@@ -504,7 +582,6 @@ behaves nicer.
 #+end_src
 
 ** Multiple Cursors
-
 #+begin_src emacs-lisp
   (use-package multiple-cursors
     :ensure t
@@ -514,17 +591,14 @@ behaves nicer.
 #+end_src
 
 ** Embark
-
 #+begin_src emacs-lisp
   (use-package embark
     :ensure t)
-
   (use-package embark-consult
     :ensure t)
 #+end_src
 
 ** Consult
-
 #+begin_src emacs-lisp
   (use-package consult
     :ensure t
@@ -533,7 +607,6 @@ behaves nicer.
 #+end_src
 
 ** Vterm
-
 #+begin_src emacs-lisp
   (use-package vterm
     :ensure t)

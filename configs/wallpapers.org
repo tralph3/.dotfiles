@@ -6,7 +6,7 @@ By using svg wallpapers, I can directly inject different colors into
 their code, making them match with the system's colorscheme.
 
 * Blob 1
-#+begin_src html :tangle ~/.local/share/wallpapers/blob1.svg
+#+begin_src xml :tangle ~/.local/share/wallpapers/blob1.svg
   <svg id="visual" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
      <rect x="0" y="0" width="1920" height="1080" fill="#<<base(i="00")>>"></rect>
      <defs>
@@ -74,7 +74,7 @@ their code, making them match with the system's colorscheme.
 
 * Waves 1
 
-#+begin_src html :tangle ~/.local/share/wallpapers/waves1.svg
+#+begin_src xml :tangle ~/.local/share/wallpapers/waves1.svg
   <svg id="visual" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
      <rect x="0" y="0" width="1920" height="1080" fill="#<<base(i="01")>>"></rect>
      <path d="M473 1080L480.5 1054.3C488 1028.7 503 977.3 485.8 925.8C468.7 874.3 419.3 822.7 381.5 771.2C343.7 719.7 317.3 668.3 363.2 617C409 565.7 527 514.3 544.8 463C562.7 411.7 480.3 360.3 471.2 308.8C462 257.3 526 205.7 573.7 154.2C621.3 102.7 652.7 51.3 668.3 25.7L684 0L1920 0L1920 25.7C1920 51.3 1920 102.7 1920 154.2C1920 205.7 1920 257.3 1920 308.8C1920 360.3 1920 411.7 1920 463C1920 514.3 1920 565.7 1920 617C1920 668.3 1920 719.7 1920 771.2C1920 822.7 1920 874.3 1920 925.8C1920 977.3 1920 1028.7 1920 1054.3L1920 1080Z" fill="#<<base(i="0A")>>"></path>

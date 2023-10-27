@@ -612,6 +612,14 @@ behaves nicer.
     :ensure t)
 #+end_src
 
+** Moodline
+#+begin_src emacs-lisp
+  (use-package mood-line
+    :ensure t
+    :config
+    (mood-line-mode))
+#+end_src
+
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with
 emacs, using its built-in tools as much as possible.

@@ -86,3 +86,46 @@ their code, making them match with the system's colorscheme.
      <path d="M1802 1080L1758 1054.3C1714 1028.7 1626 977.3 1621.2 925.8C1616.3 874.3 1694.7 822.7 1730.5 771.2C1766.3 719.7 1759.7 668.3 1729.8 617C1700 565.7 1647 514.3 1653.7 463C1660.3 411.7 1726.7 360.3 1719.5 308.8C1712.3 257.3 1631.7 205.7 1639.8 154.2C1648 102.7 1745 51.3 1793.5 25.7L1842 0L1920 0L1920 25.7C1920 51.3 1920 102.7 1920 154.2C1920 205.7 1920 257.3 1920 308.8C1920 360.3 1920 411.7 1920 463C1920 514.3 1920 565.7 1920 617C1920 668.3 1920 719.7 1920 771.2C1920 822.7 1920 874.3 1920 925.8C1920 977.3 1920 1028.7 1920 1054.3L1920 1080Z" fill="#<<base(i="09")>>"></path>
   </svg>
 #+end_src
+
+* Hollowed Boxes
+#+begin_src xml :tangle ~/.local/share/wallpapers/hollowed_boxes.svg
+  <svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'>
+    <defs>
+      <filter id="darkenFilter">
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="0.8" />
+          <feFuncG type="linear" slope="0.8" />
+          <feFuncB type="linear" slope="0.8" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="superDarkenFilter">
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="0.6" />
+          <feFuncG type="linear" slope="0.6" />
+          <feFuncB type="linear" slope="0.6" />
+        </feComponentTransfer>
+      </filter>
+      <pattern id='myPattern' width='200' height='200' patternUnits='userSpaceOnUse'>
+        <rect fill='#<<base(i="00")>>' width='200' height='200'/>
+        <g fill-opacity='1'>
+          <polygon fill='#<<base(i="01")>>' filter="url(#superDarkenFilter)" points='100 57.1 64 93.1 71.5 100.6 100 72.1'/>
+          <polygon fill='#<<base(i="01")>>' filter="url(#darkenFilter)" points='100 57.1 100 72.1 128.6 100.6 136.1 93.1'/>
+          <polygon fill='#<<base(i="01")>>' filter="url(#superDarkenFilter)" points='100 163.2 100 178.2 170.7 107.5 170.8 92.4'/>
+          <polygon fill='#<<base(i="01")>>' filter="url(#darkenFilter)" points='100 163.2 29.2 92.5 29.2 107.5 100 178.2'/>
+          <path fill='#<<base(i="01")>>' d='M100 21.8L29.2 92.5l70.7 70.7l70.7-70.7L100 21.8z M100 127.9L64.6 92.5L100 57.1l35.4 35.4L100 127.9z'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#darkenFilter)" points='0 157.1 0 172.1 28.6 200.6 36.1 193.1'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#superDarkenFilter)" points='70.7 200 70.8 192.4 63.2 200'/>
+          <polygon fill='#<<base(i="02")>>' points='27.8 200 63.2 200 70.7 192.5 0 121.8 0 157.2 35.3 192.5'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#superDarkenFilter)" points='200 157.1 164 193.1 171.5 200.6 200 172.1'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#darkenFilter)" points='136.7 200 129.2 192.5 129.2 200'/>
+          <polygon fill='#<<base(i="02")>>' points='172.1 200 164.6 192.5 200 157.1 200 157.2 200 121.8 200 121.8 129.2 192.5 136.7 200'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#darkenFilter)" points='129.2 0 129.2 7.5 200 78.2 200 63.2 136.7 0'/>
+          <polygon fill='#<<base(i="02")>>' points='200 27.8 200 27.9 172.1 0 136.7 0 200 63.2 200 63.2'/>
+          <polygon fill='#<<base(i="02")>>' filter="url(#superDarkenFilter)" points='63.2 0 0 63.2 0 78.2 70.7 7.5 70.7 0'/>
+          <polygon fill='#<<base(i="02")>>' points='0 63.2 63.2 0 27.8 0 0 27.8'/>
+        </g>
+      </pattern>
+    </defs>
+    <rect x='0' y='0' width='1920' height='1080' fill='url(#myPattern)' />
+  </svg>
+#+end_src

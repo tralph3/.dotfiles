@@ -129,3 +129,14 @@ their code, making them match with the system's colorscheme.
     <rect x='0' y='0' width='1920' height='1080' fill='url(#myPattern)' />
   </svg>
 #+end_src
+
+* Arrowhead
+#+begin_src xml :tangle ~/.local/share/wallpapers/arrowhead.svg
+  <svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'>
+    <pattern id='myPattern' width='200' height='200' patternUnits='userSpaceOnUse'>
+      <rect fill='#<<base(i="00")>>' width='200' height='200'/>
+      <polygon  fill='#<<base(i="01")>>' fill-opacity='1' points='100 0 0 100 100 100 100 200 200 100 200 0'/>
+    </pattern>
+    <rect x='0' y='0' width='1920' height='1080' fill='url(#myPattern)' />
+  </svg>
+#+end_src

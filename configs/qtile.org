@@ -1,35 +1,13 @@
 #+TITLE: Qtile Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :noweb yes :mkdirp yes
+#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle ~/.config/qtile/config.py
 
-#+begin_src python :tangle ~/.config/qtile/colors.py
-  import json
-  import os
-
-  HOME = os.path.expanduser('~')
-
-
-  def load_colorscheme():
-      colors = {}
-      with open(f"{HOME}/.config/colorschemes/current_colorscheme/colors.json") as f:
-          colors = json.load(f)
-      return colors
-#+end_src
-
-#+begin_src python :tangle ~/.config/qtile/config.py
+* Imports
+#+begin_src python
   import os
   import subprocess
 
   from libqtile import hook
-
-  # init groups
-  from group_conf import groups
-
-  # init keybindings
-  from key_conf import keys, mouse
-
-  # init layouts
-  from layout_conf import layouts, floating_layout
 
   # init widgets
   from widget_conf import screens
@@ -37,73 +15,106 @@
   # general settings
   from options import *
 
+  from libqtile.config import Group, Match, Key, Drag, Click
+
   import wallpaper
   from settings import WALLPAPER_TIMEOUT_MINUTES
 
   DOTFILES_DIR = os.getenv("DOTFILES_DIR")
 
+  # special dictionary that allows in-place redefinition
+  class SettingsDict(dict):
+      def extend(self, **kwargs):
+          new_dict = self.copy()
+          for key in kwargs:
+              new_dict[key] = kwargs[key]
+          return new_dict
 
-  @hook.subscribe.startup_once
-  def autostart():
-      subprocess.run([f"{DOTFILES_DIR}/scripts/autostart_all.sh"])
 
-
-  @hook.subscribe.startup_once
-  def setup_wallpaper_timer():
-      wallpaper.Timer(WALLPAPER_TIMEOUT_MINUTES * 60, wallpaper.set_random_wallpaper)
 #+end_src
 
-#+begin_src python :tangle ~/.config/qtile/group_conf.py
+* Colors
+#+begin_src python
+  BASE00 = "#<<base(i="00")>>"
+  BASE01 = "#<<base(i="01")>>"
+  BASE02 = "#<<base(i="02")>>"
+  BASE03 = "#<<base(i="03")>>"
+  BASE04 = "#<<base(i="04")>>"
+  BASE05 = "#<<base(i="05")>>"
+  BASE06 = "#<<base(i="06")>>"
+  BASE07 = "#<<base(i="07")>>"
+  BASE08 = "#<<base(i="08")>>"
+  BASE09 = "#<<base(i="09")>>"
+  BASE0A = "#<<base(i="0A")>>"
+  BASE0B = "#<<base(i="0B")>>"
+  BASE0C = "#<<base(i="0C")>>"
+  BASE0D = "#<<base(i="0D")>>"
+  BASE0E = "#<<base(i="0E")>>"
+  BASE0F = "#<<base(i="0F")>>"
+#+end_src
+* Groups
+#+begin_src python
   from libqtile.config import Group, Match
 
-  ##########
-  # GROUPS #
-  ##########
   groups = [
-      # Terminal
-      Group("1", label=""),
-
-      # Web browser
-      Group("2", label="", matches=[Match(wm_class=["firefox"])]),
-
-      # Coding
-      Group("3", label=""),
-
-      # File manager
-      Group("4", label=""),
-
-      # Gaming stuff
-      Group("5", label="", matches=[
+      Group("1"),
+      Group("2", matches=[Match(wm_class=["firefox"])]),
+      Group("3"),
+      Group("4"),
+      Group("5", matches=[
           Match(wm_class=["Steam", "steamwebhelper"]),
           Match(wm_class=["Lutris"]),
           Match(wm_class=["gamescope"]),
+          Match(wm_class=["bottles"]),
       ]),
-
-      # Discord/Communication
-      Group("6", label="", matches=[Match(wm_class=["discord"])]),
-
-      # Music
-      Group("7", label="", matches=[
+      Group("6", matches=[Match(wm_class=["discord"])]),
+      Group("7", matches=[
           Match(wm_class=["deadbeef"]),
           Match(wm_class=["Quodlibet"]),
       ]),
-
-      # Image editing
-      Group("8", label=""),
-
-      # Anything else
-      Group("9", label=""),
+      Group("8"),
+      Group("9"),
   ]
 #+end_src
 
-#+begin_src python :tangle ~/.config/qtile/key_conf.py
-  from libqtile.config import Key, Drag, Click
+* Keybinds
+#+begin_src python
   from libqtile.lazy import lazy
-  from settings import commands, mod
+  from libqtile.config import Key, Drag, Click
 
-  ############
-  # KEYBINDS #
-  ############
+  DOTFILES_DIR = os.getenv('DOTFILES_DIR')
+
+  volume_step = 5
+  brightness_step = 5
+
+  commands = dict(
+      terminal="alacritty",
+      emacs="emacs",
+      change_color=f"sh {DOTFILES_DIR}/scripts/change_colorscheme.sh",
+      raise_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh raise {volume_step}",
+      lower_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh lower {volume_step}",
+      calculator="speedcrunch",
+      play_pause_audio="playerctl play-pause",
+      stop_audio="playerctl stop",
+      next_audio="playerctl next",
+      prev_audio="playerctl previous",
+      kill_window="xkill",
+      decode_qr="sh -c \"flameshot gui --raw | zbarimg --raw - | xclip -selection clipboard\"",
+      switch_audio_sink=f"sh {DOTFILES_DIR}/scripts/audio.sh switch_sink",
+      toggle_mute=f"sh {DOTFILES_DIR}/scripts/audio.sh mute",
+      toggle_mute_mic="amixer set Capture toggle",
+      rofi="rofi -show drun",
+      firefox="firefox",
+      firefox_private="firefox --private-window",
+      flameshot="flameshot gui",
+      poweroff="poweroff",
+      reboot="reboot",
+      brightness_up=f"sh {DOTFILES_DIR}/scripts/brightness.sh raise {brightness_step}",
+      brightness_down=f"sh {DOTFILES_DIR}/scripts/brightness.sh lower {brightness_step}",
+  )
+
+  mod = "mod4"
+
   keys = [
       # Switch windows
       Key([mod], "h", lazy.layout.left(),
@@ -248,14 +259,170 @@
       )
 #+end_src
 
-#+begin_src python :tangle ~/.config/qtile/layout_conf.py
-  from libqtile.config import Match
-  from libqtile import layout
-  from settings import layout_default
+* Qtile Settings
+#+begin_src python
+  auto_fullscreen = True
+  auto_minimize = True
+  bring_front_click = True
+  cursor_warp = False
+  dgroups_app_rules = []
+  focus_on_window_activation = "smart"
+  follow_mouse_focus = True
+  reconfigure_screens = True
+  wmname = "LG3D"
+#+end_src
 
-  ###########
-  # LAYOUTS #
-  ###########
+* Status Bar
+#+begin_src python
+  from libqtile import bar, widget
+  from libqtile.config import Screen
+  from libqtile.lazy import lazy
+
+  MARGIN = 5
+  BORDER_WIDTH = 2
+  ICON_SIZE = 25
+  FONT = "Ubuntu"
+  FONT_SIZE = 15
+
+  widget_default = SettingsDict(
+      background=BASE00,
+      border=BASE09,
+      font=FONT,
+      fontsize=FONT_SIZE,
+      foreground=BASE05,
+      highlight_method="block",
+      margin=MARGIN,
+      other_current_screen_border=BASE03,
+      other_screen_border=BASE03,
+      rounded=False,
+      this_current_screen_border=BASE03,
+      this_screen_border=BASE03,
+      urgent_alert_method="border",
+  )
+
+
+  def create_separator():
+      separator = widget.TextBox(
+          fontsize=30,
+          font=FONT,
+          foreground=BASE05,
+          background=BASE00,
+          margin=0,
+          padding=0,
+          text=""
+      ),
+      return separator[0]
+
+
+  # Status bar
+  screens = [
+      Screen(
+          top=bar.Bar(
+              [
+                  # Arch logo
+                  widget.Image(
+                      ,**widget_default.extend(
+                          mouse_callbacks={
+                              "Button1": lazy.spawn(commands["rofi"])
+                          },
+                          filename=f"{DOTFILES_DIR}/assets/archlinux-icon.svg",
+                      ),
+                  ),
+                  create_separator(),
+                  widget.GroupBox(
+                      ,**widget_default.extend(
+                          disable_drag=True,
+                          fontsize=ICON_SIZE,
+                          margin=3,
+                          active=BASE05,
+                          inactive=BASE01,
+                      ),
+                  ),
+                  # Separators
+                  widget.TextBox(
+                      background=BASE01,
+                      fontsize=30,
+                      font=FONT,
+                      foreground=BASE00,
+                      margin=0,
+                      padding=0,
+                      text="",
+                  ),
+                  widget.TextBox(margin=MARGIN, background=BASE01),
+                  widget.TaskList(
+                      ,**widget_default.extend(
+                          background=BASE01,
+                          border=BASE03,
+                          borderwidth=0,
+                          icon_size=FONT_SIZE,
+                          margin=0,
+                          max_title_width=300,
+                          mouse_callbacks={"Button2": lazy.window.kill()},
+                          padding_x=10,
+                          padding_y=5,
+                          txt_floating="[F] ",
+                          txt_maximized="[M] ",
+                          txt_minimized="[m] ",
+                      ),
+                  ),
+                  # Separators
+                  widget.TextBox(margin=MARGIN, background=BASE01),
+                  widget.TextBox(
+                      background=BASE00,
+                      fontsize=30,
+                      font=FONT,
+                      foreground=BASE01,
+                      margin=0,
+                      padding=0,
+                      text="",
+                  ),
+
+                  # Systray
+                  widget.Systray(**widget_default),
+                  create_separator(),
+                  # Clock svg
+                  widget.Image(
+                      ,**widget_default.extend(
+                          filename=f"{DOTFILES_DIR}/assets/clock.svg",
+                      ),
+                  ),
+                  # Clock
+                  widget.Clock(
+                      ,**widget_default.extend(
+                          format="%H:%M\n%y/%m/%d",
+                          fontsize=12,
+                      ),
+                  ),
+              ],
+              size=26,
+              margin=MARGIN,
+              border_width=2,
+              background=BASE00,
+              border_color=BASE03,
+          ),
+          left=bar.Gap(MARGIN),
+          right=bar.Gap(MARGIN),
+          bottom=bar.Gap(MARGIN)
+      ),
+  ]
+#+end_src
+
+* Layouts
+#+begin_src python
+  from libqtile import layout
+
+  layout_default = SettingsDict(
+      border_focus=BASE09,
+      border_focus_stack=BASE09,
+      border_normal=BASE03,
+      border_normal_stack=BASE03,
+      border_width=BORDER_WIDTH,
+      margin=MARGIN,
+      margin_on_single=MARGIN,
+      border_on_single=True,
+      fair=True,
+  )
+
   layouts = [
       layout.Columns(**layout_default),
   ]
@@ -279,132 +446,15 @@
   )
 #+end_src
 
-#+begin_src python :tangle ~/.config/qtile/options.py
-  # focus window on mouse hover
-  follow_mouse_focus = True
-
-  dgroups_app_rules = []
-
-  bring_front_click = True
-
-  cursor_warp = False
-
-  auto_fullscreen = True
-
-  focus_on_window_activation = "smart"
-
-  reconfigure_screens = True
-
-  auto_minimize = True
-
-  wmname = "LG3D"
-#+end_src
-
-#+begin_src python :tangle ~/.config/qtile/settings.py
-  import os
-  from colors import load_colorscheme
-  from utils import SettingsDict
-
-  colors = load_colorscheme()
-  BACKGROUND1 = colors["BACKGROUND_1"]
-  BACKGROUND2 = colors["BACKGROUND_2"]
-
-  FOREGROUND1 = colors["FOREGROUND_1"]
-  FOREGROUND2 = colors["FOREGROUND_2"]
-
-  ACCENT = colors["ACCENT"]
-
-  INACTIVE = colors["INACTIVE"]
-
-  HIGHLIGHT_BG = colors["HIGHLIGHT_BG"]
-  HIGHLIGHT_FG = colors["HIGHLIGHT_FG"]
-
-  MARGIN = 5
-  BORDER_WIDTH = 2
-
-  FONT = "UbuntuMono Nerd Font Mono"
-  ICON_SIZE = 25
-  FONT_SIZE = 15
-
-  WALLPAPER_TIMEOUT_MINUTES = 10
-  WALLPAPERS_DIR = os.getenv('WALLPAPERS_DIR')
-  DOTFILES_DIR = os.getenv('DOTFILES_DIR')
-
-  mod = "mod4"
-  volume_step = 5
-  brightness_step = 5
-
-  commands = dict(
-      terminal="alacritty",
-      emacs="emacsclient -c",
-      change_color=f"sh {DOTFILES_DIR}/scripts/colorscheme/change_colorscheme.sh",
-      raise_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh raise {volume_step}",
-      lower_volume=f"sh {DOTFILES_DIR}/scripts/audio.sh lower {volume_step}",
-      calculator="speedcrunch",
-      play_pause_audio="playerctl play-pause",
-      stop_audio="playerctl stop",
-      next_audio="playerctl next",
-      prev_audio="playerctl previous",
-      kill_window="xkill",
-      decode_qr="sh -c \"flameshot gui --raw | zbarimg --raw - | xclip -selection clipboard\"",
-      switch_audio_sink=f"sh {DOTFILES_DIR}/scripts/audio.sh switch_sink",
-      toggle_mute=f"sh {DOTFILES_DIR}/scripts/audio.sh mute",
-      toggle_mute_mic="amixer set Capture toggle",
-      rofi="rofi -show drun",
-      firefox="firefox",
-      firefox_private="firefox --private-window",
-      flameshot="flameshot gui",
-      poweroff="poweroff",
-      reboot="reboot",
-      brightness_up=f"sh {DOTFILES_DIR}/scripts/brightness.sh raise {brightness_step}",
-      brightness_down=f"sh {DOTFILES_DIR}/scripts/brightness.sh lower {brightness_step}",
-  )
-
-  layout_default = SettingsDict(
-      border_focus=ACCENT,
-      border_focus_stack=ACCENT,
-      border_normal=INACTIVE,
-      border_normal_stack=INACTIVE,
-      border_width=BORDER_WIDTH,
-      margin=MARGIN,
-      margin_on_single=MARGIN,
-      border_on_single=True,
-      fair=True,
-  )
-
-  widget_default = SettingsDict(
-      background=BACKGROUND1,
-      border=ACCENT,
-      font=FONT,
-      fontsize=FONT_SIZE,
-      foreground=FOREGROUND1,
-      highlight_method="block",
-      margin=MARGIN,
-      other_current_screen_border=INACTIVE,
-      other_screen_border=INACTIVE,
-      rounded=False,
-      this_current_screen_border=INACTIVE,
-      this_screen_border=INACTIVE,
-      urgent_alert_method="border",
-  )
-#+end_src
-
-#+begin_src python :tangle ~/.config/qtile/utils.py
-  # special dictionary that allows in-place redefinition
-  class SettingsDict(dict):
-      def extend(self, **kwargs):
-          new_dict = self.copy()
-          for key in kwargs:
-              new_dict[key] = kwargs[key]
-          return new_dict
-#+end_src
-
-#+begin_src python :tangle ~/.config/qtile/wallpaper.py
+* Wallpaper
+#+begin_src python
   import os
   import random
   from libqtile import qtile
   from typing import Callable
-  from settings import WALLPAPERS_DIR
+
+  WALLPAPERS_DIR = os.getenv('WALLPAPERS_DIR')
+  WALLPAPER_TIMEOUT_MINUTES = 10
 
 
   class Timer():
@@ -423,7 +473,7 @@
 
   def set_random_wallpaper() -> None:
       wallpapers = [
-          os.path.join(WALLPAPERS_DIR, x) for x in os.listdir(WALLPAPERS_DIR) if x[-4:] == ".jpg"
+          os.path.join(WALLPAPERS_DIR, x) for x in os.listdir(WALLPAPERS_DIR) if x[-4:] == ".svg"
       ]
       wallpaper = random.choice(wallpapers)
       set_wallpaper(wallpaper)
@@ -432,135 +482,14 @@
   def set_wallpaper(file_path: str) -> None:
       for screen in qtile.screens:
           screen.cmd_set_wallpaper(file_path, 'fill')
-#+end_src
-
-#+begin_src python :tangle ~/.config/qtile/widget_conf.py
-  from libqtile import bar, widget
-  from libqtile.config import Screen
-  from libqtile.lazy import lazy
-  from settings import (
-      BACKGROUND1,
-      BACKGROUND2,
-      ACCENT,
-      INACTIVE,
-      DOTFILES_DIR,
-      FOREGROUND1,
-      FONT,
-      FONT_SIZE,
-      ICON_SIZE,
-      MARGIN,
-      commands,
-      widget_default,
-  )
 
 
-  ###########
-  # WIDGETS #
-  ###########
-  def create_separator():
-      separator = widget.TextBox(
-          fontsize=30,
-          font=FONT,
-          foreground=FOREGROUND1,
-          background=BACKGROUND1,
-          margin=0,
-          padding=0,
-          text=""
-      ),
-      return separator[0]
+  @hook.subscribe.startup_once
+  def autostart():
+      subprocess.run([f"{DOTFILES_DIR}/scripts/autostart_all.sh"])
 
 
-  # Status bar
-  screens = [
-      Screen(
-          top=bar.Bar([
-                  # Arch logo
-                  widget.Image(
-                      ,**widget_default.extend(
-                          mouse_callbacks={
-                              "Button1": lazy.spawn(commands["rofi"])
-                          },
-                          filename=f"{DOTFILES_DIR}/assets/archlinux-icon.svg",
-                      ),
-                  ),
-                  create_separator(),
-                  # Group Box
-                  widget.GroupBox(
-                      ,**widget_default.extend(
-                          disable_drag=True,
-                          fontsize=ICON_SIZE,
-                          margin=3,
-                          active=FOREGROUND1,
-                          inactive=BACKGROUND2,
-                      ),
-                  ),
-                  # Separators
-                  widget.TextBox(
-                      background=BACKGROUND2,
-                      fontsize=30,
-                      font=FONT,
-                      foreground=BACKGROUND1,
-                      margin=0,
-                      padding=0,
-                      text="",
-                  ),
-                  widget.TextBox(margin=MARGIN, background=BACKGROUND2),
-
-                  widget.TaskList(
-                      ,**widget_default.extend(
-                          background=BACKGROUND2,
-                          border=INACTIVE,
-                          borderwidth=0,
-                          icon_size=FONT_SIZE,
-                          margin=0,
-                          max_title_width=300,
-                          mouse_callbacks={"Button2": lazy.window.kill()},
-                          padding_x=10,
-                          padding_y=5,
-                          txt_floating="[F] ",
-                          txt_maximized="[M] ",
-                          txt_minimized="[m] ",
-                      ),
-                  ),
-                  # Separators
-                  widget.TextBox(margin=MARGIN, background=BACKGROUND2),
-                  widget.TextBox(
-                      background=BACKGROUND1,
-                      fontsize=30,
-                      font=FONT,
-                      foreground=BACKGROUND2,
-                      margin=0,
-                      padding=0,
-                      text="",
-                  ),
-
-                  # Systray
-                  widget.Systray(**widget_default),
-                  create_separator(),
-                  # Clock svg
-                  widget.Image(
-                      ,**widget_default.extend(
-                          filename=f"{DOTFILES_DIR}/assets/clock.svg",
-                      ),
-                  ),
-                  # Clock
-                  widget.Clock(
-                      ,**widget_default.extend(
-                          format="%H:%M\n%y/%m/%d",
-                          fontsize=12,
-                      ),
-                  ),
-              ],
-
-              size=26,
-              margin=MARGIN,
-              border_width=2,
-              background=BACKGROUND1,
-              border_color=INACTIVE,
-          ),
-          left=bar.Gap(MARGIN),
-          right=bar.Gap(MARGIN),
-          bottom=bar.Gap(MARGIN)
-      ),
-  ]
+  @hook.subscribe.startup_once
+  def setup_wallpaper_timer():
+      Timer(WALLPAPER_TIMEOUT_MINUTES * 60, set_random_wallpaper)
 #+end_src

@@ -29,7 +29,7 @@
   $C_RAISE_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh raise $BRIGHTNESS_STEP
   $C_LOWER_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh lower $BRIGHTNESS_STEP
   $C_CHANGE_COLOR=$DOTFILES_DIR/scripts/change_colorscheme.sh
-  $C_SCREENSHOT=env XDG_CURRENT_DESKTOP=sway flameshot gui
+  $C_SCREENSHOT=grim -g "$(slurp)"
   $C_CALCULATOR=speedcrunch
   $C_KILL_WINDOW=hyprctl kill
   $C_POWEROFF=poweroff

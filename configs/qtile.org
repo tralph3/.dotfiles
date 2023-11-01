@@ -8,17 +8,7 @@
   import subprocess
 
   from libqtile import hook
-
-  # init widgets
-  from widget_conf import screens
-
-  # general settings
-  from options import *
-
   from libqtile.config import Group, Match, Key, Drag, Click
-
-  import wallpaper
-  from settings import WALLPAPER_TIMEOUT_MINUTES
 
   DOTFILES_DIR = os.getenv("DOTFILES_DIR")
 
@@ -29,8 +19,6 @@
           for key in kwargs:
               new_dict[key] = kwargs[key]
           return new_dict
-
-
 #+end_src
 
 * Colors

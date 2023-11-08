@@ -268,8 +268,8 @@
 
   MARGIN = 5
   BORDER_WIDTH = 2
-  ICON_SIZE = 25
-  FONT = "Ubuntu"
+  ICON_SIZE = 20
+  FONT = "UbuntuMono"
   FONT_SIZE = 15
 
   widget_default = SettingsDict(

@@ -620,6 +620,13 @@ behaves nicer.
     (mood-line-mode))
 #+end_src
 
+** Flymake
+#+begin_src emacs-lisp
+  (use-package flymake
+    :ensure t
+    :custom
+    (flymake-show-diagnostics-at-end-of-line t))
+#+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with
 emacs, using its built-in tools as much as possible.

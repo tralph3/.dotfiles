@@ -623,9 +623,7 @@ behaves nicer.
 ** Flymake
 #+begin_src emacs-lisp
   (use-package flymake
-    :ensure t
-    :custom
-    (flymake-show-diagnostics-at-end-of-line t))
+    :ensure t)
 #+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with

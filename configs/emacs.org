@@ -626,6 +626,14 @@ behaves nicer.
   (use-package flymake
     :ensure t)
 #+end_src
+
+** Proced
+#+begin_src emacs-lisp
+  (use-package proced
+    :ensure t
+    :custom
+    (proced-enable-color-flag t))
+#+end_src
 * Eglot
 Eglot is a minimalistic LSP client. It integrates very well with
 emacs, using its built-in tools as much as possible.

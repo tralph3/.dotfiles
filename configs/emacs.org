@@ -1711,6 +1711,9 @@ This setting allows me to have more languages available to execute
           ;;;; treemacs
        (treemacs-window-background-face              :background base01)
        (treemacs-hl-line-face                        :background base00 :weight bold)
+       (treemacs-git-added-face                      :foreground base0B)
+       (treemacs-git-modified-face                   :foreground base0E)
+       (treemacs-git-untracked-face                  :foreground base03)
 
           ;;;; whitespace-mode
        (whitespace-empty                             :foreground base08 :background base0A)

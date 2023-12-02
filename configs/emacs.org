@@ -234,11 +234,11 @@ litter its root with files.
     (if (y-or-n-p (format "Add '%s' as a project?" dir))
         (project-remember-project (cons 'transient dir))))
 #+end_src
-* Packages
-These are the emacs packages I use.
+* Package Configuration
+Here I define the configuration for every package I care about,
+including built-in ones.
 ** Setup
-Here we setup the `package-archives` variable to include the [[https://melpa.org][MELPA]]
-repository.
+Modify [[help:package-archives][package-archives]] variable to include the [[https://melpa.org][MELPA]] repository.
 #+begin_src emacs-lisp
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                            ("org" . "https://orgmode.org/elpa/")
@@ -248,6 +248,7 @@ repository.
 #+begin_src emacs-lisp
   (use-package nerd-icons
     :ensure t)
+
   (use-package nerd-icons-completion
     :ensure t
     :after marginalia
@@ -255,6 +256,7 @@ repository.
     (marginalia-mode . nerd-icons-completion-marginalia-setup)
     :config
     (nerd-icons-completion-mode))
+
   (use-package nerd-icons-dired
     :ensure t
     :hook
@@ -268,7 +270,6 @@ selecting. Goes well with [[Orderless]].
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t
-    :if nil
     :custom
     (corfu-auto t)
     (corfu-auto-delay 0.2)
@@ -323,19 +324,17 @@ even if the popup is present.
 I like kind-icons to be shown next to the completion
 candidates. Hence, this package.
 #+begin_src emacs-lisp
-  (use-package kind-icon
+  (use-package nerd-icons-corfu
     :ensure t
     :after corfu
-    :custom
-    (kind-icon-default-face 'corfu-default)
-    (kind-icon-blend-background nil)
     :config
-    (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+    (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 #+end_src
 ** Company
 #+begin_src emacs-lisp
   (use-package company
     :ensure t
+    :if nil
     :custom
     (company-tooltip-minimum-width 60)
     (company-minimum-prefix-length 1)
@@ -374,6 +373,10 @@ that are not included by default.
     :ensure t)
   (use-package yaml-mode
     :ensure t)
+  (use-package markdown-mode
+    :ensure t)
+  (use-package dockerfile-mode
+    :ensure t)
 #+end_src
 ** Vertico
 Vertico provides a performant and minimalistic vertical completion UI
@@ -388,7 +391,7 @@ search for functions or variables in the minibuffer. Goes well with
     (vertico-mouse-mode))
 #+end_src
 ** Magit
-Magit is an interface for git.
+It's [[https://magit.vc/][Magit]]! A Git Porcelain inside Emacs.
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
@@ -544,44 +547,6 @@ documents whenever the point is over them.
     :config
     (global-undo-tree-mode))
 #+end_src
-** Dirvish
-Dirvish is a more polished dired. It's still dired, but it looks and
-behaves nicer.
-#+begin_src emacs-lisp
-  (use-package dirvish
-    :ensure t
-    :if nil
-    :init
-    (dirvish-override-dired-mode t)
-    :custom
-    (dired-mouse-drag-files t)
-    (dired-listing-switches "-lA --group-directories-first --human-readable")
-    (dirvish-attributes '(vc-state subtree-state all-the-icons collapse file-time file-size))
-    :config
-    (dirvish-side-follow-mode t)
-    :bind
-    (:map dirvish-mode-map
-          ("<mouse-1>" . dirvish-subtree-toggle-or-open)
-          ("<mouse-2>" . dired-mouse-find-file-other-window)
-          ("a"   . dirvish-quick-access)
-          ("f"   . dirvish-file-info-menu)
-          ("y"   . dirvish-yank-menu)
-          ("N"   . dirvish-narrow)
-          ("^"   . dirvish-history-last)
-          ("h"   . dirvish-history-jump)
-          ("s"   . dirvish-quicksort)
-          ("v"   . dirvish-vc-menu)
-          ("TAB" . dirvish-subtree-toggle)
-          ("M-f" . dirvish-history-go-forward)
-          ("M-b" . dirvish-history-go-backward)
-          ("M-l" . dirvish-ls-switches-menu)
-          ("M-m" . dirvish-mark-menu)
-          ("M-t" . dirvish-layout-toggle)
-          ("M-s" . dirvish-setup-menu)
-          ("M-e" . dirvish-emerge-menu)
-          ("M-j" . dirvish-fd-jump)))
-#+end_src
-
 ** Multiple Cursors
 #+begin_src emacs-lisp
   (use-package multiple-cursors
@@ -610,7 +575,9 @@ behaves nicer.
 ** Vterm
 #+begin_src emacs-lisp
   (use-package vterm
-    :ensure t)
+    :ensure t
+    :custom
+    (vterm-always-compile-module t))
 #+end_src
 
 ** Moodline
@@ -634,42 +601,48 @@ behaves nicer.
     :custom
     (proced-enable-color-flag t))
 #+end_src
-* Eglot
+
+** Eglot
 Eglot is a minimalistic LSP client. It integrates very well with
 emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp
-  (require 'eglot)
-  (setq eglot-autoshutdown t)
-  (setq eglot-sync-connect 0)
-  (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-  (global-set-key (kbd "C-c d") 'xref-find-definitions)
-  (global-set-key (kbd "C-c h") 'eldoc)
-  (global-set-key (kbd "C-c b") 'xref-go-back)
-  (global-set-key (kbd "C-c R") 'xref-find-references)
-  (add-hook 'prog-mode-hook 'eglot-ensure)
-  (fset #'jsonrpc--log-event #'ignore)
-  (setq eglot-events-buffer-size 0)
-  (add-hook 'focus-out-hook 'garbage-collect)
+  (use-package eglot
+    :ensure t
+    :custom
+    (eglot-autoshutdown t)
+    (eglot-sync-connect 0)
+    (eglot-events-buffer-size 0)
+    :config
+    (fset #'jsonrpc--log-event #'ignore)
+    (add-hook 'prog-mode-hook 'eglot-ensure)
+    (add-hook 'focus-out-hook 'garbage-collect)
+    (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
+    (global-set-key (kbd "C-c d") 'xref-find-definitions)
+    (global-set-key (kbd "C-c h") 'eldoc)
+    (global-set-key (kbd "C-c b") 'xref-go-back)
+    (global-set-key (kbd "C-c R") 'xref-find-references))
 #+end_src
-* Org Mode
-** General Settings
+** Org Mode
 #+begin_src emacs-lisp
-  (require 'org-tempo)
-  (setq org-startup-indented t)
-  (setq org-pretty-entities t)
-  (setq org-hide-emphasis-markers t)
-  (setq org-startup-with-inline-images t)
-  (setq org-preview-latex-default-process 'dvisvgm)
-  (setq org-preview-latex-image-directory "~/.cache/ltximg")
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
-  (setq org-startup-with-latex-preview t)
-  (add-hook 'org-mode-hook 'auto-fill-mode)
-  (add-hook 'org-mode-hook 'flyspell-mode)
+  (use-package org
+    :ensure t
+    :custom
+    (org-startup-indented t)
+    (org-pretty-entities t)
+    (org-hide-emphasis-markers t)
+    (org-startup-with-inline-images t)
+    (org-preview-latex-default-process 'dvisvgm)
+    (org-preview-latex-image-directory "~/.cache/ltximg")
+    (org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
+    (org-startup-with-latex-preview t)
+    :config
+    (require 'org-tempo)
+    (add-hook 'org-mode-hook 'auto-fill-mode)
+    (add-hook 'org-mode-hook 'flyspell-mode))
 #+end_src
-** Enable Languages for Execution
+*** Enable Languages for Execution
 This setting allows me to have more languages available to execute
 [[https://orgmode.org/worg/org-contrib/babel/][Org-Babel]] source blocks.
-
 #+begin_src emacs-lisp
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -678,13 +651,16 @@ This setting allows me to have more languages available to execute
      (shell . t)
      (gnuplot . t)))
 #+end_src
-* Doc View Mode
-** General Settings
+** Doc View Mode
 #+begin_src emacs-lisp
-  (add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
-  (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1)))
-  (setq doc-view-scale-internally t)
-  (setq doc-view-continuous t)
+  (use-package doc-view
+    :ensure t
+    :custom
+    (doc-view-scale-internally t)
+    (doc-view-continuous t)
+    :config
+    (add-hook 'doc-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+    (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1))))
 #+end_src
 
 * Colorscheme

@@ -31,7 +31,7 @@
           "on-scroll-down": "hyprctl dispatch workspace e-1",
           "active-only": false,
           "sort-by-number": true,
-          "persistent_workspaces": {
+          "persistent-workspaces": {
               "*": 9
           }
       },

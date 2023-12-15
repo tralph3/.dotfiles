@@ -160,9 +160,20 @@ Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
   (setq pixel-scroll-precision-large-scroll-height 10.0)
   (setq pixel-scroll-precision-interpolate-page t)
   (pixel-scroll-precision-mode t)
+#+end_src
 
-  (global-set-key (kbd "C-v") 'pixel-scroll-interpolate-down)
-  (global-set-key (kbd "M-v") 'pixel-scroll-interpolate-up)
+Define custom functions to scroll only half a page up or down
+#+begin_src emacs-lisp
+  (defun pixel-scroll-interpolate-half-down ()
+    (interactive)
+    (pixel-scroll-precision-interpolate (/ (- (window-text-height nil t)) 2) nil 1))
+
+  (defun pixel-scroll-interpolate-half-up ()
+    (interactive)
+    (pixel-scroll-precision-interpolate (/ (window-text-height nil t) 2) nil 1))
+
+  (global-set-key (kbd "C-v") 'pixel-scroll-interpolate-half-down)
+  (global-set-key (kbd "M-v") 'pixel-scroll-interpolate-half-up)
 #+end_src
 *** Comfort Keybindings
 #+begin_src emacs-lisp

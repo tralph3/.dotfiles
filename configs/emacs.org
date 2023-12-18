@@ -674,6 +674,13 @@ This setting allows me to have more languages available to execute
     (add-hook 'doc-view-mode-hook (lambda () (pixel-scroll-precision-mode -1))))
 #+end_src
 
+** Dape
+Dape is a minimalist client for the [[https://microsoft.github.io/debug-adapter-protocol/][Debug Adapter Protocol (DAP)]]. It
+comes with default configurations for a number of languages.
+#+begin_src emacs-lisp
+  (use-package dape
+    :ensure t)
+#+end_src
 * Colorscheme
 #+begin_src emacs-lisp
   (defun reload-colorscheme()

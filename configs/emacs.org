@@ -388,6 +388,8 @@ that are not included by default.
     :ensure t)
   (use-package dockerfile-mode
     :ensure t)
+  (use-package cmake-mode
+    :ensure t)
 #+end_src
 ** Vertico
 Vertico provides a performant and minimalistic vertical completion UI

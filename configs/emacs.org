@@ -272,6 +272,12 @@ Modify [[help:package-archives][package-archives]] variable to include the [[htt
     :ensure t
     :hook
     (dired-mode . nerd-icons-dired-mode))
+
+  (use-package treemacs-nerd-icons
+    :ensure t
+    :after treemacs
+    :config
+    (treemacs-load-theme "nerd-icons"))
 #+end_src
 ** Corfu
 Corfu provides a quick popup that displays completion candidates for

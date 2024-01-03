@@ -1,69 +1,73 @@
 #+TITLE: Alacritty Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.yml :noweb yes :mkdirp yes
+#+PROPERTY: header-args :tangle ~/.config/alacritty/alacritty.toml :noweb yes :mkdirp yes
 
-#+begin_src yaml
-  cursor:
-    style:
-      shape: Block
-      blinking: Always
+#+begin_src toml
+  [cursor.style]
+  blinking = "Always"
+  shape = "Block"
 
-  font:
-    normal:
-      family: Berkeley Mono
-      style: Regular
-    bold:
-      family: Berkeley Mono
-      style: Bold
-    italic:
-      family: Berkeley Mono
-      style: Italic
-    bold_italic:
-      family: Berkeley Mono
-      style: Bold Italic
-    size: 12.5
+  [font]
+  size = 12.5
 
-  selection:
-    save_to_clipboard: true
+  [font.bold]
+  family = "Berkeley Mono"
+  style = "Bold"
 
-  window:
-    padding:
-      x: 5
-      y: 5
-    dynamic_padding: true
-    decorations: none
-    opacity: 1
-    startup_mode: Windowed
-    dynamic_title: true
+  [font.bold_italic]
+  family = "Berkeley Mono"
+  style = "Bold Italic"
 
+  [font.italic]
+  family = "Berkeley Mono"
+  style = "Italic"
 
-  draw_bold_text_with_bright_colors: false
-  colors:
-    primary:
-      background: '#<<base(i="00")>>'
-      foreground: '#<<base(i="05")>>'
+  [font.normal]
+  family = "Berkeley Mono"
+  style = "Regular"
 
-    cursor:
-      text: '#<<base(i="00")>>'
-      cursor: '#<<base(i="05")>>'
+  [selection]
+  save_to_clipboard = true
 
-    normal:
-      black:   '#<<base(i="00")>>'
-      red:     '#<<base(i="08")>>'
-      green:   '#<<base(i="0B")>>'
-      yellow:  '#<<base(i="0A")>>'
-      blue:    '#<<base(i="0D")>>'
-      magenta: '#<<base(i="0E")>>'
-      cyan:    '#<<base(i="0C")>>'
-      white:   '#<<base(i="05")>>'
+  [window]
+  decorations = "none"
+  dynamic_padding = true
+  dynamic_title = true
+  opacity = 1
+  startup_mode = "Windowed"
 
-    bright:
-      black:   '#<<base(i="03")>>'
-      red:     '#<<base(i="09")>>'
-      green:   '#<<base(i="01")>>'
-      yellow:  '#<<base(i="02")>>'
-      blue:    '#<<base(i="04")>>'
-      magenta: '#<<base(i="06")>>'
-      cyan:    '#<<base(i="0F")>>'
-      white:   '#<<base(i="07")>>'
+  [window.padding]
+  x = 5
+  y = 5
+
+  [colors]
+  draw_bold_text_with_bright_colors = false
+
+  [colors.primary]
+  background = '#<<base(i="00")>>'
+  foreground = '#<<base(i="05")>>'
+
+  [colors.cursor]
+  cursor = '#<<base(i="00")>>'
+  text = '#<<base(i="05")>>'
+
+  [colors.normal]
+  black = '#<<base(i="00")>>'
+  red = '#<<base(i="08")>>'
+  green = '#<<base(i="0B")>>'
+  yellow = '#<<base(i="0A")>>'
+  blue = '#<<base(i="0D")>>'
+  magenta = '#<<base(i="0E")>>'
+  cyan = '#<<base(i="0C")>>'
+  white = '#<<base(i="05")>>'
+
+  [colors.bright]
+  black = '#<<base(i="03")>>'
+  red = '#<<base(i="09")>>'
+  green = '#<<base(i="01")>>'
+  yellow = '#<<base(i="02")>>'
+  blue = '#<<base(i="04")>>'
+  magenta = '#<<base(i="06")>>'
+  cyan = '#<<base(i="0F")>>'
+  white = '#<<base(i="07")>>'
 #+end_src

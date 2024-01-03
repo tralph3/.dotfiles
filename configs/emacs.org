@@ -89,6 +89,12 @@ Auto-insert closing parenthesis, quotes, brackets and more.
   (electric-pair-mode t)
 #+end_src
 
+Treat strings like =GtkWindow= as two separate words, instead of a
+single one, for all commands that act on words.
+#+begin_src emacs-lisp
+  (global-subword-mode t)
+#+end_src
+
 Ensure UTF-8.
 #+begin_src emacs-lisp
   (set-default-coding-systems 'utf-8)

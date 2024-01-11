@@ -48,8 +48,8 @@
   foreground = '#<<base(i="05")>>'
 
   [colors.cursor]
-  cursor = '#<<base(i="00")>>'
-  text = '#<<base(i="05")>>'
+  cursor = '#<<base(i="05")>>'
+  text = '#<<base(i="00")>>'
 
   [colors.normal]
   black = '#<<base(i="00")>>'

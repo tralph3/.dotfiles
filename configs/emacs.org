@@ -261,6 +261,12 @@ Modify [[help:package-archives][package-archives]] variable to include the [[htt
                            ("org" . "https://orgmode.org/elpa/")
                            ("elpa" . "https://elpa.gnu.org/packages/")))
 #+end_src
+
+Setting this variable allows emacs to upgrade built-in packages from
+package archives.
+#+begin_src emacs-lisp
+  (setq package-install-upgrade-built-in t)
+#+end_src
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

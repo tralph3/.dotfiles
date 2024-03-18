@@ -13,6 +13,7 @@
       "gtk-layer-shell": true,
       "clock": {
           "format": "{:%B %d %Y, %A - %H:%M}",
+          "timezone": "America/Argentina/Buenos_Aires",
           "tooltip": false
       },
       "wireplumber": {

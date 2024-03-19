@@ -184,8 +184,8 @@
     }
 
     wn() {
-        if [ $1 ] ; then
-            WINEPREFIX=$(pwd)/prefix wine $1
+        if [ $1 ]; then
+            WINEPREFIX=$(pwd)/prefix wine "$@"
         else
             echo "No file provided"
         fi

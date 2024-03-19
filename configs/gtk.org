@@ -3,6 +3,8 @@
 #+PROPERTY: header-args :noweb yes :mkdirp yes
 
 * Gtk 4
+The [[https://github.com/lassekongo83/adw-gtk3][adw-gtk3]] theme allows me to have the same colorscheme in both GTK3
+and GTK4 applications.
 #+NAME:settings
 #+begin_src conf :tangle ~/.config/gtk-4.0/settings.ini
   [Settings]
@@ -83,6 +85,7 @@
 #+end_src
 
 * Gtk 2
+This isn't currently working. Maybe I'll fix it someday. Who knows.
 #+begin_src conf :tangle ~/.config/gtk-2.0/gtkrc
   gtk-theme-name = "Adwaita-dark"
   gtk-color-scheme = "bg_color:#<<base(i="00")>>

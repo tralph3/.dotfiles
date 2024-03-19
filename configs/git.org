@@ -8,6 +8,6 @@
   [user]
       name = tralph3
       email = tomasralph2000@gmail.com
-  [credentials]
-      helper = store
+  [credential]
+      helper = /usr/lib/git-core/git-credential-libsecret
 #+end_src

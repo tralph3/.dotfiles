@@ -940,6 +940,9 @@ comes with default configurations for a number of languages.
        (font-lock-variable-name-face                 :foreground base08)
        (font-lock-warning-face                       :foreground base08)
 
+          ;;;; tree-sitter
+       (tree-sitter-hl-face:punctuation              :inherit nil)
+
           ;;;; isearch
        (match                                        :foreground base0D :background base01 :inverse-video t)
        (isearch                                      :foreground base0A :background base01 :inverse-video t)

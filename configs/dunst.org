@@ -13,13 +13,18 @@
   offset = 50x50
   scale = 0
   notification_limit = 4
+#+end_src
 
+The progress bar is used for my custom [[https://en.wikipedia.org/wiki/On-screen_display][OSD]].
+#+begin_src conf
   progress_bar = true
   progress_bar_height = 8
   progress_bar_frame_width = 1
   progress_bar_min_width = 150
   progress_bar_max_width = 300
+#+end_src
 
+#+begin_src conf
   indicate_hidden = yes
 
   transparency = 0
@@ -91,7 +96,11 @@
 
   highlight = "#<<base(i="02")>>"
   frame_color = "#<<base(i="09")>>"
+#+end_src
 
+My OSD sets the appnames for the notifications according to these. I
+want these to be extempt from the history, to not pollute it.
+#+begin_src conf
   [volume]
   appname="volume"
   history_ignore = yes
@@ -99,7 +108,9 @@
   [brightness]
   appname="brightness"
   history_ignore = yes
+#+end_src
 
+#+begin_src conf
   [experimental]
   per_monitor_dpi = false
 

@@ -2,12 +2,28 @@
 #+AUTHOR: tralph3
 #+PROPERTY: header-args :noweb yes :tangle ~/.config/git/config :mkdirp yes
 
+
+[[https://flutter.dev/][Flutter]] requires you to mark this directory as safe in order to
+function properly.
 #+begin_src conf
   [safe]
       directory = /opt/flutter
+#+end_src
+
+Configures git to use =git-credential-libsecret= as the credential
+helper. This allows it to use the [[https://wiki.gnome.org/Projects/Libsecret][libsecret]] API to store and retrieve
+passwords, which allows for encrypted storage of HTTPS credentials
+using the [[https://wiki.gnome.org/Projects/GnomeKeyring][GNOME Keyring]] (or some other keyring).
+
+The [[https://archlinux.org/packages/core/x86_64/libsecret/][libsecret]] and [[https://archlinux.org/packages/extra/x86_64/gnome-keyring/][gnome-keyring]] packages need to be installed for this
+to work.
+#+begin_src conf
+  [credential]
+      helper = /usr/lib/git-core/git-credential-libsecret
+#+end_src
+
+#+begin_src conf
   [user]
       name = tralph3
       email = tomasralph2000@gmail.com
-  [credential]
-      helper = /usr/lib/git-core/git-credential-libsecret
 #+end_src

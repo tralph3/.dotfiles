@@ -30,7 +30,7 @@
   // Always show bookmarks toolbar
   user_pref("browser.toolbars.bookmarks.visibility", "always");
 
-  // Don't teach me how to use PIP
+  // Disable Picture-in-Picture tutorial
   user_pref("media.videocontrols.picture-in-picture.video-toggle.has-used", true);
 
   // Use system's file browser
@@ -51,7 +51,7 @@
   // Don't send pings to other sites
   user_pref("browser.send_pings.require_same_host", true);
 
-  // Why do you need to know my battery?
+  // Don't allow websites to read my battery level
   user_pref("dom.battery.enabled", false);
 
   // Block third party cookies
@@ -80,10 +80,11 @@
   user_pref("layers.async-video.enabled", true);
   user_pref("html5.offmainthread", true);
 
-  // Send "do not track" signal, as if anyone respected it
+  // Send "do not track" signal
   user_pref("privacy.donottrackheader.enabled", true);
 
-  // Enable the titlebar... which will then get removed by the WM
+  // Enable the titlebar which is then removed by the WM. Otherwise, the
+  // close button would be displayed on the tab bar
   user_pref("browser.tabs.inTitlebar", 0);
 
   // Disable controlling videos with media keys

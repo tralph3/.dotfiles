@@ -111,6 +111,7 @@
   windowrule=workspace 5 silent,lutris
 
   windowrule=workspace 6 silent,discord
+  windowrule=workspace 6 silent,vesktop
 
   windowrule=workspace 7 silent,Spotify
   windowrule=workspace 7 silent,deadbeef

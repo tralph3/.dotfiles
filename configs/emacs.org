@@ -86,7 +86,7 @@ backspace. Behaves more like other editors.
 
 Auto-insert closing parenthesis, quotes, brackets and more.
 #+begin_src emacs-lisp
-  (electric-pair-mode t)
+  (add-hook 'prog-mode-hook 'electric-pair-local-mode)
 #+end_src
 
 Treat strings like =GtkWindow= as two separate words, instead of a

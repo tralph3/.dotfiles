@@ -23,6 +23,8 @@ to work.
 #+end_src
 
 #+begin_src conf
+  [init]
+      defaultBranch = master
   [user]
       name = tralph3
       email = tomasralph2000@gmail.com

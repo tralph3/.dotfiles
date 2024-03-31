@@ -195,7 +195,6 @@ Define custom functions to scroll only half a page up or down
 
   (global-set-key (kbd "M-o") 'insert-blank-line-bottom)
   (global-set-key (kbd "M-O") 'insert-blank-line-top)
-  (global-set-key (kbd "C-x c") 'comment-or-uncomment-region)
 #+end_src
 *** Display Size in Milimiters Workaround
 My monitor doesn't seem to report proper values to get the display

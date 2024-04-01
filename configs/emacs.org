@@ -106,9 +106,10 @@ Self explanatory.
 #+end_src
 
 If files change on disk while opened on emacs, this ensures they get
-reloaded.
+reloaded. Except for [[help:Buffer-menu-mode][Buffer-menu-mode]].
 #+begin_src emacs-lisp
   (setq global-auto-revert-non-file-buffers t)
+  (setq global-auto-revert-ignore-modes '(Buffer-menu-mode))
   (global-auto-revert-mode t)
 #+end_src
 

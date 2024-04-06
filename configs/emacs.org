@@ -306,7 +306,6 @@ package archives.
     :ensure t)
 #+end_src
 
-
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

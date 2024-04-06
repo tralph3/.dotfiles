@@ -453,6 +453,8 @@ that are not included by default.
     :ensure t)
   (use-package cmake-mode
     :ensure t)
+  (use-package haskell-mode
+    :ensure t)
 #+end_src
 
 ** Vertico

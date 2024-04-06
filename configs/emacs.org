@@ -615,7 +615,7 @@ Adds annotations to completion candidates.
                                        (43 . 8226)
                                        (45 . 8211)))
     :config
-    (add-hook 'org-mode-hook 'org-superstar-mode)
+    (add-hook 'org-mode-hook #'org-superstar-mode)
     (org-superstar-mode t))
 #+end_src
 
@@ -626,7 +626,7 @@ documents whenever the point is over them.
   (use-package org-fragtog
     :ensure t
     :config
-    (add-hook 'org-mode-hook 'org-fragtog-mode))
+    (add-hook 'org-mode-hook #'org-fragtog-mode))
 #+end_src
 
 ** Undo Tree
@@ -660,8 +660,7 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package consult
     :ensure t
-    :config
-    (global-set-key (kbd "C-x b") 'consult-buffer))
+    :bind (("C-x b" . #'consult-buffer)))
 #+end_src
 
 ** Vterm

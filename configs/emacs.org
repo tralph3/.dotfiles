@@ -299,6 +299,14 @@ package archives.
 #+begin_src emacs-lisp
   (setq package-install-upgrade-built-in t)
 #+end_src
+
+** Project.el
+#+begin_src emacs-lisp
+  (use-package project
+    :ensure t)
+#+end_src
+
+
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

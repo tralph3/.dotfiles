@@ -663,12 +663,11 @@ documents whenever the point is over them.
     :bind (("C-x b" . #'consult-buffer)))
 #+end_src
 
-** Vterm
+** Eat
 #+begin_src emacs-lisp
-  (use-package vterm
+  (use-package eat
     :ensure t
-    :custom
-    (vterm-always-compile-module t))
+    :bind (("C-x p t" . #'eat-project)))
 #+end_src
 
 ** Moodline

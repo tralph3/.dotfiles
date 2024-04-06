@@ -169,7 +169,7 @@ Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
   (pixel-scroll-precision-mode t)
 #+end_src
 
-Define custom functions to scroll only half a page up or down
+Define custom functions to scroll only half a page up or down.
 #+begin_src emacs-lisp
   (defun pixel-scroll-interpolate-half-down ()
     (interactive)
@@ -182,6 +182,43 @@ Define custom functions to scroll only half a page up or down
   (global-set-key (kbd "C-v") 'pixel-scroll-interpolate-half-down)
   (global-set-key (kbd "M-v") 'pixel-scroll-interpolate-half-up)
 #+end_src
+
+Make [[help:pixel-scroll-precision][pixel-scroll-precision]] (function for smooth mouse scrolling) take
+into account the size of the window being scrolled to decide how much
+it should scroll.
+
+Previously, tiny windows would get scrolled too far, thus missing
+content. With this piece of code, an [[help:advice-add][advice]] is added to the function
+to modify [[help:pixel-scroll-precision-interpolation-factor][pixel-scroll-precision-interpolation-factor]] before calling
+it.
+
+After taking some measurements, I've figured that there's 8 lines per
+interpolation factor integer, and about 21 pixels per line at a
+regular zoom level on a 1080p display. These numbers are used for
+calculating the interpolation factor in their respective functions.
+
+I also divide the window height by 5 to try to scroll a fifth of the
+window's size.
+#+begin_src emacs-lisp
+  (defun map-pixel-height-to-interpolation-factor (pixel-height)
+    (when (numberp pixel-height)
+      (let ((line-number (/ pixel-height 21)))
+        (map-line-number-to-interpolation-factor line-number))))
+
+  (defun map-line-number-to-interpolation-factor (line-number)
+    (when (numberp line-number)
+      (/ line-number 8.0)))
+
+  (defun around-pixel-scroll-precision (func &rest event)
+    (let* ((window (car (car (cdr (car event)))))
+           (window-height (window-text-height window t))
+           (desired-scroll-amount (/ window-height 5.0))
+           (pixel-scroll-precision-interpolation-factor (map-pixel-height-to-interpolation-factor desired-scroll-amount)))
+      (apply func event)))
+
+  (advice-add 'pixel-scroll-precision :around #'around-pixel-scroll-precision)
+#+end_src
+
 *** Comfort Keybindings
 #+begin_src emacs-lisp
   (defun insert-blank-line-top ()

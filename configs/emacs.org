@@ -29,13 +29,16 @@ packages.
 
   (setq-default pgtk-wait-for-event-timeout 0)
 #+end_src
+
 ** Performance
 #+begin_src emacs-lisp
   (setq-default gc-cons-threshold 100000000)
   (setq-default read-process-output-max (* 1024 1024))
 #+end_src
+
 * General Settings
 These settings are just personal preference.
+
 ** User Interface
 How I prefer emacs to look.
 #+begin_src emacs-lisp
@@ -53,8 +56,8 @@ How I prefer emacs to look.
     (set-face-attribute 'variable-pitch nil
                         :font "Ubuntu-13"))
 #+end_src
-** Behavioral Settings
 
+** Behavioral Settings
 Let me answer prompts with a single key.
 #+begin_src emacs-lisp
   (fset 'yes-or-no-p 'y-or-n-p)
@@ -156,6 +159,7 @@ documentation of symbols at point with =C-c h=.
 #+begin_src emacs-lisp
   (setq resize-mini-windows nil)
 #+end_src
+
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
 #+begin_src emacs-lisp
@@ -234,6 +238,7 @@ window's size.
   (global-set-key (kbd "M-o") 'insert-blank-line-bottom)
   (global-set-key (kbd "M-O") 'insert-blank-line-top)
 #+end_src
+
 *** Display Size in Milimiters Workaround
 My monitor doesn't seem to report proper values to get the display
 size in milimiters. These values are needed to compute the size of
@@ -268,29 +273,18 @@ from the [[https://gitlab.freedesktop.org/xorg/xserver/-/blob/f08ab719df921e1269
                (frames . ,(frames-on-display-list terminal))
                (source . "Gdk"))))))))
 #+end_src
+
 ** Custom File
 Load the custom file
 #+begin_src emacs-lisp
   (when (file-exists-p custom-file)
     (load custom-file 'noerror 'nomessage))
 #+end_src
-* Project
-General project.el settings.
 
-I don't always want to add a git repository to the projects I make,
-but I still want to use emacs features for handling them. This
-function lets me add any folder as a project without the need to
-litter its root with files.
-#+begin_src emacs-lisp
-  (defun project-add-local-project (dir)
-    "Given a DIR, add it as a project unconditionally."
-    (interactive "DDirectory: \n")
-    (if (y-or-n-p (format "Add '%s' as a project?" dir))
-        (project-remember-project (cons 'transient dir))))
-#+end_src
 * Package Configuration
 Here I define the configuration for every package I care about,
 including built-in ones.
+
 ** Setup
 Modify [[help:package-archives][package-archives]] variable to include the [[https://melpa.org][MELPA]] repository.
 #+begin_src emacs-lisp
@@ -329,6 +323,7 @@ package archives.
     :config
     (treemacs-load-theme "nerd-icons"))
 #+end_src
+
 ** Corfu
 Corfu provides a quick popup that displays completion candidates for
 whatever it is you're currently typing. It can also show documentation
@@ -352,6 +347,7 @@ selecting. Goes well with [[Orderless]].
     (corfu-popupinfo-mode)
     (global-corfu-mode))
 #+end_src
+
 *** Keybinds
 Corfu by default sets up the =corfu-keymap= variable which overrides
 some common keybindings. I found the defaults to be obtrusive. I
@@ -387,6 +383,7 @@ even if the popup is present.
   (define-key corfu-map (kbd "RET") 'corfu-handle-return-completion)
   (define-key corfu-map (kbd "M-SPC") 'corfu-insert-separator)
 #+end_src
+
 *** User Interface
 I like kind-icons to be shown next to the completion
 candidates. Hence, this package.
@@ -397,6 +394,7 @@ candidates. Hence, this package.
     :config
     (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 #+end_src
+
 ** Company
 #+begin_src emacs-lisp
   (use-package company
@@ -426,6 +424,7 @@ candidates. Hence, this package.
         (company-complete-selection)
       (newline-and-indent)))
 #+end_src
+
 ** Extra Programming Modes
 These packages provide major modes for other programming languages
 that are not included by default.
@@ -447,6 +446,7 @@ that are not included by default.
   (use-package cmake-mode
     :ensure t)
 #+end_src
+
 ** Vertico
 Vertico provides a performant and minimalistic vertical completion UI
 based on the default completion system. It makes it really easy to
@@ -459,13 +459,16 @@ search for functions or variables in the minibuffer. Goes well with
     (vertico-mode)
     (vertico-mouse-mode))
 #+end_src
+
 ** Magit
 It's [[https://magit.vc/][Magit]]! A Git Porcelain inside Emacs.
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
-    :bind (("C-c g" . 'magit-status)))
+    :bind (("C-c g" . #'magit-status)
+           ("C-x p m" . #'magit-project-status)))
 #+end_src
+
 ** Orderless
 Orderless is a completion style that lets you search for completions
 based on keywords, in any order.
@@ -475,6 +478,7 @@ based on keywords, in any order.
     :config
     (add-to-list 'completion-styles 'orderless))
 #+end_src
+
 ** Treemacs
 Treemacs provides a nice looking tree view of the working you're
 currently working with. It also provides the ability to list all
@@ -491,6 +495,7 @@ symbols on a given file, and browse it that way.
     :config
     (treemacs-fringe-indicator-mode -1))
 #+end_src
+
 ** Dashboard
 Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
@@ -517,6 +522,7 @@ Provides a nice dashboard on every new frame.
     :config
     (dashboard-setup-startup-hook))
 #+end_src
+
 ** Treesitter
 #+begin_src emacs-lisp
   (use-package tree-sitter
@@ -530,6 +536,7 @@ Provides a nice dashboard on every new frame.
     :ensure t
     :after tree-sitter)
 #+end_src
+
 ** Which Key
 Which Key provides a list of possible keys to type and to which
 functions they are bound when you're in the middle of typing a
@@ -543,6 +550,7 @@ functionality.
     :config
     (which-key-mode))
 #+end_src
+
 ** Marginalia
 Adds annotations to completion candidates.
 #+begin_src emacs-lisp
@@ -551,6 +559,7 @@ Adds annotations to completion candidates.
     :config
     (marginalia-mode))
 #+end_src
+
 ** Org Roam
 #+begin_src emacs-lisp
   (setq zettelkasten-paths-alist '(("Main" . "~/Documents/wiki/")
@@ -586,6 +595,7 @@ Adds annotations to completion candidates.
     :config
     (org-roam-db-autosync-mode t))
 #+end_src
+
 ** Org Superstar
 #+begin_src emacs-lisp
   (use-package org-superstar
@@ -598,6 +608,7 @@ Adds annotations to completion candidates.
     (add-hook 'org-mode-hook 'org-superstar-mode)
     (org-superstar-mode t))
 #+end_src
+
 ** Org Fragtog
 Org Fragtog allows me to seamlessly edit latex previews in org
 documents whenever the point is over them.
@@ -607,6 +618,7 @@ documents whenever the point is over them.
     :config
     (add-hook 'org-mode-hook 'org-fragtog-mode))
 #+end_src
+
 ** Undo Tree
 #+begin_src emacs-lisp
   (use-package undo-tree
@@ -616,6 +628,7 @@ documents whenever the point is over them.
     :config
     (global-undo-tree-mode))
 #+end_src
+
 ** Multiple Cursors
 #+begin_src emacs-lisp
   (use-package multiple-cursors
@@ -691,6 +704,7 @@ emacs, using its built-in tools as much as possible.
     (global-set-key (kbd "C-c b") 'xref-go-back)
     (global-set-key (kbd "C-c R") 'xref-find-references))
 #+end_src
+
 ** Org Mode
 #+begin_src emacs-lisp
   (use-package org
@@ -709,6 +723,7 @@ emacs, using its built-in tools as much as possible.
     (add-hook 'org-mode-hook 'auto-fill-mode)
     (add-hook 'org-mode-hook 'flyspell-mode))
 #+end_src
+
 *** Enable Languages for Execution
 This setting allows me to have more languages available to execute
 [[https://orgmode.org/worg/org-contrib/babel/][Org-Babel]] source blocks.
@@ -720,6 +735,7 @@ This setting allows me to have more languages available to execute
      (shell . t)
      (gnuplot . t)))
 #+end_src
+
 ** Doc View Mode
 #+begin_src emacs-lisp
   (use-package doc-view
@@ -739,6 +755,7 @@ comes with default configurations for a number of languages.
   (use-package dape
     :ensure t)
 #+end_src
+
 * Colorscheme
 #+begin_src emacs-lisp
   (defun reload-colorscheme()

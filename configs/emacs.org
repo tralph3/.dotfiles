@@ -303,7 +303,12 @@ package archives.
 ** Project.el
 #+begin_src emacs-lisp
   (use-package project
-    :ensure t)
+    :ensure t
+    :custom
+    (project-switch-commands '((project-find-file "Find file")
+                               (project-find-dir "Find directory")
+                               (eat-project "Terminal")
+                               (magit-project-status "Magit"))))
 #+end_src
 
 ** Nerd Icons

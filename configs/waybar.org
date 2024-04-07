@@ -79,7 +79,7 @@
   }
 
   /* Empty workspace */
-  #workspaces button.persistent {
+  #workspaces button.empty {
       background-color: #<<base(i="01")>>;
       color: #<<base(i="05")>>;
   }

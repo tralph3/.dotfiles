@@ -225,18 +225,20 @@ window's size.
 
 *** Comfort Keybindings
 #+begin_src emacs-lisp
-  (defun insert-blank-line-top ()
+  (defun smart-open-line-above ()
     (interactive)
     (move-beginning-of-line nil)
-    (open-line 1))
+    (insert "\n")
+    (forward-line -1)
+    (indent-according-to-mode))
 
-  (defun insert-blank-line-bottom ()
+  (defun smart-open-line ()
     (interactive)
     (move-end-of-line nil)
     (newline-and-indent))
 
-  (global-set-key (kbd "M-o") 'insert-blank-line-bottom)
-  (global-set-key (kbd "M-O") 'insert-blank-line-top)
+  (global-set-key (kbd "M-o") #'smart-open-line)
+  (global-set-key (kbd "M-O") #'smart-open-line-above)
 #+end_src
 
 *** Display Size in Milimiters Workaround

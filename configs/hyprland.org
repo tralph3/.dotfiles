@@ -101,6 +101,21 @@
   windowrule=noanim,flameshot
   windowrule=float,flameshot
 
+#+end_src
+
+These rules make the pointer for KDE Connect's slideshow remote work
+properly.
+#+begin_src conf
+  windowrule=float,org.kde.kdeconnect.daemon
+  windowrule=fakefullscreen,org.kde.kdeconnect.daemon
+  windowrule=size 100% 100%,org.kde.kdeconnect.daemon
+  windowrule=noanim,org.kde.kdeconnect.daemon
+  windowrule=pin,org.kde.kdeconnect.daemon
+  windowrule=nofocus,org.kde.kdeconnect.daemon
+#+end_src
+
+#+begin_src conf
+
   windowrule=workspace 2 silent,firefox
 
   windowrule=workspace 5 silent,gamescope

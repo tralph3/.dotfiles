@@ -342,12 +342,6 @@ package archives.
     :ensure t
     :hook
     (dired-mode . nerd-icons-dired-mode))
-
-  (use-package treemacs-nerd-icons
-    :ensure t
-    :after treemacs
-    :config
-    (treemacs-load-theme "nerd-icons"))
 #+end_src
 
 ** Corfu
@@ -505,23 +499,6 @@ based on keywords, in any order.
     :ensure t
     :config
     (add-to-list 'completion-styles 'orderless))
-#+end_src
-
-** Treemacs
-Treemacs provides a nice looking tree view of the working you're
-currently working with. It also provides the ability to list all
-symbols on a given file, and browse it that way.
-#+begin_src emacs-lisp
-  (defun project-open (project-root)
-    (cd project-root)
-    (treemacs-add-and-display-current-project-exclusively))
-
-  (use-package treemacs
-    :ensure t
-    :custom
-    (treemacs-read-string-input 'from-minibuffer)
-    :config
-    (treemacs-fringe-indicator-mode -1))
 #+end_src
 
 ** Dashboard

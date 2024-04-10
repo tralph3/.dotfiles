@@ -318,11 +318,18 @@ package archives.
   (use-package dired
     :custom
     (dired-kill-when-opening-new-dired-buffer t)
+    :after dired-subtree
     :bind
     ((:map dired-mode-map
            (("<tab>" . dired-subtree-toggle)
             ("<mouse-2>" . dired-find-file)
             ("<backspace>" . dired-up-directory)))))
+#+end_src
+
+This allows me to toggle subtrees in dired buffers.
+#+begin_src emacs-lisp
+  (use-package dired-subtree
+    :ensure t)
 #+end_src
 
 ** Nerd Icons

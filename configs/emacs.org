@@ -313,6 +313,18 @@ package archives.
                                (magit-project-status "Magit"))))
 #+end_src
 
+** Dired
+#+begin_src emacs-lisp
+  (use-package dired
+    :custom
+    (dired-kill-when-opening-new-dired-buffer t)
+    :bind
+    ((:map dired-mode-map
+           (("<tab>" . dired-subtree-toggle)
+            ("<mouse-2>" . dired-find-file)
+            ("<backspace>" . dired-up-directory)))))
+#+end_src
+
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

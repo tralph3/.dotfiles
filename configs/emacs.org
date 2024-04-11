@@ -335,6 +335,14 @@ This allows me to toggle subtrees in dired buffers.
     :ensure t)
 #+end_src
 
+And this adds some colour to dired.
+#+begin_src emacs-lisp
+  (use-package diredfl
+    :ensure t
+    :hook
+    (dired-mode . diredfl-mode))
+#+end_src
+
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

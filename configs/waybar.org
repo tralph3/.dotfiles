@@ -3,43 +3,75 @@
 #+PROPERTY: header-args :noweb yes :mkdirp yes
 
 #+begin_src js :tangle ~/.config/waybar/config
-  {
-      "layer": "top",
-      "position": "top",
-      "height": 30,
-      "modules-left": ["hyprland/workspaces"],
-      "modules-center": ["clock"],
-      "modules-right": ["tray", "wireplumber"],
-      "gtk-layer-shell": true,
-      "clock": {
-          "format": "{:%B %d %Y, %A - %H:%M}",
-          "timezone": "America/Argentina/Buenos_Aires",
-          "tooltip": false
-      },
-      "wireplumber": {
-          "format": "{icon}  {volume}%",
-          "format-muted": "MUTED",
-          "format-icons": ["", "", "", "", "", "", ""],
-          "tooltip": false,
-          "on-click": "$DOTFILES_DIR/scripts/audio.sh mute",
-          "on-click-right": "$DOTFILES_DIR/scripts/audio.sh switch_sink",
-          "on-scroll-up": "$DOTFILES_DIR/scripts/audio.sh raise 2",
-          "on-scroll-down": "$DOTFILES_DIR/scripts/audio.sh lower 2"
-      },
-      "hyprland/workspaces": {
-          "on-click": "activate",
-          "on-scroll-up": "hyprctl dispatch workspace e+1",
-          "on-scroll-down": "hyprctl dispatch workspace e-1",
-          "active-only": false,
-          "sort-by-number": true,
-          "persistent-workspaces": {
-              "*": 9
+  [
+      {
+          "layer": "top",
+          "position": "top",
+          "height": 30,
+          "modules-left": ["hyprland/workspaces", "hyprland/window"],
+          "modules-center": ["clock"],
+          "modules-right": ["tray", "group/storage", "wireplumber"],
+          "gtk-layer-shell": true,
+          "group/storage": {
+              "orientation": "horizontal",
+              "drawer": {
+                  "transition-duration": 250,
+                  "children-class": "not-power",
+                  "transition-left-to-right": false,
+              },
+              "modules": [
+                  "disk#root",
+                  "disk#storage",
+              ],
+          },
+          "disk#root": {
+              "path": "/",
+              "interval": 30,
+              "format": "  {percentage_used}%",
+              "tooltip-format": "{used} of {total} ({free} free)",
+          },
+          "disk#storage": {
+              "path": "/mnt/Storage",
+              "interval": 30,
+              "format": "  {percentage_used}%",
+              "tooltip-format": "{used} of {total} ({free} free)",
+          },
+          "clock": {
+              "format": "{:%B %d %Y, %A - %H:%M}",
+              "timezone": "America/Argentina/Buenos_Aires",
+              "tooltip": false
+          },
+          "wireplumber": {
+              "format": "{icon}  {volume}%",
+              "format-muted": "MUTED",
+              "format-icons": ["", "", "", "", "", "", ""],
+              "tooltip": false,
+              "on-click": "$DOTFILES_DIR/scripts/audio.sh mute",
+              "on-click-right": "$DOTFILES_DIR/scripts/audio.sh switch_sink",
+              "on-scroll-up": "$DOTFILES_DIR/scripts/audio.sh raise 2",
+              "on-scroll-down": "$DOTFILES_DIR/scripts/audio.sh lower 2"
+          },
+          "hyprland/window": {
+              "rewrite": {
+                  "(.*) — Mozilla Firefox": "$1",
+                  "(.*) - GNU Emacs at [A-z]*": "emacs: $1",
+              },
+          },
+          "hyprland/workspaces": {
+              "on-click": "activate",
+              "on-scroll-up": "hyprctl dispatch workspace e+1",
+              "on-scroll-down": "hyprctl dispatch workspace e-1",
+              "active-only": false,
+              "sort-by-number": true,
+              "persistent-workspaces": {
+                  "*": 9
+              }
+          },
+          "tray": {
+              "spacing": 10
           }
-      },
-      "tray": {
-          "spacing": 10
       }
-  }
+  ]
 #+end_src
 
 #+begin_src css :tangle ~/.config/waybar/style.css
@@ -53,11 +85,17 @@
       color: #<<base(i="01")>>;
   }
 
+  window#waybar.empty #window {
+      background-color: #<<base(i="00")>>;
+  }
+
   button {
       border: none;
       border-radius: 0;
   }
 
+  #window,
+  #disk,
   #wireplumber,
   #workspaces,
   #clock,
@@ -69,7 +107,7 @@
       padding-right: 10px;
       padding-top: 0px;
       padding-bottom: 0px;
-      border-radius: 3;
+      border-radius: 3px;
   }
 
   /* Open windows, not active */

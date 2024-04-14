@@ -30,6 +30,7 @@
   $C_LOWER_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh lower $BRIGHTNESS_STEP
   $C_CHANGE_COLOR=$DOTFILES_DIR/scripts/change_colorscheme.sh
   $C_SCREENSHOT=grim -g "$(slurp -d)" - | wl-copy
+  $C_SCREENSHOT_EDIT=grim -g "$(slurp -d)" - | swappy -f -
   $C_CALCULATOR=speedcrunch
   $C_KILL_WINDOW=hyprctl kill
   $C_POWEROFF=poweroff
@@ -156,6 +157,7 @@ properly.
   bind=,XF86MonBrightnessDown,exec,$C_LOWER_BRIGHTNESS
   bind=,XF86Calculator,exec,$C_CALCULATOR
   bind=,Print,exec,$C_SCREENSHOT
+  bind=SHIFT,Print,exec,$C_SCREENSHOT_EDIT
   bind=SUPERSHIFT,W,exec,$C_KILL_WINDOW
 
   bindm=SUPER,mouse:272,movewindow

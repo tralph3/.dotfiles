@@ -536,13 +536,6 @@ Provides a nice dashboard on every new frame.
     (dashboard-items '((recents . 5) (projects . 5) (bookmarks . 5)))
     (dashboard-startup-banner 'logo)
     (dashboard-set-navigator t)
-    (dashboard-navigator-buttons
-     `(((,(nerd-icons-codicon "nf-cod-vm" :height 1.0 :v-adjust 0.0)
-         " System Config"
-         "Open the system config file"
-         (lambda (&rest _)
-           (find-file (file-name-concat (getenv "DOTFILES_DIR") "README.org")))))))
-    (dashboard-projects-switch-function 'project-open)
     :config
     (dashboard-setup-startup-hook))
 #+end_src

@@ -434,6 +434,15 @@ candidates. Hence, this package.
     (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 #+end_src
 
+** Compile
+#+begin_src emacs-lisp
+  (use-package compile
+    :hook
+    (compilation-filter . ansi-color-compilation-filter)
+    :custom
+    (compilation-scroll-output t))
+#+end_src
+
 ** Company
 #+begin_src emacs-lisp
   (use-package company

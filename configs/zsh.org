@@ -3,7 +3,6 @@
 #+PROPERTY: header-args :noweb yes :tangle ~/.config/zsh/.zshrc :mkdirp yes
 
 #+begin_src bash
-    export EDITOR=nvim
 
     # Ignore commands that start with a space
     setopt HIST_IGNORE_SPACE
@@ -209,4 +208,5 @@
 
     alias localip='ip -brief -color address'
     alias load_null_sink='pactl load-module module-null-sink sink_name="nullsink" sink_properties=device.description="NullSink"'
+  export EDITOR="emacs -Q -nw"
 #+end_src

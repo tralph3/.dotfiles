@@ -526,6 +526,7 @@ It's [[https://magit.vc/][Magit]]! A Git Porcelain inside Emacs.
 #+begin_src emacs-lisp
   (use-package magit
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :bind (("C-c g" . #'magit-status)
            ("C-x p m" . #'magit-project-status)))
 #+end_src
@@ -565,6 +566,7 @@ Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
   (use-package tree-sitter
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :config
     (require 'tree-sitter-langs)
     (global-tree-sitter-mode)
@@ -603,6 +605,7 @@ Adds annotations to completion candidates.
 #+begin_src emacs-lisp
   (use-package eww
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (shr-max-width nil))
 #+end_src
@@ -691,15 +694,18 @@ documents whenever the point is over them.
 ** Embark
 #+begin_src emacs-lisp
   (use-package embark
-    :ensure t)
+    :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE")))
   (use-package embark-consult
-    :ensure t)
+    :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE")))
 #+end_src
 
 ** Consult
 #+begin_src emacs-lisp
   (use-package consult
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :bind (("C-x b" . #'consult-buffer)))
 #+end_src
 

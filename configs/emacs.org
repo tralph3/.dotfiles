@@ -723,7 +723,8 @@ documents whenever the point is over them.
   (use-package proced
     :ensure t
     :custom
-    (proced-enable-color-flag t))
+    (proced-enable-color-flag t)
+    (proced-tree-flag t))
 #+end_src
 
 ** Eglot

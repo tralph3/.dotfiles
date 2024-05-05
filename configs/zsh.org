@@ -35,9 +35,6 @@
   bindkey '^xe' edit-command-line
   bindkey '^x^e' edit-command-line
 
-  # Load aliases and shortcuts if existent.
-  [ -f "$HOME/.zsh/aliasrc.zsh" ] && source "$HOME/.zsh/aliasrc.zsh"
-
   # ctrl-left and ctrl-right
   bindkey "\e[1;5D" backward-word
   bindkey "\e[1;5C" forward-word

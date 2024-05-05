@@ -1,5 +1,6 @@
 ;; Name: Atelier Cave Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "efecf4")
 (setq base01 "e2dfe7")
 (setq base02 "8b8792")

@@ -1,5 +1,6 @@
 ;; Name: Atelier Savanna
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "171c19")
 (setq base01 "232a25")
 (setq base02 "526057")

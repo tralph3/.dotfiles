@@ -1,5 +1,6 @@
 ;; Name: Snazzy
 ;; Author: Chawye Hsu (https://github.com/chawyehsu) based on Hyper Snazzy Theme (https://github.com/sindresorhus/hyper-snazzy)
+;; Variant: dark
 (setq base00 "282a36")
 (setq base01 "34353e")
 (setq base02 "43454f")

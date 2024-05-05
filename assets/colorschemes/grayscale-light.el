@@ -1,5 +1,6 @@
 ;; Name: Grayscale Light
 ;; Author: Alexandre Gavioli (https://github.com/Alexx2/)
+;; Variant: light
 (setq base00 "f7f7f7")
 (setq base01 "e3e3e3")
 (setq base02 "b9b9b9")

@@ -1,5 +1,6 @@
 ;; Name: Sagelight
 ;; Author: Carter Veldhuizen
+;; Variant: light
 (setq base00 "f8f8f8")
 (setq base01 "e8e8e8")
 (setq base02 "d8d8d8")

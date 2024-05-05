@@ -1,5 +1,6 @@
 ;; Name: Atelier Forest
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "1b1918")
 (setq base01 "2c2421")
 (setq base02 "68615e")

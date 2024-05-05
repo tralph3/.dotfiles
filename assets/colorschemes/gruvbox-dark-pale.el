@@ -1,5 +1,6 @@
 ;; Name: Gruvbox dark, pale
 ;; Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+;; Variant: dark
 (setq base00 "262626")
 (setq base01 "3a3a3a")
 (setq base02 "4e4e4e")

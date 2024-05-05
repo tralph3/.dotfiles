@@ -1,5 +1,6 @@
 ;; Name: Blueish
 ;; Author: Ben Mayoras
+;; Variant: dark
 (setq base00 "182430")
 (setq base01 "243C54")
 (setq base02 "46290A")

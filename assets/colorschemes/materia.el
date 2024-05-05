@@ -1,5 +1,6 @@
 ;; Name: Materia
 ;; Author: Defman21
+;; Variant: dark
 (setq base00 "263238")
 (setq base01 "2C393F")
 (setq base02 "37474F")

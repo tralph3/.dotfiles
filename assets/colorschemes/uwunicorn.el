@@ -1,5 +1,6 @@
 ;; Name: UwUnicorn
 ;; Author: Fernando Marques (https://github.com/RakkiUwU) and Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: dark
 (setq base00 "241b26")
 (setq base01 "2f2a3f")
 (setq base02 "46354a")

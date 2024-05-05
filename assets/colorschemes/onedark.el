@@ -1,5 +1,6 @@
 ;; Name: OneDark
 ;; Author: Lalit Magant (http://github.com/tilal6991)
+;; Variant: dark
 (setq base00 "282c34")
 (setq base01 "353b45")
 (setq base02 "3e4451")

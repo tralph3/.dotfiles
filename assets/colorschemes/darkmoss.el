@@ -1,5 +1,6 @@
 ;; Name: darkmoss
 ;; Author: Gabriel Avanzi (https://github.com/avanzzzi)
+;; Variant: dark
 (setq base00 "171e1f")
 (setq base01 "252c2d")
 (setq base02 "373c3d")

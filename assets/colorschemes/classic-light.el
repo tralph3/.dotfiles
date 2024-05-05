@@ -1,5 +1,6 @@
 ;; Name: Classic Light
 ;; Author: Jason Heeris (http://heeris.id.au)
+;; Variant: light
 (setq base00 "F5F5F5")
 (setq base01 "E0E0E0")
 (setq base02 "D0D0D0")

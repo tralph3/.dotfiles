@@ -1,5 +1,6 @@
 ;; Name: Horizon Terminal Light
 ;; Author: Michaël Ball (http://github.com/michael-ball/)
+;; Variant: light
 (setq base00 "FDF0ED")
 (setq base01 "FADAD1")
 (setq base02 "F9CBBE")

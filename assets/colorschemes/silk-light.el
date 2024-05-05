@@ -1,5 +1,6 @@
 ;; Name: Silk Light
 ;; Author: Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: light
 (setq base00 "E9F1EF")
 (setq base01 "CCD4D3")
 (setq base02 "90B7B6")

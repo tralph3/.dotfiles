@@ -1,5 +1,6 @@
 ;; Name: Green Screen
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "001100")
 (setq base01 "003300")
 (setq base02 "005500")

@@ -1,5 +1,6 @@
 ;; Name: Darcula
 ;; Author: jetbrains
+;; Variant: dark
 (setq base00 "2b2b2b")
 (setq base01 "323232")
 (setq base02 "323232")

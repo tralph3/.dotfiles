@@ -1,5 +1,6 @@
 ;; Name: Mocha
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "3B3228")
 (setq base01 "534636")
 (setq base02 "645240")

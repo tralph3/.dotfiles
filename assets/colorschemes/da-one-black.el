@@ -1,5 +1,6 @@
 ;; Name: Da One Black
 ;; Author: NNB (https://github.com/NNBnh)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "282828")
 (setq base02 "585858")

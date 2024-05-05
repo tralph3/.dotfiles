@@ -1,5 +1,6 @@
 ;; Name: Zenburn
 ;; Author: elnawe
+;; Variant: dark
 (setq base00 "383838")
 (setq base01 "404040")
 (setq base02 "606060")

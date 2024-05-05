@@ -1,5 +1,6 @@
 ;; Name: dirtysea
 ;; Author: Kahlil (Kal) Hodgson
+;; Variant: light
 (setq base00 "e0e0e0")
 (setq base01 "d0dad0")
 (setq base02 "d0d0d0")

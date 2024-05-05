@@ -1,5 +1,6 @@
 ;; Name: 3024
 ;; Author: Jan T. Sott (http://github.com/idleberg)
+;; Variant: dark
 (setq base00 "090300")
 (setq base01 "3a3432")
 (setq base02 "4a4543")

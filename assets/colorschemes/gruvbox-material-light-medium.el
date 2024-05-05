@@ -1,5 +1,6 @@
 ;; Name: Gruvbox Material Light, Medium
 ;; Author: Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)
+;; Variant: light
 (setq base00 "fbf1c7")
 (setq base01 "f2e5bc")
 (setq base02 "d5c4a1")

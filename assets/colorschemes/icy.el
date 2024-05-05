@@ -1,5 +1,6 @@
 ;; Name: Icy Dark
 ;; Author: icyphox (https://icyphox.ga)
+;; Variant: light
 (setq base00 "021012")
 (setq base01 "031619")
 (setq base02 "041f23")

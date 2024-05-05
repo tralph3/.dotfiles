@@ -1,5 +1,6 @@
 ;; Name: Material Vivid
 ;; Author: joshyrobot
+;; Variant: dark
 (setq base00 "202124")
 (setq base01 "27292c")
 (setq base02 "323639")

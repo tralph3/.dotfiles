@@ -1,5 +1,6 @@
 ;; Name: Da One White
 ;; Author: NNB (https://github.com/NNBnh)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "c8c8c8")
 (setq base02 "888888")

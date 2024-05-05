@@ -1,5 +1,6 @@
 ;; Name: Rosé Pine Dawn
 ;; Author: Emilia Dunfelt <edun@dunfelt.se>
+;; Variant: light
 (setq base00 "faf4ed")
 (setq base01 "fffaf3")
 (setq base02 "f2e9de")

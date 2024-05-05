@@ -1,5 +1,6 @@
 ;; Name: Rebecca
 ;; Author: Victor Borja (http://github.com/vic) based on Rebecca Theme (http://github.com/vic/rebecca-theme)
+;; Variant: dark
 (setq base00 "292a44")
 (setq base01 "663399")
 (setq base02 "383a62")

@@ -1,5 +1,6 @@
 ;; Name: Classic Dark
 ;; Author: Jason Heeris (http://heeris.id.au)
+;; Variant: dark
 (setq base00 "151515")
 (setq base01 "202020")
 (setq base02 "303030")

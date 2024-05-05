@@ -1,5 +1,6 @@
 ;; Name: Material Lighter
 ;; Author: Nate Peterson
+;; Variant: light
 (setq base00 "FAFAFA")
 (setq base01 "E7EAEC")
 (setq base02 "CCEAE7")

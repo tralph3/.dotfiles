@@ -1,5 +1,6 @@
 ;; Name: Darktooth
 ;; Author: Jason Milkins (https://github.com/jasonm23)
+;; Variant: dark
 (setq base00 "1D2021")
 (setq base01 "32302F")
 (setq base02 "504945")

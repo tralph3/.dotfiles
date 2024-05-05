@@ -1,5 +1,6 @@
 ;; Name: Atelier Dune
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "20201d")
 (setq base01 "292824")
 (setq base02 "6e6b5e")

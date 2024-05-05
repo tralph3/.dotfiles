@@ -1,5 +1,6 @@
 ;; Name: Tokyo Night Dark
 ;; Author: Michaël Ball
+;; Variant: dark
 (setq base00 "1A1B26")
 (setq base01 "16161E")
 (setq base02 "2F3549")

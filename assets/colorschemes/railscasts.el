@@ -1,5 +1,6 @@
 ;; Name: Railscasts
 ;; Author: Ryan Bates (http://railscasts.com)
+;; Variant: dark
 (setq base00 "2b2b2b")
 (setq base01 "272935")
 (setq base02 "3a4055")

@@ -1,5 +1,6 @@
 ;; Name: Synth Midnight Terminal Light
 ;; Author: Michaël Ball (http://github.com/michael-ball/)
+;; Variant: light
 (setq base00 "dddfe0")
 (setq base01 "cfd1d2")
 (setq base02 "c1c3c4")

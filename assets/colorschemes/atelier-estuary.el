@@ -1,5 +1,6 @@
 ;; Name: Atelier Estuary
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "22221b")
 (setq base01 "302f27")
 (setq base02 "5f5e4e")

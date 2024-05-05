@@ -1,5 +1,6 @@
 ;; Name: Solarized Dark
 ;; Author: Ethan Schoonover (modified by aramisgithub)
+;; Variant: dark
 (setq base00 "002b36")
 (setq base01 "073642")
 (setq base02 "586e75")

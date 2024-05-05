@@ -1,5 +1,6 @@
 ;; Name: Catppuccin Mocha
 ;; Author: https://github.com/catppuccin/catppuccin
+;; Variant: dark
 (setq base00 "1e1e2e")
 (setq base01 "181825")
 (setq base02 "313244")

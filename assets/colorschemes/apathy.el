@@ -1,5 +1,6 @@
 ;; Name: Apathy
 ;; Author: Jannik Siebert (https://github.com/janniks)
+;; Variant: dark
 (setq base00 "031A16")
 (setq base01 "0B342D")
 (setq base02 "184E45")

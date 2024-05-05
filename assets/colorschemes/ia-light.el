@@ -1,5 +1,6 @@
 ;; Name: iA Light
 ;; Author: iA Inc. (modified by aramisgithub)
+;; Variant: light
 (setq base00 "f6f6f6")
 (setq base01 "dedede")
 (setq base02 "bde5f2")

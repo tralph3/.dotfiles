@@ -1,5 +1,6 @@
 ;; Name: Hopscotch
 ;; Author: Jan T. Sott
+;; Variant: dark
 (setq base00 "322931")
 (setq base01 "433b42")
 (setq base02 "5c545b")

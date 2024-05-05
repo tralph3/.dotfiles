@@ -1,5 +1,6 @@
 ;; Name: Sakura
 ;; Author: Misterio77 (http://github.com/Misterio77)
+;; Variant: light
 (setq base00 "feedf3")
 (setq base01 "f8e2e7")
 (setq base02 "e0ccd1")

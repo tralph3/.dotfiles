@@ -1,5 +1,6 @@
 ;; Name: Marrakesh
 ;; Author: Alexandre Gavioli (http://github.com/Alexx2/)
+;; Variant: dark
 (setq base00 "201602")
 (setq base01 "302e00")
 (setq base02 "5f5b17")

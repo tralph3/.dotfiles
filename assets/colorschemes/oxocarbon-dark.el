@@ -1,5 +1,6 @@
 ;; Name: Oxocarbon Dark
 ;; Author: shaunsingh/IBM
+;; Variant: dark
 (setq base00 "161616")
 (setq base01 "262626")
 (setq base02 "393939")

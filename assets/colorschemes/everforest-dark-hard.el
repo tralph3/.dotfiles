@@ -1,5 +1,6 @@
 ;; Name: Everforest Dark Hard
 ;; Author: Oskar Liew (https://github.com/OskarLiew)
+;; Variant: dark
 (setq base00 "272e33")
 (setq base01 "2e383c")
 (setq base02 "414b50")

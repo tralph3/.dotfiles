@@ -1,5 +1,6 @@
 ;; Name: Unikitty Dark
 ;; Author: Josh W Lewis (@joshwlewis)
+;; Variant: dark
 (setq base00 "2e2a31")
 (setq base01 "4a464d")
 (setq base02 "666369")

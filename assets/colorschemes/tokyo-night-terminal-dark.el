@@ -1,5 +1,6 @@
 ;; Name: Tokyo Night Terminal Dark
 ;; Author: Michaël Ball
+;; Variant: dark
 (setq base00 "16161E")
 (setq base01 "1A1B26")
 (setq base02 "2F3549")

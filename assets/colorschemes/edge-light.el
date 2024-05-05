@@ -1,5 +1,6 @@
 ;; Name: Edge Light
 ;; Author: cjayross (https://github.com/cjayross)
+;; Variant: light
 (setq base00 "fafafa")
 (setq base01 "7c9f4b")
 (setq base02 "d69822")

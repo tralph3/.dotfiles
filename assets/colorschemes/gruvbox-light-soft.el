@@ -1,5 +1,6 @@
 ;; Name: Gruvbox light, soft
 ;; Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+;; Variant: light
 (setq base00 "f2e5bc")
 (setq base01 "ebdbb2")
 (setq base02 "d5c4a1")

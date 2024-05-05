@@ -1,5 +1,6 @@
 ;; Name: Tokyo Night Storm
 ;; Author: Michaël Ball
+;; Variant: dark
 (setq base00 "24283B")
 (setq base01 "16161E")
 (setq base02 "343A52")

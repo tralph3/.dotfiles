@@ -1,5 +1,6 @@
 ;; Name: Tokyodark
 ;; Author: Tiagovla (https://github.com/tiagovla/)
+;; Variant: dark
 (setq base00 "11121d")
 (setq base01 "151621")
 (setq base02 "43444f")

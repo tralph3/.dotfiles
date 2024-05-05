@@ -1,5 +1,6 @@
 ;; Name: London Tube
 ;; Author: Jan T. Sott
+;; Variant: dark
 (setq base00 "231f20")
 (setq base01 "1c3f95")
 (setq base02 "5a5758")

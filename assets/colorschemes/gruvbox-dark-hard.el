@@ -1,5 +1,6 @@
 ;; Name: Gruvbox dark, hard
 ;; Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+;; Variant: dark
 (setq base00 "1d2021")
 (setq base01 "3c3836")
 (setq base02 "504945")

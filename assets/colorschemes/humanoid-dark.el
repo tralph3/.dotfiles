@@ -1,5 +1,6 @@
 ;; Name: Humanoid dark
 ;; Author: Thomas (tasmo) Friese
+;; Variant: dark
 (setq base00 "232629")
 (setq base01 "333b3d")
 (setq base02 "484e54")

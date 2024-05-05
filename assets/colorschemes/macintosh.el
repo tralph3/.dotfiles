@@ -1,5 +1,6 @@
 ;; Name: Macintosh
 ;; Author: Rebecca Bettencourt (http://www.kreativekorp.com)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "404040")
 (setq base02 "404040")

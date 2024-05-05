@@ -1,5 +1,6 @@
 ;; Name: Harmonic16 Dark
 ;; Author: Jannik Siebert (https://github.com/janniks)
+;; Variant: dark
 (setq base00 "0b1c2c")
 (setq base01 "223b54")
 (setq base02 "405c79")

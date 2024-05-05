@@ -1,5 +1,6 @@
 ;; Name: Chalk
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "151515")
 (setq base01 "202020")
 (setq base02 "303030")

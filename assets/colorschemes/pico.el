@@ -1,5 +1,6 @@
 ;; Name: Pico
 ;; Author: PICO-8 (http://www.lexaloffle.com/pico-8.php)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "1d2b53")
 (setq base02 "7e2553")

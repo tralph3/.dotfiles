@@ -1,5 +1,6 @@
 ;; Name: Rosé Pine Moon
 ;; Author: Emilia Dunfelt <edun@dunfelt.se>
+;; Variant: dark
 (setq base00 "232136")
 (setq base01 "2a273f")
 (setq base02 "393552")

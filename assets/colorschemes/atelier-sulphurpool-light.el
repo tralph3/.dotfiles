@@ -1,5 +1,6 @@
 ;; Name: Atelier Sulphurpool Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f5f7ff")
 (setq base01 "dfe2f1")
 (setq base02 "979db4")

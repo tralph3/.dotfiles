@@ -1,5 +1,6 @@
 ;; Name: Unikitty Light
 ;; Author: Josh W Lewis (@joshwlewis)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "e1e1e2")
 (setq base02 "c4c3c5")

@@ -1,5 +1,6 @@
 ;; Name: Ocean
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "2b303b")
 (setq base01 "343d46")
 (setq base02 "4f5b66")

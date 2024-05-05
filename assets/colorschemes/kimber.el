@@ -1,5 +1,6 @@
 ;; Name: Kimber
 ;; Author: Mishka Nguyen (https://github.com/akhsiM)
+;; Variant: dark
 (setq base00 "222222")
 (setq base01 "313131")
 (setq base02 "555D55")

@@ -1,5 +1,6 @@
 ;; Name: Tango
 ;; Author: @Schnouki, based on the Tango Desktop Project
+;; Variant: dark
 (setq base00 "2e3436")
 (setq base01 "8ae234")
 (setq base02 "fce94f")

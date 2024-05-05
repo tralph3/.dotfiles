@@ -1,5 +1,6 @@
 ;; Name: Circus
 ;; Author: Stephan Boyer (https://github.com/stepchowfun) and Esther Wang (https://github.com/ewang12)
+;; Variant: dark
 (setq base00 "191919")
 (setq base01 "202020")
 (setq base02 "303030")

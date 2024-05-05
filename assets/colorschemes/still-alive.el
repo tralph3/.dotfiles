@@ -1,5 +1,6 @@
 ;; Name: Still Alive
 ;; Author: Derrick McKee (derrick.mckee@gmail.com)
+;; Variant: light
 (setq base00 "F0F0F0")
 (setq base01 "F0D848")
 (setq base02 "FFF018")

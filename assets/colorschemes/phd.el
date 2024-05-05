@@ -1,5 +1,6 @@
 ;; Name: PhD
 ;; Author: Hennig Hasemann (http://leetless.de/vim.html)
+;; Variant: dark
 (setq base00 "061229")
 (setq base01 "2a3448")
 (setq base02 "4d5666")

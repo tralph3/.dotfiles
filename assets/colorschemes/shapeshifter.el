@@ -1,5 +1,6 @@
 ;; Name: Shapeshifter
 ;; Author: Tyler Benziger (http://tybenz.com)
+;; Variant: light
 (setq base00 "f9f9f9")
 (setq base01 "e0e0e0")
 (setq base02 "ababab")

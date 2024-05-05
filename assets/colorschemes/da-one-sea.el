@@ -1,5 +1,6 @@
 ;; Name: Da One Sea
 ;; Author: NNB (https://github.com/NNBnh)
+;; Variant: dark
 (setq base00 "22273d")
 (setq base01 "374059")
 (setq base02 "525866")

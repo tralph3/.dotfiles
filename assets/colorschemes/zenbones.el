@@ -1,5 +1,6 @@
 ;; Name: Zenbones
 ;; Author: mcchrish
+;; Variant: dark
 (setq base00 "191919")
 (setq base01 "DE6E7C")
 (setq base02 "819B69")

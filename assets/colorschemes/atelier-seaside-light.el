@@ -1,5 +1,6 @@
 ;; Name: Atelier Seaside Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f4fbf4")
 (setq base01 "cfe8cf")
 (setq base02 "8ca68c")

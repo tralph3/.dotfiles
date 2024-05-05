@@ -1,5 +1,6 @@
 ;; Name: Primer Dark Dimmed
 ;; Author: Jimmy Lin
+;; Variant: dark
 (setq base00 "1c2128")
 (setq base01 "373e47")
 (setq base02 "444c56")

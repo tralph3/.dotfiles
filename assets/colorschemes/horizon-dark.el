@@ -1,5 +1,6 @@
 ;; Name: Horizon Dark
 ;; Author: Michaël Ball (http://github.com/michael-ball/)
+;; Variant: dark
 (setq base00 "1C1E26")
 (setq base01 "232530")
 (setq base02 "2E303E")

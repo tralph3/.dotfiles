@@ -1,5 +1,6 @@
 ;; Name: Gruber
 ;; Author: Patel, Nimai <nimai.m.patel@gmail.com>, colors from www.github.com/rexim/gruber-darker-theme
+;; Variant: dark
 (setq base00 "181818")
 (setq base01 "453d41")
 (setq base02 "484848")

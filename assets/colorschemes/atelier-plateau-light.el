@@ -1,5 +1,6 @@
 ;; Name: Atelier Plateau Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f4ecec")
 (setq base01 "e7dfdf")
 (setq base02 "8a8585")

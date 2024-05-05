@@ -1,5 +1,6 @@
 ;; Name: Atelier Lakeside
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "161b1d")
 (setq base01 "1f292e")
 (setq base02 "516d7b")

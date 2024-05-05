@@ -1,5 +1,6 @@
 ;; Name: Spaceduck
 ;; Author: Guillermo Rodriguez (https://github.com/pineapplegiant), packaged by Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: dark
 (setq base00 "16172d")
 (setq base01 "1b1c36")
 (setq base02 "30365F")

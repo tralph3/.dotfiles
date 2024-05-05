@@ -1,5 +1,6 @@
 ;; Name: Brush Trees Dark
 ;; Author: Abraham White <abelincoln.white@gmail.com>
+;; Variant: dark
 (setq base00 "485867")
 (setq base01 "5A6D7A")
 (setq base02 "6D828E")

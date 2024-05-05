@@ -1,5 +1,6 @@
 ;; Name: Nebula
 ;; Author: Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: dark
 (setq base00 "22273b")
 (setq base01 "414f60")
 (setq base02 "5a8380")

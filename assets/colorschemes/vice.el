@@ -1,5 +1,6 @@
 ;; Name: vice
 ;; Author: Thomas Leon Highbaugh thighbaugh@zoho.com
+;; Variant: dark
 (setq base00 "17191E")
 (setq base01 "22262d")
 (setq base02 "3c3f4c")

@@ -1,5 +1,6 @@
 ;; Name: Equilibrium Gray Light
 ;; Author: Carlo Abelli
+;; Variant: light
 (setq base00 "f1f1f1")
 (setq base01 "e2e2e2")
 (setq base02 "d4d4d4")

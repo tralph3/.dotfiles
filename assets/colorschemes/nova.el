@@ -1,5 +1,6 @@
 ;; Name: Nova
 ;; Author: George Essig (https://github.com/gessig), Trevor D. Miller (https://trevordmiller.com)
+;; Variant: dark
 (setq base00 "3C4C55")
 (setq base01 "556873")
 (setq base02 "6A7D89")

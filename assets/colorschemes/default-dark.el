@@ -1,5 +1,6 @@
 ;; Name: Default Dark
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "181818")
 (setq base01 "282828")
 (setq base02 "383838")

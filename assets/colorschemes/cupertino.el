@@ -1,5 +1,6 @@
 ;; Name: Cupertino
 ;; Author: Defman21
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "c0c0c0")
 (setq base02 "c0c0c0")

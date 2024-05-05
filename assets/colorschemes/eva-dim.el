@@ -1,5 +1,6 @@
 ;; Name: Eva Dim
 ;; Author: kjakapat (https://github.com/kjakapat)
+;; Variant: dark
 (setq base00 "2a3b4d")
 (setq base01 "3d566f")
 (setq base02 "4b6988")

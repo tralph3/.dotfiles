@@ -1,5 +1,6 @@
 ;; Name: Windows NT Light
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "eaeaea")
 (setq base02 "d5d5d5")

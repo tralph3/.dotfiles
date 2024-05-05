@@ -1,5 +1,6 @@
 ;; Name: Tokyo City Light
 ;; Author: Michaël Ball
+;; Variant: light
 (setq base00 "FBFBFD")
 (setq base01 "F6F6F8")
 (setq base02 "EDEFF6")

@@ -1,5 +1,6 @@
 ;; Name: Flat
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "2C3E50")
 (setq base01 "34495E")
 (setq base02 "7F8C8D")

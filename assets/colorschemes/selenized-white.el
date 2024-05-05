@@ -1,5 +1,6 @@
 ;; Name: selenized-white
 ;; Author: Jan Warchol (https://github.com/jan-warchol/selenized) / adapted to base16 by ali
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "ebebeb")
 (setq base02 "cdcdcd")

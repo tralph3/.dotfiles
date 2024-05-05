@@ -1,5 +1,6 @@
 ;; Name: Atelier Cave
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "19171c")
 (setq base01 "26232a")
 (setq base02 "585260")

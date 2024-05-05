@@ -1,5 +1,6 @@
 ;; Name: Nord
 ;; Author: arcticicestudio
+;; Variant: dark
 (setq base00 "2E3440")
 (setq base01 "3B4252")
 (setq base02 "434C5E")

@@ -1,5 +1,6 @@
 ;; Name: Purpledream
 ;; Author: malet
+;; Variant: dark
 (setq base00 "100510")
 (setq base01 "302030")
 (setq base02 "403040")

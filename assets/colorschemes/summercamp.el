@@ -1,5 +1,6 @@
 ;; Name: summercamp
 ;; Author: zoe firi (zoefiri.github.io)
+;; Variant: dark
 (setq base00 "1c1810")
 (setq base01 "2a261c")
 (setq base02 "3a3527")

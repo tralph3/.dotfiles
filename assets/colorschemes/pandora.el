@@ -1,5 +1,6 @@
 ;; Name: pandora
 ;; Author: Cassandra Fox
+;; Variant: dark
 (setq base00 "131213")
 (setq base01 "2f1823")
 (setq base02 "472234")

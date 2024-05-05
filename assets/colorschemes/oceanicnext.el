@@ -1,5 +1,6 @@
 ;; Name: OceanicNext
 ;; Author: https://github.com/voronianski/oceanic-next-color-scheme
+;; Variant: dark
 (setq base00 "1B2B34")
 (setq base01 "343D46")
 (setq base02 "4F5B66")

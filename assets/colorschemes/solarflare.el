@@ -1,5 +1,6 @@
 ;; Name: Solar Flare
 ;; Author: Chuck Harmston (https://chuck.harmston.ch)
+;; Variant: dark
 (setq base00 "18262F")
 (setq base01 "222E38")
 (setq base02 "586875")

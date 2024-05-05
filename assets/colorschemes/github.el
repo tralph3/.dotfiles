@@ -1,5 +1,6 @@
 ;; Name: Github
 ;; Author: Defman21
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "f5f5f5")
 (setq base02 "c8c8fa")

@@ -1,5 +1,6 @@
 ;; Name: IR Black
 ;; Author: Timothée Poisot (http://timotheepoisot.fr)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "242422")
 (setq base02 "484844")

@@ -1,5 +1,6 @@
 ;; Name: Solarized Light
 ;; Author: Ethan Schoonover (modified by aramisgithub)
+;; Variant: light
 (setq base00 "fdf6e3")
 (setq base01 "eee8d5")
 (setq base02 "93a1a1")

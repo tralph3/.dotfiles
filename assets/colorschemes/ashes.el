@@ -1,5 +1,6 @@
 ;; Name: Ashes
 ;; Author: Jannik Siebert (https://github.com/janniks)
+;; Variant: dark
 (setq base00 "1C2023")
 (setq base01 "393F45")
 (setq base02 "565E65")

@@ -1,5 +1,6 @@
 ;; Name: Oxocarbon Light
 ;; Author: shaunsingh/IBM
+;; Variant: light
 (setq base00 "f2f4f8")
 (setq base01 "dde1e6")
 (setq base02 "525252")

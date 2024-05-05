@@ -1,5 +1,6 @@
 ;; Name: Everforest
 ;; Author: Sainnhe Park (https://github.com/sainnhe)
+;; Variant: dark
 (setq base00 "2f383e")
 (setq base01 "374247")
 (setq base02 "4a555b")

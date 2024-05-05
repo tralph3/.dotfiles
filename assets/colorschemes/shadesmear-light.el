@@ -1,5 +1,6 @@
 ;; Name: ShadeSmear Light
 ;; Author: Kyle Giammarco (http://kyle.giammar.co)
+;; Variant: light
 (setq base00 "DBDBDB")
 (setq base01 "E4E4E4")
 (setq base02 "C0C0C0")

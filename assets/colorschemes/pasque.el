@@ -1,5 +1,6 @@
 ;; Name: Pasque
 ;; Author: Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: dark
 (setq base00 "271C3A")
 (setq base01 "100323")
 (setq base02 "3E2D5C")

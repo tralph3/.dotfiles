@@ -1,5 +1,6 @@
 ;; Name: Porple
 ;; Author: Niek den Breeje (https://github.com/AuditeMarlow)
+;; Variant: dark
 (setq base00 "292c36")
 (setq base01 "333344")
 (setq base02 "474160")

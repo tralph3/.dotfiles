@@ -1,5 +1,6 @@
 ;; Name: Edge Dark
 ;; Author: cjayross (https://github.com/cjayross)
+;; Variant: dark
 (setq base00 "262729")
 (setq base01 "88909f")
 (setq base02 "b7bec9")

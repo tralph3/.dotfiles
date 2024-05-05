@@ -1,5 +1,6 @@
 ;; Name: Catppuccin Frappe
 ;; Author: https://github.com/catppuccin/catppuccin
+;; Variant: dark
 (setq base00 "303446")
 (setq base01 "292c3c")
 (setq base02 "414559")

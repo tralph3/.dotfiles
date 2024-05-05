@@ -1,5 +1,6 @@
 ;; Name: Material Palenight
 ;; Author: Nate Peterson
+;; Variant: dark
 (setq base00 "292D3E")
 (setq base01 "444267")
 (setq base02 "32374D")

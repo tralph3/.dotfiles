@@ -1,5 +1,6 @@
 ;; Name: Atelier Savanna Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "ecf4ee")
 (setq base01 "dfe7e2")
 (setq base02 "87928a")

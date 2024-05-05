@@ -1,5 +1,6 @@
 ;; Name: Outrun Dark
 ;; Author: Hugo Delahousse (http://github.com/hugodelahousse/)
+;; Variant: dark
 (setq base00 "00002A")
 (setq base01 "20204A")
 (setq base02 "30305A")

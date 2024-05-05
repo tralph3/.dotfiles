@@ -1,5 +1,6 @@
 ;; Name: Framer
 ;; Author: Framer (Maintained by Jesse Hoyos)
+;; Variant: dark
 (setq base00 "181818")
 (setq base01 "151515")
 (setq base02 "464646")

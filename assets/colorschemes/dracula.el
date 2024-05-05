@@ -1,5 +1,6 @@
 ;; Name: Dracula
 ;; Author: Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
+;; Variant: dark
 (setq base00 "282936")
 (setq base01 "3a3c4e")
 (setq base02 "4d4f68")

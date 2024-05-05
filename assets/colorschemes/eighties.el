@@ -1,5 +1,6 @@
 ;; Name: Eighties
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "2d2d2d")
 (setq base01 "393939")
 (setq base02 "515151")

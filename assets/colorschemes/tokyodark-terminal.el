@@ -1,5 +1,6 @@
 ;; Name: Tokyodark Terminal
 ;; Author: Tiagovla (https://github.com/tiagovla/)
+;; Variant: dark
 (setq base00 "11121d")
 (setq base01 "1A1B2A")
 (setq base02 "212234")

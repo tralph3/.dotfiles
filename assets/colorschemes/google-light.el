@@ -1,5 +1,6 @@
 ;; Name: Google Light
 ;; Author: Seth Wright (http://sethawright.com)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "e0e0e0")
 (setq base02 "c5c8c6")

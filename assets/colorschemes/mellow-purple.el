@@ -1,5 +1,6 @@
 ;; Name: Mellow Purple
 ;; Author: gidsi
+;; Variant: dark
 (setq base00 "1e0528")
 (setq base01 "1A092D")
 (setq base02 "331354")

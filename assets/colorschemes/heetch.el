@@ -1,5 +1,6 @@
 ;; Name: Heetch Dark
 ;; Author: Geoffrey Teale (tealeg@gmail.com)
+;; Variant: dark
 (setq base00 "190134")
 (setq base01 "392551")
 (setq base02 "5A496E")

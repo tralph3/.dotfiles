@@ -1,5 +1,6 @@
 ;; Name: Blue Forest
 ;; Author: alonsodomin (https://github.com/alonsodomin)
+;; Variant: dark
 (setq base00 "141F2E")
 (setq base01 "1e5c1e")
 (setq base02 "273e5c")

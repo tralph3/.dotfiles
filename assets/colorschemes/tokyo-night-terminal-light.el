@@ -1,5 +1,6 @@
 ;; Name: Tokyo Night Terminal Light
 ;; Author: Michaël Ball
+;; Variant: light
 (setq base00 "D5D6DB")
 (setq base01 "CBCCD1")
 (setq base02 "DFE0E5")

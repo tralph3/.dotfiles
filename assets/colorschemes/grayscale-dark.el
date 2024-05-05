@@ -1,5 +1,6 @@
 ;; Name: Grayscale Dark
 ;; Author: Alexandre Gavioli (https://github.com/Alexx2/)
+;; Variant: dark
 (setq base00 "101010")
 (setq base01 "252525")
 (setq base02 "464646")

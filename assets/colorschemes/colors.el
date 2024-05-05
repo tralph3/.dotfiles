@@ -1,5 +1,6 @@
 ;; Name: Colors
 ;; Author: mrmrs (http://clrs.cc)
+;; Variant: dark
 (setq base00 "111111")
 (setq base01 "333333")
 (setq base02 "555555")

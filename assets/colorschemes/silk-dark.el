@@ -1,5 +1,6 @@
 ;; Name: Silk Dark
 ;; Author: Gabriel Fontes (https://github.com/Misterio77)
+;; Variant: dark
 (setq base00 "0e3c46")
 (setq base01 "1D494E")
 (setq base02 "2A5054")

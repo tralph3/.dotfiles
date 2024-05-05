@@ -1,5 +1,6 @@
 ;; Name: selenized-light
 ;; Author: Jan Warchol (https://github.com/jan-warchol/selenized) / adapted to base16 by ali
+;; Variant: light
 (setq base00 "fbf3db")
 (setq base01 "ece3cc")
 (setq base02 "d5cdb6")

@@ -1,5 +1,6 @@
 ;; Name: Spacemacs
 ;; Author: Nasser Alshammari (https://github.com/nashamri/spacemacs-theme)
+;; Variant: dark
 (setq base00 "1f2022")
 (setq base01 "282828")
 (setq base02 "444155")

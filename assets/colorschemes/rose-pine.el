@@ -1,5 +1,6 @@
 ;; Name: Rosé Pine
 ;; Author: Emilia Dunfelt <edun@dunfelt.se>
+;; Variant: dark
 (setq base00 "191724")
 (setq base01 "1f1d2e")
 (setq base02 "26233a")

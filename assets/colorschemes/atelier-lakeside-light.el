@@ -1,5 +1,6 @@
 ;; Name: Atelier Lakeside Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "ebf8ff")
 (setq base01 "c1e4f6")
 (setq base02 "7ea2b4")

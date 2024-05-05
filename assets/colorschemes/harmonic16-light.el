@@ -1,5 +1,6 @@
 ;; Name: Harmonic16 Light
 ;; Author: Jannik Siebert (https://github.com/janniks)
+;; Variant: light
 (setq base00 "f7f9fb")
 (setq base01 "e5ebf1")
 (setq base02 "cbd6e2")

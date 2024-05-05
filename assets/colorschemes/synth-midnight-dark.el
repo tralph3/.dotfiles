@@ -1,5 +1,6 @@
 ;; Name: Synth Midnight Terminal Dark
 ;; Author: Michaël Ball (http://github.com/michael-ball/)
+;; Variant: dark
 (setq base00 "050608")
 (setq base01 "1a1b1c")
 (setq base02 "28292a")

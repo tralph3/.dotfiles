@@ -1,5 +1,6 @@
 ;; Name: Atelier Dune Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "fefbec")
 (setq base01 "e8e4cf")
 (setq base02 "a6a28c")

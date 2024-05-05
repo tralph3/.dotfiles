@@ -1,5 +1,6 @@
 ;; Name: Paraiso
 ;; Author: Jan T. Sott
+;; Variant: dark
 (setq base00 "2f1e2e")
 (setq base01 "41323f")
 (setq base02 "4f424c")

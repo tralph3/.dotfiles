@@ -1,5 +1,6 @@
 ;; Name: Apprentice
 ;; Author: romainl
+;; Variant: dark
 (setq base00 "262626")
 (setq base01 "AF5F5F")
 (setq base02 "5F875F")

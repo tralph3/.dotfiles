@@ -1,5 +1,6 @@
 ;; Name: Brewer
 ;; Author: Timothée Poisot (http://github.com/tpoisot)
+;; Variant: dark
 (setq base00 "0c0d0e")
 (setq base01 "2e2f30")
 (setq base02 "515253")

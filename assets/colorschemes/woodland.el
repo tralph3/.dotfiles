@@ -1,5 +1,6 @@
 ;; Name: Woodland
 ;; Author: Jay Cornwall (https://jcornwall.com)
+;; Variant: dark
 (setq base00 "231e18")
 (setq base01 "302b25")
 (setq base02 "48413a")

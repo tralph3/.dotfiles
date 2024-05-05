@@ -1,5 +1,6 @@
 ;; Name: Black Metal (Khold)
 ;; Author: metalelf0 (https://github.com/metalelf0)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "121212")
 (setq base02 "222222")

@@ -1,5 +1,6 @@
 ;; Name: lime
 ;; Author: limelier
+;; Variant: dark
 (setq base00 "1a1a2f")
 (setq base01 "202030")
 (setq base02 "2a2a3f")

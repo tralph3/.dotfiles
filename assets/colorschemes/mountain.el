@@ -1,5 +1,6 @@
 ;; Name: Mountain
 ;; Author: gnsfujiwara (https://github.com/gnsfujiwara)
+;; Variant: dark
 (setq base00 "0f0f0f")
 (setq base01 "191919")
 (setq base02 "262626")

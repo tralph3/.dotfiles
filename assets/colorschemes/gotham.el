@@ -1,5 +1,6 @@
 ;; Name: Gotham
 ;; Author: Andrea Leopardi (arranged by Brett Jones)
+;; Variant: dark
 (setq base00 "0c1014")
 (setq base01 "11151c")
 (setq base02 "091f2e")

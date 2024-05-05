@@ -1,5 +1,6 @@
 ;; Name: Pop
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "202020")
 (setq base02 "303030")

@@ -1,5 +1,6 @@
 ;; Name: Isotope
 ;; Author: Jan T. Sott
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "404040")
 (setq base02 "606060")

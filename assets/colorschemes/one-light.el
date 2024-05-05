@@ -1,5 +1,6 @@
 ;; Name: One Light
 ;; Author: Daniel Pfeifer (http://github.com/purpleKarrot)
+;; Variant: light
 (setq base00 "fafafa")
 (setq base01 "f0f0f1")
 (setq base02 "e5e5e6")

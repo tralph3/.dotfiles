@@ -1,5 +1,6 @@
 ;; Name: Primer Dark
 ;; Author: Jimmy Lin
+;; Variant: dark
 (setq base00 "010409")
 (setq base01 "21262d")
 (setq base02 "30363d")

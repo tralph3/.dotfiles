@@ -1,5 +1,6 @@
 ;; Name: ShadeSmear Dark
 ;; Author: Kyle Giammarco (http://kyle.giammar.co)
+;; Variant: dark
 (setq base00 "232323")
 (setq base01 "1C1C1C")
 (setq base02 "4E4E4E")

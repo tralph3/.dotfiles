@@ -1,5 +1,6 @@
 ;; Name: Solar Flare Light
 ;; Author: Chuck Harmston (https://chuck.harmston.ch)
+;; Variant: light
 (setq base00 "F5F7FA")
 (setq base01 "E8E9ED")
 (setq base02 "A6AFB8")

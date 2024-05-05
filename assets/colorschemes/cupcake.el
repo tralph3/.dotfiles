@@ -1,5 +1,6 @@
 ;; Name: Cupcake
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: light
 (setq base00 "fbf1f2")
 (setq base01 "f2f1f4")
 (setq base02 "d8d5dd")

@@ -1,5 +1,6 @@
 ;; Name: Ayu Mirage
 ;; Author: Khue Nguyen <Z5483Y@gmail.com>
+;; Variant: dark
 (setq base00 "171B24")
 (setq base01 "1F2430")
 (setq base02 "242936")

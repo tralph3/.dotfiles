@@ -1,5 +1,6 @@
 ;; Name: XCode Dusk
 ;; Author: Elsa Gonsiorowski (https://github.com/gonsie)
+;; Variant: dark
 (setq base00 "282B35")
 (setq base01 "3D4048")
 (setq base02 "53555D")

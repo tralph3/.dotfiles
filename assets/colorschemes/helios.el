@@ -1,5 +1,6 @@
 ;; Name: Helios
 ;; Author: Alex Meyer (https://github.com/reyemxela)
+;; Variant: dark
 (setq base00 "1d2021")
 (setq base01 "383c3e")
 (setq base02 "53585b")

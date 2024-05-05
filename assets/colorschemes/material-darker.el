@@ -1,5 +1,6 @@
 ;; Name: Material Darker
 ;; Author: Nate Peterson
+;; Variant: dark
 (setq base00 "212121")
 (setq base01 "303030")
 (setq base02 "353535")

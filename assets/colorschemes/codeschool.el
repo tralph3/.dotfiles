@@ -1,5 +1,6 @@
 ;; Name: Codeschool
 ;; Author: blockloop
+;; Variant: dark
 (setq base00 "232c31")
 (setq base01 "1c3657")
 (setq base02 "2a343a")

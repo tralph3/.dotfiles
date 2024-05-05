@@ -1,5 +1,6 @@
 ;; Name: Windows High Contrast
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "1C1C1C")
 (setq base02 "383838")

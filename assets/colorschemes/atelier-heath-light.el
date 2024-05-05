@@ -1,5 +1,6 @@
 ;; Name: Atelier Heath Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f7f3f7")
 (setq base01 "d8cad8")
 (setq base02 "ab9bab")

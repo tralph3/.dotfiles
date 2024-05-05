@@ -1,5 +1,6 @@
 ;; Name: PaperColor Light
 ;; Author: Jon Leopard (http://github.com/jonleopard) based on PaperColor Theme (https://github.com/NLKNguyen/papercolor-theme)
+;; Variant: light
 (setq base00 "eeeeee")
 (setq base01 "af0000")
 (setq base02 "008700")

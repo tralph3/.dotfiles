@@ -1,5 +1,6 @@
 ;; Name: Ayu Dark
 ;; Author: Khue Nguyen <Z5483Y@gmail.com>
+;; Variant: dark
 (setq base00 "0F1419")
 (setq base01 "131721")
 (setq base02 "272D38")

@@ -1,5 +1,6 @@
 ;; Name: standardized-dark
 ;; Author: ali (https://github.com/ali-githb/base16-standardized-scheme)
+;; Variant: dark
 (setq base00 "222222")
 (setq base01 "303030")
 (setq base02 "555555")

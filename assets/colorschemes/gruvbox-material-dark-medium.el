@@ -1,5 +1,6 @@
 ;; Name: Gruvbox Material Dark, Medium
 ;; Author: Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)
+;; Variant: dark
 (setq base00 "292828")
 (setq base01 "32302f")
 (setq base02 "504945")

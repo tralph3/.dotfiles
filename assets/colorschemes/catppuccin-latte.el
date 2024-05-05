@@ -1,5 +1,6 @@
 ;; Name: Catppuccin Latte
 ;; Author: https://github.com/catppuccin/catppuccin
+;; Variant: light
 (setq base00 "eff1f5")
 (setq base01 "e6e9ef")
 (setq base02 "ccd0da")

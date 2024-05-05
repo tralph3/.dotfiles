@@ -1,5 +1,6 @@
 ;; Name: Bespin
 ;; Author: Jan T. Sott
+;; Variant: dark
 (setq base00 "28211c")
 (setq base01 "36312e")
 (setq base02 "5e5d5c")

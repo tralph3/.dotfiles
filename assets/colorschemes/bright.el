@@ -1,5 +1,6 @@
 ;; Name: Bright
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "303030")
 (setq base02 "505050")

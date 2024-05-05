@@ -1,5 +1,6 @@
 ;; Name: Sandcastle
 ;; Author: George Essig (https://github.com/gessig)
+;; Variant: dark
 (setq base00 "282c34")
 (setq base01 "2c323b")
 (setq base02 "3e4451")

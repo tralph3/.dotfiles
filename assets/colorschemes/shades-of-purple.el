@@ -1,5 +1,6 @@
 ;; Name: Shades of Purple
 ;; Author: Iolar Demartini Junior (http://github.com/demartini) based on Shades of Purple Theme (https://github.com/ahmadawais/shades-of-purple-vscode).
+;; Variant: dark
 (setq base00 "1e1e3f")
 (setq base01 "43d426")
 (setq base02 "f1d000")

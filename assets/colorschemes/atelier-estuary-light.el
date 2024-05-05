@@ -1,5 +1,6 @@
 ;; Name: Atelier Estuary Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f4f3ec")
 (setq base01 "e7e6df")
 (setq base02 "929181")

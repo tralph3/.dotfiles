@@ -1,5 +1,6 @@
 ;; Name: Atelier Sulphurpool
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "202746")
 (setq base01 "293256")
 (setq base02 "5e6687")

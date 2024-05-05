@@ -1,5 +1,6 @@
 ;; Name: Fruit Soda
 ;; Author: jozip
+;; Variant: light
 (setq base00 "f1ecf1")
 (setq base01 "e0dee0")
 (setq base02 "d8d5d5")

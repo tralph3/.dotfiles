@@ -1,5 +1,6 @@
 ;; Name: Stella
 ;; Author: Shrimpram
+;; Variant: dark
 (setq base00 "2B213C")
 (setq base01 "362B48")
 (setq base02 "4D4160")

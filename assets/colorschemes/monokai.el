@@ -1,5 +1,6 @@
 ;; Name: Monokai
 ;; Author: Wimer Hazenberg (http://www.monokai.nl)
+;; Variant: dark
 (setq base00 "272822")
 (setq base01 "383830")
 (setq base02 "49483e")

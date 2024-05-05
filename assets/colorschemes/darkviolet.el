@@ -1,5 +1,6 @@
 ;; Name: Dark Violet
 ;; Author: ruler501 (https://github.com/ruler501/base16-darkviolet)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "231a40")
 (setq base02 "432d59")

@@ -1,5 +1,6 @@
 ;; Name: Windows High Contrast Light
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: light
 (setq base00 "fcfcfc")
 (setq base01 "e8e8e8")
 (setq base02 "d4d4d4")

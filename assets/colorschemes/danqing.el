@@ -1,5 +1,6 @@
 ;; Name: DanQing
 ;; Author: Wenhan Zhu (Cosmos) (zhuwenhan950913@gmail.com)
+;; Variant: dark
 (setq base00 "2d302f")
 (setq base01 "434846")
 (setq base02 "5a605d")

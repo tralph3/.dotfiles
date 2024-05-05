@@ -1,5 +1,6 @@
 ;; Name: PaperColor Dark
 ;; Author: Jon Leopard (http://github.com/jonleopard) based on PaperColor Theme (https://github.com/NLKNguyen/papercolor-theme)
+;; Variant: dark
 (setq base00 "1c1c1c")
 (setq base01 "af005f")
 (setq base02 "5faf00")

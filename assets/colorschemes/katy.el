@@ -1,5 +1,6 @@
 ;; Name: Katy
 ;; Author: George Essig (https://github.com/gessig)
+;; Variant: dark
 (setq base00 "292d3e")
 (setq base01 "444267")
 (setq base02 "5c598b")

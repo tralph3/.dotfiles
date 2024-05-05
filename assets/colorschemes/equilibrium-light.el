@@ -1,5 +1,6 @@
 ;; Name: Equilibrium Light
 ;; Author: Carlo Abelli
+;; Variant: light
 (setq base00 "f5f0e7")
 (setq base01 "e7e2d9")
 (setq base02 "d8d4cb")

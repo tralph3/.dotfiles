@@ -1,5 +1,6 @@
 ;; Name: Ayu Light
 ;; Author: Khue Nguyen <Z5483Y@gmail.com>
+;; Variant: light
 (setq base00 "FAFAFA")
 (setq base01 "F3F4F5")
 (setq base02 "F8F9FA")

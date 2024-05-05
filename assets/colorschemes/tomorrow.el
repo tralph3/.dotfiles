@@ -1,5 +1,6 @@
 ;; Name: Tomorrow
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "e0e0e0")
 (setq base02 "d6d6d6")

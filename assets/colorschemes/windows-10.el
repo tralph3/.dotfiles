@@ -1,5 +1,6 @@
 ;; Name: Windows 10
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: dark
 (setq base00 "0c0c0c")
 (setq base01 "2f2f2f")
 (setq base02 "535353")

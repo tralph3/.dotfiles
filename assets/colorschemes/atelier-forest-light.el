@@ -1,5 +1,6 @@
 ;; Name: Atelier Forest Light
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: light
 (setq base00 "f1efee")
 (setq base01 "e6e2e0")
 (setq base02 "a8a19f")

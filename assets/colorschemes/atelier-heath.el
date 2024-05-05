@@ -1,5 +1,6 @@
 ;; Name: Atelier Heath
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "1b181b")
 (setq base01 "292329")
 (setq base02 "695d69")

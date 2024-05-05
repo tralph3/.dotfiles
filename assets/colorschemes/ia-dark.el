@@ -1,5 +1,6 @@
 ;; Name: iA Dark
 ;; Author: iA Inc. (modified by aramisgithub)
+;; Variant: dark
 (setq base00 "1a1a1a")
 (setq base01 "222222")
 (setq base02 "1d414d")

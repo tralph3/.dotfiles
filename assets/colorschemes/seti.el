@@ -1,5 +1,6 @@
 ;; Name: Seti UI
 ;; Author: 
+;; Variant: dark
 (setq base00 "151718")
 (setq base01 "282a2b")
 (setq base02 "3B758C")

@@ -1,5 +1,6 @@
 ;; Name: Summerfruit Light
 ;; Author: Christopher Corley (http://christop.club/)
+;; Variant: light
 (setq base00 "FFFFFF")
 (setq base01 "E0E0E0")
 (setq base02 "D0D0D0")

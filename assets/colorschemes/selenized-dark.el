@@ -1,5 +1,6 @@
 ;; Name: selenized-dark
 ;; Author: Jan Warchol (https://github.com/jan-warchol/selenized) / adapted to base16 by ali
+;; Variant: dark
 (setq base00 "103c48")
 (setq base01 "184956")
 (setq base02 "2d5b69")

@@ -1,5 +1,6 @@
 ;; Name: Twilight
 ;; Author: David Hart (https://github.com/hartbit)
+;; Variant: dark
 (setq base00 "1e1e1e")
 (setq base01 "323537")
 (setq base02 "464b50")

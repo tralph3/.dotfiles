@@ -1,5 +1,6 @@
 ;; Name: pinky
 ;; Author: Benjamin (https://github.com/b3nj5m1n)
+;; Variant: dark
 (setq base00 "171517")
 (setq base01 "1b181b")
 (setq base02 "1d1b1d")

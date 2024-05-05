@@ -1,5 +1,6 @@
 ;; Name: Windows NT
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "2a2a2a")
 (setq base02 "555555")

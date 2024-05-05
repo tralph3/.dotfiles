@@ -1,5 +1,6 @@
 ;; Name: Unikitty Reversible
 ;; Author: Josh W Lewis (@joshwlewis)
+;; Variant: dark
 (setq base00 "2e2a31")
 (setq base01 "4b484e")
 (setq base02 "69666b")

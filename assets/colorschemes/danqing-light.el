@@ -1,5 +1,6 @@
 ;; Name: DanQing Light
 ;; Author: Wenhan Zhu (Cosmos) (zhuwenhan950913@gmail.com)
+;; Variant: light
 (setq base00 "fcfefd")
 (setq base01 "ecf6f2")
 (setq base02 "e0f0eF")

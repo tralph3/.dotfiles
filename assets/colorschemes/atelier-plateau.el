@@ -1,5 +1,6 @@
 ;; Name: Atelier Plateau
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "1b1818")
 (setq base01 "292424")
 (setq base02 "585050")

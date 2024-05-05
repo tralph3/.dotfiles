@@ -1,5 +1,6 @@
 ;; Name: Equilibrium Dark
 ;; Author: Carlo Abelli
+;; Variant: dark
 (setq base00 "0c1118")
 (setq base01 "181c22")
 (setq base02 "22262d")

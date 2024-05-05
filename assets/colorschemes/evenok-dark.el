@@ -1,5 +1,6 @@
 ;; Name: Evenok Dark
 ;; Author: Mekeor Melire
+;; Variant: dark
 (setq base00 "000000")
 (setq base01 "202020")
 (setq base02 "303030")

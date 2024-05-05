@@ -1,5 +1,6 @@
 ;; Name: vulcan
 ;; Author: Andrey Varfolomeev
+;; Variant: dark
 (setq base00 "041523")
 (setq base01 "122339")
 (setq base02 "003552")

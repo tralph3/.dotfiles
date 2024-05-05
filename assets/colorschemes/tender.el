@@ -1,5 +1,6 @@
 ;; Name: tender
 ;; Author: Jacobo Tabernero (https://github/com/jacoborus/tender.vim)
+;; Variant: dark
 (setq base00 "282828")
 (setq base01 "383838")
 (setq base02 "484848")

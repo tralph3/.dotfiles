@@ -1,5 +1,6 @@
 ;; Name: Atelier Seaside
 ;; Author: Bram de Haan (http://atelierbramdehaan.nl)
+;; Variant: dark
 (setq base00 "131513")
 (setq base01 "242924")
 (setq base02 "5e6e5e")

@@ -1,5 +1,6 @@
 ;; Name: Windows 95 Light
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: light
 (setq base00 "fcfcfc")
 (setq base01 "e0e0e0")
 (setq base02 "c4c4c4")

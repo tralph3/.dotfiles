@@ -1,5 +1,6 @@
 ;; Name: Humanoid light
 ;; Author: Thomas (tasmo) Friese
+;; Variant: light
 (setq base00 "f8f8f2")
 (setq base01 "efefe9")
 (setq base02 "deded8")

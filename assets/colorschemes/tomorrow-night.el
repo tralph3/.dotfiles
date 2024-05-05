@@ -1,5 +1,6 @@
 ;; Name: Tomorrow Night
 ;; Author: Chris Kempson (http://chriskempson.com)
+;; Variant: dark
 (setq base00 "1d1f21")
 (setq base01 "282a2e")
 (setq base02 "373b41")

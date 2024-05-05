@@ -1,5 +1,6 @@
 ;; Name: Kanagawa
 ;; Author: Tommaso Laurenzi (https://github.com/rebelot)
+;; Variant: dark
 (setq base00 "1F1F28")
 (setq base01 "16161D")
 (setq base02 "223249")

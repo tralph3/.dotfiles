@@ -1,5 +1,6 @@
 ;; Name: Qualia
 ;; Author: isaacwhanson
+;; Variant: dark
 (setq base00 "101010")
 (setq base01 "454545")
 (setq base02 "454545")

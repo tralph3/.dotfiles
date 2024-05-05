@@ -1,5 +1,6 @@
 ;; Name: Gruvbox Material Light, Hard
 ;; Author: Mayush Kumar (https://github.com/MayushKumar), sainnhe (https://github.com/sainnhe/gruvbox-material-vscode)
+;; Variant: light
 (setq base00 "f9f5d7")
 (setq base01 "fbf1c7")
 (setq base02 "e0cfa9")

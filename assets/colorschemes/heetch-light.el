@@ -1,5 +1,6 @@
 ;; Name: Heetch Light
 ;; Author: Geoffrey Teale (tealeg@gmail.com)
+;; Variant: light
 (setq base00 "feffff")
 (setq base01 "392551")
 (setq base02 "7b6d8b")

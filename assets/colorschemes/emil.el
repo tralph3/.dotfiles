@@ -1,5 +1,6 @@
 ;; Name: emil
 ;; Author: limelier
+;; Variant: light
 (setq base00 "efefef")
 (setq base01 "bebed2")
 (setq base02 "9e9eaf")

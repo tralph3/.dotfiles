@@ -1,5 +1,6 @@
 ;; Name: Embers
 ;; Author: Jannik Siebert (https://github.com/janniks)
+;; Variant: dark
 (setq base00 "16130F")
 (setq base01 "2C2620")
 (setq base02 "433B32")

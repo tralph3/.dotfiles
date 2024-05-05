@@ -1,5 +1,6 @@
 ;; Name: Brogrammer
 ;; Author: Vik Ramanujam (http://github.com/piggyslasher)
+;; Variant: dark
 (setq base00 "1f1f1f")
 (setq base01 "f81118")
 (setq base02 "2dc55e")

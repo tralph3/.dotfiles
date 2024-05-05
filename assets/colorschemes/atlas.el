@@ -1,5 +1,6 @@
 ;; Name: Atlas
 ;; Author: Alex Lende (https://ajlende.com)
+;; Variant: dark
 (setq base00 "002635")
 (setq base01 "00384d")
 (setq base02 "517F8D")
@@ -12,7 +13,7 @@
 (setq base09 "f08e48")
 (setq base0A "ffcc1b")
 (setq base0B "7fc06e")
-(setq base0C "14747e")
-(setq base0D "5dd7b9")
+(setq base0C "5dd7b9")
+(setq base0D "14747e")
 (setq base0E "9a70a4")
 (setq base0F "c43060")

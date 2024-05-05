@@ -1,5 +1,6 @@
 ;; Name: Windows 10 Light
 ;; Author: Fergus Collins (https://github.com/C-Fergus)
+;; Variant: light
 (setq base00 "f2f2f2")
 (setq base01 "e5e5e5")
 (setq base02 "d9d9d9")

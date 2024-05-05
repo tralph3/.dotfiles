@@ -1,5 +1,6 @@
 ;; Name: standardized-light
 ;; Author: ali (https://github.com/ali-githb/base16-standardized-scheme)
+;; Variant: light
 (setq base00 "ffffff")
 (setq base01 "eeeeee")
 (setq base02 "cccccc")

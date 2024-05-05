@@ -1,5 +1,6 @@
 ;; Name: Catppuccin Macchiato
 ;; Author: https://github.com/catppuccin/catppuccin
+;; Variant: dark
 (setq base00 "24273a")
 (setq base01 "1e2030")
 (setq base02 "363a4f")

@@ -1,5 +1,6 @@
 ;; Name: Gigavolt
 ;; Author: Aidan Swope (http://github.com/Whillikers)
+;; Variant: dark
 (setq base00 "202126")
 (setq base01 "2d303d")
 (setq base02 "5a576e")

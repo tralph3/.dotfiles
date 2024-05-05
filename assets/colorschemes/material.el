@@ -1,5 +1,6 @@
 ;; Name: Material
 ;; Author: Nate Peterson
+;; Variant: dark
 (setq base00 "263238")
 (setq base01 "2E3C43")
 (setq base02 "314549")

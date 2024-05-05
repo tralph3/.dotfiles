@@ -1,5 +1,6 @@
 ;; Name: Primer Light
 ;; Author: Jimmy Lin
+;; Variant: light
 (setq base00 "fafbfc")
 (setq base01 "e1e4e8")
 (setq base02 "d1d5da")

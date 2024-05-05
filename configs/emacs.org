@@ -596,6 +596,14 @@ Adds annotations to completion candidates.
     (marginalia-mode))
 #+end_src
 
+** Eww
+#+begin_src emacs-lisp
+  (use-package eww
+    :ensure t
+    :custom
+    (shr-max-width nil))
+#+end_src
+
 ** Org Roam
 #+begin_src emacs-lisp
   (setq zettelkasten-paths-alist '(("Main" . "~/Documents/wiki/")

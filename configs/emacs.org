@@ -381,6 +381,7 @@ selecting. Goes well with [[Orderless]].
 #+begin_src emacs-lisp
   (use-package corfu
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (corfu-auto t)
     (corfu-auto-delay 0.2)
@@ -544,6 +545,7 @@ Provides a nice dashboard on every new frame.
 #+begin_src emacs-lisp
   (use-package dashboard
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :after nerd-icons
     :custom
     (dashboard-set-file-icons t)
@@ -581,6 +583,7 @@ functionality.
 #+begin_src emacs-lisp
   (use-package which-key
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (which-key-idle-delay 0.2)
     :config
@@ -621,6 +624,7 @@ Adds annotations to completion candidates.
 
   (use-package org-roam
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
     (org-roam-db-location (file-name-concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
@@ -644,6 +648,7 @@ Adds annotations to completion candidates.
 #+begin_src emacs-lisp
   (use-package org-superstar
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (org-superstar-item-bullet-alist '((42 . 8226)
                                        (43 . 8226)
@@ -659,6 +664,7 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package org-fragtog
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :config
     (add-hook 'org-mode-hook #'org-fragtog-mode))
 #+end_src
@@ -701,6 +707,7 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package eat
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :bind (("C-x p t" . #'eat-project)))
 #+end_src
 
@@ -733,6 +740,7 @@ emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp
   (use-package eglot
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (eglot-autoshutdown t)
     (eglot-sync-connect 0)
@@ -752,6 +760,7 @@ emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp
   (use-package org
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (org-startup-indented t)
     (org-pretty-entities t)
@@ -783,6 +792,7 @@ This setting allows me to have more languages available to execute
 #+begin_src emacs-lisp
   (use-package doc-view
     :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
     :custom
     (doc-view-scale-internally t)
     (doc-view-continuous t)
@@ -796,7 +806,8 @@ Dape is a minimalist client for the [[https://microsoft.github.io/debug-adapter-
 comes with default configurations for a number of languages.
 #+begin_src emacs-lisp
   (use-package dape
-    :ensure t)
+    :ensure t
+    :if (not (getenv "EMACS_QUICK_EDIT_MODE")))
 #+end_src
 
 * Colorscheme

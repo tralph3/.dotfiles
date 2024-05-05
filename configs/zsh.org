@@ -3,7 +3,7 @@
 #+PROPERTY: header-args :noweb yes :tangle ~/.config/zsh/.zshrc :mkdirp yes
 
 #+begin_src bash
-  export EDITOR="emacs -Q -nw"
+  export EDITOR="emacs -nw"
 
   # Ignore commands that start with a space
   setopt HIST_IGNORE_SPACE
@@ -195,6 +195,8 @@
   alias la='eza -lag --icons --header --group-directories-first'
   alias lr='eza -lTg -L 2 --icons --header --group-directories-first'
   alias lR='eza -lTg --icons --header --group-directories-first'
+
+  alias e="EMACS_QUICK_EDIT_MODE=yes $EDITOR"
 
   SESSION_TYPE=$(loginctl show-session\
       $(loginctl -o json | jq --raw-output '.[0] .session') -p Type | cut -d= -f2)

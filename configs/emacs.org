@@ -347,6 +347,13 @@ And this adds some colour to dired.
     (dired-mode . diredfl-mode))
 #+end_src
 
+** Conner
+#+begin_src emacs-lisp
+  (use-package conner
+    :ensure t
+    :bind (("C-x p c" . conner-run-project-command)))
+#+end_src
+
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons

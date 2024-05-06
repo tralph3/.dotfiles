@@ -499,7 +499,8 @@ that are not included by default.
   (use-package yaml-mode
     :ensure t)
   (use-package markdown-mode
-    :ensure t)
+    :ensure t
+    :hook (markdown-mode . auto-fill-mode))
   (use-package dockerfile-mode
     :ensure t)
   (use-package cmake-mode

@@ -828,7 +828,7 @@ comes with default configurations for a number of languages.
   (define-key special-event-map [sigusr1] 'reload-colorscheme)
 #+end_src
 
-#+begin_src emacs-lisp :tangle ~/.local/share/emacs/custom-themes/system-theme-theme.el
+#+begin_src emacs-lisp :tangle ~/.local/share/emacs/custom-themes/system-theme.el
   (defcustom base16-theme-256-color-source 'colors
     "Where to get the colors in a 256-color terminal.
 
@@ -1906,7 +1906,7 @@ comes with default configurations for a number of languages.
                     (file-name-as-directory
                      (file-name-directory load-file-name))))
 
-  (defvar system-theme-colors
+  (defvar system-colors
     '(
       :base00 "#<<base(i="00")>>"
       :base01 "#<<base(i="01")>>"
@@ -1925,14 +1925,12 @@ comes with default configurations for a number of languages.
       :base0E "#<<base(i="0E")>>"
       :base0F "#<<base(i="0F")>>"))
 
-  ;; Define the theme
-  (deftheme system-theme)
+  (deftheme system
+    "Theme that synchronizes with the current system colorscheme.")
 
   ;; Add all the faces to the theme
-  (base16-theme-define 'system-theme system-theme-colors)
+  (base16-theme-define 'system system-colors)
 
-  ;; Mark the theme as provided
-  (provide-theme 'system-theme)
-
-  (provide 'system-theme)
+  (provide-theme 'system)
+  (provide 'system)
 #+end_src

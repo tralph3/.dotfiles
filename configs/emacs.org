@@ -578,21 +578,6 @@ Provides a nice dashboard on every new frame.
     :after tree-sitter)
 #+end_src
 
-** Which Key
-Which Key provides a list of possible keys to type and to which
-functions they are bound when you're in the middle of typing a
-key-chord. Can be useful to learn new packages or discover new
-functionality.
-#+begin_src emacs-lisp
-  (use-package which-key
-    :ensure t
-    :if (not (getenv "EMACS_QUICK_EDIT_MODE"))
-    :custom
-    (which-key-idle-delay 0.2)
-    :config
-    (which-key-mode))
-#+end_src
-
 ** Marginalia
 Adds annotations to completion candidates.
 #+begin_src emacs-lisp

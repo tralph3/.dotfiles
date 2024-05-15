@@ -360,7 +360,9 @@ And this adds some colour to dired.
 ** Nerd Icons
 #+begin_src emacs-lisp
   (use-package nerd-icons
-    :ensure t)
+    :ensure t
+    :custom
+    (nerd-icons-scale-factor 1.1))
 
   (use-package nerd-icons-completion
     :ensure t

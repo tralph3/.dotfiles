@@ -336,7 +336,10 @@ package archives.
 This allows me to toggle subtrees in dired buffers.
 #+begin_src emacs-lisp
   (use-package dired-subtree
-    :ensure t)
+    :ensure t
+    :custom
+    (dired-subtree-cycle-depth 4)
+    (dired-subtree-use-backgrounds nil))
 #+end_src
 
 And this adds some colour to dired.

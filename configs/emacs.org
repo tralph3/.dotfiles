@@ -707,7 +707,9 @@ documents whenever the point is over them.
 ** Flymake
 #+begin_src emacs-lisp
   (use-package flymake
-    :ensure t)
+    :ensure t
+    :custom
+    (flymake-show-diagnostics-at-end-of-line t))
 #+end_src
 
 ** Proced

@@ -718,7 +718,10 @@ documents whenever the point is over them.
     :ensure t
     :custom
     (proced-enable-color-flag t)
-    (proced-tree-flag t))
+    (proced-tree-flag t)
+    (proced-format 'basic)
+    :config
+    (add-to-list 'proced-format-alist '(basic pid tree pcpu pmem comm)))
 #+end_src
 
 ** Eglot

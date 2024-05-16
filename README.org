@@ -20,6 +20,7 @@
 - [[file:configs/rofi.org][Rofi]]
 - [[file:configs/wallpapers.org][Wallpapers]]
 - [[file:configs/waybar.org][Waybar]]
+- [[file:configs/wget.org][Wget]]
 - [[file:configs/zsh.org][Zsh]]
 
 ** Preparation

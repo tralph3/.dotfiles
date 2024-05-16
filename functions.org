@@ -1,6 +1,7 @@
 * Functions
 This file contains various helper functions that are used throughout
-the config
+the configs.
+
 ** Base
 Given an index, it returns the apropriate hex code for the base16
 color.
@@ -31,4 +32,11 @@ Given a symbol, it returns its value.
 #+begin_src emacs-lisp :var v='pi
   (when (boundp v)
     (symbol-value v))
+#+end_src
+
+** Getenv
+Returns the value of an environment variable.
+#+NAME: getenv
+#+begin_src emacs-lisp :var e="" :tangle no
+  (getenv e)
 #+end_src

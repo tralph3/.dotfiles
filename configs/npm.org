@@ -1,0 +1,12 @@
+#+TITLE: NPM Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle (getenv "NPM_CONFIG_USERCONFIG")
+
+Configure NPM to not litter my home folder.
+#+begin_src conf
+  prefix=${XDG_DATA_HOME}/npm
+  cache=${XDG_CACHE_HOME}/npm
+  init-module=${XDG_CONFIG_HOME}/npm/config/npm-init.js
+  logs-dir=${XDG_STATE_HOME}/npm/logs
+  store-dir=${XDG_DATA_HOME}/pnpm-store
+#+end_src

@@ -325,6 +325,7 @@ package archives.
     :custom
     (dired-kill-when-opening-new-dired-buffer t)
     (dired-listing-switches "-alh --group-directories-first")
+    (dired-dwim-target t)
     :after dired-subtree
     :bind
     ((:map dired-mode-map

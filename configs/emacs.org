@@ -811,7 +811,7 @@ comes with default configurations for a number of languages.
   (define-key special-event-map [sigusr1] 'reload-colorscheme)
 #+end_src
 
-#+begin_src emacs-lisp :tangle (file-name-concat custom-theme-directory "system-theme.el")
+#+begin_src emacs-lisp :tangle ~/.local/share/emacs/custom-themes/system-theme.el
   (defcustom base16-theme-256-color-source 'colors
     "Where to get the colors in a 256-color terminal.
 

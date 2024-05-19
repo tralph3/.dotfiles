@@ -65,6 +65,7 @@
   master {
       new_is_master=false
       mfact=0.5
+      allow_small_split=true
   }
 
   decoration {

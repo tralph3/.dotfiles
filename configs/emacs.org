@@ -507,7 +507,8 @@ that are not included by default.
     :ensure t)
   (use-package markdown-mode
     :ensure t
-    :hook (markdown-mode . auto-fill-mode))
+    :hook ((markdown-mode . auto-fill-mode)
+           (markdown-mode . variable-pitch-mode)))
   (use-package dockerfile-mode
     :ensure t)
   (use-package cmake-mode

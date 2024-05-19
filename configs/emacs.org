@@ -761,8 +761,9 @@ emacs, using its built-in tools as much as possible.
     (org-preview-latex-image-directory "~/.cache/ltximg")
     (org-format-latex-options (plist-put org-format-latex-options :scale 1.4))
     (org-startup-with-latex-preview t)
-    :hook (org-mode . auto-fill-mode)
-    :config
+    :hook ((org-mode . auto-fill-mode)
+           (org-mode . variable-pitch-mode))
+    :init
     (require 'org-tempo))
 #+end_src
 

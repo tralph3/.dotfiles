@@ -1659,6 +1659,7 @@ comes with default configurations for a number of languages.
        (org-special-keyword                          :foreground base09 :inherit fixed-pitch)
        (org-table                                    :foreground base0E :inherit fixed-pitch)
        (org-todo                                     :foreground base08 :background base01)
+       (org-verbatim                                 :inherit (shadow fixed-pitch))
        (org-upcoming-deadline                        :foreground base09)
        (org-warning                                  :foreground base08 :weight bold)
 

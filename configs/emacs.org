@@ -1651,6 +1651,16 @@ comes with default configurations for a number of languages.
        (org-level-6                                  :weight normal :inherit outline-6)
        (org-level-7                                  :weight normal :inherit outline-7)
        (org-level-8                                  :weight normal :inherit outline-8)
+       (org-link                                     :foreground base0D)
+       (org-meta-line                                :inherit (font-lock-comment-face fixed-pitch))
+       (org-scheduled                                :foreground base0B)
+       (org-scheduled-previously                     :foreground base09)
+       (org-scheduled-today                          :foreground base0B)
+       (org-special-keyword                          :foreground base09 :inherit fixed-pitch)
+       (org-table                                    :foreground base0E :inherit fixed-pitch)
+       (org-todo                                     :foreground base08 :background base01)
+       (org-upcoming-deadline                        :foreground base09)
+       (org-warning                                  :foreground base08 :weight bold)
 
           ;;;; markdown-mode
        (markdown-header-face-1                       :height 1.5 :weight bold :inherit outline-1)

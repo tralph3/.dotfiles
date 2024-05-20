@@ -117,7 +117,6 @@ properly.
 #+end_src
 
 #+begin_src conf
-
   windowrule=workspace 2 silent,firefox
 
   windowrule=workspace 5 silent,gamescope
@@ -133,6 +132,8 @@ properly.
   windowrule=workspace 7 silent,Spotify
   windowrule=workspace 7 silent,deadbeef
   windowrule=workspace 7 silent,io.github.quodlibet.QuodLibet
+
+  layerrule=dimaround,rofi
 
   bind=SUPER,COMMA,layoutmsg,addmaster
   bind=SUPER,PERIOD,layoutmsg,removemaster

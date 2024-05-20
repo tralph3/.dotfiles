@@ -159,3 +159,25 @@ their code, making them match with the system's colorscheme.
       <use href="#square" fill='#<<base(i="04")>>' transform="translate(1600 -100)" />
   </svg>
 #+end_src
+
+* Pages 2
+#+begin_src xml :tangle ~/.local/share/wallpapers/pages2.svg
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <svg version="1.1" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+      <rect fill='#<<base(i="00")>>' height="100%" width="100%" />
+
+      <defs>
+      <filter id="shadow">
+        <feDropShadow dx="-10" dy="10" stdDeviation="10" flood-opacity="0.5" flood-color="#000000" />
+      </filter>
+      <rect id="square" x="0" y="0" height="2000" width="2000" filter="url(#shadow)" />
+      </defs>
+
+      <use href="#square" fill='#<<base(i="08")>>' transform="translate(150 -900) rotate(-30 960 540)" />
+      <use href="#square" fill='#<<base(i="00")>>' transform="translate(200 -900) rotate(-40 960 540)" />
+      <use href="#square" fill='#<<base(i="00")>>' transform="translate(-500 -1200) rotate(290 960 540)" />
+      <use href="#square" fill='#<<base(i="00")>>' transform="translate(-500 1800) rotate(200 960 540)" />
+      <use href="#square" fill='#<<base(i="08")>>' transform="translate(1280 0) rotate(35 960 540)" />
+      <use href="#square" fill='#<<base(i="00")>>' transform="translate(1300 0) rotate(30 960 540)" />
+  </svg>
+#+end_src

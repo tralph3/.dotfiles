@@ -140,3 +140,22 @@ their code, making them match with the system's colorscheme.
     <rect x='0' y='0' width='1920' height='1080' fill='url(#myPattern)' />
   </svg>
 #+end_src
+
+* Pages 1
+#+begin_src xml :tangle ~/.local/share/wallpapers/pages1.svg
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <svg version="1.1" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+      <rect fill="#<<base(i="00")>>" height="100%" width="100%" />
+
+      <defs>
+      <filter id="shadow">
+        <feDropShadow dx="-10" dy="10" stdDeviation="10" flood-opacity="0.4" flood-color="#000000" />
+      </filter>
+      <rect id="square" x="0" y="0" height="2000" width="2000" filter="url(#shadow)" transform="rotate(10 960 540)" />
+      </defs>
+      <use href="#square" fill='#<<base(i="01")>>' transform="translate(400 -100)" />
+      <use href="#square" fill='#<<base(i="02")>>' transform="translate(800 -100)" />
+      <use href="#square" fill='#<<base(i="03")>>' transform="translate(1200 -100)" />
+      <use href="#square" fill='#<<base(i="04")>>' transform="translate(1600 -100)" />
+  </svg>
+#+end_src

@@ -12,33 +12,33 @@ Designates what TTY to run greetd on.
 #+end_src
 
 The default session is the command to run when greetd
-initializes. Since my WM is currently Hyprland, that's what I'll use.
+initializes. I'll be using cage since it's meant to run a single
+application, perfect for this purpose.
 #+begin_src toml :tangle /su::/etc/greetd/config.toml
   [default_session]
-  command = "Hyprland --config /etc/greetd/hyprland.conf"
+  command = "cage -s -- regreet"
   user = "greeter"
 #+end_src
 
-This is a minimal Hyprland configuration to run the greeter,
-gtkgreet. It simply launches it and exits as soon as possible so
-there's not a lingering Hyprland session in the background.
-#+begin_src conf :tangle /su::/etc/greetd/hyprland.conf
-  exec-once=gtkgreet -l -s /etc/greetd/style.css; hyprctl dispatch exit
+Regreet configuration to set my GTK theme.
+#+begin_src toml :tangle /su::/etc/greetd/regreet.toml
+  [GTK]
+  font_name = "Cantarell 16"
+  theme_name = "adw-gtk3"
 
-  misc {
-      disable_hyprland_logo=1
-  }
+  [commands]
+  reboot = [ "systemctl", "reboot" ]
+  poweroff = [ "systemctl", "poweroff" ]
 #+end_src
 
-The environments file describes a list of commands for greetd to run.
-#+begin_src fundamental :tangle /su::/etc/greetd/environments
-  Hyprland
-#+end_src
-
-#+begin_src css :tangle /su::/etc/greetd/style.css
+#+begin_src css :tangle /su::/etc/greetd/regreet.css
   ,* {
-      background-color: #<<base(i="00")>>;
+      background: #<<base(i="00")>>;
       color: #<<base(i="05")>>;
+  }
+
+  #entry {
+      background: #<<base(i="01")>>;
   }
 #+end_src
 

@@ -9,6 +9,7 @@
 - [[file:configs/awesome.org][Awesome]]
 - [[file:configs/dunst.org][Dunst]]
 - [[file:configs/emacs.org][Emacs]]
+- [[file:configs/env_variables.org][Env Variables]]
 - [[file:configs/eww.org][Eww]]
 - [[file:configs/firefox.org][Firefox]]
 - [[file:configs/git.org][Git]]

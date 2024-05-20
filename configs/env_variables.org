@@ -1,0 +1,49 @@
+#+TITLE: Environment Variables
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+#+begin_src sh :tangle /su::/etc/profile.d/00-xdg-dirs.sh
+  export XDG_CONFIG_HOME="$HOME/.config"
+  export XDG_CACHE_HOME="$HOME/.cache"
+  export XDG_DATA_HOME="$HOME/.local/share"
+  export XDG_STATE_HOME="$HOME/.local/state"
+#+end_src
+
+#+begin_src sh :tangle /su::/etc/profile.d/01-dotfiles.sh
+  export DOTFILES_DIR=/home/tralph3/.dotfiles
+  export WALLPAPERS_DIR="$HOME/.local/share/wallpapers"
+  export QT_QPA_PLATFORMTHEME=qt5ct
+  export GTK_THEME=adw-gtk3
+#+end_src
+
+#+begin_src sh :tangle /su::/etc/profile.d/02-clean-trash.sh
+  export ANDROID_HOME="$XDG_DATA_HOME/android"
+  export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
+  export CARGO_HOME="$XDG_DATA_HOME/cargo"
+  export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+  export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+  export MACHINE_STORAGE_PATH="$XDG_DATA_HOME/docker-machine"
+
+  export GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+  export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+
+  export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+  export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+
+  export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
+  export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
+  export VAGRANT_ALIAS_FILE="$VAGRANT_HOME/aliases"
+  export TRAVIS_CONFIG_PATH="$XDG_CONFIG_HOME/travis"
+
+  export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
+
+  export MEDNAFEN_HOME="$XDG_CONFIG_HOME/mednafen"
+
+  export DOTNET_CLI_HOME="$XDG_DATA_HOME/dotnet"
+
+  export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+#+end_src

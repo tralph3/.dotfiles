@@ -1,0 +1,56 @@
+#+TITLE: Greetd Config
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes :mkdirp yes
+
+[[https://git.sr.ht/~kennylevinsen/greetd][Greetd]] is a minimal and flexible login manager daemon that makes no
+assumptions about what you want to launch.
+
+Designates what TTY to run greetd on.
+#+begin_src toml :tangle /su::/etc/greetd/config.toml
+  [terminal]
+  vt = 1
+#+end_src
+
+The default session is the command to run when greetd
+initializes. Since my WM is currently Hyprland, that's what I'll use.
+#+begin_src toml :tangle /su::/etc/greetd/config.toml
+  [default_session]
+  command = "Hyprland --config /etc/greetd/hyprland.conf"
+  user = "greeter"
+#+end_src
+
+This is a minimal Hyprland configuration to run the greeter,
+gtkgreet. It simply launches it and exits as soon as possible so
+there's not a lingering Hyprland session in the background.
+#+begin_src conf :tangle /su::/etc/greetd/hyprland.conf
+  exec-once=gtkgreet -l -s /etc/greetd/style.css; hyprctl dispatch exit
+
+  misc {
+      disable_hyprland_logo=1
+  }
+#+end_src
+
+The environments file describes a list of commands for greetd to run.
+#+begin_src fundamental :tangle /su::/etc/greetd/environments
+  Hyprland
+#+end_src
+
+#+begin_src css :tangle /su::/etc/greetd/style.css
+  ,* {
+      background-color: #<<base(i="00")>>;
+      color: #<<base(i="05")>>;
+  }
+#+end_src
+
+This allows greetd to unlock the gnome-keyring on startup.
+#+begin_src conf :tangle /su::/etc/pam.d/greetd
+  #%PAM-1.0
+
+  auth       required     pam_securetty.so
+  auth       requisite    pam_nologin.so
+  auth       include      system-local-login
+  auth       optional     pam_gnome_keyring.so
+  account    include      system-local-login
+  session    include      system-local-login
+  session    optional     pam_gnome_keyring.so auto_start
+#+end_src

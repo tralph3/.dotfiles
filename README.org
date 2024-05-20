@@ -1,9 +1,10 @@
+#+TITLE: System Config
+#+AUTHOR: tralph3
 #+PROPERTY: header-args :results silent
 
-* System Config
 [[[elisp:(call-process (file-name-concat (getenv "DOTFILES_DIR") "scripts/tangle_all_configs.sh") nil 0)][Tangle All Configs]]]
 
-** Config Index
+* Config Index
 - [[file:configs/alacritty.org][Alacritty]]
 - [[file:configs/awesome.org][Awesome]]
 - [[file:configs/dunst.org][Dunst]]
@@ -24,7 +25,7 @@
 - [[file:configs/wget.org][Wget]]
 - [[file:configs/zsh.org][Zsh]]
 
-** Preparation
+* Preparation
 We first need to load the current colorscheme. The [[file:~/.config/current_colorscheme][current_colorscheme]]
 file is a symlink to the actual colorscheme file.
 #+begin_src emacs-lisp
@@ -36,7 +37,7 @@ Now we add all of the helper functions to the [[help:org-babel-library-of-babel]
   (org-babel-lob-ingest "./functions.org")
 #+end_src
 
-** Tangle Files
+* Tangle Files
 Each config file gets tangled and placed in their respective directories.
 #+begin_src emacs-lisp
   (let ((org-confirm-babel-evaluate nil))

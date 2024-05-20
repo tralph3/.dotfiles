@@ -94,6 +94,11 @@ Auto-insert closing parenthesis, quotes, brackets and more.
   (add-hook 'prog-mode-hook 'electric-pair-local-mode)
 #+end_src
 
+Make Emacs store passwords in my system's keyring.
+#+begin_src emacs-lisp
+  (setq auth-sources '("secrets:Login"))
+#+end_src
+
 Treat strings like =GtkWindow= as two separate words, instead of a
 single one, for all commands that act on words.
 #+begin_src emacs-lisp

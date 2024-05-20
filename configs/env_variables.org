@@ -10,7 +10,7 @@
 #+end_src
 
 #+begin_src sh :tangle /su::/etc/profile.d/01-dotfiles.sh
-  export DOTFILES_DIR=/home/tralph3/.dotfiles
+  export DOTFILES_DIR=<<var(v='dotfiles-path)>>
   export WALLPAPERS_DIR="$HOME/.local/share/wallpapers"
   export QT_QPA_PLATFORMTHEME=qt5ct
   export GTK_THEME=adw-gtk3

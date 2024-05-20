@@ -37,6 +37,6 @@ Given a symbol, it returns its value.
 ** Getenv
 Returns the value of an environment variable.
 #+NAME: getenv
-#+begin_src emacs-lisp :var e="" :tangle no
+#+begin_src emacs-lisp :var e=""
   (getenv e)
 #+end_src

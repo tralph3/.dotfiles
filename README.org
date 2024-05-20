@@ -29,9 +29,16 @@
 
 * Preparation
 We first need to load the current colorscheme. The [[file:~/.config/current_colorscheme][current_colorscheme]]
-file is a symlink to the actual colorscheme file.
+file is a symlink to the actual colorscheme file. If not present, a
+random colorscheme is picked.
 #+begin_src emacs-lisp
-  (load "~/.config/current_colorscheme" 'nomessage)
+  (if (file-exists-p "~/.config/current_colorscheme")
+      (load "~/.config/current_colorscheme" 'nomessage)
+    (let* ((colorschemes (directory-files "~/.dotfiles/assets/colorschemes/" t "\\.el$"))
+           (colorscheme-index (random (length colorschemes)))
+           (colorscheme-path (nth colorscheme-index colorschemes)))
+      (call-process-shell-command
+       (concat "ln -s " colorscheme-path " ~/.config/current_colorscheme"))))
 #+end_src
 
 Now we add all of the helper functions to the [[help:org-babel-library-of-babel][library of babel]].

@@ -50,6 +50,7 @@ Now we add all of the helper functions to the [[help:org-babel-library-of-babel]
 Each config file gets tangled and placed in their respective directories.
 #+begin_src emacs-lisp
   (let ((org-confirm-babel-evaluate nil))
-    (dolist (config (directory-files "./configs" t "\\.org$"))
+    (dolist (config
+             (directory-files (file-name-concat dotfiles-path "configs") t "\\.org$"))
       (org-babel-tangle-file config)))
 #+end_src

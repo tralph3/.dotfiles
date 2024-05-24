@@ -33,7 +33,7 @@ file is a symlink to the actual colorscheme file. If not present, a
 random colorscheme is picked.
 #+begin_src emacs-lisp
   (when (not (file-exists-p "~/.config/current_colorscheme"))
-    (let* ((colorschemes (directory-files (file-name-concat dotfiles-path "assets/colorschemes/" t "\\.el$")))
+    (let* ((colorschemes (directory-files (file-name-concat dotfiles-path "assets/colorschemes/") t "\\.el$"))
            (colorscheme-index (random (length colorschemes)))
            (colorscheme-path (nth colorscheme-index colorschemes)))
       (call-process-shell-command

@@ -1,6 +1,6 @@
 #+TITLE: Wget Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle (getenv "WGETRC")
+#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle ~/.config/wgetrc
 
 Redirect the hsts file to the cache directory so it doesn't litter my
 home folder.

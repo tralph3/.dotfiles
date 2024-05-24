@@ -1,6 +1,6 @@
 #+TITLE: NPM Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle (getenv "NPM_CONFIG_USERCONFIG")
+#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle ~/.config/npm/npmrc
 
 Configure NPM to not litter my home folder.
 #+begin_src conf

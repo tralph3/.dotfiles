@@ -188,10 +188,10 @@
       fi
   }
 
-  alias ls='eza -lg --icons --header --group-directories-first'
-  alias la='eza -lag --icons --header --group-directories-first'
-  alias lr='eza -lTg -L 2 --icons --header --group-directories-first'
-  alias lR='eza -lTg --icons --header --group-directories-first'
+  alias ls='eza -lg --icons --header --group-directories-first --hyperlink'
+  alias la='eza -lag --icons --header --group-directories-first --hyperlink'
+  alias lr='eza -lTg -L 2 --icons --header --group-directories-first --hyperlink'
+  alias lR='eza -lTg --icons --header --group-directories-first --hyperlink'
 
   alias e="$EDITOR"
 

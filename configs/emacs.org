@@ -576,16 +576,13 @@ Provides a nice dashboard on every new frame.
 
 ** Treesitter
 #+begin_src emacs-lisp
-  (use-package tree-sitter
+  (use-package treesit-auto
     :ensure t
+    :custom
+    (treesit-font-lock-level 4)
     :config
-    (require 'tree-sitter-langs)
-    (global-tree-sitter-mode)
-    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-
-  (use-package tree-sitter-langs
-    :ensure t
-    :after tree-sitter)
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
 #+end_src
 
 ** Marginalia

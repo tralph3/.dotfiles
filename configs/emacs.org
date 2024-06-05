@@ -1002,6 +1002,7 @@ comes with default configurations for a number of languages.
        (trailing-whitespace                          :foreground base0A :background base0C)
        (vertical-border                              :foreground base02)
        (widget-field                                 :background base03 :box (:line-width 1 :color base06))
+       (completions-common-part                      :foreground base0C)
 
        (error                                        :foreground base08 :weight bold)
        (warning                                      :foreground base09 :weight bold)
@@ -1622,6 +1623,12 @@ comes with default configurations for a number of languages.
        (nxml-delimiter-face                          :foreground unspecified :inherit font-lock-keyword-face)
        (nxml-delimited-data-face                     :foreground unspecified :inherit font-lock-string-face)
        (rng-error-face                               :underline base08)
+
+          ;;;; orderless
+       (orderless-match-face-0                       :foreground base0E :weight bold)
+       (orderless-match-face-1                       :foreground base0A :weight bold)
+       (orderless-match-face-2                       :foreground base0C :weight bold)
+       (orderless-match-face-3                       :foreground base0D :weight bold)
 
           ;;;; org-mode
        (org-agenda-date                              :foreground base0D :underline unspecified)

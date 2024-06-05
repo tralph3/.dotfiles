@@ -54,9 +54,13 @@ How I prefer emacs to look.
     (set-face-attribute 'default nil
                         :font "Berkeley Mono-13")
     (set-face-attribute 'fixed-pitch nil
-                        :font "Berkeley Mono-13")
+                        :font "Berkeley Mono"
+                        :height 1.0
+                        :inherit 'default)
     (set-face-attribute 'variable-pitch nil
-                        :font "Iosevka Etoile-14"))
+                        :font "Iosevka Etoile"
+                        :height 1.2
+                        :inherit 'default))
 #+end_src
 
 ** Behavioral Settings
@@ -87,6 +91,11 @@ Allow me to delete a selection by just typing or pressing
 backspace. Behaves more like other editors.
 #+begin_src emacs-lisp
   (delete-selection-mode t)
+#+end_src
+
+Scales the header-line when scaling text using [[help:text-scale-mode][text-scale-mode]].
+#+begin_src emacs-lisp
+  (setq text-scale-remap-header-line t)
 #+end_src
 
 Auto-insert closing parenthesis, quotes, brackets and more.
@@ -1051,8 +1060,8 @@ comes with default configurations for a number of languages.
        (isearch-fail                                 :background base01 :inverse-video t :inherit font-lock-warning-face)
 
           ;;;; line-numbers
-       (line-number                                  :foreground base03 :background base16-settings-fringe-bg)
-       (line-number-current-line                     :inherit fringe)
+       (line-number                                  :foreground base03 :background base16-settings-fringe-bg :inherit (shadow fixed-pitch))
+       (line-number-current-line                     :inherit (fringe fixed-pitch))
 
           ;;;; mode-line
        (mode-line                                    :foreground base16-settings-mode-line-fg :background base02 :box base16-settings-mode-line-box)
@@ -1635,8 +1644,8 @@ comes with default configurations for a number of languages.
        (org-agenda-dimmed-todo-face                  :foreground base04)
        (org-agenda-done                              :foreground base0B)
        (org-agenda-structure                         :foreground base0E)
-       (org-block                                    :foreground base05 :background base01 :inherit fixed-pitch)
-       (org-block-begin-line                         :foreground base03 :background base01 :inherit fixed-pitch)
+       (org-block                                    :foreground base05 :background base01 :extend t :inherit fixed-pitch)
+       (org-block-begin-line                         :foreground base03 :background base01 :extend t :inherit fixed-pitch)
        (org-code                                     :foreground base0A :inherit shadow fixed-pitch)
        (org-column                                   :background base01)
        (org-column-title                             :weight bold :underline t :inherit org-column)

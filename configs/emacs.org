@@ -239,7 +239,12 @@ window's size.
   (advice-add 'pixel-scroll-precision :around #'around-pixel-scroll-precision)
 #+end_src
 
-*** Comfort Keybindings
+*** Smart open line
+
+This is a feature taken from Vim. In Vim, you can open lines above or
+below you with =O= or =o= respectively. I wanted something like this for
+Emacs. These functions achieve that and also indent the line
+appropriately. They are modified versions of those used in [[https://github.com/bbatsov/crux][crux]].
 #+begin_src emacs-lisp
   (defun smart-open-line-above ()
     (interactive)
@@ -248,12 +253,12 @@ window's size.
     (forward-line -1)
     (indent-according-to-mode))
 
-  (defun smart-open-line ()
+  (defun smart-open-line-below ()
     (interactive)
     (move-end-of-line nil)
     (newline-and-indent))
 
-  (global-set-key (kbd "M-o") #'smart-open-line)
+  (global-set-key (kbd "M-o") #'smart-open-line-below)
   (global-set-key (kbd "M-O") #'smart-open-line-above)
 #+end_src
 

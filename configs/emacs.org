@@ -723,6 +723,12 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package flymake
     :ensure t)
+
+  (use-package flymake-diagnostic-at-point
+    :ensure t
+    :after flymake
+    :config
+    (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 #+end_src
 
 ** Proced

@@ -1045,18 +1045,19 @@ comes with default configurations for a number of languages.
        (font-lock-doc-face                           :foreground base04)
        (font-lock-doc-string-face                    :foreground base03)
        (font-lock-function-name-face                 :foreground base0D)
-       (font-lock-keyword-face                       :foreground base0E)
+       (font-lock-keyword-face                       :foreground base0E :slant italic)
        (font-lock-negation-char-face                 :foreground base0B)
        (font-lock-preprocessor-face                  :foreground base0D)
        (font-lock-regexp-grouping-backslash          :foreground base0A)
        (font-lock-regexp-grouping-construct          :foreground base0E)
        (font-lock-string-face                        :foreground base0B)
        (font-lock-type-face                          :foreground base0A)
-       (font-lock-variable-name-face                 :foreground base08)
        (font-lock-warning-face                       :foreground base08)
-
-          ;;;; tree-sitter
-       (tree-sitter-hl-face:punctuation              :inherit unspecified)
+       (font-lock-variable-name-face                 :foreground base05)
+       (font-lock-variable-use-face                  :foreground base05)
+       (font-lock-property-use-face                  :foreground base0F)
+       (font-lock-operator-face                      :foreground base0E)
+       (font-lock-number-face                        :foreground base09)
 
           ;;;; isearch
        (match                                        :foreground base0D :background base01 :inverse-video t)

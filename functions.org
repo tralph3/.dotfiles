@@ -7,7 +7,7 @@ the configs.
 
 * Base
 Given an index, return the apropriate hex code for the base16 color.
-#+NAME:base
+#+NAME: base
 #+begin_src emacs-lisp :var i="00"
   (cond
    ((string= i "00") base00)
@@ -30,7 +30,7 @@ Given an index, return the apropriate hex code for the base16 color.
 
 * Var
 Given a symbol, it return its value.
-#+NAME:var
+#+NAME: var
 #+begin_src emacs-lisp :var v='pi
   (when (boundp v)
     (symbol-value v))

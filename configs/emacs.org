@@ -240,7 +240,6 @@ window's size.
 #+end_src
 
 *** Smart open line
-
 This is a feature taken from Vim. In Vim, you can open lines above or
 below you with =O= or =o= respectively. I wanted something like this for
 Emacs. These functions achieve that and also indent the line
@@ -868,8 +867,7 @@ comes with default configurations for a number of languages.
     :group 'base16)
 
   (defvar base16-theme-shell-colors
-    '(
-      :base00 "black"
+    '(:base00 "black"
       :base01 "brightgreen"
       :base02 "brightyellow"
       :base03 "brightblack"
@@ -892,8 +890,7 @@ comes with default configurations for a number of languages.
           an alternate theme for use in the terminal.")
 
   (defvar base16-theme-shell-colors-256
-    '(
-      :base00 "black"
+    '(:base00 "black"
       :base01 "color-18"
       :base02 "color-19"
       :base03 "brightblack"
@@ -1931,8 +1928,7 @@ comes with default configurations for a number of languages.
                      (file-name-directory load-file-name))))
 
   (defvar system-colors
-    '(
-      :base00 "#<<base(i="00")>>"
+    '(:base00 "#<<base(i="00")>>"
       :base01 "#<<base(i="01")>>"
       :base02 "#<<base(i="02")>>"
       :base03 "#<<base(i="03")>>"

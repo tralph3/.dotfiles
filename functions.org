@@ -1,42 +1,89 @@
-* Functions
+#+TITLE: Functions
+#+AUTHOR: tralph3
+#+PROPERTY: header-args :noweb yes
+
 This file contains various helper functions that are used throughout
 the configs.
 
-** Base
-Given an index, it returns the apropriate hex code for the base16
-color.
+* Base
+Given an index, return the apropriate hex code for the base16 color.
 #+NAME:base
 #+begin_src emacs-lisp :var i="00"
   (cond
-   ((string= i "00") (message base00))
-   ((string= i "01") (message base01))
-   ((string= i "02") (message base02))
-   ((string= i "03") (message base03))
-   ((string= i "04") (message base04))
-   ((string= i "05") (message base05))
-   ((string= i "06") (message base06))
-   ((string= i "07") (message base07))
-   ((string= i "08") (message base08))
-   ((string= i "09") (message base09))
-   ((string= i "0A") (message base0A))
-   ((string= i "0B") (message base0B))
-   ((string= i "0C") (message base0C))
-   ((string= i "0D") (message base0D))
-   ((string= i "0E") (message base0E))
-   ((string= i "0F") (message base0F)))
+   ((string= i "00") base00)
+   ((string= i "01") base01)
+   ((string= i "02") base02)
+   ((string= i "03") base03)
+   ((string= i "04") base04)
+   ((string= i "05") base05)
+   ((string= i "06") base06)
+   ((string= i "07") base07)
+   ((string= i "08") base08)
+   ((string= i "09") base09)
+   ((string= i "0A") base0A)
+   ((string= i "0B") base0B)
+   ((string= i "0C") base0C)
+   ((string= i "0D") base0D)
+   ((string= i "0E") base0E)
+   ((string= i "0F") base0F))
 #+end_src
 
-** Var
-Given a symbol, it returns its value.
+* Var
+Given a symbol, it return its value.
 #+NAME:var
 #+begin_src emacs-lisp :var v='pi
   (when (boundp v)
     (symbol-value v))
 #+end_src
 
-** Getenv
-Returns the value of an environment variable.
+* Getenv
+Return the value of an environment variable.
 #+NAME: getenv
 #+begin_src emacs-lisp :var e=""
   (getenv e)
+#+end_src
+
+* Color Blending
+The =color-blend= function allows to blend a hex color with any
+other. It can be used to blend with black or white to darken or
+lighten a color respectively.
+
+This is a good way to go beyond the base16 colorscheme by calculating
+color variants at runtime, since sometimes you need more than 16
+colors.
+
+The functions are slightly modified from the ones found in the
+[[https://github.com/doomemacs/themes/blob/3b2422b208d28e8734b300cd3cc6a7f4af5eba55/doom-themes.el#L301][doom-themes]] repo.
+
+#+NAME: blend-common
+#+begin_src emacs-lisp
+  (defun color-blend (color1 color2 alpha)
+    (when (and color1 color2)
+      (apply (lambda (r g b) (format "%02x%02x%02x" (* r 255) (* g 255) (* b 255)))
+             (cl-loop for it    in (color-name-to-rgb color1)
+                      for other in (color-name-to-rgb color2)
+                      collect (+ (* alpha it) (* other (- 1 alpha)))))))
+
+  (defun color-name-to-rgb (color)
+    (cl-loop with div = (float (car (tty-color-standard-values "#ffffff")))
+             for x in (tty-color-standard-values (downcase color))
+             collect (/ x div)))
+#+end_src
+
+#+NAME: darken
+#+begin_src emacs-lisp :var i="00" :var a=0
+  <<blend-common>>
+
+  (color-blend (concat "#"
+                       <<base>>
+                       ) "#000000" (- 1 a))
+#+end_src
+
+#+NAME: lighten
+#+begin_src emacs-lisp :var i="00" :var a=0
+  <<blend-common>>
+
+  (color-blend (concat "#"
+                       <<base>>
+                       ) "#FFFFFF" (- 1 a))
 #+end_src

@@ -916,6 +916,14 @@ comes with default configurations for a number of languages.
           color scheme, you may want to look for an alternate theme for use
           in the terminal.")
 
+  (defun apply-darker-minibuffer-background ()
+    (make-local-variable 'face-remapping-alist)
+    (add-to-list 'face-remapping-alist '(default (:background "#<<darken(i="00", a=0.2)>>")))
+    (add-to-list 'face-remapping-alist '(fringe (:background "#<<darken(i="00", a=0.2)>>"))))
+
+  (remove-hook 'minibuffer-setup-hook #'apply-darker-minibuffer-background)
+  (add-hook 'minibuffer-setup-hook #'apply-darker-minibuffer-background)
+
   (defun base16-theme-transform-color-key (key colors)
     "Transform a given color `KEY' into a theme color using `COLORS'.
 

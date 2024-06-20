@@ -196,7 +196,7 @@
   alias e="$EDITOR"
 
   SESSION_TYPE=$(loginctl show-session\
-      $(loginctl -o json | jq --raw-output '.[0] .session') -p Type | cut -d= -f2)
+      $(loginctl --json=short | jq --raw-output '.[0] .session') -p Type | cut -d= -f2)
   case $SESSION_TYPE in
       wayland)
           alias clip='wl-copy'

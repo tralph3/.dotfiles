@@ -14,7 +14,7 @@ done
 
 start_wall_loop() {
     while true; do
-	set_random_wallpaper
+        set_random_wallpaper
         sleep 10m
     done
 }
@@ -29,7 +29,7 @@ set_random_wallpaper() {
         PREVIOUS_WALLPAPER_PATH="$WALLPAPER"
 }
 
-swww init
+swww-daemon --format xrgb & disown
 
 if ! [ -z "$SET_RANDOM" ]; then
     set_random_wallpaper

@@ -10,7 +10,7 @@
           "height": 30,
           "modules-left": ["hyprland/workspaces", "hyprland/window"],
           "modules-center": ["clock"],
-          "modules-right": ["tray", "group/storage", "wireplumber"],
+          "modules-right": ["tray", "battery", "group/storage", "wireplumber"],
           "gtk-layer-shell": true,
           "group/storage": {
               "orientation": "horizontal",
@@ -40,6 +40,10 @@
               "format": "{:%B %d %Y, %A - %H:%M}",
               "timezone": "America/Argentina/Buenos_Aires",
               "tooltip": false
+          },
+          "battery": {
+              "format": "{icon}  {capacity}%",
+              "format-icons": ["", "", "", "", ""]
           },
           "wireplumber": {
               "format": "{icon}  {volume}%",
@@ -99,6 +103,7 @@
   #wireplumber,
   #workspaces,
   #clock,
+  #battery,
   #tray {
       color: #<<base(i="05")>>;
       background-color: #<<base(i="01")>>;

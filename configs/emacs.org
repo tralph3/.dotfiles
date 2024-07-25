@@ -170,6 +170,11 @@ Require less key-presses to use isearch.
   (setq isearch-wrap-pause 'no-ding)
 #+end_src
 
+Use [[help:ibuffer][ibuffer]] instead of [[help:list-buffers][list-buffers]].
+#+begin_src emacs-lisp
+  (global-set-key [remap list-buffers] #'ibuffer)
+#+end_src
+
 Stop the minibuffer from growing past a single line. I access the
 documentation of symbols at point with =C-c h=.
 #+begin_src emacs-lisp

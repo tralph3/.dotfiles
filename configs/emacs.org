@@ -356,7 +356,9 @@ package archives.
     ((:map dired-mode-map
            (("<tab>" . dired-subtree-toggle)
             ("<mouse-2>" . dired-find-file)
-            ("<backspace>" . dired-up-directory)))))
+            ("<backspace>" . dired-up-directory)
+            ("C-o" . dired-find-file-other-window)
+            ("o" . dired-display-file)))))
 #+end_src
 
 This allows me to toggle subtrees in dired buffers.

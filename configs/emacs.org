@@ -107,6 +107,11 @@ backspace. Behaves more like other editors.
   (delete-selection-mode t)
 #+end_src
 
+Read-only buffers are opened in [[help:view-mode][view-mode]].
+#+begin_src emacs-lisp
+  (setq view-read-only t)
+#+end_src
+
 Scales the header-line when scaling text using [[help:text-scale-mode][text-scale-mode]].
 #+begin_src emacs-lisp
   (setq text-scale-remap-header-line t)

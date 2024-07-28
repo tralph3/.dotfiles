@@ -14,7 +14,7 @@
 
   $C_BROWSER=firefox
   $C_BROWSER_PRIVATE=firefox --private-window
-  $C_EMACS=emacs
+  $C_EMACS=emacsclient -c
   $C_RAISE_VOLUME=$DOTFILES_DIR/scripts/audio.sh raise $VOLUME_STEP
   $C_LOWER_VOLUME=$DOTFILES_DIR/scripts/audio.sh lower $VOLUME_STEP
   $C_MUTE_AUDIO=$DOTFILES_DIR/scripts/audio.sh mute

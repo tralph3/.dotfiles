@@ -424,6 +424,10 @@ And this adds some colour to dired.
     :ensure t
     :hook
     (dired-mode . nerd-icons-dired-mode))
+
+  (use-package nerd-icons-ibuffer
+    :ensure t
+    :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 #+end_src
 
 ** Corfu

@@ -610,7 +610,19 @@ based on keywords, in any order.
     :ensure t
     :custom
     (ibuffer-use-other-window t)
-    :bind (("C-x C-b" . #'ibuffer)))
+    (ibuffer-expert t)
+    (ibuffer-saved-filter-groups
+     '(("Default"
+        ("  Magit" (name . "magit:\*"))
+        ("  Conner" (name . "*conner-\*"))
+        ("  Help" (mode . help-mode))
+        ("  Org" (mode . org-mode))
+        ("  Dired" (mode . dired-mode))
+        ("Unspecified" (name . ".")))))
+    :bind (("C-x C-b" . #'ibuffer))
+    :hook ((ibuffer-mode . ibuffer-auto-mode)
+           (ibuffer-mode . (lambda ()
+                             (ibuffer-switch-to-saved-filter-groups "Default")))))
 #+end_src
 
 ** Marginalia

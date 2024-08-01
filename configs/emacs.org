@@ -255,7 +255,7 @@ window's size.
            (pixel-scroll-precision-interpolation-factor (map-pixel-height-to-interpolation-factor desired-scroll-amount)))
       (apply func event)))
 
-  (advice-add 'pixel-scroll-precision :around #'around-pixel-scroll-precision)
+  (advice-add #'pixel-scroll-precision :around #'around-pixel-scroll-precision)
 #+end_src
 
 *** Smart open line
@@ -569,6 +569,7 @@ search for functions or variables in the minibuffer. Goes well with
 #+begin_src emacs-lisp
   (use-package vertico
     :ensure t
+    :demand t
     :config
     (vertico-mode)
     (vertico-mouse-mode))
@@ -606,22 +607,49 @@ based on keywords, in any order.
 
 ** Ibuffer
 #+begin_src emacs-lisp
+  (defun make-ibuffer-project-filters ()
+    (let (open-projects
+          filters)
+      (dolist (buffer (buffer-list))
+        (when-let ((visiting-file (buffer-file-name buffer))
+                   (visiting-directory (file-name-directory visiting-file))
+                   (current-project (project-current nil visiting-directory)))
+          (when (not (member current-project open-projects))
+            (add-to-list 'open-projects current-project t))))
+      (dolist (project open-projects)
+        (let ((name (project-name project))
+              (root (project-root project)))
+          (add-to-list 'filters `(,(format "  %s" name)
+                                  (project-root . ,root)))))
+      filters))
+
+  (defun make-ibuffer-filters ()
+    (let (filters
+          (project-filters (make-ibuffer-project-filters)))
+      (add-to-list 'project-filters "Default")
+      (add-to-list 'filters project-filters)
+      filters))
+
   (use-package ibuffer
     :ensure t
     :custom
     (ibuffer-use-other-window t)
     (ibuffer-expert t)
-    (ibuffer-saved-filter-groups
-     '(("Default"
-        ("  Magit" (name . "magit:\*"))
-        ("  Conner" (name . "*conner-\*"))
-        ("  Help" (mode . help-mode))
-        ("  Org" (mode . org-mode))
-        ("  Dired" (mode . dired-mode))
-        ("Unspecified" (name . ".")))))
     :bind (("C-x C-b" . #'ibuffer))
+    :config
+    (require 'ibuf-ext)
+    (define-ibuffer-filter project-root
+        "Return non-nil if BUF is part of a project whose root is QUALIFIER"
+      (:description "project root dir"
+                    :reader (read-regexp "Filter by project root dir (regexp): "))
+      (when-let ((visiting-file (buffer-file-name buf))
+                 (visiting-directory (file-name-directory visiting-file))
+                 (current-project (project-current nil visiting-directory))
+                 (root (project-root current-project)))
+        (equal qualifier root)))
     :hook ((ibuffer-mode . ibuffer-auto-mode)
            (ibuffer-mode . (lambda ()
+                             (setq ibuffer-saved-filter-groups (make-ibuffer-filters))
                              (ibuffer-switch-to-saved-filter-groups "Default")))))
 #+end_src
 

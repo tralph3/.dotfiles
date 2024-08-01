@@ -648,9 +648,9 @@ based on keywords, in any order.
                  (root (project-root current-project)))
         (equal qualifier root)))
     :hook ((ibuffer-mode . ibuffer-auto-mode)
-           (ibuffer-mode . (lambda ()
-                             (setq ibuffer-saved-filter-groups (make-ibuffer-filters))
-                             (ibuffer-switch-to-saved-filter-groups "Default")))))
+           (ibuffer . (lambda ()
+                        (setq ibuffer-saved-filter-groups (make-ibuffer-filters))
+                        (ibuffer-switch-to-saved-filter-groups "Default")))))
 #+end_src
 
 ** Marginalia

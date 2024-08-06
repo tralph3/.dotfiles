@@ -1,4 +1,5 @@
 ;;; -*- lisp-data -*-
 ((:name "Tangle all"
         :command "./scripts/tangle_all_configs.sh"
-        :type "compile"))
+        :type "compile"
+        :comint t))

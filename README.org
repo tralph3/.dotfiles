@@ -54,4 +54,3 @@ Each config file gets tangled and placed in their respective directories.
              (directory-files (file-name-concat dotfiles-path "configs") t "\\.org$"))
       (org-babel-tangle-file config)))
 #+end_src
-asd

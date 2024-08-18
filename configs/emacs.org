@@ -365,7 +365,13 @@ package archives.
     (dired-kill-when-opening-new-dired-buffer t)
     (dired-listing-switches "-alh --group-directories-first")
     (dired-dwim-target t)
+    (ls-lisp-use-insert-directory-program nil)
+    (ls-lisp-ignore-case t)
+    (ls-lisp-dirs-first t)
+    (ls-lisp-use-string-collate nil)
     :after dired-subtree
+    :config
+    (require 'ls-lisp)
     :bind
     ((:map dired-mode-map
            (("<tab>" . dired-subtree-toggle)

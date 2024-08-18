@@ -378,6 +378,7 @@ package archives.
             ("<mouse-2>" . dired-find-file)
             ("<mouse-8>" . dired-up-directory)
             ("<backspace>" . dired-up-directory)
+            ("b" . dired-up-directory)
             ("C-o" . dired-find-file-other-window)
             ("o" . dired-display-file)))))
 #+end_src

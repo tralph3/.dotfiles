@@ -124,9 +124,7 @@ properly.
 
   windowrule=workspace 5 silent,gamescope
   windowrule=fullscreen,gamescope
-  windowrule=workspace 5 silent,Steam
-  windowrule=workspace 5 silent,steam
-  windowrule=workspace 5 silent,steamwebhelper
+  windowrulev2=workspace 5 silent,class:(Steam|steam|steamwebhelper)
   windowrule=workspace 5 silent,lutris
 
   windowrule=workspace 6 silent,discord

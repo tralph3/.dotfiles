@@ -114,7 +114,7 @@ These rules make the pointer for KDE Connect's slideshow remote work
 properly.
 #+begin_src conf
   windowrule=float,org.kde.kdeconnect.daemon
-  windowrule=fakefullscreen,org.kde.kdeconnect.daemon
+  windowrule=fullscreenstate,2 0,org.kde.kdeconnect.daemon
   windowrule=size 100% 100%,org.kde.kdeconnect.daemon
   windowrule=noanim,org.kde.kdeconnect.daemon
   windowrule=pin,org.kde.kdeconnect.daemon

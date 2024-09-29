@@ -107,6 +107,12 @@ backspace. Behaves more like other editors.
   (delete-selection-mode t)
 #+end_src
 
+Warnings come up mostly when I install new packages, so I don't care
+about them.
+#+begin_src emacs-lisp
+  (setq warning-minimum-level :error)
+#+end_src
+
 Read-only buffers are opened in [[help:view-mode][view-mode]].
 #+begin_src emacs-lisp
   (setq view-read-only t)

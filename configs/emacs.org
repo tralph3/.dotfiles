@@ -360,8 +360,7 @@ package archives.
                                (magit-project-status "Magit")
                                (conner-run-project-command "Conner")))
     (project-vc-extra-root-markers '("package.json"
-                                     "pubspec.yaml"
-                                     "Makefile")))
+                                     "pubspec.yaml")))
 #+end_src
 
 ** Dired

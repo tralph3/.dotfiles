@@ -621,17 +621,6 @@ based on keywords, in any order.
     (add-to-list 'completion-styles 'orderless))
 #+end_src
 
-** Treesitter
-#+begin_src emacs-lisp
-  (use-package treesit-auto
-    :ensure t
-    :custom
-    (treesit-font-lock-level 4)
-    :config
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-#+end_src
-
 ** Ibuffer
 #+begin_src emacs-lisp
   (defun make-ibuffer-project-filters ()

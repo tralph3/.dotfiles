@@ -201,6 +201,19 @@ documentation of symbols at point with =C-c h=.
   (setq resize-mini-windows nil)
 #+end_src
 
+*** Custom duplicate line
+The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
+command was invoked from, and adds the duplicated line below. I prefer
+to have the point move to the newly created line instead, since I
+usually duplicate lines to immediately modify them.
+#+begin_src emacs-lisp
+  (advice-add #'duplicate-line :after (lambda ()
+                                        (interactive)
+                                        (next-line 1)))
+
+  (global-set-key (kbd "C-;") #'duplicate-line)
+#+end_src
+
 *** Smooth Scrolling
 Make emacs scroll smoothly with a mouse, touchpad, and scroll keys.
 #+begin_src emacs-lisp

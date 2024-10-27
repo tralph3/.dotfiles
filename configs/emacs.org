@@ -149,6 +149,11 @@ Self explanatory.
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 
+No message on scratch buffers.
+#+begin_src emacs-lisp
+  (setq initial-scratch-message nil)
+#+end_src
+
 If files change on disk while opened on emacs, this ensures they get
 reloaded. Except for [[help:Buffer-menu-mode][Buffer-menu-mode]].
 #+begin_src emacs-lisp

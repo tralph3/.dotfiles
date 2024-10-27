@@ -372,8 +372,8 @@ package archives.
                                (eat-project "Terminal")
                                (magit-project-status "Magit")
                                (conner-run-project-command "Conner")))
-    (project-vc-extra-root-markers '("package.json"
-                                     "pubspec.yaml")))
+                               (magit-project-status "Magit" "g")
+                               (conner-run-project-command "Conner"))))
 #+end_src
 
 ** Dired

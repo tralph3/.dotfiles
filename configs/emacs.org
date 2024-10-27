@@ -370,8 +370,6 @@ package archives.
     (project-switch-commands '((project-find-file "Find file")
                                (project-dired "Open dired")
                                (eat-project "Terminal")
-                               (magit-project-status "Magit")
-                               (conner-run-project-command "Conner")))
                                (magit-project-status "Magit" "g")
                                (conner-run-project-command "Conner"))))
 #+end_src

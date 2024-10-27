@@ -16,30 +16,8 @@ initializes. I'll be using cage since it's meant to run a single
 application, perfect for this purpose.
 #+begin_src toml :tangle /su::/etc/greetd/config.toml
   [default_session]
-  command = "cage -s -- regreet"
+  command = "cage -s -- ags -c /etc/greetd/greetd.js"
   user = "greeter"
-#+end_src
-
-Regreet configuration to set my GTK theme.
-#+begin_src toml :tangle /su::/etc/greetd/regreet.toml
-  [GTK]
-  font_name = "Cantarell 16"
-  theme_name = "adw-gtk3"
-
-  [commands]
-  reboot = [ "systemctl", "reboot" ]
-  poweroff = [ "systemctl", "poweroff" ]
-#+end_src
-
-#+begin_src css :tangle /su::/etc/greetd/regreet.css
-  ,* {
-      background: #<<base(i="00")>>;
-      color: #<<base(i="05")>>;
-  }
-
-  #entry {
-      background: #<<base(i="01")>>;
-  }
 #+end_src
 
 This allows greetd to unlock the gnome-keyring on startup.

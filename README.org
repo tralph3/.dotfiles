@@ -18,13 +18,11 @@
 - [[file:configs/htop.org][Htop]]
 - [[file:configs/hyprland.org][Hyprland]]
 - [[file:configs/neovim.org][Neovim]]
-- [[file:configs/npm.org][NPM]]
 - [[file:configs/picom.org][Picom]]
 - [[file:configs/qtile.org][Qtile]]
 - [[file:configs/rofi.org][Rofi]]
 - [[file:configs/wallpapers.org][Wallpapers]]
 - [[file:configs/waybar.org][Waybar]]
-- [[file:configs/wget.org][Wget]]
 - [[file:configs/zsh.org][Zsh]]
 
 * Preparation

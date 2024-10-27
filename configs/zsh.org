@@ -1,8 +1,11 @@
 #+TITLE: Zsh Config
 #+AUTHOR: tralph3
-#+PROPERTY: header-args :noweb yes :tangle ~/.config/zsh/.zshrc :mkdirp yes
+#+PROPERTY: header-args :noweb yes :tangle ~/.zshrc :mkdirp yes
 
 #+begin_src bash
+  [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
+      source "$EAT_SHELL_INTEGRATION_DIR/zsh" 2> /dev/null
+
   export EDITOR="nvim"
 
   # Ignore commands that start with a space
@@ -40,11 +43,11 @@
   bindkey "\e[1;5C" forward-word
   # C-bs and M-d
   bindkey "\e[1;3D" kill-word
-  bindkey ""    backward-kill-word
+  bindkey "" backward-kill-word
   # del, home and end
   bindkey "\e[3~" delete-char
-  bindkey "\e[H"  beginning-of-line
-  bindkey "\e[F"  end-of-line
+  bindkey "\e[H" beginning-of-line
+  bindkey "\e[F" end-of-line
 
   autoload colors && colors
   PROMPT="%{$fg[white]%}[ %{$fg[red]%}%n%{$fg[white]%}@%{$fg[blue]%}%M%{$fg[yellow]%} %~%{$fg[white]%} ]%{$reset_color%}%  "
@@ -54,7 +57,10 @@
 
   # Load plugins
   [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+  [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+
   [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+  [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
   # extracting utility
   ex () {

@@ -1,9 +1,0 @@
-#+TITLE: Wget Config
-#+AUTHOR: tralph3
-#+PROPERTY: header-args :noweb yes :mkdirp yes :tangle ~/.config/wgetrc
-
-Redirect the hsts file to the cache directory so it doesn't litter my
-home folder.
-#+begin_src conf
-  hsts-file=<<getenv(e="XDG_CACHE_HOME")>>/wget-hsts
-#+end_src

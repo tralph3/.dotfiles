@@ -786,7 +786,8 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package eat
     :ensure t
-    :bind (("C-x p t" . #'eat-project)))
+    :bind (("C-x p t" . #'eat-project))
+    :hook (eat-mode . compilation-shell-minor-mode))
 #+end_src
 
 ** Moodline

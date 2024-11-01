@@ -123,6 +123,8 @@ properly.
 #+begin_src conf
   windowrule=workspace 2 silent,firefox
 
+  windowrule=workspace 3 silent,FreeTube
+
   windowrule=workspace 5 silent,gamescope
   windowrule=fullscreen,gamescope
   windowrulev2=workspace 5 silent,class:(Steam|steam|steamwebhelper)

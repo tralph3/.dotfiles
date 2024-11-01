@@ -14,7 +14,7 @@
   setopt INC_APPEND_HISTORY
   HISTSIZE=10000
   SAVEHIST=10000
-  HISTFILE=$ZDOTDIR/history
+  HISTFILE=~/.zshhistory
   WORDCHARS=""
 
   # Basic auto/tab complete:

@@ -786,7 +786,8 @@ documents whenever the point is over them.
 #+begin_src emacs-lisp
   (use-package consult
     :ensure t
-    :bind (("C-x b" . #'consult-buffer)))
+    :bind (("C-x b" . #'consult-buffer)
+           ("M-y" . #'consult-yank-from-kill-ring)))
 #+end_src
 
 ** Eat

@@ -55,23 +55,25 @@ How I prefer emacs to look.
 When using the emacs daemon, the font settings won't get applied since
 there is no frame when the daemon starts.
 
-To fix this, the font settings can be extracted into a function, and a
-hook can be ran when a frame is created.
+To fix this, the font settings can be extracted into a function, and
+it can be ran when a frame is created.
 #+begin_src emacs-lisp
   (defun setup-font-settings ()
-    (when (and (display-graphic-p)
-               (member "Berkeley Mono" (font-family-list))
-               (member "Iosevka Etoile" (font-family-list)))
-      (set-face-attribute 'default nil
-                          :font "Berkeley Mono-13")
-      (set-face-attribute 'fixed-pitch nil
-                          :font "Berkeley Mono"
-                          :height 1.0
-                          :inherit 'default)
-      (set-face-attribute 'variable-pitch nil
-                          :font "Iosevka Etoile"
-                          :height 1.2
-                          :inherit 'default)))
+    (let ((fixed-face "Berkeley Mono")
+          (variable-face "Iosevka Etoile"))
+      (when (and (display-graphic-p)
+                 (member fixed-face (font-family-list))
+                 (member variable-face (font-family-list)))
+        (set-face-attribute 'default nil
+                            :font (concat fixed-face "-13"))
+        (set-face-attribute 'fixed-pitch nil
+                            :font fixed-face
+                            :height 1.0
+                            :inherit 'default)
+        (set-face-attribute 'variable-pitch nil
+                            :font variable-face
+                            :height 1.2
+                            :inherit 'default))))
 
   (if (daemonp)
       (add-hook 'server-after-make-frame-hook #'setup-font-settings)

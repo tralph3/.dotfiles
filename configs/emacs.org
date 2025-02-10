@@ -379,6 +379,13 @@ package archives.
                                (conner-run-project-command "Conner"))))
 #+end_src
 
+** Denote
+#+begin_src emacs-lisp
+  (use-package denote
+    :ensure t
+    :bind ("C-c d" . #'denote-open-or-create))
+#+end_src
+
 ** Dired
 #+begin_src emacs-lisp
   (use-package dired

@@ -200,12 +200,6 @@ Require less key-presses to use isearch.
   (setq isearch-wrap-pause 'no-ding)
 #+end_src
 
-Stop the minibuffer from growing past a single line. I access the
-documentation of symbols at point with =C-c h=.
-#+begin_src emacs-lisp
-  (setq resize-mini-windows nil)
-#+end_src
-
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer
@@ -840,6 +834,7 @@ emacs, using its built-in tools as much as possible.
     (eglot-autoshutdown t)
     (eglot-sync-connect 0)
     (eglot-events-buffer-size 0)
+    (eldoc-echo-area-use-multiline-p nil)
     :config
     (fset #'jsonrpc--log-event #'ignore)
     (add-hook 'prog-mode-hook 'eglot-ensure)

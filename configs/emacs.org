@@ -845,8 +845,8 @@ emacs, using its built-in tools as much as possible.
     (eldoc-echo-area-use-multiline-p nil)
     :config
     (fset #'jsonrpc--log-event #'ignore)
-    (add-hook 'prog-mode-hook 'eglot-ensure)
-    (add-hook 'focus-out-hook 'garbage-collect)
+    (add-hook 'prog-mode-hook #'eglot-ensure)
+    (add-hook 'focus-out-hook #'garbage-collect)
     (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
     (global-set-key (kbd "C-c d") 'xref-find-definitions)
     (global-set-key (kbd "C-c h") 'eldoc)

@@ -202,6 +202,11 @@ Require less key-presses to use isearch.
   (setq isearch-wrap-pause 'no-ding)
 #+end_src
 
+Quickly switch to the last buffer.
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-M-l") #'mode-line-other-buffer)
+#+end_src
+
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer

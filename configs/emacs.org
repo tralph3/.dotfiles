@@ -621,8 +621,9 @@ based on keywords, in any order.
 #+begin_src emacs-lisp
   (use-package orderless
     :ensure t
-    :config
-    (add-to-list 'completion-styles 'orderless))
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles basic partial-completion)))))
 #+end_src
 
 ** Ibuffer

@@ -854,7 +854,7 @@ emacs, using its built-in tools as much as possible.
 ** Org Mode
 #+begin_src emacs-lisp
   (use-package org
-    :ensure t
+    :ensure nil
     :custom
     (org-startup-indented t)
     (org-pretty-entities t)

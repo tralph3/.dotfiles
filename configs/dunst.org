@@ -9,7 +9,7 @@
   follow = mouse
   width = 300
   origin = bottom-left
-  offset = 50x50
+  offset = (50, 50)
   scale = 0
   notification_limit = 4
 #+end_src

@@ -789,6 +789,8 @@ documents whenever the point is over them.
   (use-package consult
     :ensure t
     :bind (("C-x b" . #'consult-buffer)
+           ("M-g i" . #'consult-imenu)
+           ("M-g I" . #'consult-imenu-multi)
            ("M-y" . #'consult-yank-from-kill-ring)))
 #+end_src
 

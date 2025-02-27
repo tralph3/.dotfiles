@@ -48,6 +48,8 @@
       touchpad {
           natural_scroll=no
       }
+
+      kb_options=ctrl:nocaps
   }
 
   general {

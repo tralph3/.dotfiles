@@ -207,6 +207,11 @@ Quickly switch to the last buffer.
   (global-set-key (kbd "C-M-l") #'mode-line-other-buffer)
 #+end_src
 
+Ignore case when reading minibuffer completion.
+#+begin_src emacs-lisp
+  (setq completion-ignore-case t)
+#+end_src
+
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer

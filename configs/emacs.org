@@ -379,7 +379,8 @@ package archives.
 #+begin_src emacs-lisp
   (use-package project
     :ensure t
-    :bind (("C-x p d" . #'project-dired))
+    :bind (("C-x p d" . #'project-dired)
+           ("C-x p e" . #'consult-compile-error))
     :config
     (global-unset-key (kbd "C-x p D"))
     :custom

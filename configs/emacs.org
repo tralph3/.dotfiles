@@ -600,6 +600,8 @@ that are not included by default.
     :ensure t)
   (use-package haskell-mode
     :ensure t)
+  (use-package glsl-mode
+    :ensure t)
   (use-package wollok-mode
     :ensure t)
 #+end_src

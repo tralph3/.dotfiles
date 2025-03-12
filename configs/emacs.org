@@ -553,7 +553,7 @@ candidates. Hence, this package.
 #+end_src
 
 ** Company
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (use-package company
     :ensure t
     :if nil
@@ -565,7 +565,7 @@ candidates. Hence, this package.
 #+end_src
 
 *** Keybindings
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   (setq company-active-map (make-sparse-keymap))
   (define-key company-active-map (kbd "M-n") 'company-select-next)
   (define-key company-active-map (kbd "M-p") 'company-select-previous)

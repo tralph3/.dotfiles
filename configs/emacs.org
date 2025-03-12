@@ -212,6 +212,12 @@ Ignore case when reading minibuffer completion.
   (setq completion-ignore-case t)
 #+end_src
 
+Lets me use commands that would invoke the minibuffer while inside the
+minibuffer, such as [[consult-yank-from-kill-ring]].
+#+begin_src emacs-lisp
+  (setq enable-recursive-minibuffers t)
+#+end_src
+
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer

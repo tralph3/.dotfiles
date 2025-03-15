@@ -552,6 +552,12 @@ candidates. Hence, this package.
     (compilation-scroll-output t))
 #+end_src
 
+** WGrep
+#+begin_src emacs-lisp
+  (use-package wgrep
+    :ensure t)
+#+end_src
+
 ** Company
 #+begin_src emacs-lisp :tangle no
   (use-package company

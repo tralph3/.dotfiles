@@ -618,6 +618,18 @@ that are not included by default.
     :ensure t)
 #+end_src
 
+There must be a bug in [[help:package-vc-install][package-vc-install]], specifically in
+[[help:package-read-from-string][package-read-from-string]]. It fails parsing the package string, as
+described in [[https://lists.gnu.org/archive/html/help-gnu-emacs/2024-02/msg00053.html][this]] thread. If the function is evaluated before-hand, it
+seems to work? It's weird. To not halt the execution of the init file,
+I'll just ignore the error for now.
+#+begin_src emacs-lisp
+  (ignore-errors
+    (use-package odin-mode
+      :ensure t
+      :vc (:url "https://github.com/mattt-b/odin-mode")))
+#+end_src
+
 ** Vertico
 Vertico provides a performant and minimalistic vertical completion UI
 based on the default completion system. It makes it really easy to

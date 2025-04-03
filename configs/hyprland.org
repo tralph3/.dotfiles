@@ -66,6 +66,10 @@
       no_warps=true
   }
 
+  ecosystem {
+      no_update_news=true
+  }
+
   master {
       new_status="slave"
       mfact=0.5
@@ -109,39 +113,38 @@
       workspace_back_and_forth=true
       allow_workspace_cycles=true
   }
-
-  windowrule=noanim,flameshot
-  windowrule=float,flameshot
-
 #+end_src
 
 These rules make the pointer for KDE Connect's slideshow remote work
 properly.
 #+begin_src conf
-  windowrule=float,org.kde.kdeconnect.daemon
-  windowrule=fullscreenstate,2 0,org.kde.kdeconnect.daemon
-  windowrule=size 100% 100%,org.kde.kdeconnect.daemon
-  windowrule=noanim,org.kde.kdeconnect.daemon
-  windowrule=pin,org.kde.kdeconnect.daemon
-  windowrule=nofocus,org.kde.kdeconnect.daemon
+  windowrule=float,class:org.kde.kdeconnect.daemon
+  windowrule=fullscreenstate,2 0,class:org.kde.kdeconnect.daemon
+  windowrule=size 100% 100%,class:org.kde.kdeconnect.daemon
+  windowrule=noanim,class:org.kde.kdeconnect.daemon
+  windowrule=pin,class:org.kde.kdeconnect.daemon
+  windowrule=nofocus,class:org.kde.kdeconnect.daemon
 #+end_src
 
 #+begin_src conf
-  windowrule=workspace 2 silent,firefox
+  windowrule=noanim,class:flameshot
+  windowrule=float,class:flameshot
 
-  windowrule=workspace 3 silent,FreeTube
+  windowrule=workspace 2 silent,class:firefox
 
-  windowrule=workspace 5 silent,gamescope
-  windowrule=fullscreen,gamescope
-  windowrulev2=workspace 5 silent,class:(Steam|steam|steamwebhelper)
-  windowrule=workspace 5 silent,lutris
+  windowrule=workspace 3 silent,class:FreeTube
 
-  windowrule=workspace 6 silent,discord
-  windowrule=workspace 6 silent,vesktop
+  windowrule=workspace 5 silent,class:gamescope
+  windowrule=fullscreen,class:gamescope
+  windowrule=workspace 5 silent,class:(Steam|steam|steamwebhelper)
+  windowrule=workspace 5 silent,class:lutris
 
-  windowrule=workspace 7 silent,Spotify
-  windowrule=workspace 7 silent,deadbeef
-  windowrule=workspace 7 silent,io.github.quodlibet.QuodLibet
+  windowrule=workspace 6 silent,class:discord
+  windowrule=workspace 6 silent,class:vesktop
+
+  windowrule=workspace 7 silent,class:Spotify
+  windowrule=workspace 7 silent,class:deadbeef
+  windowrule=workspace 7 silent,class:io.github.quodlibet.QuodLibet
 
   layerrule=dimaround,rofi
 

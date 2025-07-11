@@ -481,9 +481,6 @@ selecting. Goes well with [[Orderless]].
   (use-package corfu
     :ensure t
     :custom
-    (corfu-auto t)
-    (corfu-auto-delay 0.2)
-    (corfu-auto-prefix 0)
     (corfu-min-width 60)
     (corfu-popupinfo-delay 0.5)
     (corfu-preview-current nil)

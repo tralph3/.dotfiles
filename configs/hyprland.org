@@ -107,6 +107,7 @@
 
   misc {
       disable_hyprland_logo=1
+      enable_anr_dialog=false
   }
 
   binds {

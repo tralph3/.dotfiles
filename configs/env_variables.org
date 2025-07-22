@@ -14,6 +14,7 @@
   export WALLPAPERS_DIR="$HOME/.local/share/wallpapers"
   export QT_QPA_PLATFORMTHEME=qt5ct
   export GTK_THEME=adw-gtk3
+  export ELECTRON_OZONE_PLATFORM_HINT=wayland
 #+end_src
 
 #+begin_src sh :tangle /su::/etc/profile.d/02-clean-trash.sh

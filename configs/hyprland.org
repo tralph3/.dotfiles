@@ -250,12 +250,6 @@ properly.
       vibrancy_darkness = 0.7
   }
 
-  general {
-      no_fade_in = false
-      grace = 0
-      disable_loading_bar = false
-  }
-
   label {
       monitor =
       text = cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"
@@ -311,10 +305,6 @@ properly.
       monitor =
       text =  $USER
       color = rgba(216, 222, 233, 0.80)
-      outline_thickness = 0
-      dots_size = 0.2
-      dots_spacing = 0.2
-      dots_center = true
       font_size = 16
       font_family = Berkeley Mono
       position = -650, -100
@@ -325,10 +315,6 @@ properly.
   input-field {
       monitor =
       size = 320, 55
-      outline_thickness = 0
-      dots_size = 0.2
-      dots_spacing = 0.2
-      dots_center = true
       outer_color = rgba(255, 255, 255, 0)
       inner_color = rgba(255, 255, 255, 0.1)
       font_color = rgb(200, 200, 200)
@@ -345,10 +331,6 @@ properly.
       monitor =
       text = cmd[] fortune -n 100 -s
       color = rgba(216, 222, 233, 0.4)
-      outline_thickness = 0
-      dots_size = 0.2
-      dots_spacing = 0.2
-      dots_center = true
       font_size = 12
       font_family = Ubuntu
       position = 0, -500

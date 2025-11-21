@@ -30,7 +30,7 @@
   $C_LOWER_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh lower $BRIGHTNESS_STEP
   $C_CHANGE_COLOR=$DOTFILES_DIR/scripts/change_colorscheme.sh
   $C_SCREENSHOT=grim -g "$(slurp -d)" - | wl-copy
-  $C_SCREENSHOT_EDIT=grim -g "$(slurp -d)" - | swappy -f -
+  $C_SCREENSHOT_EDIT=grim -g "$(slurp -d)" - | satty -f -
   $C_CALCULATOR=speedcrunch
   $C_KILL_WINDOW=hyprctl kill
   $C_POWEROFF=poweroff

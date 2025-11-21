@@ -6,7 +6,7 @@
   [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
       source "$EAT_SHELL_INTEGRATION_DIR/zsh" 2> /dev/null
 
-  export EDITOR="nvim"
+  export EDITOR="emacsclient -nw"
 
   # Ignore commands that start with a space
   setopt HIST_IGNORE_SPACE

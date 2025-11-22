@@ -53,7 +53,21 @@
   PROMPT="%{$fg[white]%}[ %{$fg[red]%}%n%{$fg[white]%}@%{$fg[blue]%}%M%{$fg[yellow]%} %~%{$fg[white]%} ]%{$reset_color%}%  "
 
   # Reverse search
-  bindkey '^R' history-incremental-search-backward
+  function fzf-history-widget() {
+      local selected
+      selected=$(fc -rl 1 | fzf --height 30% --border --tac --reverse --preview "echo {}" | xargs | cut -d " " -f 2-)
+
+      if [[ -n "$selected" ]]; then
+          BUFFER=$selected
+          CURSOR=${#BUFFER}
+      fi
+
+      zle reset-prompt
+  }
+
+  zle -N fzf-history-widget
+
+  bindkey "^R" fzf-history-widget
 
   # Load plugins
   [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null

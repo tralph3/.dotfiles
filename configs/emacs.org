@@ -210,6 +210,8 @@ Quickly switch to the last buffer.
 Ignore case when reading minibuffer completion.
 #+begin_src emacs-lisp
   (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case t)
 #+end_src
 
 Lets me use commands that would invoke the minibuffer while inside the

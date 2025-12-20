@@ -220,6 +220,12 @@ minibuffer, such as [[consult-yank-from-kill-ring]].
   (setq enable-recursive-minibuffers t)
 #+end_src
 
+Enable [[help:ffap-bindings][ffap-bindings]] which modifies find file functions to guess which
+file to find based on the current point position.
+#+begin_src emacs-lisp
+  (ffap-bindings)
+#+end_src
+
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer
@@ -877,8 +883,8 @@ emacs, using its built-in tools as much as possible.
     (eldoc-echo-area-use-multiline-p nil)
     :config
     (fset #'jsonrpc--log-event #'ignore)
-    (add-hook 'prog-mode-hook #'eglot-ensure)
-    (add-hook 'focus-out-hook #'garbage-collect)
+    ;; (add-hook 'prog-mode-hook #'eglot-ensure)
+    ;; (add-hook 'focus-out-hook #'garbage-collect)
     (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
     (global-set-key (kbd "C-c d") 'xref-find-definitions)
     (global-set-key (kbd "C-c h") 'eldoc)

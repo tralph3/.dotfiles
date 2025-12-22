@@ -87,6 +87,7 @@
                   ,*.tar.bz2)   tar xjf ../$i   ;;
                   ,*.tar.gz)    tar xzf ../$i   ;;
                   ,*.tar.xz)    tar xJf ../$i   ;;
+                  ,*.tar.zst)   tar --zstd -xvf ../$i   ;;
                   ,*.bz2)       bunzip2 ../$i   ;;
                   ,*.rar)       unrar x ../$i     ;;
                   ,*.gz)        gunzip ../$i    ;;

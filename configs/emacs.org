@@ -64,16 +64,9 @@ it can be ran when a frame is created.
       (when (and (display-graphic-p)
                  (member fixed-face (font-family-list))
                  (member variable-face (font-family-list)))
-        (set-face-attribute 'default nil
-                            :font (concat fixed-face "-13"))
-        (set-face-attribute 'fixed-pitch nil
-                            :font fixed-face
-                            :height 1.0
-                            :inherit 'default)
-        (set-face-attribute 'variable-pitch nil
-                            :font variable-face
-                            :height 1.2
-                            :inherit 'default))))
+        (set-face-font 'default (format "%s-13" fixed-face))
+        (set-face-font 'fixed-pitch fixed-face)
+        (set-face-font 'variable-pitch variable-face))))
 
   (if (daemonp)
       (add-hook 'server-after-make-frame-hook #'setup-font-settings)

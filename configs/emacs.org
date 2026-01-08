@@ -832,7 +832,15 @@ documents whenever the point is over them.
   (use-package eat
     :ensure t
     :bind (("C-x p t" . #'eat-project))
-    :hook (eat-mode . compilation-shell-minor-mode))
+    :hook (eat-mode . compilation-shell-minor-mode)
+    :config
+    (add-to-list
+     'display-buffer-alist
+     '("\\*.*eat\\*"
+       (display-buffer-at-bottom)
+       (window-height . 0.25)
+       (dedicated . t)
+       (window-parameters . ((no-other-window . t))))))
 #+end_src
 
 ** Moodline

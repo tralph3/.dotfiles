@@ -200,6 +200,10 @@ Quickly switch to the last buffer.
   (global-set-key (kbd "C-<tab>") #'mode-line-other-buffer)
 #+end_src
 
+#+begin_src emacs-lisp
+  (global-set-key (kbd "C-x !") #'delete-other-windows-vertically)
+#+end_src
+
 Ignore case when reading minibuffer completion.
 #+begin_src emacs-lisp
   (setq completion-ignore-case t)

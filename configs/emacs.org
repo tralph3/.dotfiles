@@ -195,6 +195,23 @@ Require less key-presses to use isearch.
   (setq isearch-wrap-pause 'no-ding)
 #+end_src
 
+Easily move lines around.
+#+begin_src emacs-lisp
+  ;; TODO: implement moving region as well
+  (defun move-line-down-dwim (arg)
+    (interactive "p")
+    (transpose-lines arg)
+    (forward-line -1))
+
+  (defun move-line-up-dwim (arg)
+    (interactive "p")
+    (forward-line 1)
+    (move-line-down-dwim (* arg -1)))
+
+  (global-set-key (kbd "M-p") #'move-line-up-dwim)
+  (global-set-key (kbd "M-n") #'move-line-down-dwim)
+#+end_src
+
 Quickly switch to the last buffer.
 #+begin_src emacs-lisp
   (global-set-key (kbd "C-<tab>") #'mode-line-other-buffer)

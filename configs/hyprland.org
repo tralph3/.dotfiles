@@ -8,6 +8,7 @@
   monitor=HDMI-A-1,3840x2160@60,auto,2,mirror,DP-2
 
   exec-once=$DOTFILES_DIR/scripts/autostart_all.sh
+  exec-once=setxkbmap us
   exec-once=$DOTFILES_DIR/scripts/wayland_wallpaper.sh -l
   exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 

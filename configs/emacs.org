@@ -200,13 +200,14 @@ Easily move lines around.
   ;; TODO: implement moving region as well
   (defun move-line-down-dwim (arg)
     (interactive "p")
+    (forward-line 1)
     (transpose-lines arg)
     (forward-line -1))
 
   (defun move-line-up-dwim (arg)
     (interactive "p")
-    (forward-line 1)
-    (move-line-down-dwim (* arg -1)))
+    (when (> (line-number-at-pos) 1)
+        (move-line-down-dwim (* arg -1))))
 
   (global-set-key (kbd "M-p") #'move-line-up-dwim)
   (global-set-key (kbd "M-n") #'move-line-down-dwim)

@@ -235,12 +235,6 @@ minibuffer, such as [[consult-yank-from-kill-ring]].
   (setq enable-recursive-minibuffers t)
 #+end_src
 
-Enable [[help:ffap-bindings][ffap-bindings]] which modifies find file functions to guess which
-file to find based on the current point position.
-#+begin_src emacs-lisp
-  (ffap-bindings)
-#+end_src
-
 *** Custom duplicate line
 The default [[help:duplicate-line][duplicate-line]] command leaves point on the same line the
 command was invoked from, and adds the duplicated line below. I prefer
@@ -857,8 +851,7 @@ documents whenever the point is over them.
      '("\\*.*eat\\*"
        (display-buffer-at-bottom)
        (window-height . 0.25)
-       (dedicated . t)
-       (window-parameters . ((no-other-window . t))))))
+       (dedicated . t))))
 #+end_src
 
 ** Moodline

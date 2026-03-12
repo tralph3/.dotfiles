@@ -241,19 +241,31 @@ properly.
   bind=SUPER,space,togglefloating,
 
   bind=SUPER,H,movefocus,l
+  bind=SUPER,LEFT,movefocus,l
   bind=SUPER,J,movefocus,d
+  bind=SUPER,DOWN,movefocus,d
   bind=SUPER,K,movefocus,u
+  bind=SUPER,UP,movefocus,u
   bind=SUPER,L,movefocus,r
+  bind=SUPER,RIGHT,movefocus,r
 
   bind=SUPERSHIFT,H,movewindow,l
+  bind=SUPERSHIFT,LEFT,movewindow,l
   bind=SUPERSHIFT,J,movewindow,d
+  bind=SUPERSHIFT,DOWN,movewindow,d
   bind=SUPERSHIFT,K,movewindow,u
+  bind=SUPERSHIFT,UP,movewindow,u
   bind=SUPERSHIFT,L,movewindow,r
+  bind=SUPERSHIFT,RIGHT,movewindow,r
 
   bind=SUPERCONTROL,H,resizeactive,-80 0
+  bind=SUPERCONTROL,LEFT,resizeactive,-80 0
   bind=SUPERCONTROL,J,resizeactive,0 80
+  bind=SUPERCONTROL,DOWN,resizeactive,0 80
   bind=SUPERCONTROL,K,resizeactive,0 -80
+  bind=SUPERCONTROL,UP,resizeactive,0 -80
   bind=SUPERCONTROL,L,resizeactive,80 0
+  bind=SUPERCONTROL,RIGHT,resizeactive,80 0
 
   bind=SUPER,1,workspace,1
   bind=SUPER,2,workspace,2

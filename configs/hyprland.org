@@ -149,7 +149,7 @@ properly.
   windowrule {
     name = windowrule-4
     workspace = 3 silent
-    match:class = FreeTube
+    match:initial_title = FreeTube
   }
 
 

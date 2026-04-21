@@ -788,26 +788,7 @@ documents whenever the point is over them.
     (add-to-list 'proced-format-alist '(basic pid tree pcpu pmem comm)))
 #+end_src
 
-** Eglot
-Eglot is a minimalistic LSP client. It integrates very well with
-emacs, using its built-in tools as much as possible.
 #+begin_src emacs-lisp
-  (use-package eglot
-    :ensure t
-    :custom
-    (eglot-autoshutdown t)
-    (eglot-sync-connect 0)
-    (eglot-events-buffer-size 0)
-    (eldoc-echo-area-use-multiline-p nil)
-    :config
-    (fset #'jsonrpc--log-event #'ignore)
-    ;; (add-hook 'prog-mode-hook #'eglot-ensure)
-    ;; (add-hook 'focus-out-hook #'garbage-collect)
-    (define-key eglot-mode-map (kbd "C-c r") 'eglot-rename)
-    (global-set-key (kbd "C-c d") 'xref-find-definitions)
-    (global-set-key (kbd "C-c h") 'eldoc)
-    (global-set-key (kbd "C-c b") 'xref-go-back)
-    (global-set-key (kbd "C-c R") 'xref-find-references))
 #+end_src
 
 ** Org Mode
@@ -1582,10 +1563,6 @@ comes with default configurations for a number of languages.
 
           ;;;; linum-mode
        (linum                                        :foreground base03 :background base16-settings-fringe-bg)
-
-          ;;;; lsp-ui-doc
-       (lsp-ui-doc-header                            :inherit org-document-title)
-       (lsp-ui-doc-background                        :background base01)
 
           ;;;; lui-mode
        (lui-button-face                              :foreground base0D)

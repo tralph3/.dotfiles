@@ -788,7 +788,10 @@ documents whenever the point is over them.
     (add-to-list 'proced-format-alist '(basic pid tree pcpu pmem comm)))
 #+end_src
 
+** Etags
 #+begin_src emacs-lisp
+  (use-package etags
+    :hook (prog-mode . etags-regen-mode))
 #+end_src
 
 ** Org Mode

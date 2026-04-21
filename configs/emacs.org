@@ -748,6 +748,11 @@ documents whenever the point is over them.
 ** Etags
 #+begin_src emacs-lisp
   (use-package etags
+    :config
+    (global-set-key (kbd "C-c d") 'xref-find-definitions)
+    (global-set-key (kbd "C-c h") 'eldoc)
+    (global-set-key (kbd "C-c b") 'xref-go-back)
+    (global-set-key (kbd "C-c R") 'xref-find-references)
     :hook (prog-mode . etags-regen-mode))
 #+end_src
 

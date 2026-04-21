@@ -638,42 +638,6 @@ Adds annotations to completion candidates.
     (shr-max-width nil))
 #+end_src
 
-** Org Roam
-#+begin_src emacs-lisp
-  (setq zettelkasten-paths-alist '(("Main" . "~/Documents/wiki/")
-                                   ("NesWiki" . "~/Documents/NesWiki/")))
-
-  (defun switch-zettelkasten ()
-    (interactive)
-    (let* ((keys (mapcar #'car zettelkasten-paths-alist))
-           (prompt (format "Select Zettelkasten:"))
-           (key (completing-read prompt keys))
-           (chosen-zettelkasten-path (cdr (assoc key zettelkasten-paths-alist))))
-      (setq org-roam-directory chosen-zettelkasten-path)
-      (setq org-roam-db-location (file-name-concat chosen-zettelkasten-path "org-roam.db"))
-      (org-roam-db-sync)))
-
-  (use-package org-roam
-    :ensure t
-    :custom
-    (org-roam-directory (cdr (assoc-string "Main" zettelkasten-paths-alist)))
-    (org-roam-db-location (file-name-concat (cdr (assoc-string "Main" zettelkasten-paths-alist)) "org-roam.db"))
-    (org-roam-capture-templates '(("d" "default" plain "%?"
-                                    :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                                                       "#+title: ${title}\n#+filetags: :Unfinished:")
-                                    :unnarrowed t)))
-    :bind
-    (("C-c n f" . org-roam-node-find)
-     ("C-c n s" . switch-zettelkasten)
-     (:map org-mode-map
-           (("C-c n i" . org-roam-node-insert)
-            ("C-c n t" . org-roam-tag-add)
-            ("C-c n a" . org-roam-alias-add)
-            ("C-c n b" . org-roam-buffer-toggle))))
-    :config
-    (org-roam-db-autosync-mode t))
-#+end_src
-
 ** Org Superstar
 #+begin_src emacs-lisp
   (use-package org-superstar

@@ -753,6 +753,10 @@ documents whenever the point is over them.
     (global-set-key (kbd "C-c h") 'eldoc)
     (global-set-key (kbd "C-c b") 'xref-go-back)
     (global-set-key (kbd "C-c R") 'xref-find-references)
+    (when (executable-find "ctags")
+      (let ((program "ctags -e -R --fields=+* --extras=+* --kinds-all=* --output-format=etags --languages=all"))
+        (setq etags-program-name program)
+        (setq etags-regen-program program)))
     :hook (prog-mode . etags-regen-mode))
 #+end_src
 

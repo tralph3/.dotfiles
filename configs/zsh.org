@@ -55,7 +55,7 @@
   # Reverse search
   function fzf-history-widget() {
       local selected
-      selected=$(fc -rl 1 | fzf --height 30% --border --tac --reverse --preview "echo {}" | xargs | cut -d " " -f 2-)
+      selected=$(fc -rl 1 | fzf --exact --height 30% --border --tac --reverse --preview "echo {}" | xargs | cut -d " " -f 2-)
 
       if [[ -n "$selected" ]]; then
           BUFFER=$selected

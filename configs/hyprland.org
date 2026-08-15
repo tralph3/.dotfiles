@@ -8,6 +8,8 @@
   local VOLUME_STEP     = 5
   local BRIGHTNESS_STEP = 5
 
+  local SCRATCH_CLASS = "scratch-terminal"
+
   local C_BROWSER          = "firefox"
   local C_BROWSER_PRIVATE  = "firefox --private-window"
   local C_EMACS            = "emacsclient -c"
@@ -140,8 +142,11 @@
   hl.animation({ leaf = "border",     enabled = true, speed = 6, bezier = "default" })
   hl.animation({ leaf = "fade",       enabled = true, speed = 3, bezier = "default" })
   hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "default" })
-#+end_src
+  hl.animation({ leaf = "specialWorkspaceIn", enabled = true, speed = 2, bezier = "default", style = "slidevert top" })
 
+  hl.curve("scratchOut", { type = "bezier", points = { {1, 0.05}, {0.54, 1.17} } })
+  hl.animation({ leaf = "specialWorkspaceOut", enabled = true, speed = 2, bezier = "scratchOut", style = "slidevert bottom" })
+#+end_src
 
 ** Window Rules
 This rule make the pointer for KDE Connect's slideshow remote work
@@ -156,6 +161,17 @@ properly.
       no_anim          = true,
       pin              = true,
       no_focus         = true,
+  })
+#+end_src
+
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.window_rule({
+        name  = "scratch-terminal",
+        match = { class = SCRATCH_CLASS },
+        workspace = "special:scratch",
+        float = true,
+        size = { "monitor_w * 0.8", "monitor_h * 0.4"},
+        move = { "monitor_w * 0.1", "100" }
   })
 #+end_src
 
@@ -228,6 +244,15 @@ properly.
   hl.bind("Print",                    hl.dsp.exec_cmd(C_SCREENSHOT))
   hl.bind("SHIFT + Print",            hl.dsp.exec_cmd(C_SCREENSHOT_EDIT))
   hl.bind("SUPER + SHIFT + W",        hl.dsp.exec_cmd(C_KILL_WINDOW))
+
+  -- Scratch terminal
+  hl.bind("SUPER + SHIFT + Return", function ()
+             if hl.get_window("class:" .. SCRATCH_CLASS) == nil then
+                hl.dispatch(hl.dsp.exec_cmd("alacritty --class " .. SCRATCH_CLASS))
+             else
+                hl.dispatch(hl.dsp.workspace.toggle_special("scratch"))
+             end
+  end)
 
   -- Mouse move / resize
   hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })

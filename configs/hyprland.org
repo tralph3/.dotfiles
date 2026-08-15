@@ -3,294 +3,284 @@
 #+PROPERTY: header-args :noweb yes :mkdirp yes
 
 * Main config
-#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
-  monitor=,preferred,auto,1
-  monitor=HDMI-A-1,3840x2160@60,auto,2,mirror,DP-2
+** Variables
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  local VOLUME_STEP     = 5
+  local BRIGHTNESS_STEP = 5
 
-  exec-once=$DOTFILES_DIR/scripts/autostart_all.sh
-  exec-once=setxkbmap us
-  exec-once=$DOTFILES_DIR/scripts/wayland_wallpaper.sh -l
-  exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-  $VOLUME_STEP=5
-  $BRIGHTNESS_STEP=5
-
-  $C_BROWSER=firefox
-  $C_BROWSER_PRIVATE=firefox --private-window
-  $C_EMACS=emacsclient -c
-  $C_RAISE_VOLUME=$DOTFILES_DIR/scripts/audio.sh raise $VOLUME_STEP
-  $C_LOWER_VOLUME=$DOTFILES_DIR/scripts/audio.sh lower $VOLUME_STEP
-  $C_MUTE_AUDIO=$DOTFILES_DIR/scripts/audio.sh mute
-  $C_SWITCH_SINK=$DOTFILES_DIR/scripts/audio.sh switch_sink
-  $C_MUTE_MIC=amixer set Capture toggle
-  $C_PLAY_PAUSE_AUDIO=playerctl play-pause
-  $C_STOP_AUDIO=playerctl stop
-  $C_NEXT_AUDIO=playerctl next
-  $C_PREV_AUDIO=playerctl previous
-  $C_ROFI=rofi -show drun
-  $C_TERMINAL=alacritty
-  $C_RAISE_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh raise $BRIGHTNESS_STEP
-  $C_LOWER_BRIGHTNESS=$DOTFILES_DIR/scripts/brightness.sh lower $BRIGHTNESS_STEP
-  $C_CHANGE_COLOR=$DOTFILES_DIR/scripts/change_colorscheme.sh
-  $C_SCREENSHOT=grim -g "$(slurp -d)" - | wl-copy
-  $C_SCREENSHOT_EDIT=grim -g "$(slurp -d)" - | satty -f -
-  $C_CALCULATOR=speedcrunch
-  $C_KILL_WINDOW=hyprctl kill
-  $C_POWEROFF=poweroff
-  $C_REBOOT=reboot
-
-  input {
-      kb_layout=us
-      numlock_by_default=1
-
-      sensitivity=0.0
-
-      follow_mouse=1
-      mouse_refocus=false
-
-      touchpad {
-          natural_scroll=no
-      }
-
-      kb_options=ctrl:nocaps
-  }
-
-  general {
-      layout=master
-      gaps_in=3
-      gaps_out=8
-      border_size=2
-
-      col.inactive_border = 0xFF<<base(i="03")>>
-      col.active_border = 0xFF<<base(i="09")>>
-  }
-
-  cursor {
-      no_warps=true
-  }
-
-  ecosystem {
-      no_update_news=true
-  }
-
-  master {
-      new_status="slave"
-      mfact=0.5
-      allow_small_split=true
-  }
-
-  decoration {
-      blur {
-          enabled=no
-          size=1
-          passes=1
-          new_optimizations=1
-      }
-
-      rounding=3
-
-      shadow {
-          enabled=1
-          range=30
-          render_power=5
-      }
-  }
-
-  animations {
-      enabled=1
-      animation=windows,1,4,default
-      animation=border,1,6,default
-      animation=fade,1,3,default
-      animation=workspaces,1,4,default
-  }
-
-  misc {
-      disable_hyprland_logo=1
-      enable_anr_dialog=false
-  }
-
-  binds {
-      workspace_back_and_forth=true
-      allow_workspace_cycles=true
-  }
+  local C_BROWSER          = "firefox"
+  local C_BROWSER_PRIVATE  = "firefox --private-window"
+  local C_EMACS            = "emacsclient -c"
+  local C_RAISE_VOLUME     = "$DOTFILES_DIR/scripts/audio.sh raise " .. VOLUME_STEP
+  local C_LOWER_VOLUME     = "$DOTFILES_DIR/scripts/audio.sh lower " .. VOLUME_STEP
+  local C_MUTE_AUDIO       = "$DOTFILES_DIR/scripts/audio.sh mute"
+  local C_SWITCH_SINK      = "$DOTFILES_DIR/scripts/audio.sh switch_sink"
+  local C_MUTE_MIC         = "amixer set Capture toggle"
+  local C_PLAY_PAUSE_AUDIO = "playerctl play-pause"
+  local C_STOP_AUDIO       = "playerctl stop"
+  local C_NEXT_AUDIO       = "playerctl next"
+  local C_PREV_AUDIO       = "playerctl previous"
+  local C_ROFI             = "rofi -show drun"
+  local C_TERMINAL         = "alacritty"
+  local C_RAISE_BRIGHTNESS = "$DOTFILES_DIR/scripts/brightness.sh raise " .. BRIGHTNESS_STEP
+  local C_LOWER_BRIGHTNESS = "$DOTFILES_DIR/scripts/brightness.sh lower " .. BRIGHTNESS_STEP
+  local C_CHANGE_COLOR     = "$DOTFILES_DIR/scripts/change_colorscheme.sh"
+  local C_SCREENSHOT       = 'grim -g "$(slurp -d)" - | wl-copy'
+  local C_SCREENSHOT_EDIT  = 'grim -g "$(slurp -d)" - | satty -f -'
+  local C_CALCULATOR       = "speedcrunch"
+  local C_KILL_WINDOW      = "hyprctl kill"
+  local C_POWEROFF         = "poweroff"
+  local C_REBOOT           = "reboot"
 #+end_src
 
-These rules make the pointer for KDE Connect's slideshow remote work
+** Monitors
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.monitor({
+        output = "",
+        mode = "preferred",
+        position = "auto",
+        scale = "auto"
+  })
+
+  hl.monitor({
+        output = "HDMI-A-1",
+        mode = "3840x2160@60",
+        position = "auto",
+        scale = 2,
+        mirror = "DP-2"
+  })
+#+end_src
+
+** Autostart
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.on("hyprland.start", function()
+           hl.exec_cmd("$DOTFILES_DIR/scripts/autostart_all.sh")
+           hl.exec_cmd("setxkbmap us")
+           hl.exec_cmd("$DOTFILES_DIR/scripts/wayland_wallpaper.sh -l")
+           hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+  end)
+#+end_src
+
+** General
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.config({
+
+        input = {
+           kb_layout          = "us",
+           numlock_by_default = true,       -- was 1
+           sensitivity        = 0.0,
+           follow_mouse       = 1,
+           mouse_refocus      = false,
+           touchpad = {
+              natural_scroll = false,      -- was no
+           },
+           kb_options = "ctrl:nocaps",
+        },
+
+        general = {
+           layout      = "master",          -- was unquoted
+           gaps_in     = 3,
+           gaps_out    = 8,
+           border_size = 2,
+           col = {
+              inactive_border = 0xFF<<base(i="03")>>,
+              active_border   = 0xFF<<base(i="09")>>,
+           },
+        },
+
+        cursor = {
+           no_warps = true,
+        },
+
+        ecosystem = {
+           no_update_news = true,
+        },
+
+        master = {
+           new_status        = "slave",
+           mfact             = 0.5,
+           allow_small_split = true,
+        },
+
+        decoration = {
+           rounding = 3,
+
+           blur = {
+              enabled = false,             -- was no
+              size    = 1,
+              passes  = 1,
+              -- new_optimizations: removed in 0.55, dropped
+           },
+
+           shadow = {
+              enabled      = true,         -- was 1
+              range        = 30,
+              render_power = 5,
+           },
+        },
+
+        animations = {
+           enabled = true,                  -- was 1
+        },
+
+        misc = {
+           disable_hyprland_logo = true,    -- was 1
+           enable_anr_dialog     = false,
+        },
+
+        binds = {
+           workspace_back_and_forth = true,
+           allow_workspace_cycles   = true,
+        },
+  })
+#+end_src
+
+** Animations
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.animation({ leaf = "windows",    enabled = true, speed = 4, bezier = "default" })
+  hl.animation({ leaf = "border",     enabled = true, speed = 6, bezier = "default" })
+  hl.animation({ leaf = "fade",       enabled = true, speed = 3, bezier = "default" })
+  hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "default" })
+#+end_src
+
+
+** Window Rules
+This rule make the pointer for KDE Connect's slideshow remote work
 properly.
-#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
-  windowrule {
-    name = kde-connect-slideshow-remote
-    float = on
-    fullscreen_state = 2 0
-    size = (monitor_w*1) (monitor_h*1)
-    no_anim = on
-    pin = on
-    no_focus = on
-    match:class = org.kde.kdeconnect.daemon
-  }
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.window_rule({
+      name             = "kde-connect-slideshow-remote",
+      match            = { class = "org.kde.kdeconnect.daemon" },
+      float            = true,
+      fullscreen_state = "2 0",
+      size             = { "monitor_w*1", "monitor_h*1" },
+      no_anim          = true,
+      pin              = true,
+      no_focus         = true,
+  })
 #+end_src
 
-#+begin_src conf :tangle ~/.config/hypr/hyprland.conf
-  windowrule {
-    name = windowrule-2
-    no_anim = on
-    float = on
-    match:class = flameshot
-  }
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  hl.window_rule({
+        name      = "Firefox",
+        match     = { class = "firefox" },
+        workspace = "2 silent",
+  })
 
+  hl.window_rule({
+        name      = "FreeTube",
+        match     = { initial_title = "FreeTube" },
+        workspace = "3 silent",
+  })
 
-  windowrule {
-    name = windowrule-3
-    workspace = 2 silent
-    match:class = firefox
-  }
+  hl.window_rule({
+        name       = "Gamescope",
+        match      = { class = "gamescope" },
+        workspace  = "5 silent",
+        fullscreen = true,
+  })
 
+  hl.window_rule({
+        name      = "Steam",
+        match     = { class = "(Steam|steam|steamwebhelper)" },
+        workspace = "5 silent",
+  })
 
-  windowrule {
-    name = windowrule-4
-    workspace = 3 silent
-    match:initial_title = FreeTube
-  }
+  hl.window_rule({
+        name      = "Discord",
+        match     = { initial_class = "(discord|equibop)" },
+        workspace = "6 silent",
+  })
 
+  hl.layer_rule({
+        name       = "Rofi Layer",
+        match      = { namespace = "rofi" },
+        dim_around = true,
+  })
+#+end_src
 
-  windowrule {
-    name = windowrule-5
-    workspace = 5 silent
-    fullscreen = on
-    match:class = gamescope
-  }
+** Binds
+#+begin_src lua :tangle ~/.config/hypr/hyprland.lua
+  -- Layout messages
+  hl.bind("SUPER + COMMA",  hl.dsp.layout("addmaster"))
+  hl.bind("SUPER + PERIOD", hl.dsp.layout("removemaster"))
 
-  windowrule {
-    name = windowrule-6
-    workspace = 5 silent
-    match:class = (Steam|steam|steamwebhelper)
-  }
+  -- Launch applications
+  hl.bind("SUPER + Return",           hl.dsp.exec_cmd(C_TERMINAL))
+  hl.bind("SUPER + I",                hl.dsp.exec_cmd(C_BROWSER))
+  hl.bind("SUPER + SHIFT + I",        hl.dsp.exec_cmd(C_BROWSER_PRIVATE))
+  hl.bind("SUPER + E",                hl.dsp.exec_cmd(C_EMACS))
+  hl.bind("SUPER + R",                hl.dsp.exec_cmd(C_ROFI))
+  hl.bind("SUPER + SHIFT + CTRL + Q", hl.dsp.exec_cmd(C_POWEROFF))
+  hl.bind("SUPER + SHIFT + CTRL + R", hl.dsp.exec_cmd(C_REBOOT))
+  hl.bind("XF86AudioRaiseVolume",     hl.dsp.exec_cmd(C_RAISE_VOLUME))
+  hl.bind("XF86AudioLowerVolume",     hl.dsp.exec_cmd(C_LOWER_VOLUME))
+  hl.bind("SUPER + A",                hl.dsp.exec_cmd(C_SWITCH_SINK))
+  hl.bind("SUPER + C",                hl.dsp.exec_cmd(C_CHANGE_COLOR))
+  hl.bind("XF86AudioMute",            hl.dsp.exec_cmd(C_MUTE_AUDIO))
+  hl.bind("XF86AudioPlay",            hl.dsp.exec_cmd(C_PLAY_PAUSE_AUDIO))
+  hl.bind("XF86AudioStop",            hl.dsp.exec_cmd(C_STOP_AUDIO))
+  hl.bind("XF86AudioNext",            hl.dsp.exec_cmd(C_NEXT_AUDIO))
+  hl.bind("XF86AudioPrev",            hl.dsp.exec_cmd(C_PREV_AUDIO))
+  hl.bind("XF86AudioMicMute",         hl.dsp.exec_cmd(C_MUTE_MIC))
+  hl.bind("XF86MonBrightnessUp",      hl.dsp.exec_cmd(C_RAISE_BRIGHTNESS))
+  hl.bind("XF86MonBrightnessDown",    hl.dsp.exec_cmd(C_LOWER_BRIGHTNESS))
+  hl.bind("XF86Calculator",           hl.dsp.exec_cmd(C_CALCULATOR))
+  hl.bind("Print",                    hl.dsp.exec_cmd(C_SCREENSHOT))
+  hl.bind("SHIFT + Print",            hl.dsp.exec_cmd(C_SCREENSHOT_EDIT))
+  hl.bind("SUPER + SHIFT + W",        hl.dsp.exec_cmd(C_KILL_WINDOW))
 
+  -- Mouse move / resize
+  hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+  hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-  windowrule {
-    name = windowrule-7
-    workspace = 6 silent
-    match:initial_class = (discord|equibop)
-  }
+  -- Window management
+  hl.bind("SUPER + W",        hl.dsp.window.close())
+  hl.bind("SUPER + F",        hl.dsp.window.fullscreen())
+  hl.bind("SUPER + CTRL + Q", hl.dsp.exit())
+  hl.bind("SUPER + space",    hl.dsp.window.float({ action = "toggle" }))
 
-  windowrule {
-    name = windowrule-8
-    workspace = 6 silent
-    match:class = vesktop
-  }
+  -- Focus direction
+  hl.bind("SUPER + H",     hl.dsp.focus({ direction = "left" }))
+  hl.bind("SUPER + LEFT",  hl.dsp.focus({ direction = "left" }))
+  hl.bind("SUPER + J",     hl.dsp.focus({ direction = "down" }))
+  hl.bind("SUPER + DOWN",  hl.dsp.focus({ direction = "down" }))
+  hl.bind("SUPER + K",     hl.dsp.focus({ direction = "up" }))
+  hl.bind("SUPER + UP",    hl.dsp.focus({ direction = "up" }))
+  hl.bind("SUPER + L",     hl.dsp.focus({ direction = "right" }))
+  hl.bind("SUPER + RIGHT", hl.dsp.focus({ direction = "right" }))
 
-  windowrule {
-    name = windowrule-9
-    workspace = 7 silent
-    match:class = Spotify
-  }
+  -- Move window
+  hl.bind("SUPER + SHIFT + H",     hl.dsp.window.move({ direction = "left" }))
+  hl.bind("SUPER + SHIFT + LEFT",  hl.dsp.window.move({ direction = "left" }))
+  hl.bind("SUPER + SHIFT + J",     hl.dsp.window.move({ direction = "down" }))
+  hl.bind("SUPER + SHIFT + DOWN",  hl.dsp.window.move({ direction = "down" }))
+  hl.bind("SUPER + SHIFT + K",     hl.dsp.window.move({ direction = "up" }))
+  hl.bind("SUPER + SHIFT + UP",    hl.dsp.window.move({ direction = "up" }))
+  hl.bind("SUPER + SHIFT + L",     hl.dsp.window.move({ direction = "right" }))
+  hl.bind("SUPER + SHIFT + RIGHT", hl.dsp.window.move({ direction = "right" }))
 
-  windowrule {
-    name = windowrule-10
-    workspace = 7 silent
-    match:class = deadbeef
-  }
+  -- Resize window
+  hl.bind("SUPER + CTRL + H",     hl.dsp.window.resize({ x = -80, y = 0,   relative = true }))
+  hl.bind("SUPER + CTRL + LEFT",  hl.dsp.window.resize({ x = -80, y = 0,   relative = true }))
+  hl.bind("SUPER + CTRL + J",     hl.dsp.window.resize({ x = 0,   y = 80,  relative = true }))
+  hl.bind("SUPER + CTRL + DOWN",  hl.dsp.window.resize({ x = 0,   y = 80,  relative = true }))
+  hl.bind("SUPER + CTRL + K",     hl.dsp.window.resize({ x = 0,   y = -80, relative = true }))
+  hl.bind("SUPER + CTRL + UP",    hl.dsp.window.resize({ x = 0,   y = -80, relative = true }))
+  hl.bind("SUPER + CTRL + L",     hl.dsp.window.resize({ x = 80,  y = 0,   relative = true }))
+  hl.bind("SUPER + CTRL + RIGHT", hl.dsp.window.resize({ x = 80,  y = 0,   relative = true }))
 
-  windowrule {
-    name = windowrule-11
-    workspace = 7 silent
-    match:class = io.github.quodlibet.QuodLibet
-  }
+  -- Workspaces (loop for 1–9, then explicit 10)
+  for i = 1, 9 do
+     hl.bind("SUPER + " .. i,         hl.dsp.focus({ workspace = i }))
+     hl.bind("SUPER + SHIFT + " .. i, hl.dsp.window.move({ workspace = i, follow = false }))
+  end
+  hl.bind("SUPER + 0",         hl.dsp.focus({ workspace = 10 }))
+  hl.bind("SUPER + SHIFT + 0", hl.dsp.window.move({ workspace = 10, follow = false }))
 
-
-  layerrule {
-    name = layerrule-1
-    dim_around = on
-    match:namespace = rofi
-  }
-
-  bind=SUPER,COMMA,layoutmsg,addmaster
-  bind=SUPER,PERIOD,layoutmsg,removemaster
-
-  bind=SUPER,return,exec,$C_TERMINAL
-  bind=SUPER,I,exec,$C_BROWSER
-  bind=SUPERSHIFT,I,exec,$C_BROWSER_PRIVATE
-  bind=SUPER,E,exec,$C_EMACS
-  bind=SUPER,R,exec,$C_ROFI
-  bind=SUPERSHIFTCONTROL,Q,exec,$C_POWEROFF
-  bind=SUPERSHIFTCONTROL,R,exec,$C_REBOOT
-  bind=,XF86AudioRaiseVolume,exec,$C_RAISE_VOLUME
-  bind=,XF86AudioLowerVolume,exec,$C_LOWER_VOLUME
-  bind=SUPER,A,exec,$C_SWITCH_SINK
-  bind=SUPER,C,exec,$C_CHANGE_COLOR
-  bind=,XF86AudioMute,exec,$C_MUTE_AUDIO
-  bind=,XF86AudioPlay,exec,$C_PLAY_PAUSE_AUDIO
-  bind=,XF86AudioStop,exec,$C_STOP_AUDIO
-  bind=,XF86AudioNext,exec,$C_NEXT_AUDIO
-  bind=,XF86AudioPrev,exec,$C_PREV_AUDIO
-  bind=,XF86AudioMicMute,exec,$C_MUTE_MIC
-  bind=,XF86MonBrightnessUp,exec,$C_RAISE_BRIGHTNESS
-  bind=,XF86MonBrightnessDown,exec,$C_LOWER_BRIGHTNESS
-  bind=,XF86Calculator,exec,$C_CALCULATOR
-  bind=,Print,exec,$C_SCREENSHOT
-  bind=SHIFT,Print,exec,$C_SCREENSHOT_EDIT
-  bind=SUPERSHIFT,W,exec,$C_KILL_WINDOW
-
-  bindm=SUPER,mouse:272,movewindow
-  bindm=SUPER,mouse:273,resizewindow
-
-  bind=SUPER,W,killactive,
-  bind=SUPER,F,fullscreen,0
-  bind=SUPERCONTROL,Q,exit,
-  bind=SUPER,space,togglefloating,
-
-  bind=SUPER,H,movefocus,l
-  bind=SUPER,LEFT,movefocus,l
-  bind=SUPER,J,movefocus,d
-  bind=SUPER,DOWN,movefocus,d
-  bind=SUPER,K,movefocus,u
-  bind=SUPER,UP,movefocus,u
-  bind=SUPER,L,movefocus,r
-  bind=SUPER,RIGHT,movefocus,r
-
-  bind=SUPERSHIFT,H,movewindow,l
-  bind=SUPERSHIFT,LEFT,movewindow,l
-  bind=SUPERSHIFT,J,movewindow,d
-  bind=SUPERSHIFT,DOWN,movewindow,d
-  bind=SUPERSHIFT,K,movewindow,u
-  bind=SUPERSHIFT,UP,movewindow,u
-  bind=SUPERSHIFT,L,movewindow,r
-  bind=SUPERSHIFT,RIGHT,movewindow,r
-
-  bind=SUPERCONTROL,H,resizeactive,-80 0
-  bind=SUPERCONTROL,LEFT,resizeactive,-80 0
-  bind=SUPERCONTROL,J,resizeactive,0 80
-  bind=SUPERCONTROL,DOWN,resizeactive,0 80
-  bind=SUPERCONTROL,K,resizeactive,0 -80
-  bind=SUPERCONTROL,UP,resizeactive,0 -80
-  bind=SUPERCONTROL,L,resizeactive,80 0
-  bind=SUPERCONTROL,RIGHT,resizeactive,80 0
-
-  bind=SUPER,1,workspace,1
-  bind=SUPER,2,workspace,2
-  bind=SUPER,3,workspace,3
-  bind=SUPER,4,workspace,4
-  bind=SUPER,5,workspace,5
-  bind=SUPER,6,workspace,6
-  bind=SUPER,7,workspace,7
-  bind=SUPER,8,workspace,8
-  bind=SUPER,9,workspace,9
-  bind=SUPER,0,workspace,10
-
-  bind=SUPER,TAB,workspace,previous
-  bind=SUPER,mouse_down,workspace,e-1
-  bind=SUPER,mouse_up,workspace,e+1
-
-  bind=SUPERSHIFT,1,movetoworkspacesilent,1
-  bind=SUPERSHIFT,2,movetoworkspacesilent,2
-  bind=SUPERSHIFT,3,movetoworkspacesilent,3
-  bind=SUPERSHIFT,4,movetoworkspacesilent,4
-  bind=SUPERSHIFT,5,movetoworkspacesilent,5
-  bind=SUPERSHIFT,6,movetoworkspacesilent,6
-  bind=SUPERSHIFT,7,movetoworkspacesilent,7
-  bind=SUPERSHIFT,8,movetoworkspacesilent,8
-  bind=SUPERSHIFT,9,movetoworkspacesilent,9
-  bind=SUPERSHIFT,0,movetoworkspacesilent,10
+  hl.bind("SUPER + TAB",        hl.dsp.focus({ workspace = "previous" }))
+  hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e-1" }))
+  hl.bind("SUPER + mouse_up",   hl.dsp.focus({ workspace = "e+1" }))
 #+end_src
 
 * Hypridle

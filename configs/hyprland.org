@@ -55,7 +55,6 @@
 #+begin_src lua :tangle ~/.config/hypr/hyprland.lua
   hl.on("hyprland.start", function()
            hl.exec_cmd("$DOTFILES_DIR/scripts/autostart_all.sh")
-           hl.exec_cmd("setxkbmap us")
            hl.exec_cmd("$DOTFILES_DIR/scripts/wayland_wallpaper.sh -l")
            hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
   end)

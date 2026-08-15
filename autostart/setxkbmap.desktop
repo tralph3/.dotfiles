@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=setxkbmap
-Exec=/usr/bin/setxkbmap -layout latam
-NoDisplay=true
-Type=Application

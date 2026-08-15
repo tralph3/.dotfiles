@@ -234,10 +234,14 @@ properly.
   hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
   -- Window management
+  hl.bind("SUPER + CTRL + Q", hl.dsp.exit())
   hl.bind("SUPER + W",        hl.dsp.window.close())
   hl.bind("SUPER + F",        hl.dsp.window.fullscreen())
-  hl.bind("SUPER + CTRL + Q", hl.dsp.exit())
-  hl.bind("SUPER + space",    hl.dsp.window.float({ action = "toggle" }))
+  hl.bind("SUPER + space",    hl.dsp.window.float())
+  hl.bind("SUPER + P",        function ()
+             hl.dispatch(hl.dsp.window.float({ action = "enable" }))
+             hl.dispatch(hl.dsp.window.pin())
+  end)
 
   -- Focus direction
   hl.bind("SUPER + H",     hl.dsp.focus({ direction = "left" }))

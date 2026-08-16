@@ -170,8 +170,8 @@ properly.
         match = { class = SCRATCH_CLASS },
         workspace = "special:scratch",
         float = true,
-        size = { "monitor_w * 0.8", "monitor_h * 0.4"},
-        move = { "monitor_w * 0.1", "100" }
+        size = { "monitor_w * 0.9", "monitor_h * 0.6"},
+        move = { "monitor_w * 0.05", "50" }
   })
 #+end_src
 

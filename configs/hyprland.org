@@ -183,6 +183,12 @@ properly.
   })
 
   hl.window_rule({
+        name      = "Grayjay",
+        match     = { initial_title = "Grayjay" },
+        workspace = "3 silent",
+  })
+
+  hl.window_rule({
         name      = "FreeTube",
         match     = { initial_title = "FreeTube" },
         workspace = "3 silent",

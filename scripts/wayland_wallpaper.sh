@@ -20,7 +20,7 @@ start_wall_loop() {
 }
 
 set_wallpaper() {
-    rsvg-convert "$WALLPAPER" | swww img --transition-step 30 --transition-fps 60 --transition-type random -
+    awww img --transition-step 30 --transition-fps 60 --transition-type random "$WALLPAPER"
 }
 
 set_random_wallpaper() {
@@ -29,7 +29,7 @@ set_random_wallpaper() {
         PREVIOUS_WALLPAPER_PATH="$WALLPAPER"
 }
 
-swww-daemon --format xrgb & disown
+awww-daemon --format xrgb & disown
 
 if ! [ -z "$SET_RANDOM" ]; then
     set_random_wallpaper
